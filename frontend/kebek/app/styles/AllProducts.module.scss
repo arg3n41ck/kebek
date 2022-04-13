@@ -1,0 +1,12 @@
+@media screen and (max-width: 768px) {
+  .cart__display {
+    display: none;
+    background-color: black;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main__container {
+    width: 100% !important;
+  }
+}

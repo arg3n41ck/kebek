@@ -1,0 +1,42 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 140%;
+    text-align: center;
+    color: #092f33;
+  }
+  .box_inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    p {
+        margin-top: 10px;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 140%;
+      text-align: center;
+      color: #092f33;
+      span{
+          color: #219653;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 150%;
+    
+      }
+    }
+    button {
+        margin-top: 23px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 150%;
+      text-align: center;
+      color: #219653;
+      margin-bottom: 42px;
+    }
+  }
+}

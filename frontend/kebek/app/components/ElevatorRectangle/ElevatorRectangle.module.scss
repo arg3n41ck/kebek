@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300;400&display=swap');
+
+.container{
+    max-width: 700px;
+    height: 101px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02);
+    margin-bottom: 15px;
+    border-radius: 4px;
+    .name{
+        display: flex;
+        align-items: center;
+        height:29px;
+        margin: 10px 15px;
+        width: 100%;
+        .truncate{
+            width: 100%;
+            margin:auto 0;
+            display: flex;
+             font-family: "Rubik", sans-serif;
+            font-weight: 500;
+            font-size: 21px;
+            color:rgba(9, 47, 51, 1);
+        }
+    }
+    .adress{
+        margin-left: 15px;
+        font-size: 16px;
+        font-family: Rubik, sans-serif;
+        font-weight: 400;
+        color:rgba(9, 47, 51, 1);
+
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .container{
+        height:84px;
+        .name{
+            width:94% !important;
+            margin: 10px auto !important;
+
+            .truncate{
+                font-size: 16px ;
+
+                // font-size: 10px ;
+            }
+        }
+        .adress{
+            font-size: 14px;
+        }
+    }
+}

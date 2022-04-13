@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300;400&display=swap");
+
+.container {
+  background-color: rgb(255, 255, 255);
+  max-width: 1920px;
+  height: 167px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  box-shadow: -30px -30px 60px rgba(243, 242, 242, 0.42),
+    -4px 5px 60px rgba(160, 153, 133, 0.1);
+  border-radius: 3px;
+  .content {
+    width: 1180px;
+    height: 56px;
+    // background-color: rgb(125, 221, 117);
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    .cookiesIcon {
+      display: flex;
+    }
+    .text {
+      max-width: 640px;
+      height: 52px;
+      margin-left: 20px;
+      margin-right: 50px;
+      .firstLine {
+        margin: 0 auto;
+        color: rgba(9, 47, 51, 1);
+         font-family: "Rubik", sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: left;
+      }
+      .secondLine {
+        margin: 0 auto;
+        color: #bdbdbd;
+         font-family: "Rubik", sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: left;
+        a{
+          span {
+            color: #219653;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .buttons {
+      display: flex;
+      width: 251px;
+      height: 45px;
+      .button1 {
+         font-family: "Rubik", sans-serif;
+        width: 104px;
+        height: 45px;
+        border: 0;
+        color: #219653;
+        border-radius: 3px;
+        background: white;
+      }
+
+      .button2 {
+         font-family: "Rubik", sans-serif;
+        width: 149px;
+        height: 45px;
+        background: rgba(33, 150, 83, 1);
+        border: 0;
+        border-radius: 3px;
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 738px) {
+  .container {
+    margin-top: 100px;
+    height: auto;
+    .content {
+      height: auto;
+      align-items: start;
+      .text {
+        height: auto;
+        margin-left: 10px;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.container {
+  .row1 {
+    background-color: rgb(43, 12, 219);
+    Col {
+      background-color: yellow;
+      color: yellow;
+    }
+  }
+  .row2 {
+    background-color: red;
+  }
+  .row3 {
+    background-color: green;
+  }
+}

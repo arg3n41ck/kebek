@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+.main__container {
+  padding: 120px 0;
+  margin-top: 150px;
+  .inner__container {
+    width: 90% !important;
+    .svg__container {
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      z-index: -1 !important;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .mini__cards {
+    background: #ffffff;
+    box-shadow: 0 -20px 40px rgba(206, 206, 206, 0.21),
+      -16px 35px 60px rgba(143, 105, 69, 0.2);
+    border-radius: 5px;
+    text-align: center;
+  }
+}
+
+.text__container {
+  .first__text {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 130%;
+    width: 100%;
+    color: darkgreen;
+  }
+  .second__text {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 140%;
+    color: #219653;
+    width: 100%;
+  }
+  .third__text {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 140%;
+    width: 100%;
+    color: darkgreen;
+  }
+  .container__button {
+    background-color: #219653;
+    border-radius: 3px;
+    width: 250px;
+    height: 53px;
+    border: none;
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: rgb(255, 255, 255);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .inner__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 1017px) {
+  .particle__container {
+    width: 100% !important;
+    .svg__container {
+      margin-left: 15px;
+    }
+  }
+  .text__container {
+    width: 100% !important;
+    .first__text {
+      width: 100%;
+    }
+    .second__text {
+      width: 100%;
+    }
+    .third__text {
+      width: 100%;
+    }
+    .container__button {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 578px) {
+  .first__text {
+    font-size: 24px !important;
+  }
+  .second__text {
+    font-size: 16px !important;
+  }
+  .third__text {
+    font-size: 15px !important;
+  }
+}
+
+@media screen and (min-width: 1017px) {
+  .text__container {
+    margin-top: 20px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main__container {
+    margin-top: 50px;
+    .mini__cards{
+      width:300px;
+    }
+    .block__card1{
+      .mini__card1{
+        margin-right: -40px;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 507px) {
+  .block__card2{
+    margin-top: auto !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .mini__cards{
+    height: 176px;
+    width: 220px !important;
+    h5{
+      font-size: 18px !important;
+    }
+    p{
+      font-size: 14px !important;
+      b{
+        span{
+          font-size: 14px !important;
+        }
+      }
+    }
+  }
+
+  .text__container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+
+}

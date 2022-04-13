@@ -1,0 +1,563 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+
+.cart_items {
+  .cart_text {
+    ul {
+      list-style: none;
+      padding: 0;
+      font-family: "Rubik", sans-serif;
+
+      li {
+        color: #808080;
+        cursor: pointer;
+        font-family: "Rubik", sans-serif;
+
+        &::before {
+          content: "/ ";
+        }
+
+        &:first-child::before {
+          content: "";
+        }
+
+        &:last-child {
+          color: black;
+        }
+      }
+    }
+
+    p {
+      font-size: 30px;
+      font-family: "Rubik", sans-serif;
+    }
+  }
+
+  @media screen and (max-width: 383px) {
+    .cart_text {
+      ul {
+        li {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+
+.tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.tooltip .bottom {
+  max-width: 300px;
+  left: 68%;
+  transform: translate(-30%, 0);
+  padding: 20px 30px;
+  color: #666666;
+  background-color: #ffffff;
+  font-weight: normal;
+  font-size: 13px;
+  font-family: "Rubik", sans-serif;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  display: none;
+  border: 1px solid #eeeeee;
+  border-radius: 2px;
+}
+
+.cardProductInfo_mobile {
+  .hr_mobile {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .imgInfo_mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobileVersion {
+    max-width: 172px;
+    margin-right: 15px;
+  }
+
+  .amountProduct_mobile {
+    width: 98px;
+  }
+
+  .amountProduct__text_mobile {
+    font-size: 12px !important;
+    width: 73px;
+    font-family: "Rubik", sans-serif;
+  }
+
+  .imgInfo__text_mobile {
+    // background: black;
+    font-size: 14px !important;
+    font-family: "Rubik", sans-serif;
+    margin-left: 0 !important;
+    width: 100%;
+  }
+
+  .priceInfo__text_mobile {
+    // background: black;
+    font-size: 15.5px !important;
+    margin-right: 10px;
+  }
+}
+
+.tooltip:hover .bottom {
+  display: block;
+}
+
+.tooltip .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 20%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.tooltip .bottom i::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  border: 1px solid #eeeeee;
+}
+
+.headerTooltip {
+  box-shadow: none !important;
+
+  p {
+    margin-left: 0;
+    font-size: 18px;
+    color: black;
+    font-family: "Rubik", sans-serif;
+  }
+
+  .tooltipBottom {
+    display: flex;
+
+    button {
+      background-color: black;
+      color: white;
+      width: 113px;
+      height: 35px;
+      border: 1px solid black;
+      font-family: "Rubik", sans-serif;
+      font-size: 18px;
+      transition: all 0.3s ease 0s;
+      border-radius: 2px;
+
+      &:hover {
+        width: 115px;
+        height: 37px;
+      }
+    }
+
+    button:last-child {
+      background: none;
+      margin-left: 15px;
+      color: black;
+      transition: all 0.3s ease 0s;
+      border-radius: 2px;
+
+      &:hover {
+        width: 115px;
+        height: 37px;
+      }
+    }
+  }
+}
+
+.ordering_text {
+  .leftArrow {
+    cursor: pointer;
+
+    p {
+      margin-left: 10px;
+       font-family: "Rubik", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
+}
+
+.group134 {
+  max-width: 780px;
+
+  .frame87 {
+    button {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 150%;
+      background: none;
+      border: none;
+      color: #219653;
+      margin-right: 22px;
+      font-family: "Rubik", sans-serif;
+    }
+  }
+
+  .hr {
+    margin: 0;
+  }
+
+  .melkombinat {
+    background-color: #f1f7f0;
+    height: 45px;
+
+    .melkombinat__text {
+      margin-left: 20px;
+      font-family: "Rubik", sans-serif;
+      text-decoration: underline;
+    }
+  }
+
+  .cartProductInfo {
+    .imgInfo {
+      margin-left: -80px;
+      display: grid;
+      grid-template-columns: min-content min-content 1fr ;
+      justify-content: flex-start;
+
+      @media (max-width: 768px) {
+        grid-gap: 16px;
+      }
+
+      .imgInfo__text {
+        margin-left: 16px;
+        font-family: "Rubik", sans-serif;
+      }
+    }
+
+    .amountProduct {
+      max-width: 98px;
+      width: 100%;
+
+      button {
+        background-color: #fafafa;
+        border-radius: 2.26364px;
+        border: none;
+        color: #aeaeae;
+        font-family: "Rubik", sans-serif;
+      }
+    }
+
+    .iconDelete {
+      margin-right: 20px;
+    }
+  }
+
+  .accordion {
+    padding: 10px !important;
+
+    .radioIndividual {
+      margin-right: 34px;
+
+      label {
+        font-family: "Rubik", sans-serif;
+      }
+
+      label:focus {
+        color: green !important;
+      }
+    }
+
+    input {
+      height: 53px;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      padding: 20px;
+      outline: none;
+      font-family: "Rubik", sans-serif;
+
+      font-size: 18px;
+
+      &:focus {
+        border-color: #219653 !important;
+      }
+    }
+
+    .inputsForm {
+      input {
+        width: 49%;
+        font-family: "Rubik", sans-serif;
+      }
+    }
+
+    .tabUnstyled {
+      max-width: 229px;
+      width: 100%;
+      height: 37px;
+      background: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+      outline: none;
+      font-size: 18px;
+
+      &:focus {
+        border-color: #219653 !important;
+        color: #219653;
+      }
+    }
+
+    .FormControl {
+      max-width: 700px;
+      // display: flex;
+      // flex-direction: column;
+      // max-width: 700px;
+      width: 100%;
+      .autoComplete {
+        padding: 0;
+        input {
+          border: none !important;
+          height: 44px;
+          padding: 0;
+          margin: 0;
+          font-family: "Rubik", sans-serif;
+        }
+      }
+    }
+
+    .formControl__text {
+      span {
+        font-size: 16px;
+        line-height: 140%;
+        font-style: normal;
+        font-weight: 400;
+        font-family: "Rubik", sans-serif;
+
+        &:focus {
+          color: #219653 !important;
+        }
+
+        span:focus {
+          background-color: black !important;
+        }
+      }
+    }
+  }
+}
+
+.ordering_items__paymentCard {
+  max-width: 380px;
+  height: auto;
+
+  .mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    height: 53px;
+    font-family: "Rubik", sans-serif;
+  }
+
+  .ordering_items__paymentCard_cardContent {
+    margin-top: -20px;
+  }
+}
+
+// @media screen and (max-width: 1200px) {
+//   .ordering_items__paymentCard {
+//     .ordering_items__paymentCard_card {
+//       .ordering_items__paymentCard__text {
+//         // display: flex;
+//         // font-size: 13px;
+//         // font-style: normal;
+//         // font-weight: 300;
+//         // font-size: 14px;
+//         // line-height: 140%;
+//       }
+//     }
+//   }
+// }
+
+@media screen and (max-width: 993px) {
+  .cartProductInfo {
+    .cartProductInfo_checkbox {
+      margin-right: 0 !important;
+    }
+
+    .imgInfo {
+      margin-left: 0 !important;
+    }
+  }
+
+  .priceInfo__text {
+    font-size: 16px !important;
+  }
+
+  .priceInfo {
+    margin-left: 12px;
+    margin-right: 5px;
+  }
+
+  .imgInfo__text {
+    margin-left: 0 !important;
+  }
+
+  .ordering_items__paymentCard_cardContent__text {
+    .ordering_items__paymentCard_cardContent__text {
+      font-size: 12px;
+    }
+  }
+
+  .totalCost_text {
+    font-size: 14px;
+  }
+
+  .totalCost_text2 {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 767.5px) {
+  .ordering_items__paymentCard {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .totalCost_text {
+    font-size: 14px !important;
+  }
+
+  .totalCost_text2 {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cartProductInfo {
+    .amountProduct {
+      width: 13% !important;
+
+      .amountProduct__text {
+        font-size: 10px;
+      }
+    }
+
+    .imgInfo__text {
+      font-size: 14px;
+    }
+
+    .priceInfo {
+      margin: 0 !important;
+      .priceInfo__text {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .wadeIn {
+    font-size: 25px !important;
+  }
+
+  .mobile {
+    flex-direction: column-reverse !important;
+
+    .hr_mobile2 {
+      display: block !important;
+      margin: 0;
+    }
+
+    .hr_mobile {
+      display: none;
+    }
+  }
+
+  .group134 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .ordering_items__paymentCard_card {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .cartProductInfo {
+    display: none !important;
+  }
+
+  .cardProductInfo_mobile {
+    display: block !important;
+  }
+
+  .selectAll {
+    font-size: 16px !important;
+  }
+
+  .frame87 {
+    button {
+      font-size: 16px !important;
+    }
+  }
+
+  .melkom {
+    padding: 3px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 392px) {
+  // .cart_text {
+  //   ul {
+  //     li {
+  //       font-size: 11px;
+  //     }
+  //   }
+  // }
+
+  .melkombinat__text {
+    font-size: 12px !important;
+    width: 100%;
+  }
+
+  .frame87 {
+    button {
+      font-size: 11px !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  .selectAll {
+    font-size: 11px !important;
+  }
+
+  .cartProductInfo {
+    .amountProduct {
+      .amountProduct__text {
+        font-size: 7px;
+      }
+    }
+
+    .imgInfo__text {
+      font-size: 10px;
+    }
+
+    .priceInfo {
+      .priceInfo__text {
+        font-size: 8px;
+      }
+    }
+  }
+}

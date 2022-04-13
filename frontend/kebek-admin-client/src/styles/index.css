@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+@import "./mui-castom-styles.scss";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+input,
+button,
+li,
+ul,
+div,
+a {
+  font-family: "Rubik", sans-serif;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background: black;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  width: 4px;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  width: 4px;
+  border-radius: 8px;
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
+.MuiButtonBase-root .MuiIconButton-root .MuiIconButton-sizeMedium .css-1yxmbwk {
+  background: none;
+}
+
+/* .MuiPaper-root
+  .MuiPaper-elevation
+  .MuiPaper-rounded
+  .MuiPaper-elevation1
+  .MuiMenu-paper
+  .MuiPaper-root
+  .MuiPaper-elevation
+  .MuiPaper-rounded
+  .MuiPaper-elevation8
+  .MuiPopover-paper
+  .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  background: black !important;
+} */
+
+.input:hover,
+.textarea:hover,
+.textarea:focus {
+  border: 1px solid #219653 !important;
+  outline: none !important;
+}
+
+input {
+  outline: none !important;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px !important;
+}
+
+/* .MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.1) !;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+} */
+
+select:hover {
+  border: 1px solid #e0e0e0 !important;
+}
+
+textarea:hover {
+  border: 1px solid #e0e0e0 !important;
+}
+
+select:focus {
+  border-color: #219653 !important;
+}
+
+textarea:focus {
+  border: 1px solid #e0e0e0 !important;
+}
+
+input:focus {
+  border-color: #219653 !important;
+}
+
+button,
+a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none !important;
+  outline: none !important;
+  font-weight: 700 !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 4px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+}
+
+:root {
+  --toastify-color-success: #219653 !important;
+  --toastify-toast-width: 30% !important;
+  --toastify-toast-height: auto !important;
+}
+
+.Toastify__toast-container--top-right {
+  padding: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+}
+
+.Toastify__toast-icon {
+  margin-bottom: auto !important;
+  margin-top: 5px !important;
+}

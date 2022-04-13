@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+
+html,
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-pagination-bullet {
+  width: var(
+    --swiper-pagination-bullet-width,
+    var(--swiper-pagination-bullet-size, 29px)
+  ) !important;
+  height: var(
+    --swiper-pagination-bullet-height,
+    var(--swiper-pagination-bullet-size, 6px)
+  ) !important;
+  display: inline-block !important;
+  border-radius: 15% !important;
+  background: var(--swiper-pagination-bullet-inactive-color, #000) !important;
+  opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.2) !important;
+  transition: all 0.5s ease 0s !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1) !important;
+  background: green !important;
+  width: 74px !important;
+  transition: all 0.5s ease 0s !important;
+  border-radius: 15% !important;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.Toastify__toast-container {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+
+.Toastify__zoom-enter {
+  margin-bottom: auto !important;
+  margin-top: 4px !important;
+}
+
+.MuiAutocomplete-endAdornment {
+  display: none !important;
+}
+
+.MuiAutocomplete-inputRoot.Mui-focused {
+  outline: none !important;
+  border-color: #219653 !important;
+}
+
+.MuiAutocomplete-input {
+  font-family: "Rubik", sans-serif !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.MuiButton-root {
+  font-family: "Rubik", sans-serif !important;
+}
+
+.MuiTypography-root {
+  font-family: "Rubik", sans-serif !important;
+}
+
+.PrivateSwitchBase-input {
+  border: 1px solid #219653 !important;
+}
+
+.MuiCheckbox-root {
+  color: #219653 !important;
+}

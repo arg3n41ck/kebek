@@ -1,0 +1,403 @@
+.clear {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 51px;
+  color: #219653 !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 27px !important;
+  padding-left: 20px !important;
+  border-top: 1px solid #e0e0e0 !important;
+}
+.all {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 51px;
+  font-size: 18px !important;
+  line-height: 27px !important;
+  background-color: #fafcfa;
+  cursor: pointer;
+  label {
+    color: #092f33 !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+}
+.searchResult {
+  padding-left: 10px;
+  height: 48px;
+  background-color: white;
+  cursor: pointer;
+  z-index: 9999;
+  border-left: 1px solid #fafcfa;
+  border-right: 1px solid #fafcfa;
+
+  &:first-child {
+    border-top: 1px solid #fafcfa;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid #fafcfa;
+  }
+
+  &:hover {
+    background-color: #fafcfa !important;
+  }
+  display: flex;
+  align-items: center;
+}
+
+.liveSearch {
+  border-radius: 3px;
+  width: 100%;
+  position: absolute;
+  margin-top: 3px;
+  z-index: 9999;
+}
+.container {
+  background-color: #f9fafb;
+  height: auto;
+  position: relative;
+  min-height: 88.5vh;
+
+  span {
+    color: green;
+    font-weight: bold;
+  }
+  .select {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    :global {
+      .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+        height: 22px;
+      }
+    }
+    .searchInp {
+      width: 100%;
+      margin-right: 30px;
+      position: relative;
+
+      input {
+        padding-left: 48px;
+        background-image: url("../../assets/icons/HomeIcons/searchIcon.svg");
+        background-repeat: no-repeat;
+        background-position: 20px 17.5px;
+        background-size: 18px;
+      }
+    }
+    .selectInp {
+      width: 100%;
+    }
+    :global {
+      .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+        height: 54px;
+      }
+      .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+      .ant-select-single.ant-select-show-arrow
+        .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .inner_div {
+    display: flex;
+    align-items: center;
+    h3 {
+      margin-top: -5px !important;
+    }
+    :global {
+      .ant-badge-dot {
+        width: 11px !important;
+        height: 11px !important;
+      }
+    }
+  }
+  div {
+    input {
+      width: 100%;
+      height: auto;
+      border-radius: 3px;
+      padding: 14px 20px;
+      margin-right: 30px;
+      border: 1px solid #e0e0e0;
+      border-radius: 3px;
+    }
+    input::placeholder {
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 140%;
+      color: #e0e0e0;
+    }
+    .select {
+      height: 53px !important;
+    }
+    span {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 24px;
+      color: #828282;
+    }
+  }
+}
+
+.h1 {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 42px;
+}
+.select1 {
+  border-radius: 3px;
+  color: #828282 !important;
+  height: 48px;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+  padding-left: 0px !important;
+  label {
+    margin-left: 10px;
+  }
+}
+
+.list {
+  background-color: white;
+  margin-top: 20px;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  .beginer {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    .beginer_right {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        font-size: 18px;
+        text-transform: none;
+
+        p {
+          margin-bottom: 0 !important;
+        }
+      }
+    }
+    .beginer_left {
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      :global {
+        .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+          padding: 0px;
+          margin-right: 20px;
+        }
+      }
+      p {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 25px;
+        color: #092f33;
+        margin-left: 0px !important;
+      }
+    }
+  }
+  .inner {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px 20px 35px 20px;
+    display: flex;
+    align-items: flex-start;
+
+    :global {
+      .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+        padding: 0px;
+        margin-right: 20px;
+      }
+    }
+    input {
+      width: 20px;
+    }
+    div {
+      .inner_div {
+        margin-top: 3px;
+        :global {
+          .css-hqv4f7-MuiBadge-badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+          }
+        }
+        .dot {
+          width: 7px;
+          height: 15px;
+          font-size: 20px !important;
+          margin-right: 20px;
+        }
+        h3 {
+          font-weight: bold;
+          font-size: 21px;
+          line-height: 29px;
+          color: #092f33;
+        }
+      }
+      .date {
+        font-family: Rubik, sans-serif;
+        font-size: 14px;
+        line-height: 140%;
+        color: #092f33;
+        margin-left: 10px;
+      }
+      p {
+        color: #828282;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 140%;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        .pay {
+          width: 120px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #d6efe6;
+          border-radius: 3px;
+          color: #219653;
+          margin-right: 20px;
+        }
+        .obr {
+          width: 120px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fdf5d5;
+          border-radius: 3px;
+          color: #f2994a;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+:global {
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: #219653 !important;
+  }
+  .Notification_container__stvkS div span {
+    color: #219653;
+  }
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+    color: #219653 !important;
+  }
+}
+:global {
+  .MuiPaper-elevation {
+    max-height: 100% !important;
+  }
+}
+@media screen and (max-width: 992px) {
+  .select {
+    display: flex;
+    flex-direction: column !important;
+
+    .searchInp {
+      margin-bottom: 20px;
+    }
+
+    .selectInp {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  .sel {
+    width: 100% !important;
+  }
+}
+
+@media all and (max-width: 620px) {
+  .select {
+    display: flex;
+    flex-wrap: wrap;
+    .searchInp {
+      margin-bottom: 20px;
+    }
+  }
+  .inner_div {
+    h3 {
+      font-size: 18px !important;
+    }
+  }
+  .inner {
+    div {
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+  .beginer_right {
+    p {
+      font-size: 16px !important;
+    }
+  }
+  .inner {
+    div {
+      p {
+        font-size: 16px !important;
+      }
+    }
+  }
+  .beginer_left {
+    p {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@media all and (max-width: 455px) {
+  .beginer {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto !important;
+  }
+}
+@media all and (max-width: 375px) {
+  :global {
+    .Notification_container__stvkS div input {
+      margin-right: 0px !important;
+    }
+  }
+  .container {
+    padding: 10px;
+  }
+}
+
+.selectOtherArrow {
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none !important; /* Safari and Chrome */
+  appearance: none !important;
+}
+
+.sel:hover fieldset {
+  border: 1px solid #219653 !important;
+}

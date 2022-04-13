@@ -1,0 +1,43 @@
+
+.container{
+    max-width: 580px;
+    height: 550px;
+    padding: 10px;
+    .title{
+        height: 25%;
+        background-color: rgb(211, 129, 129);
+    }
+
+    .name{
+        height: 35%;
+        background-color: rgb(166, 211, 129);
+
+    }
+
+    .contacts{
+        height: 25%;
+        background-color: rgb(134, 129, 211);
+
+    }
+
+    .adress{
+        background-color: rgb(203, 214, 102);
+        height: 15%;
+    }
+}
+///////////////////////////////////
+
+
+.numberButton{
+    //   height: 100%;
+       font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      color: #219653;
+      border: 1px solid #219653;
+      background-color: rgb(255, 255, 255);
+      border-radius: 2px;
+    width:260px;
+        height:53px;
+    }

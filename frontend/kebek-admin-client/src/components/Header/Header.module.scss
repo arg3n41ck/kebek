@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fdfdfd;
+  height: 95px;
+  justify-content: space-between;
+  width: 100%;
+  height: 99px;
+
+  .header__items {
+    max-width: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .burger {
+    padding-left: 30px;
+    cursor: pointer;
+  }
+
+  // button {
+  //   margin-right: auto;
+  //   width: 50px;
+  // }
+
+  &__items {
+    margin-left: auto;
+    padding-right: 30px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  &__language {
+    margin: 0 30px 0 0;
+  }
+
+  &__location {
+    margin: 0 47px 0 0;
+  }
+}

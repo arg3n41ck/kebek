@@ -1,0 +1,620 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-17 15:41+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: kebek/addresses/admin.py:45
+msgid "Stations were just updated."
+msgstr "Станции успешно обновлены."
+
+#: kebek/addresses/apps.py:7
+msgid "Addresses"
+msgstr "Адреса"
+
+#: kebek/addresses/models.py:8 kebek/addresses/models.py:45
+#: kebek/addresses/models.py:72 kebek/elevators/models.py:90
+#: kebek/elevators/models.py:298 kebek/management/models.py:8
+#: kebek/management/models.py:27 kebek/management/models.py:46
+#: kebek/management/models.py:78
+msgid "Russian title"
+msgstr "Наименование по-русски"
+
+#: kebek/addresses/models.py:12 kebek/addresses/models.py:49
+#: kebek/addresses/models.py:76 kebek/elevators/models.py:95
+#: kebek/elevators/models.py:304 kebek/management/models.py:12
+#: kebek/management/models.py:31 kebek/management/models.py:50
+#: kebek/management/models.py:82
+msgid "Kazakh title"
+msgstr "Наименование по-казахски"
+
+#: kebek/addresses/models.py:18 kebek/elevators/models.py:100
+msgid "Russian description"
+msgstr "Описание по-русски"
+
+#: kebek/addresses/models.py:24 kebek/elevators/models.py:105
+msgid "Kazakh description"
+msgstr "Описание по-казахски"
+
+#: kebek/addresses/models.py:30
+msgid "Code"
+msgstr "Код"
+
+#: kebek/addresses/models.py:38 kebek/elevators/models.py:158
+#: kebek/elevators/models.py:450
+msgid "Railway station"
+msgstr "Станция"
+
+#: kebek/addresses/models.py:39
+msgid "Railway stations"
+msgstr "Станции"
+
+#: kebek/addresses/models.py:57 kebek/addresses/models.py:68
+msgid "District"
+msgstr "Область"
+
+#: kebek/addresses/models.py:58
+msgid "Districts"
+msgstr "Области"
+
+#: kebek/addresses/models.py:84 kebek/elevators/models.py:466
+#: kebek/users/models.py:204
+msgid "City"
+msgstr "Город"
+
+#: kebek/addresses/models.py:85 kebek/elevators/models.py:150
+msgid "Cities"
+msgstr "Города"
+
+#: kebek/addresses/templates/admin/addresses/railwaystation/change_list.html:4
+msgid "Download stations"
+msgstr "Скачать станции"
+
+#: kebek/config/common.py:88
+msgid "Russian"
+msgstr "Русский"
+
+#: kebek/config/common.py:89
+msgid "Kazakh"
+msgstr "Казахский"
+
+#: kebek/elevators/admin.py:181
+msgid "Geolocations were just updated."
+msgstr "Геопозиции успешно обновлены."
+
+#: kebek/elevators/admin.py:278 kebek/elevators/models.py:278
+msgid "Products"
+msgstr "Товары"
+
+#: kebek/elevators/apps.py:7 kebek/elevators/models.py:189
+msgid "Elevators"
+msgstr "Элеваторы"
+
+#: kebek/elevators/models.py:26
+msgid "Active"
+msgstr "Активен"
+
+#: kebek/elevators/models.py:27
+msgid "Archived"
+msgstr "В архиве"
+
+#: kebek/elevators/models.py:44
+msgid "Accepted"
+msgstr "Создан"
+
+#: kebek/elevators/models.py:45
+msgid "Waiting for prepayment"
+msgstr "Ожидает оплаты"
+
+# msgstr "Ожидает предоплаты"
+#: kebek/elevators/models.py:46
+msgid "Waiting for supplement"
+msgstr "Ожидает полной оплаты"
+
+#: kebek/elevators/models.py:47
+msgid "Billed"
+msgstr "Выставлен счет на оплату"
+
+#: kebek/elevators/models.py:48
+msgid "Prepayment received"
+msgstr "Получена предоплата"
+
+#: kebek/elevators/models.py:49
+msgid "Paid"
+msgstr "Оплачен"
+
+#: kebek/elevators/models.py:50
+msgid "Proxy added"
+msgstr "Добавлено доверенное лицо"
+
+#: kebek/elevators/models.py:51
+msgid "Shipped"
+msgstr "Отправлен"
+
+#: kebek/elevators/models.py:52
+msgid "Delivered"
+msgstr "Доставлен"
+
+#: kebek/elevators/models.py:53
+msgid "Cancelled"
+msgstr "Отменен"
+
+#: kebek/elevators/models.py:54
+msgid "Finished"
+msgstr "Завершен"
+
+#: kebek/elevators/models.py:63
+msgid "Pass"
+msgstr "Пропуск"
+
+#: kebek/elevators/models.py:64
+msgid "Waybill"
+msgstr "Накладная"
+
+#: kebek/elevators/models.py:65
+msgid "Bill"
+msgstr "Счет на оплату"
+
+#: kebek/elevators/models.py:79 kebek/elevators/models.py:418
+msgid "Number"
+msgstr "Номер"
+
+#: kebek/elevators/models.py:85 kebek/users/models.py:45
+msgid "Owner"
+msgstr "Владелец"
+
+#: kebek/elevators/models.py:111
+msgid "Logo"
+msgstr "Логотип"
+
+#: kebek/elevators/models.py:115
+msgid "Russian address"
+msgstr "Адрес по-русски"
+
+#: kebek/elevators/models.py:119
+msgid "Kazakh address"
+msgstr "Адрес по-казахски"
+
+#: kebek/elevators/models.py:122 kebek/users/models.py:77
+#: kebek/users/models.py:155
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+#: kebek/elevators/models.py:127
+msgid "Email"
+msgstr "Электронная почта"
+
+#: kebek/elevators/models.py:133
+msgid "Website"
+msgstr "Сайт"
+
+#: kebek/elevators/models.py:139 kebek/elevators/models.py:484
+#: kebek/users/models.py:224
+msgid "BIN"
+msgstr "БИН"
+
+#: kebek/elevators/models.py:145 kebek/elevators/models.py:496
+#: kebek/users/models.py:232
+msgid "Checking account"
+msgstr "Расчетный счет"
+
+#: kebek/elevators/models.py:162
+msgid "Slug"
+msgstr "Название элеватора в ссылке"
+
+#: kebek/elevators/models.py:188 kebek/elevators/models.py:223
+#: kebek/elevators/models.py:286 kebek/elevators/models.py:332
+#: kebek/elevators/models.py:366 kebek/elevators/models.py:430
+#: kebek/elevators/models.py:631
+msgid "Elevator"
+msgstr "Элеватор"
+
+#: kebek/elevators/models.py:227
+msgid "Set number"
+msgstr "Артикул"
+
+#: kebek/elevators/models.py:233 kebek/elevators/models.py:292
+#: kebek/elevators/models.py:338 kebek/elevators/models.py:611
+#: kebek/policies/models.py:23
+msgid "Type"
+msgstr "Тип"
+
+#: kebek/elevators/models.py:236 kebek/elevators/models.py:308
+msgid "Price"
+msgstr "Цена"
+
+#: kebek/elevators/models.py:239
+msgid "Minimum limit"
+msgstr "Минимальный объем заказа"
+
+#: kebek/elevators/models.py:242
+msgid "Maximum limit"
+msgstr "Максимальный объем заказа"
+
+#: kebek/elevators/models.py:245
+msgid "Residue"
+msgstr "Остаток"
+
+#: kebek/elevators/models.py:251
+msgid "Image"
+msgstr "Изображение"
+
+#: kebek/elevators/models.py:257 kebek/elevators/models.py:314
+#: kebek/elevators/models.py:348 kebek/elevators/models.py:531
+#: kebek/notify/models.py:27
+msgid "Status"
+msgstr "Статус"
+
+#: kebek/elevators/models.py:261
+msgid "Display on landing"
+msgstr "Отображать на лендинге"
+
+#: kebek/elevators/models.py:277 kebek/elevators/models.py:582
+msgid "Product"
+msgstr "Товар"
+
+#: kebek/elevators/models.py:323 kebek/elevators/models.py:436
+msgid "Delivery"
+msgstr "Доставка"
+
+#: kebek/elevators/models.py:324
+msgid "Deliveries"
+msgstr "Доставки"
+
+#: kebek/elevators/models.py:342
+msgid "Minutes until cancellation"
+msgstr "Минут до отмены заказа"
+
+#: kebek/elevators/models.py:357 kebek/elevators/models.py:442
+msgid "Payment"
+msgstr "Оплата"
+
+#: kebek/elevators/models.py:358
+msgid "Payments"
+msgstr "Оплата"
+
+#: kebek/elevators/models.py:370 kebek/elevators/models.py:478
+#: kebek/notify/models.py:33 kebek/users/models.py:220
+msgid "Title"
+msgstr "Наименование"
+
+#: kebek/elevators/models.py:375
+msgid "Wialon ID"
+msgstr "Wialon ID"
+
+#: kebek/elevators/models.py:384 kebek/elevators/models.py:393
+#: kebek/elevators/models.py:458
+msgid "Vehicle"
+msgstr "Транспорт"
+
+#: kebek/elevators/models.py:385
+msgid "Vehicles"
+msgstr "Транспорт"
+
+#: kebek/elevators/models.py:397
+msgid "Position"
+msgstr "Локация"
+
+#: kebek/elevators/models.py:401 kebek/elevators/models.py:535
+#: kebek/elevators/models.py:639 kebek/notify/models.py:46
+msgid "Created at"
+msgstr "Создан"
+
+#: kebek/elevators/models.py:409
+msgid "Geolocation"
+msgstr "Геолокация"
+
+#: kebek/elevators/models.py:410
+msgid "Geolocations"
+msgstr "Геолокации"
+
+#: kebek/elevators/models.py:424 kebek/users/models.py:48
+msgid "Client"
+msgstr "Клиент"
+
+#: kebek/elevators/models.py:472 kebek/users/models.py:208
+msgid "Address"
+msgstr "Адрес"
+
+#: kebek/elevators/models.py:490 kebek/users/models.py:228
+msgid "BIK"
+msgstr "БИК"
+
+#: kebek/elevators/models.py:499
+msgid "Delivery payment"
+msgstr "Стоимость доставки"
+
+#: kebek/elevators/models.py:504
+msgid "Prepayment"
+msgstr "Размер предоплаты"
+
+#: kebek/elevators/models.py:510
+msgid "Proxy fullname"
+msgstr "ФИО доверенного лица"
+
+#: kebek/elevators/models.py:515
+msgid "Proxy number"
+msgstr "Номер доверенности"
+
+#: kebek/elevators/models.py:520
+msgid "Proxy start date"
+msgstr "Дата начала действия доверенности"
+
+#: kebek/elevators/models.py:525
+msgid "Proxy end date"
+msgstr "Дата окончания действия доверенности"
+
+#: kebek/elevators/models.py:539
+msgid "Updated at"
+msgstr "Изменен"
+
+#: kebek/elevators/models.py:567 kebek/elevators/models.py:576
+#: kebek/elevators/models.py:605 kebek/notify/models.py:21
+msgid "Order"
+msgstr "Заказ"
+
+#: kebek/elevators/models.py:568
+msgid "Orders"
+msgstr "Заказы"
+
+#: kebek/elevators/models.py:585
+msgid "Amount"
+msgstr "Количество"
+
+#: kebek/elevators/models.py:588
+msgid "Product payment"
+msgstr "Стоимость товара"
+
+#: kebek/elevators/models.py:596
+msgid "Order item"
+msgstr "Позиция заказа"
+
+#: kebek/elevators/models.py:597
+msgid "Order items"
+msgstr "Позиции заказа"
+
+#: kebek/elevators/models.py:615 kebek/elevators/models.py:622
+msgid "Document"
+msgstr "Документ"
+
+#: kebek/elevators/models.py:623
+msgid "Documents"
+msgstr "Документы"
+
+#: kebek/elevators/models.py:635
+msgid "Profit"
+msgstr "Продажи"
+
+#: kebek/elevators/templates/admin/elevators/geolocation/change_list.html:4
+msgid "Download Geo-locations"
+msgstr "Скачать Геолокации"
+
+#: kebek/management/apps.py:7
+msgid "Management"
+msgstr "Настройки"
+
+#: kebek/management/models.py:20
+msgid "Product type"
+msgstr "Тип товара"
+
+#: kebek/management/models.py:21
+msgid "Product types"
+msgstr "Типы товаров"
+
+#: kebek/management/models.py:39
+msgid "Delivery type"
+msgstr "Тип доставки"
+
+#: kebek/management/models.py:40
+msgid "Delivery types"
+msgstr "Типы доставки"
+
+#: kebek/management/models.py:54
+msgid "Available for natural person"
+msgstr "Доступно для физических лиц"
+
+#: kebek/management/models.py:58
+msgid "Available for legal person"
+msgstr "Доступно для юридических лиц"
+
+#: kebek/management/models.py:66
+msgid "Payment type"
+msgstr "Тип оплаты"
+
+#: kebek/management/models.py:67
+msgid "Payment types"
+msgstr "Типы оплаты"
+
+#: kebek/management/models.py:74
+msgid "Constant"
+msgstr "Переменная"
+
+#: kebek/management/models.py:90
+msgid "Translation"
+msgstr "Перевод"
+
+#: kebek/management/models.py:91
+msgid "Translations"
+msgstr "Перевод"
+
+#: kebek/notify/apps.py:7 kebek/notify/models.py:65
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: kebek/notify/models.py:13
+msgid "Receiver"
+msgstr "Получатель"
+
+#: kebek/notify/models.py:38 kebek/policies/models.py:54
+#: kebek/policies/models.py:97
+msgid "Content"
+msgstr "Описание"
+
+#: kebek/notify/models.py:42
+msgid "Read"
+msgstr "Прочитано"
+
+#: kebek/notify/models.py:50
+msgid "Show in history"
+msgstr "Показывать в истории"
+
+#: kebek/notify/models.py:64
+msgid "Notification"
+msgstr "Уведомление"
+
+#: kebek/policies/apps.py:7 kebek/policies/models.py:38
+msgid "Policies"
+msgstr "Политики"
+
+#: kebek/policies/models.py:13
+msgid "Privacy policy"
+msgstr "Политика конфиденциальности"
+
+#: kebek/policies/models.py:14
+msgid "Terms and conditions"
+msgstr "Пользовательское соглашение"
+
+#: kebek/policies/models.py:15
+msgid "About"
+msgstr "О нас"
+
+#: kebek/policies/models.py:29 kebek/policies/models.py:63
+msgid "Language"
+msgstr "Язык"
+
+#: kebek/policies/models.py:37
+msgid "Policy"
+msgstr "Политика"
+
+#: kebek/policies/models.py:51
+msgid "Subtitle"
+msgstr "Подзаголовок"
+
+#: kebek/policies/models.py:70 kebek/policies/models.py:71
+msgid "FAQ"
+msgstr "Часто задаваемые вопросы"
+
+#: kebek/policies/models.py:82
+msgid "Question"
+msgstr "Вопрос"
+
+#: kebek/policies/models.py:85
+msgid "Answer"
+msgstr "Ответ"
+
+#: kebek/policies/models.py:94 kebek/users/models.py:110
+msgid "User"
+msgstr "Пользователь"
+
+#: kebek/policies/models.py:101
+msgid "Created At"
+msgstr "Создан"
+
+#: kebek/policies/models.py:105
+msgid "User request"
+msgstr "Запрос в службу поддержки"
+
+#: kebek/policies/models.py:106
+msgid "User requests"
+msgstr "Запросы в службу поддержки"
+
+#: kebek/users/admin.py:60
+msgid "Personal info"
+msgstr "Личная информация"
+
+#: kebek/users/admin.py:70
+msgid "Permissions"
+msgstr "Доступ"
+
+#: kebek/users/admin.py:82
+msgid "Important dates"
+msgstr "Важные даты"
+
+#: kebek/users/admin.py:92
+msgid "Additional info"
+msgstr "Дополнительная информация"
+
+#: kebek/users/apps.py:7 kebek/users/models.py:111
+msgid "Users"
+msgstr "Пользователи"
+
+#: kebek/users/models.py:25
+msgid "New Account Activation"
+msgstr "Активация нового аккаунта"
+
+#: kebek/users/models.py:26
+msgid "Reset Password"
+msgstr "Восстановление пароля"
+
+#: kebek/users/models.py:34
+msgid "Administration"
+msgstr "Администрация"
+
+#: kebek/users/models.py:35
+msgid "Natural person"
+msgstr "Физическое лицо"
+
+#: kebek/users/models.py:36
+msgid "Legal person"
+msgstr "Юридическое лицо"
+
+#: kebek/users/models.py:46
+msgid "Accountant"
+msgstr "Бухгалтер"
+
+#: kebek/users/models.py:47
+msgid "Administrator"
+msgstr "Администратор"
+
+#: kebek/users/models.py:62
+msgid "Username"
+msgstr "Логин"
+
+#: kebek/users/models.py:67
+msgid "Name"
+msgstr "Имя"
+
+#: kebek/users/models.py:72
+msgid "Email address"
+msgstr "Электронная почта"
+
+#: kebek/users/models.py:85
+msgid "Type of user"
+msgstr "Тип пользователя"
+
+#: kebek/users/models.py:91
+msgid "Role of user"
+msgstr "Роль пользователя"
+
+#: kebek/users/models.py:98
+msgid "Profile Picture"
+msgstr "Фото профиля"
+
+#: kebek/users/models.py:102
+msgid "Send sms notifications?"
+msgstr "Отправлять смс-уведомления"
+
+#: kebek/users/models.py:106
+msgid "Send email notifications?"
+msgstr "Отправлять уведомления на почту"
+
+#: kebek/users/models.py:147
+msgid "Type of the SMS Verification"
+msgstr "Тип проверки СМС"
+
+#~ msgid "Requisites"
+#~ msgstr "Реквизиты"
