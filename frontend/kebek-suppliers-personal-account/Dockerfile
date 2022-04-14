@@ -20,6 +20,7 @@ ENV NODE_ENV production
 
 RUN addgroup -g 1001 -S nodejs2
 RUN adduser -S reactjs2 -u 1001
+RUN mkdir /app/kebek-suppliers-personal-account/.build
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/kebek-suppliers-personal-account/public ./public
