@@ -73,7 +73,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     ports:
-      - 80:80
+      - 8000:80
     volumes:
       - ./docker/nginx/dev:/etc/nginx/conf.d
       - static_volume:/app/backend/staticfiles

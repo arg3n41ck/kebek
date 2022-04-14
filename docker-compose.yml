@@ -102,6 +102,8 @@ services:
       volumes:
         - ./frontend/kebek/app:/usr/src/app/kebek
         - /usr/src/app/kebek/node_modules
+      env_file:
+        - ./frontend/kebek/app/.env
       networks:
         - my-network
     
@@ -115,6 +117,8 @@ services:
       volumes:
         - ./frontend/kebek-admin-client:/usr/src/app/kebek-admin-client
         - /usr/src/app/kebek-admin-client/node_modules
+      env_file:
+        - ./frontend/kebek-admin-client/.env
       networks:
         - my-network
     
@@ -128,6 +132,8 @@ services:
       volumes:
         - ./frontend/kebek-suppliers-personal-account:/usr/src/app/kebek-suppliers-personal-account
         - /usr/src/app/kebek-suppliers-personal-account/node_modules
+      env_file:
+        - ./frontend/kebek-suppliers-personal-account/.env
       networks:
         - my-network
 
