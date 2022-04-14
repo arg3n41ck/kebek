@@ -24,7 +24,7 @@ RUN mkdir /app/kebek-suppliers-personal-account/.build
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/kebek-suppliers-personal-account/public ./public
-COPY --from=builder --chown=reactjs2:nodejs2 /app/kebek-suppliers-personal-account/.build ./.build
+COPY --from=builder --chown=reactjs2:nodejs2 /app/kebek-suppliers-personal-account/build ./build
 COPY --from=builder /app/kebek-suppliers-personal-account/node_modules ./node_modules
 COPY --from=builder /app/kebek-suppliers-personal-account/package.json ./package.json
 
