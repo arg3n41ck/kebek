@@ -13,7 +13,6 @@ WORKDIR /app
 ADD ./backend/requirements.txt /app/backend/
 RUN pip install --upgrade pip
 RUN pip install -r /app/backend/requirements.txt
-RUN pip install psycopg2-binary
 ADD ./docker /app/docker
 ADD ./backend /app/backend
 RUN ["chmod", "+x", "/app/docker/backend/wsgi-entrypoint.sh"]
