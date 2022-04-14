@@ -8,5 +8,5 @@ RUN yarn build
 
 
 EXPOSE 3001
-FROM nginx:stable-alpine
-COPY --from=build /app/kebek-admin-client/build /usr/share/nginx/html
+
+CMD ["yarn", "start"]
