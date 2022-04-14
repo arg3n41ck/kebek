@@ -1,0 +1,57 @@
+.tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.tooltip p {
+  color: #092f33;
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+  line-height: 140%;
+}
+
+.tooltip .bottom {
+  max-width: 290px !important;
+  left: 68%;
+  transform: translate(-85%, 0);
+  padding: 25px 17px;
+  color: #666666;
+  background-color: #ffffff;
+  font-weight: normal;
+  font-size: 13px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  display: block;
+  border: 1px solid #eeeeee;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.inner_bottom {
+  width: 290px !important;
+}
+
+.tooltip .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 82%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.tooltip .bottom i::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  border: 1px solid #eeeeee;
+}
+/*# sourceMappingURL=Avatar.module.css.map */

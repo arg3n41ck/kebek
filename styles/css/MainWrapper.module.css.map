@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EAGX,aAAa,EAAE,IAAI,CAAC,sCAAwC,CAAC,GAAG;EAEhE,UAAU,EAAE,OAAO;EACnB,UAAU,EAAE,MAAM;EAClB,mBAAmB,EACjB,iCACiB;CAyBpB;;AAlCD,AAWE,YAXU,CAWV,OAAO,CAAC;EACN,SAAS,EAAE,MAAM;CAClB;;AAbH,AAeE,YAfU,CAeV,OAAO,CAAC;EACN,SAAS,EAAE,MAAM;CAClB;;AAEA,AAAD,sBAAW,CAAC;EACV,SAAS,EAAE,QAAQ;CASpB;;AACA,AAAD,oBAAS,CAAC;EACR,MAAM,EAAE,MAAM;CAEf",
+    "sources": [
+        "../../frontend/kebek-suppliers-personal-account/src/components/MainWrapperAdmin/MainWrapper.module.scss"
+    ],
+    "names": [],
+    "file": "MainWrapper.module.css"
+}

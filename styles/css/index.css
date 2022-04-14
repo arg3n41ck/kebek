@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+.MuiCheckbox-root {
+  color: #219653 !important;
+}
+
+.MuiTablePagination-root {
+  color: #219653 !important;
+}
+
+.MuiTable-root {
+  border-collapse: unset !important;
+  border-spacing: 0 15px !important;
+  border-top: 1px solid #eeeeee !important;
+}
+
+@media screen and (max-width: 1300px) {
+  .MuiTable-root {
+    min-width: 1200px !important;
+  }
+}
+
+.MuiTable-root .Mui-selected {
+  background-color: #edf2f1 !important;
+}
+
+.css-1a6z9c0-MuiDrawer-docked .MuiDrawer-paper {
+  height: 100% !important;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  max-height: 100% !important;
+}
+
+.MuiTableContainer-root {
+  width: 100% !important;
+  overflow-x: scroll !important;
+}
+
+.MuiMenu-paper {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.MuiTableCell-root {
+  padding: 0 !important;
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: #219653 !important;
+  color: white !important;
+}
+
+.MuiTypography-root {
+  font-family: "Rubik", sans-serif !important;
+}
+
+.MuiButtonBase-root-MuiPaginationItem-root {
+  color: #219653 !important;
+}
+
+.MuiIconButton-root {
+  color: #219653 !important;
+  padding: 7px !important;
+}
+
+.MuiToolbar-root {
+  background: #edf2f1 !important;
+}
+
+.MuiTablePagination-toolbar {
+  background: #fff !important;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+}
+
+.MuiPaper-root {
+  box-shadow: none !important;
+  border: 1px solid #eeeeee;
+}
+
+.MuiPaper-root:before {
+  display: none !important;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+  display: none !important;
+}
+
+.MuiButton-outlined {
+  border-color: #219653 !important;
+  color: #219653 !important;
+  background: #fff !important;
+}
+
+.MuiButton-contained {
+  background: #219653 !important;
+  box-shadow: none !important;
+}
+
+.MuiAccordion-root {
+  border: 1px solid #e0e0e0;
+}
+
+.MuiAccordion-root :before {
+  display: none !important;
+}
+
+.MuiCircularProgress-root {
+  color: #219653 !important;
+}
+
+.customDatePickerWidth {
+  position: relative;
+  cursor: pointer !important;
+}
+
+.customDatePickerWidth * {
+  width: 100%;
+}
+
+.customDatePickerWidth * button {
+  width: 30px;
+}
+
+.MuiInputAdornment-positionEnd {
+  max-width: 30px;
+}
+
+.MuiButton-root {
+  font-family: "Rubik", sans-serif !important;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  min-height: 1px !important;
+}
+
+.css-nnbavb {
+  width: 0;
+}
+
+.MuiOutlinedInput-input {
+  border: none !important;
+}
+
+.MuiOutlinedInput-input:hover {
+  border: none !important;
+}
+
+.MuiAutocomplete-endAdornment {
+  display: none !important;
+}
+
+.MuiAutocomplete-inputRoot.Mui-focused {
+  outline: none !important;
+  border-color: #219653 !important;
+}
+
+.MuiAutocomplete-input {
+  font-family: "Rubik", sans-serif !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.MuiAutocomplete-input:hover {
+  border: none !important;
+}
+
+.Mui-focused {
+  color: #219653 !important;
+}
+
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #219653 !important;
+}
+
+.MuiModal-root {
+  margin: 0 20px !important;
+}
+
+.MuiButton-root {
+  font-family: "Rubik", sans-serif !important;
+}
+
+.css-177ic5c,
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  margin-left: -20px !important;
+}
+
+.Notification_selectOtherArrow__ditLI {
+  padding: 0 !important;
+}
+
+.MuiAutocomplete-root div:first-of-type:hover {
+  border-color: red !important;
+}
+
+.MuiBadge-anchorOriginTopRightRectangular {
+  width: 11px;
+  height: 11px;
+  background: #eb5757;
+}
+
+.MuiList-padding {
+  min-width: 180px;
+}
+
+.MuiMenuItem-root a {
+  min-width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+input,
+button,
+li,
+ul,
+div,
+a {
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  scrollbar-color: yellow blue !important;
+}
+
+.MuiButtonBase-root-MuiPaginationItem-root {
+  color: #219653 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  border-color: #219653 !important;
+  color: #219653 !important;
+}
+
+.scrollable-element {
+  scrollbar-color: red yellow;
+  /* red is for the thumb and yellow is for the track */
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+  background-color: #219653 !important;
+}
+
+.ant-radio-button-wrapper:hover {
+  color: #219653 !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ant-select {
+  border: none !important;
+  outline: none !important;
+}
+
+.ant-select .ant-select:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+.ant-select .ant-select-selector {
+  width: 100% !important;
+  outline: none !important;
+  background: none !important;
+}
+
+.ant-select .ant-select-selector .ant-select-selection-item {
+  font-weight: 600 !important;
+}
+
+.MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  border: 1px solid #eeeeee !important;
+}
+
+.ant-radio-button-wrapper {
+  font-weight: 600 !important;
+}
+
+.ant-radio-button-wrapper .ant-radio-button-wrapper-checked {
+  font-weight: 600 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray !important;
+  width: 4px;
+  border-radius: 8px;
+}
+
+.MuiTableHead-root {
+  background: #eeeeee;
+}
+
+.MuiTable-root {
+  border-collapse: unset !important;
+  border-spacing: 0 15px !important;
+  border: none !important;
+  table-layout: auto !important;
+}
+
+.MuiTable-root .Mui-selected {
+  background-color: #edf2f1 !important;
+}
+
+.MuiTable-root .MuiTableRow-root .MuiTableCell-root {
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  border-radius: 3px;
+}
+
+.MuiTable-root .MuiTableRow-root .MuiTableCell-root:first-child {
+  border-left: 1px solid #eee;
+}
+
+.MuiTable-root .MuiTableRow-root .MuiTableCell-root:last-child {
+  border-right: 1px solid #eee;
+}
+/*# sourceMappingURL=index.css.map */

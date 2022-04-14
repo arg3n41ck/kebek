@@ -1,0 +1,89 @@
+.Home_container {
+  height: auto;
+  position: relative;
+}
+
+.Home_container .Home_container__items .searchResult {
+  padding-left: 10px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.Home_container .Home_container__items .searchResult:hover {
+  background-color: #fafcfa !important;
+}
+
+.Home_container .Home_container__items .HeadingTitle {
+  font-size: 35px;
+  font-weight: 600 !important;
+  margin-bottom: 30px;
+}
+
+.Home_container .Home_container__items .userInfo .userInfo__items .userInfo_info_items {
+  background-color: white;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+.Home_container .Home_container__items .userInfo .userInfo__items .progressLine {
+  height: 90%;
+  width: 2px;
+  background: #e0e0e0;
+  position: relative;
+  margin-right: 18px;
+}
+
+@media screen and (max-width: 992px) {
+  .Home_container .Home_container__items .userInfo .userInfo__items .progressLine {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Home_container .Home_container__items .userInfo .userInfo__items {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .Home_container .Home_container__items .userInfo .qrCodeInfo {
+    flex-direction: column;
+  }
+  .Home_container .Home_container__items .userInfo .qrCodeInfo .qrCodeButton {
+    margin-left: 80px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 578px) {
+  .Home_container .Home_container__items .userInfo .userInfo_info_items {
+    flex-direction: column;
+  }
+  .Home_container .Home_container__items .userInfo .elevatorTitle {
+    font-size: 15.5px;
+  }
+  .Home_container .Home_container__items .userInfo .qrText1 {
+    font-size: 16px;
+    padding-right: 15px;
+  }
+  .Home_container .Home_container__items .userInfo .qrText2 {
+    font-size: 12px;
+    padding-right: 15px;
+    margin-top: 8px;
+  }
+  .Home_container .Home_container__items .userInfo .Home_container__items {
+    margin-top: 20px !important;
+  }
+  .Home_container .Home_container__items .userInfo .personalInformationText {
+    margin-top: 30px !important;
+  }
+  .Home_container .Home_container__items .userInfo .infoUser {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+  }
+}
+/*# sourceMappingURL=Home.module.css.map */

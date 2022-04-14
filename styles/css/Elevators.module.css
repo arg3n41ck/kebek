@@ -1,0 +1,27 @@
+.goBack {
+  display: flex;
+  align-items: center;
+}
+
+.goBack p {
+  display: inline;
+  margin: auto 8px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 27px;
+  color: #092f33;
+}
+
+.title {
+  color: #092f33;
+  font-size: 26px;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 1198px) {
+  .cont {
+    display: flex;
+    flex-direction: column;
+  }
+}
+/*# sourceMappingURL=Elevators.module.css.map */

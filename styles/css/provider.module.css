@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+.provider .arrow_btn {
+  width: 20px;
+  height: 20px;
+}
+
+.provider .back_button {
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 500;
+  font-family: "Rubik";
+  display: flex;
+}
+
+.provider .back_button_link {
+  color: black;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.provider .back_button_link:hover {
+  text-decoration: none;
+}
+
+.provider .about__provider {
+  color: #092f33;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 500;
+  font-family: "Rubik", sans-serif;
+  margin: 10px 0 0 0;
+}
+
+.provider .provider__title {
+  color: #092f33;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin: 23px 0 20px 0;
+}
+
+.provider .provider__text {
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  line-height: 140%;
+  color: #092f33;
+  margin: 20px 0 40px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .provider .provider__logo {
+    display: none;
+  }
+  .provider .provider__info {
+    width: 100%;
+  }
+  .provider .provider__logoNone {
+    width: 238px;
+    margin-bottom: 35px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .provider .provider__column {
+    margin: 0 auto;
+  }
+  .provider .provider__info {
+    width: 100%;
+  }
+  .provider .about__provider {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .provider .provider__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .provider .provider__text {
+    font-size: 16px;
+  }
+}
+
+.products .products {
+  margin: 0 auto;
+}
+
+.products .products__title {
+  color: #092f33;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin: 40px 0 20px 0;
+  padding: 0 !important;
+}
+
+.products .products__item {
+  padding: 0 !important;
+  width: 300px;
+}
+
+.products .products__item:not(:last-child) {
+  margin-right: 15px;
+}
+
+.products .products__image {
+  margin: 0 auto !important;
+}
+
+.products .products__itemTitle {
+  font-size: 21px;
+  font-weight: 500;
+  font-family: "Rubik";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products .imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+  .products .products__item {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .products .products__item {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .products .products__item {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .products .products__title {
+    margin-top: 0;
+  }
+  .products .products__item {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .products .products__item {
+    width: 100%;
+  }
+  .products .products__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .products .products__itemTitle {
+    font-size: 16px;
+  }
+}
+
+.certification .certification__title {
+  color: #092f33;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin: 40px 0 20px 0;
+}
+
+.certification .certification__number {
+  color: #219653;
+  font-size: 35px;
+  line-height: 140%;
+  font-weight: 600;
+  font-family: "Rubik";
+  margin: 10px 0 40px 0;
+}
+
+@media screen and (max-width: 576px) {
+  .certification .certification__title {
+    font-size: 20px;
+    margin-top: 16px;
+    font-weight: 600;
+  }
+  .certification .certification__number {
+    font-size: 28px;
+  }
+}
+
+.contact .contact__info {
+  list-style: none;
+  padding: 0 !important;
+  font-size: 16px;
+  font-family: "Rubik";
+  line-height: 140%;
+  font-weight: 300;
+  margin-bottom: 100px;
+}
+
+.contact .contact__info a {
+  text-decoration: none;
+  color: #000000;
+  margin-left: 6px;
+}
+
+.contact .contact__address {
+  margin: 20px 0 16px 0;
+}
+
+.contact .contact__title {
+  color: #092f33;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: "Rubik";
+  margin: 40px 0 20px 0;
+}
+
+@media screen and (min-width: 769px) {
+  .provider__logoNone {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .provider {
+    padding: 12px;
+  }
+  .provider .provider__column .provider__info {
+    padding: 0;
+  }
+  .provider .provider__logoNone {
+    margin-top: 25px;
+  }
+  .provider .provider__title {
+    margin-top: 0 !important;
+  }
+}
+/*# sourceMappingURL=provider.module.css.map */

@@ -1,5 +1,6 @@
 {
   "name": "kebek-suppliers-personal-account",
+  "homepage": "/OW",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

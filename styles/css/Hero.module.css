@@ -1,0 +1,104 @@
+.pointerDisable {
+  pointer-events: none;
+}
+
+.pointerEnable {
+  pointer-events: auto;
+}
+
+.container {
+  z-index: 1;
+}
+
+.hero {
+  display: flex;
+  min-height: 50vw;
+  align-items: center;
+  position: relative;
+}
+
+.hero .hero__content .heroTopText {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.hero .hero__content .heroTitle {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.hero .hero__content .heroSubTitle {
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 140%;
+}
+
+.hero .image {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50vw;
+}
+
+.hero .image > span {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero .image .action {
+  position: absolute;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  padding: 10px 20px;
+  font-weight: 500;
+  color: #061f22;
+  font-size: 18px;
+  line-height: 140%;
+  box-shadow: 0 -20px 40px rgba(185, 178, 156, 0.21), 30px 30px 60px rgba(189, 184, 166, 0.2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.hero .image .actionOne {
+  bottom: 37.4%;
+  left: 18%;
+}
+
+.hero .image .actionTwo {
+  bottom: 21%;
+  left: 41%;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: 100vw;
+  }
+  .hero .hero__content .heroTopText {
+    font-size: 15px;
+    line-height: 120%;
+  }
+  .hero .hero__content .heroTitle {
+    font-size: 30px;
+  }
+  .hero .hero__content .heroSubTitle {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hero {
+    min-height: auto;
+  }
+  .image {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Hero.module.css.map */

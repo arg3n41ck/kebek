@@ -1,0 +1,580 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+.ordering_item p,
+.ordering_item a,
+.ordering_item span,
+.ordering_item h1,
+.ordering_item h2,
+.ordering_item h3,
+.ordering_item h4,
+.ordering_item h5,
+.ordering_item h6 {
+  font-family: "Rubik", sans-serif !important;
+}
+
+.ordering_item .tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.ordering_item .tooltip .bottom {
+  max-width: 300px;
+  left: 100%;
+  transform: translate(-30%, 0);
+  padding: 20px 30px;
+  color: #666666;
+  background-color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  display: none;
+  border: 1px solid #eeeeee;
+  border-radius: 2px;
+}
+
+.ordering_item .cardProductInfo_mobile .hr_mobile {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.ordering_item .cardProductInfo_mobile .imgInfo_mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ordering_item .cardProductInfo_mobile .mobileVersion {
+  max-width: 172px;
+  margin-right: 15px;
+}
+
+.ordering_item .cardProductInfo_mobile .amountProduct_mobile {
+  width: 98px;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .cardProductInfo_mobile .amountProduct__text_mobile {
+  font-size: 12px !important;
+  font-family: "Rubik", sans-serif;
+  width: 73px;
+}
+
+.ordering_item .cardProductInfo_mobile .imgInfo__text_mobile {
+  font-size: 14px !important;
+  margin-left: 0 !important;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .cardProductInfo_mobile .priceInfo__text_mobile {
+  font-size: 15.5px !important;
+  margin-right: 10px;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .tooltip:hover .bottom {
+  display: block;
+}
+
+.ordering_item .tooltip .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 20%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.ordering_item .tooltip .bottom i::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  border: 1px solid #eeeeee;
+}
+
+.ordering_item .headerTooltip {
+  box-shadow: none !important;
+}
+
+.ordering_item .headerTooltip p {
+  margin-left: 0;
+  font-size: 18px;
+  color: black;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .headerTooltip .tooltipBottom {
+  display: flex;
+}
+
+.ordering_item .headerTooltip .tooltipBottom button {
+  background-color: black;
+  color: white;
+  width: 113px;
+  height: 35px;
+  border: 1px solid black;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  transition: all 0.3s ease 0s;
+  border-radius: 2px;
+}
+
+.ordering_item .headerTooltip .tooltipBottom button:hover {
+  width: 115px;
+  height: 37px;
+}
+
+.ordering_item .headerTooltip .tooltipBottom button:last-child {
+  background: none;
+  margin-left: 15px;
+  color: black;
+  transition: all 0.3s ease 0s;
+  border-radius: 2px;
+}
+
+.ordering_item .headerTooltip .tooltipBottom button:last-child:hover {
+  width: 115px;
+  height: 37px;
+}
+
+.ordering_item .ordering_text {
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .ordering_text .leftArrow {
+  cursor: pointer;
+}
+
+.ordering_item .ordering_text .leftArrow p {
+  margin-left: 10px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.ordering_item .icon {
+  background: black;
+}
+
+.ordering_item .Mui-expanded {
+  background: black;
+}
+
+.ordering_item .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+  background: black !important;
+}
+
+.ordering_item .group134 {
+  max-width: 780px;
+}
+
+.ordering_item .group134 .frame87 button {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  background: none;
+  border: none;
+  color: #219653;
+  margin-right: 22px;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .hr {
+  margin: 0;
+}
+
+.ordering_item .group134 .melkombinat {
+  background-color: #f1f7f0;
+  height: 45px;
+}
+
+.ordering_item .group134 .melkombinat .melkombinat__text {
+  margin-left: 20px;
+  font-family: "Rubik", sans-serif;
+  text-decoration: underline;
+}
+
+.ordering_item .group134 .cartProductInfo .imgInfo {
+  margin-left: -80px;
+}
+
+.ordering_item .group134 .cartProductInfo .imgInfo .imgInfo__text {
+  margin-left: 16px;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .cartProductInfo .amountProduct {
+  max-width: 98px;
+  width: 100%;
+}
+
+.ordering_item .group134 .cartProductInfo .amountProduct button {
+  background-color: #fafafa;
+  border-radius: 2.26364px;
+  border: none;
+  color: #aeaeae;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .cartProductInfo .iconDelete {
+  margin-right: 20px;
+}
+
+.ordering_item .group134 .accordion {
+  padding: 10px !important;
+}
+
+.ordering_item .group134 .accordion .radioIndividual {
+  margin-right: 34px;
+}
+
+.ordering_item .group134 .accordion .radioIndividual label {
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .accordion .radioIndividual label:focus {
+  color: green !important;
+}
+
+.ordering_item .group134 .accordion input {
+  height: 53px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 20px;
+  outline: none;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+}
+
+.ordering_item .group134 .accordion input:focus {
+  border-color: #219653 !important;
+}
+
+.ordering_item .group134 .accordion .inputsForm input {
+  width: 49%;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .accordion .tabUnstyled {
+  max-width: 229px;
+  width: 100%;
+  height: 37px;
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  outline: none;
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .accordion .FormControl {
+  max-width: 700px;
+  width: 100%;
+}
+
+.ordering_item .group134 .accordion .FormControl .autoComplete {
+  padding: 0;
+}
+
+.ordering_item .group134 .accordion .FormControl .autoComplete input {
+  border: none !important;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .accordion .FormControl .adresses_block {
+  display: flex;
+  align-items: center;
+}
+
+.ordering_item .group134 .accordion .FormControl .adresses_block .add_adress {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #219653;
+}
+
+.ordering_item .group134 .accordion .formControl__text span {
+  font-size: 16px;
+  line-height: 140%;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .group134 .accordion .formControl__text span:focus {
+  color: #219653 !important;
+}
+
+.ordering_item .group134 .accordion .formControl__text span span:focus {
+  background-color: black !important;
+}
+
+.ordering_item .ordering_items__paymentCard {
+  max-width: 380px;
+  height: auto;
+}
+
+.ordering_item .ordering_items__paymentCard .mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.ordering_item .ordering_items__paymentCard button {
+  width: 100%;
+  height: 53px;
+  font-family: "Rubik", sans-serif;
+}
+
+.ordering_item .ordering_items__paymentCard .ordering_items__paymentCard_cardContent {
+  margin-top: -40px;
+}
+
+.ordering_item .bottom {
+  padding: 5px 5px 5px 15px !important;
+  width: 100px;
+  height: 80px;
+}
+
+.ordering_item .bottom .buttons_bottom {
+  width: 100%;
+  height: 100%;
+}
+
+.ordering_item .bottom .buttons_bottom .update_button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
+.ordering_item .bottom .buttons_bottom .update_button p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #092f33;
+}
+
+.ordering_item .bottom .buttons_bottom .update_button:hover {
+  color: #219653;
+}
+
+.ordering_item .bottom .buttons_bottom .delete_button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
+.ordering_item .bottom .buttons_bottom .delete_button p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #092f33;
+}
+
+.ordering_item .bottom .buttons_bottom .delete_button:hover {
+  color: #219653;
+}
+
+@media screen and (max-width: 1200px) {
+  .ordering_item .ordering_items__paymentCard .ordering_items__paymentCard_card .ordering_items__paymentCard__text {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  .ordering_item .cartProductInfo .cartProductInfo_checkbox {
+    margin-right: 0 !important;
+  }
+  .ordering_item .cartProductInfo .imgInfo {
+    margin-left: 0 !important;
+  }
+  .ordering_item .priceInfo__text {
+    font-size: 16px !important;
+  }
+  .ordering_item .priceInfo {
+    margin-left: 12px;
+    margin-right: 5px;
+  }
+  .ordering_item .imgInfo__text {
+    margin-left: 0 !important;
+  }
+  .ordering_item .ordering_items__paymentCard_cardContent__text .ordering_items__paymentCard_cardContent__text {
+    font-size: 12px;
+  }
+  .ordering_item .totalCost_text {
+    font-size: 14px;
+  }
+  .ordering_item .totalCost_text2 {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 767.5px) {
+  .ordering_item .ordering_items__paymentCard {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .ordering_item .totalCost_text {
+    font-size: 14px !important;
+  }
+  .ordering_item .totalCost_text2 {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ordering_item .cartProductInfo .amountProduct {
+    width: 13% !important;
+  }
+  .ordering_item .cartProductInfo .amountProduct .amountProduct__text {
+    font-size: 10px;
+  }
+  .ordering_item .cartProductInfo .imgInfo__text {
+    font-size: 14px;
+  }
+  .ordering_item .cartProductInfo .priceInfo {
+    margin: 0 !important;
+  }
+  .ordering_item .cartProductInfo .priceInfo .priceInfo__text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .ordering_item .wadeIn {
+    font-size: 25px !important;
+  }
+  .ordering_item .inputsForm {
+    flex-direction: column;
+  }
+  .ordering_item .inputsForm input {
+    width: 100% !important;
+  }
+  .ordering_item .inputsForm input:last-child {
+    margin-top: 25px;
+  }
+  .ordering_item .zakazCard {
+    margin-top: 40px !important;
+  }
+  .ordering_item .saved_requisites {
+    font-size: 14px !important;
+  }
+  .ordering_item .add_button {
+    font-size: 14px !important;
+  }
+  .ordering_item .saveAdress {
+    font-size: 14px !important;
+  }
+  .ordering_item .adressModal {
+    font-size: 14px !important;
+  }
+  .ordering_item .accardionFirst {
+    margin-top: 0 !important;
+  }
+  .ordering_item .group134 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .ordering_item .mobile {
+    flex-direction: column-reverse !important;
+  }
+  .ordering_item .mobile .hr_mobile2 {
+    display: block !important;
+    margin: 0;
+  }
+  .ordering_item .mobile .hr_mobile {
+    display: none;
+  }
+  .ordering_item .cartProductInfo {
+    display: none !important;
+  }
+  .ordering_item .cardProductInfo_mobile {
+    display: block !important;
+  }
+  .ordering_item .selectAll {
+    font-size: 16px !important;
+  }
+  .ordering_item .frame87 button {
+    font-size: 16px !important;
+  }
+  .ordering_item .melkom {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 383px) {
+  .ordering_item .cart_text ul li {
+    font-size: 11px;
+  }
+  .ordering_item .saved_requisites {
+    font-size: 11px !important;
+  }
+  .ordering_item .add_button {
+    font-size: 11px !important;
+  }
+  .ordering_item .accordion input {
+    font-size: 14px !important;
+  }
+  .ordering_item .saveRequis .headingBin {
+    font-size: 14px !important;
+  }
+  .ordering_item .saveRequis span {
+    font-size: 11px !important;
+  }
+  .ordering_item .saveAdress {
+    font-size: 11px !important;
+  }
+  .ordering_item .adressModal {
+    font-size: 11px !important;
+  }
+  .ordering_item .melkombinat__text {
+    font-size: 12px !important;
+    width: 100%;
+  }
+  .ordering_item .frame87 button {
+    font-size: 10px !important;
+    margin-right: 0 !important;
+  }
+  .ordering_item .selectAll {
+    font-size: 11px !important;
+  }
+  .ordering_item .cartProductInfo .amountProduct .amountProduct__text {
+    font-size: 7px;
+  }
+  .ordering_item .cartProductInfo .imgInfo__text {
+    font-size: 10px;
+  }
+  .ordering_item .cartProductInfo .priceInfo .priceInfo__text {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .saved_requisites {
+    font-size: 18px !important;
+  }
+  .add_button {
+    font-size: 15px !important;
+  }
+}
+/*# sourceMappingURL=Ordering.module.css.map */

@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+.auth_items {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth_items .auth_items__form {
+  width: 480px;
+  height: auto;
+}
+
+.auth_items .auth_items__form .imageX {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+}
+
+.auth_items .auth_items__form .createAccount {
+  width: 100%;
+}
+
+.auth_items .auth_items__form .createAccount .vector {
+  width: 100%;
+  border: 0.3px solid #e0e0e0;
+}
+
+.auth_items .auth_items__form .createAccount .createAccount__links {
+  width: 95%;
+  justify-content: center;
+}
+
+.auth_items .auth_items__form .createAccount .createAccount__links p {
+  font-size: 18px;
+  line-height: 150%;
+  color: #828282;
+  font-family: "Rubik", sans-serif;
+}
+
+.auth_items .auth_items__form .createAccount .createAccount__links p:last-child {
+  font-weight: 500;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #219653;
+  font-family: "Rubik", sans-serif;
+}
+
+.auth_items .auth_items__form .auth_items__form__form {
+  width: 100%;
+}
+
+.auth_items .auth_items__form .auth_items__form__form input {
+  width: 100%;
+  height: 53px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+}
+
+.auth_items .auth_items__form .auth_items__form__form input:focus {
+  border-color: #219653 !important;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .checkbox {
+  cursor: pointer;
+  margin-left: -10px;
+  display: flex;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .checkbox p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 140%;
+  padding-top: 15px;
+  color: #092f33;
+  font-family: "Rubik", sans-serif;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .forgotPass {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 140%;
+  color: #219653;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .btnForm {
+  height: 53px;
+  width: 100%;
+  background-color: #219653;
+  font-family: "Rubik", sans-serif;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  border-radius: 3px;
+  transition: all 0.3s ease 0s;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .btnForm:hover {
+  background: none;
+  color: black;
+  border: 1px solid #219653;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .btnDisabled {
+  width: 100%;
+  height: 53px;
+  border: 1px solid #e0e0e0;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .password {
+  position: relative;
+}
+
+.auth_items .auth_items__form .auth_items__form__form .password .passwordControl {
+  position: absolute;
+  top: 11px;
+  right: 6px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 6px 15px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("../assets/icons/visibility.svg");
+}
+
+.auth_items .auth_items__form .auth_items__form__form .password .passwordControl2 {
+  position: absolute;
+  top: 11px;
+  right: 6px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 6px 15px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("../assets/icons/visibility2.svg");
+}
+
+.auth_items .auth_items__form .wadeIn {
+  width: 100%;
+  font-size: 44px;
+}
+
+.auth_items .auth_items__form .wadeIn2 {
+  color: #092f33;
+  font-size: 18px;
+}
+
+.auth_items .auth_items__carousel {
+  width: 640px;
+}
+
+@media screen and (max-width: 1200px) {
+  .auth_items .wadeIn {
+    font-size: 30px !important;
+  }
+  .auth_items .wadeIn2 {
+    font-size: 16px !important;
+  }
+  .auth_items .createAccount__links {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 978px) {
+  .auth_items .auth_items__carousel {
+    display: none !important;
+  }
+  .auth_items .wadeIn {
+    font-size: 45px !important;
+  }
+  .auth_items .wadeIn2 {
+    font-size: 18px !important;
+  }
+  .auth_items .createAccount__links {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .auth_items .imageX {
+    position: relative;
+    left: 95%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .auth_items .wadeIn {
+    font-size: 30px !important;
+  }
+  .auth_items .forgotPass {
+    font-size: 16px !important;
+  }
+  .auth_items .checkbox p {
+    font-size: 16px !important;
+  }
+  .auth_items .wadeIn2 {
+    font-size: 16px !important;
+  }
+  .auth_items .createAccount__links {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+/*# sourceMappingURL=Auth.module.css.map */

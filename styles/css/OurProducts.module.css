@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+.main__background {
+  clip-path: polygon(0px 12%, 100% 0%, 100% 100%, 0 89%);
+  background: #fafafa;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.inner__row {
+  margin: 100px 0;
+}
+
+.inner__row .main__text__holder {
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 140%;
+  margin-bottom: 30px;
+}
+
+.inner__row .our_products {
+  color: darkgreen;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 60px;
+  line-height: 140%;
+}
+
+.inner__row .card__holder > div {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .inner__row .card__holder > div {
+    width: auto;
+  }
+}
+
+.inner__row .card__holder .card__main {
+  max-width: 380px;
+  width: 100%;
+  padding: 0 15px;
+  height: auto;
+}
+
+.inner__row .card__holder .card__main .info_icon {
+  max-width: 100%;
+  width: 30px;
+  margin: 0 0 0 0;
+}
+
+.inner__row .card__holder .card__main .ton__text {
+  color: darkgreen;
+}
+
+.inner__row .card__holder .card__main .kilo__text {
+  font-weight: 300;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.inner__row .card__holder .card__main .card__button {
+  width: 110%;
+  height: 50px !important;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+  border: 1px solid #219653;
+  background-color: #219653;
+  border-radius: 2px;
+}
+
+.inner__row .card__holder .card__main .card_body {
+  padding: 30px 2rem;
+}
+
+@media screen and (max-width: 575.5px) {
+  .inner__row .card__holder .card__main .card__button {
+    height: 40px !important;
+    width: 150% !important;
+    font-size: 11px !important;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .inner__row .card__holder .card__main {
+    margin-bottom: 30px !important;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .button__container {
+    margin-top: -5px !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main__background {
+    clip-path: polygon(0 0, 100% 6%, 100% 93%, 0% 100%);
+    background: #fafafa;
+  }
+  .second__card {
+    margin-top: 60px !important;
+  }
+}
+
+.button__container {
+  margin-top: 43px;
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 80px !important;
+}
+
+.button__container .products__button {
+  width: 100%;
+  max-width: 230px;
+  height: 40px;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: #219653;
+  border: 1px solid #219653;
+  background-color: transparent;
+}
+
+.button__container .products__button p {
+  margin-top: 7px;
+}
+
+.MuiSlider-thumbColorPrimary {
+  color: red;
+}
+
+.sliderInput input {
+  background-color: red;
+}
+
+@media screen and (max-width: 800px) {
+  .wheatMan {
+    display: none !important;
+    background-color: black !important;
+  }
+  .center__container {
+    display: contents;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .inner__row {
+    margin: 50px 0;
+  }
+  .inner__row .our_products {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 29px;
+    line-height: 140%;
+  }
+  .card__button {
+    height: 50px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: white !important;
+  }
+  .products__button {
+    max-width: 260px !important;
+    height: 50px !important;
+    font-size: 18px !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    padding: 0 !important;
+  }
+  .info_icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .card_body {
+    padding: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .preliminary {
+    font-size: 10px !important;
+  }
+}
+
+.card__image {
+  height: 100%;
+  min-height: 160px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/*# sourceMappingURL=OurProducts.module.css.map */

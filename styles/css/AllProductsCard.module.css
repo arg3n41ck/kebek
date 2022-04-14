@@ -1,0 +1,23 @@
+.card__main {
+  width: 100%;
+  min-height: 100%;
+}
+
+.card__main .kilo__text {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.card__main .card__button {
+  width: 100%;
+  height: 80%;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: white;
+  border: 1px solid #219653;
+  background-color: #219653;
+  border-radius: 2px;
+}
+/*# sourceMappingURL=AllProductsCard.module.css.map */
