@@ -1,0 +1,114 @@
+.staff_container .staff_header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  column-gap: 30px;
+}
+
+@media screen and (max-width: 1500px) {
+  .staff_container .staff_header {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .staff_container .staff_header {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
+}
+
+.modal {
+  width: 100%;
+}
+
+.modal p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #4f4f4f;
+}
+
+.modal p a {
+  color: #219653;
+  text-decoration: underline;
+}
+
+.modal input {
+  width: 100%;
+  height: 55px;
+  border: 1px solid #e7e7e7;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+}
+
+.modal button {
+  background-color: #219653;
+  border: none;
+  border-radius: 3px;
+  height: 53px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: white;
+  margin-top: 10px;
+}
+
+.empty_modal {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 140%;
+  color: #4f4f4f;
+  margin-top: 30px;
+  color: #219653;
+}
+
+.modal_inner {
+  text-align: center;
+}
+
+.modal_inner p {
+  font-size: 18px;
+}
+
+.three_dots__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.addStaff_container__items__formStaff {
+  max-width: 905px;
+  padding: 20px;
+  border: 1px solid #eeeeee;
+  background-color: white !important;
+}
+
+.addStaff_container__items__formStaff input {
+  outline: none;
+  border: 1px solid #eeeeee;
+  border-radius: 3px;
+  padding: 14px 20px;
+}
+
+.addStaff_container__items__formStaff input:focus {
+  border: 1px solid green;
+}
+
+.addStaff_container__items__formStaff .formSelects .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: 53px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.addStaff_container__items__formStaff .formSelects .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: 1px solid green !important;
+}
+/*# sourceMappingURL=Staff.module.css.map */

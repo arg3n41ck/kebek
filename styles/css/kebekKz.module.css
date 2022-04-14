@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+.text__holder {
+  padding: 180px 0;
+}
+
+.text__holder .kebek__logo {
+  font-size: 100px;
+  font-family: "Rubik", sans-serif;
+  line-height: 140%;
+  font-style: normal;
+  font-weight: normal;
+  color: #219653;
+  display: flex;
+  align-items: center;
+}
+
+.text__holder .kebek__logo span {
+  color: black;
+}
+
+.text__holder .kebek__text {
+  font-size: 35px;
+  font-weight: 300;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  line-height: 140%;
+  color: #4f4f4f;
+  display: flex;
+  align-items: center;
+}
+
+.kebekKz_background {
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa;
+  position: relative;
+  clip-path: polygon(100% 22%, 100% 74%, 0 91%, 0 7%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1200px) {
+  .text__holder .kebek__logo {
+    font-size: 65px;
+  }
+  .text__holder .kebek__text {
+    font-size: 21px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .text__holder {
+    padding: 80px 0;
+  }
+  .text__holder .kebek__logo {
+    font-size: 40px;
+  }
+  .text__holder .kebek__text {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=kebekKz.module.css.map */

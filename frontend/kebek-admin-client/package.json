@@ -1,5 +1,6 @@
 {
   "name": "kebek-admin-client",
+  "homepage": "/CL",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -67,7 +68,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^7.0.1",
+    "sass": "^1.47.0",
     "request": "^2.88.2"
   }
 }

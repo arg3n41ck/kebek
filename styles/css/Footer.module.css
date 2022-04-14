@@ -1,0 +1,59 @@
+.main__container {
+  height: 80px;
+  background-color: #fafafa;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+}
+
+.main__container .inner__container {
+  padding-top: 10px;
+}
+
+.main__container .inner__container .left__number__text {
+  margin-left: 8px;
+  font-size: 17px;
+}
+
+.main__container .inner__container .where__we__at__text {
+  font-size: 17px;
+}
+
+.main__container .inner__container .contacts__name {
+  font-size: 17px;
+}
+
+@media screen and (max-width: 1000px) {
+  .disa {
+    display: none !important;
+  }
+  .icon__holder {
+    width: 100%;
+  }
+  .icon__holder .in__image {
+    width: 20px;
+    object-fit: contain;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .left__number__text span {
+    margin-left: 15px !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .left__number__text {
+    margin-left: 30px !important;
+    font-size: 13px !important;
+  }
+  .where__we__at__text {
+    font-size: 13px !important;
+  }
+  .contacts__name {
+    font-size: 13px !important;
+  }
+}
+/*# sourceMappingURL=Footer.module.css.map */

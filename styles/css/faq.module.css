@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+.faq .container {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 0 15px;
+  box-sizing: content-box;
+  margin-bottom: 150px;
+}
+
+.faq .faq__phone {
+  color: #219653;
+  white-space: nowrap;
+}
+
+.faq .faq__column {
+  margin-top: 70px;
+}
+
+.faq .faq__name {
+  margin: 0 auto;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 140%;
+  align-items: center;
+  color: darkgreen;
+  text-align: center;
+}
+
+.faq .faq__content {
+  padding: 0;
+}
+
+.faq .faq__content p {
+  font-size: 18px;
+  line-height: 140%;
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  color: #4f4f4f;
+}
+
+.faq .faq__content h4 {
+  font-size: 18px;
+  line-height: 140%;
+  font-family: "Rubik", sans-serif;
+  font-weight: normal;
+  color: #092f33;
+}
+
+.faq .faq__contact {
+  align-items: center;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 300;
+}
+
+.faq .faq__generalInfo {
+  line-height: 150%;
+  font-size: 25px;
+  font-weight: normal;
+  color: #092f33;
+  font-family: "Rubik", sans-serif;
+  padding: 0 !important;
+}
+
+.faq .faq__icon {
+  background-image: url("../../assets/icons/vector.svg");
+  width: 16.7px;
+  height: 20px;
+  color: #092f33;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+@media screen and (max-width: 992px) {
+  .faq .faq__column {
+    flex-direction: column !important;
+  }
+  .faq .faq__column_items {
+    width: 100% !important;
+  }
+  .faq .faq__generalInfo {
+    font-size: 25px;
+    line-height: 150%;
+  }
+  .faq .hr_mobile {
+    margin: 8px 0;
+  }
+  .faq .hr_mobile1 {
+    display: none !important;
+    margin: 8px 0;
+  }
+  .faq .hr_mobile2 {
+    display: block !important;
+    margin: 8px 0;
+    border: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .faq .faq__column_items {
+    flex-direction: column;
+    grid-template-columns: none !important;
+    display: flex !important;
+    align-content: center;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .faq .container {
+    padding: 0;
+  }
+  .faq .container .faq__generalInfo {
+    font-size: 21px;
+    line-height: 150%;
+  }
+  .faq .container .faq__content p {
+    font-size: 16px;
+    line-height: 140%;
+  }
+  .faq .container .faq__name {
+    font-size: 35px;
+  }
+  .faq .container .faq__contact br {
+    display: none;
+  }
+  .faq .container .faq__column {
+    margin-top: 10px;
+  }
+  .faq .container .faq__column .faq__column_items {
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hr__hide__phone {
+    display: block !important;
+  }
+  .third__hr {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .hr__hide__phone {
+    display: block !important;
+  }
+  .third__hr {
+    display: none !important;
+  }
+}
+/*# sourceMappingURL=faq.module.css.map */

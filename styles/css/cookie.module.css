@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@300;400&display=swap");
+.container {
+  background-color: white;
+  max-width: 1920px;
+  height: 167px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  box-shadow: -30px -30px 60px rgba(243, 242, 242, 0.42), -4px 5px 60px rgba(160, 153, 133, 0.1);
+  border-radius: 3px;
+}
+
+.container .content {
+  width: 1180px;
+  height: 56px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container .content .cookiesIcon {
+  display: flex;
+}
+
+.container .content .text {
+  max-width: 640px;
+  height: 52px;
+  margin-left: 20px;
+  margin-right: 50px;
+}
+
+.container .content .text .firstLine {
+  margin: 0 auto;
+  color: #092f33;
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.container .content .text .secondLine {
+  margin: 0 auto;
+  color: #bdbdbd;
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.container .content .text .secondLine a span {
+  color: #219653;
+  text-decoration: underline;
+}
+
+.container .content .buttons {
+  display: flex;
+  width: 251px;
+  height: 45px;
+}
+
+.container .content .buttons .button1 {
+  font-family: "Rubik", sans-serif;
+  width: 104px;
+  height: 45px;
+  border: 0;
+  color: #219653;
+  border-radius: 3px;
+  background: white;
+}
+
+.container .content .buttons .button2 {
+  font-family: "Rubik", sans-serif;
+  width: 149px;
+  height: 45px;
+  background: #219653;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+}
+
+@media screen and (max-width: 738px) {
+  .container {
+    margin-top: 100px;
+    height: auto;
+  }
+  .container .content {
+    height: auto;
+    align-items: start;
+  }
+  .container .content .text {
+    height: auto;
+    margin-left: 10px;
+    margin-right: 0;
+  }
+}
+
+.container .row1 {
+  background-color: #2b0cdb;
+}
+
+.container .row1 Col {
+  background-color: yellow;
+  color: yellow;
+}
+
+.container .row2 {
+  background-color: red;
+}
+
+.container .row3 {
+  background-color: green;
+}
+/*# sourceMappingURL=cookie.module.css.map */

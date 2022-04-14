@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../frontend/kebek/app/components/AllProductsInfo/AllProductsInfo.module.scss"
+    ],
+    "names": [],
+    "file": "AllProductsInfo.module.css"
+}

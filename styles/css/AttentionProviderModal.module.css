@@ -1,0 +1,74 @@
+.first__text {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  color: #092f33;
+}
+
+.citiesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-height: 288px;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 578px) {
+  .citiesList {
+    grid-template-columns: 1fr;
+  }
+}
+
+.second__text {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  color: #4f4f4f;
+}
+
+.searchInp {
+  width: 100%;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchInp input {
+  padding-left: 48px;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  width: 100%;
+  height: 53px;
+  background-image: url("../../assets/icons/searchIcon.svg");
+  background-repeat: no-repeat;
+  background-position: 20px 17.5px;
+  background-size: 18px;
+}
+
+.button__delete {
+  background: #219653;
+  border-radius: 3px;
+  max-width: 500px;
+  width: 100%;
+  border: none;
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  height: 53px;
+}
+
+@media screen and (max-width: 700px) {
+  .first__text {
+    font-size: 28px;
+  }
+  .second__text {
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=AttentionProviderModal.module.css.map */

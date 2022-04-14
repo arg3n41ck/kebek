@@ -1,0 +1,23 @@
+.mainWrapper {
+  grid-template: 93px minmax(calc(100vh - 93px), auto)/16.8% 1fr;
+  background: #fafafa;
+  overflow-x: hidden;
+  grid-template-areas: "drawer header" "drawer children";
+}
+
+.mainWrapper .drawer {
+  grid-area: drawer;
+}
+
+.mainWrapper .header {
+  grid-area: header;
+}
+
+.mainWrapper__children {
+  grid-area: children;
+}
+
+.mainWrapper__footer {
+  margin: 0 50px;
+}
+/*# sourceMappingURL=MainWrapper.module.css.map */

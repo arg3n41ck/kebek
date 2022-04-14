@@ -1,0 +1,55 @@
+.box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box h1 {
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 140%;
+  text-align: center;
+  color: #092f33;
+}
+
+.box p {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 140%;
+  text-align: center;
+  color: #4f4f4f;
+}
+
+.box .copy_div {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 53px;
+  padding: 14px 20px;
+}
+
+.box .copy_div p {
+  margin: 0;
+}
+
+.box h6 {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  color: #092f33;
+  margin-bottom: 10px;
+}
+
+.box .del {
+  display: flex;
+  width: 255px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+/*# sourceMappingURL=QrCode.module.css.map */

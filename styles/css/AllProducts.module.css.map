@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,cAAc,CAAC;IACb,OAAO,EAAE,IAAI;IACb,gBAAgB,EAAE,KAAK;GACxB;;;AAGH,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,gBAAgB,CAAC;IACf,KAAK,EAAE,eAAe;GACvB",
+    "sources": [
+        "../../frontend/kebek/app/styles/AllProducts.module.scss"
+    ],
+    "names": [],
+    "file": "AllProducts.module.css"
+}

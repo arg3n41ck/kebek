@@ -1,0 +1,67 @@
+.modal_block .box_modal {
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 780px;
+  width: 70%;
+  max-height: 700px;
+  background-color: white;
+  border: none;
+  border-radius: 1px;
+  overflow-y: auto;
+}
+
+.modal_block .box_modal .modal_container .icon {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.modal_block .box_modal .modal_container .text .title {
+  color: #092f33;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 140%;
+}
+
+.modal_block .box_modal .modal_container .text .choose_adress {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 140%;
+  color: #4f4f4f;
+}
+
+@media screen and (max-width: 697px) {
+  .modal_block {
+    height: 499px;
+    padding: 16px;
+  }
+  .modal_block .text .icon {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  .modal_block .text .title {
+    color: #092f33;
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 140%;
+  }
+  .modal_block .text .choose_adress {
+    color: #4f4f4f;
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
+/*# sourceMappingURL=ElevatorsModal.module.css.map */

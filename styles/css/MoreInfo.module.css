@@ -1,0 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+.brand {
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 140%;
+}
+
+.toggle {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.navItem {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  color: #031113 !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .navItem {
+    font-size: 14px;
+  }
+}
+
+.header__items__location {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  gap: 6px;
+}
+
+.header__items__location p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 17.5px;
+  line-height: 140%;
+}
+
+.fakeNav {
+  margin-top: 95px;
+}
+
+.header .tooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.header .tooltip .bottom {
+  max-width: 300px;
+  left: 68%;
+  transform: translate(-30%, 0);
+  padding: 20px 30px;
+  color: #666666;
+  background-color: #ffffff;
+  font-weight: normal;
+  font-size: 13px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  display: none;
+  border: 1px solid #eeeeee;
+  border-radius: 2px;
+}
+
+.header .tooltip:hover .bottom {
+  display: block;
+}
+
+.header .tooltip .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 20%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.header .tooltip .bottom i::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(9, 47, 51, 0.08);
+  border: 1px solid #eeeeee;
+}
+
+.header .headerTooltip {
+  box-shadow: none !important;
+}
+
+.header .headerTooltip p {
+  margin-left: 0;
+  font-size: 18px;
+  color: black;
+  font-family: "Rubik", sans-serif;
+}
+
+.header .headerTooltip .tooltipBottom {
+  display: flex;
+}
+
+.header .headerTooltip .tooltipBottom button {
+  background-color: black;
+  color: white;
+  width: 113px;
+  height: 35px;
+  border: 1px solid black;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  transition: all 0.3s ease 0s;
+  border-radius: 2px;
+}
+
+.header .headerTooltip .tooltipBottom button:hover {
+  width: 115px;
+  height: 37px;
+}
+
+.header .headerTooltip .tooltipBottom button:last-child {
+  background: none;
+  margin-left: 15px;
+  color: black;
+  transition: all 0.3s ease 0s;
+  border-radius: 2px;
+}
+
+.header .headerTooltip .tooltipBottom button:last-child:hover {
+  width: 115px;
+  height: 37px;
+}
+
+.header .header__items__button_and_icon {
+  display: flex;
+}
+
+.header .header__items__button_and_icon .header__items__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 112px;
+  height: 41px;
+}
+
+.header .header__items__button_and_icon .header__items__button button {
+  padding: 8px 28px;
+  background: #092f33;
+  border-radius: 2px;
+  color: white;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+
+.header .header__items__button_and_icon .header__items__button button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.header .header__items__button_and_icon .header__items__cartIcon {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.header .header__items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.header .header__items .header__items__text {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0;
+  justify-content: center;
+  max-width: 314px;
+}
+
+.header .header__items .header__items__text .headerLogo {
+  font-family: "Rubik", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 50px;
+  text-transform: uppercase;
+  line-height: 140%;
+  color: #092f33;
+  margin: 0;
+}
+
+.header .header__items .header__items__text .burgerMenu {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: none;
+}
+
+.header .header__items .header__items__info__list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  justify-content: left;
+}
+
+.header .header__items .header__items__info__list ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-top: 15px;
+  padding: 0 !important;
+}
+
+.header .header__items .header__items__info__list ul li {
+  margin-right: 30px;
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  cursor: pointer;
+}
+
+.header .header__items .header__items__info__list ul li:last-child {
+  margin-right: 0 !important;
+}
+
+@media screen and (max-width: 1100px) {
+  .header .header__items__info__list {
+    margin-left: 15px;
+  }
+  .header .header__items__info__list li {
+    font-size: 15px !important;
+    margin-top: 2px;
+  }
+  .header .header__items__button {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 1045px) {
+  .header .header__items__info__list li {
+    font-size: 13px !important;
+    margin-top: 3px;
+  }
+  .header .header__items__button {
+    margin: 0 20px;
+  }
+  .header .header__items__location p {
+    font-size: 13px !important;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .header .tooltip .bottom {
+    transform: translate(-90%, 0);
+  }
+  .header .tooltip .bottom i {
+    left: 80%;
+  }
+  .header .burgerMenu {
+    display: block !important;
+    margin-left: 45px;
+  }
+  .header .header__items__info__list {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .header .header__items__text {
+    flex-direction: row-reverse !important;
+  }
+  .header .header__items__text .headerLogo {
+    font-size: 28px !important;
+  }
+  .header .header__items__text .burgerMenu {
+    margin-left: 0 !important;
+  }
+  .header .header__items__location p {
+    font-size: 16px !important;
+  }
+  .header .header__items__button_and_icon {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header .tooltip .bottom {
+    transform: translate(-98%, 0) !important;
+  }
+  .header .tooltip .bottom i {
+    left: 86%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .header .tooltip .bottom {
+    transform: translate(-75%, 0) !important;
+    max-width: 250px;
+  }
+  .header .tooltip .bottom i {
+    left: 70%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .headerContainer {
+    padding: 0;
+  }
+  .brand {
+    font-size: 40px;
+  }
+}
+/*# sourceMappingURL=MoreInfo.module.css.map */
