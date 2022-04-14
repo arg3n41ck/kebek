@@ -10,12 +10,12 @@ from rest_framework.routers import DefaultRouter
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from push_notifications.api.rest_framework import GCMDeviceAuthorizedViewSet
 
-from .addresses.urls import router as addresses
-from .management.urls import router as management
-from .elevators.urls import router as elevators
-from .notify.urls import router as notify
-from .policies.urls import router as policies
-from .users.urls import router as users
+from kebek.addresses.urls import router as addresses
+from kebek.management.urls import router as management
+from kebek.elevators.urls import router as elevators
+from kebek.notify.urls import router as notify
+from kebek.policies.urls import router as policies
+from kebek.users.urls import router as users
 
 router = DefaultRouter()
 router.register('device/gcm', GCMDeviceAuthorizedViewSet)
@@ -50,4 +50,7 @@ urlpatterns = i18n_patterns(
     path('', include('kebek.elevators.urls')),
 
     prefix_default_language=False,
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

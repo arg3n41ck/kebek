@@ -1,18 +1,15 @@
-from __future__ import absolute_import, unicode_literals
 import os
 
 from celery import Celery
 from celery.schedules import crontab
 from configurations import importer
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kebek.config')
-os.environ.setdefault('DJANGO_CONFIGURATION', 'Production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.settings')
+os.environ.setdefault('DJANGO_CONFIGURATION', 'PROD')
 
 importer.install()
 
-app = Celery('kebek-tasks')
+app = Celery('src')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 

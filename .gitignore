@@ -5,6 +5,7 @@ __pycache__/
 *$py.class
 
 # C extensions
+docker/nginx/certbot/
 *.so
 staticfiles/
 # Distribution / packaging

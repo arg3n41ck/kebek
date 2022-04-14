@@ -2,7 +2,7 @@ import logging
 
 from django.core import management
 
-from ..celery import app
+from src.celery import app
 
 logger = logging.getLogger(__name__)
 

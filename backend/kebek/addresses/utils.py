@@ -2,14 +2,14 @@ import logging
 import os
 import pandas as pd
 
-from ..config.common import BASE_DIR
+from django.conf import settings
 from .models import RailwayStation
 
 logger = logging.getLogger()
 
 
 def get_stations():
-    FILES_DIR = os.path.abspath(os.path.join(BASE_DIR, '../'))
+    FILES_DIR = os.path.abspath(os.path.join(settings.BASE_DIR, '../'))
     file = os.path.join(FILES_DIR, 'rasp.xls')
 
     df = pd.read_excel(file, dtype=str)

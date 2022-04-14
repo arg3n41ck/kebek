@@ -1,5 +1,7 @@
 #!/bin/sh
 
+until cd /app/backend
+
 do
     echo "Waiting for server volume..."
 done
@@ -10,9 +12,6 @@ do
     sleep 2
 done
 
-./manage.py collectstatic --noinput &&
-./manage.py compilemessages &&
+./manage.py collectstatic --noinput
 
-until cd /app/backend
-
-gunicorn kebek.wsgi --bind 0.0.0.0:8000 --workers 2 --threads 2
+gunicorn src.wsgi --bind 0.0.0.0:8000 --workers 4 --threads 2

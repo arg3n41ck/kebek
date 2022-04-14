@@ -11,7 +11,7 @@ from rest_framework.exceptions import NotFound, PermissionDenied
 from decouple import config
 from PIL import Image
 
-from ..celery import app
+from src.celery import app
 
 
 def is_allowed(user, elevator):

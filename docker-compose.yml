@@ -1,71 +1,88 @@
 version: '3.7'
 
 services:
-    redis:
-      image: redis:latest
-      container_name: redis_server
-      ports:
-        - '6379:6379'
-      networks:
-        - my-network
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    command: redis-server --appendonly yes
+    ports:
+      - '6379:6379'
+    networks:
+      - my-network
 
-    db:
-      image: postgis/postgis:latest
-      volumes:
-        - postgres_data:/var/lib/postgresql/data/
-      networks:
-        - my-network
-      env_file:
-        - ./.env
+  db:
+    image: postgis/postgis:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - my-network
+    env_file:
+      - ./.env
 
-    backend:
-      restart: unless-stopped
-      build:
-        context: .
-        dockerfile: ./docker/backend/Dockerfile
-      volumes:
-          - static_volume:/app/backend/src/staticfiles
-      entrypoint: /app/docker/backend/wsgi-entrypoint.sh
-      networks:
-        - my-network
-      depends_on:
-        - db
-        - redis
-      env_file:
-        - ./.env
+  backend:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    volumes:
+      - static_volume:/app/backend/staticfiles
+      - media_volume:/app/backend/media
+    entrypoint: /app/docker/backend/wsgi-entrypoint.sh
+    networks:
+      - my-network
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./.env
 
-    celery:
-      build:
-        context: .
-        dockerfile: ./docker/backend/Dockerfile
-      container_name: celery_worker
-      command: bash -c 'cd /app/backend/src/ && celery -A src worker -l info'
-      networks:
-        - my-network
-      depends_on:
-        - redis
-      restart: always
-      env_file:
-        - ./.env
+  memcached:
+    image: memcached:1.6.5
+    expose:
+      - 11211
+    networks:
+      - my-network
 
-    nginx:
-      restart: unless-stopped
-      build:
-        context: .
-        dockerfile: ./docker/nginx/Dockerfile
-      ports:
-        - 80:80
-        - 443:443
-      volumes:
-        - ./docker/nginx/dev:/etc/nginx/conf.d
-        - static_volume:/app/backend/src/staticfiles
-        - ./docker/nginx/certbot/conf:/etc/letsencrypt
-        - ./docker/nginx/certbot/www:/var/www/certbot
-      networks:
-        - my-network
-      depends_on:
-        - db
-        - backend
+  celery:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: celery_worker
+    command: bash -c "cd /app/backend/ && celery -A src worker -l INFO"
+    networks:
+      - my-network
+    depends_on:
+      - redis
+    restart: always
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: celery_beat
+    command: bash -c "cd /app/backend/ && celery -A src beat -l INFO --pidfile= --schedule=/tmp/celerybeat-schedule"
+    networks:
+      - my-network
+    depends_on:
+      - redis
+    restart: always
+
+  nginx:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx/prod:/etc/nginx/conf.d
+      - static_volume:/app/backend/staticfiles
+      - media_volume:/app/backend/media
+    networks:
+      - my-network
+    depends_on:
+      - db
+      - backend
 
     certbot:
       image: certbot/certbot
@@ -75,9 +92,49 @@ services:
         - ./docker/nginx/certbot/www:/var/www/certbot
       entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
+    nextjs-ui:
+      build:
+        context: ./frontend/kebek/app
+      ports:
+        - "3000:3000"
+      container_name: nextjs-ui
+      stdin_open: true
+      volumes:
+        - ./frontend/kebek/app:/usr/src/app/kebek
+        - /usr/src/app/kebek/node_modules
+      networks:
+        - my-network
+    
+    adminjs-ui:
+      build:
+        context: ./frontend/kebek-admin-client
+      ports:
+        - "3001:3001"
+      container_name: adminjs-ui
+      stdin_open: true
+      volumes:
+        - ./frontend/kebek-admin-client:/usr/src/app/kebek-admin-client
+        - /usr/src/app/kebek-admin-client/node_modules
+      networks:
+        - my-network
+    
+    kebek-suppliers-ui:
+      build:
+        context: ./frontend/kebek-suppliers-personal-account
+      ports:
+        - "3002:3002"
+      container_name: adminjs-ui
+      stdin_open: true
+      volumes:
+        - ./frontend/kebek-suppliers-personal-account:/usr/src/app/kebek-suppliers-personal-account
+        - /usr/src/app/kebek-suppliers-personal-account/node_modules
+      networks:
+        - my-network
+
 volumes:
   static_volume:
   postgres_data:
+  media_volume:
 
 networks:
   my-network:
