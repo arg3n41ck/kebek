@@ -74,10 +74,13 @@ services:
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./docker/nginx/prod:/etc/nginx/conf.d
       - static_volume:/app/backend/staticfiles
       - media_volume:/app/backend/media
+      - ./docker/nginx/certbot/conf:/etc/letsencrypt
+      - ./docker/nginx/certbot/www:/var/www/certbot
     networks:
       - my-network
     depends_on:
@@ -106,7 +109,7 @@ services:
       - ./frontend/kebek/app/.env
     networks:
       - my-network
-    
+
   adminjs-ui:
     build:
       context: ./frontend/kebek-admin-client
@@ -121,7 +124,7 @@ services:
       - ./frontend/kebek-admin-client/.env
     networks:
       - my-network
-  
+
   kebek-suppliers-ui:
     build:
       context: ./frontend/kebek-suppliers-personal-account
