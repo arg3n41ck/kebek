@@ -130,7 +130,7 @@ services:
       context: ./frontend/kebek-suppliers-personal-account
     ports:
       - "3002:3002"
-    container_name: suppliers-ui
+    container_name: kebek-suppliers-ui
     stdin_open: true
     volumes:
       - ./frontend/kebek-suppliers-personal-account:/usr/src/app/kebek-suppliers-personal-account

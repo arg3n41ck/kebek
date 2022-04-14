@@ -70,6 +70,8 @@ pycparser==2.20
 pydyf==0.1.2
 pyfcm==1.5.4
 pyHanko==0.12.1
+psycopg2==2.8.6
+psycopg2-binary==2.8.6
 pyhanko-certvalidator==0.19.5
 PyJWT==1.7.1
 PyPDF3==1.0.6
