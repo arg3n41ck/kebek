@@ -18,12 +18,12 @@ WORKDIR /app/kebek-admin-client
 
 ENV NODE_ENV production
 
-RUN addgroup -g 1001 -S nodejs
+RUN addgroup -g 1001 -S nodejs1
 RUN adduser -S reactjs1 -u 1001
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/kebek-admin-client/public ./public
-COPY --from=builder --chown=reactjs1:nodejs /app/kebek-admin-client/.build ./.build
+COPY --from=builder --chown=reactjs1:nodejs1 /app/kebek-admin-client/.build ./.build
 COPY --from=builder /app/kebek-admin-client/node_modules ./node_modules
 COPY --from=builder /app/kebek-admin-client/package.json ./package.json
 
