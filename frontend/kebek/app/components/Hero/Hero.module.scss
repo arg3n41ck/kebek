@@ -69,8 +69,6 @@
   }
 }
 
-// Media queries
-// 768px >= width
 @media screen and (max-width: 768px) {
   .hero {
     min-height: 100vw;
@@ -89,7 +87,6 @@
   }
 }
 
-// 992px >= width
 @media screen and (max-width: 992px) {
   .hero {
     min-height: auto;

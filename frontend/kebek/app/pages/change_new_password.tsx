@@ -31,7 +31,6 @@ function Change_new_password() {
   const Schema = yup.object({
     old_password: yup.string().required(t("changeNewPassword.old")),
     new_password: yup.string().required(t("Пожалуйста, заполните указанные поля")),
-    // new_password: yup.string().required(t("changeNewPassword.new")),
   });
 
   const togglePasswordVisiblity = () => {
@@ -93,7 +92,6 @@ function Change_new_password() {
                 touched,
                 handleChange,
                 handleBlur,
-                // handleSubmit,
               }) => {
                 return (
                   <Form className={classes.auth_items__form__form}>

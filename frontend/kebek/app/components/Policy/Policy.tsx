@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import arrow from "../../assets/icons/leftArrow.svg";
 import Box from '@mui/material/Box';
-// import { $api } from '../../services/api';
 import { Stack } from '@mui/material';
 import $api from '../../utils/axios';
 import Image from "next/image"
@@ -11,7 +10,6 @@ import Router from "next/router";
 
 const Policy = () => {
     const [data, setData] = useState<any>([]);
-    // const navigate = useNavigate();
     const { lastPage } = useAppSelector((state) => state.auth)
 
     useEffect(() => {

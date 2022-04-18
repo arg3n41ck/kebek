@@ -55,18 +55,6 @@
     font-weight: 300;
   }
 
-  // .hr_mobile {
-  //   margin-top: -20px;
-  // }
-
-  // .hr_mobile1 {
-  //   margin-top: -20px;
-  // }
-
-  // .hr_mobile2 {
-  //   margin-top: -20px;
-  // }
-
   .faq__generalInfo {
     line-height: 150%;
     font-size: 25px;
@@ -117,9 +105,7 @@
 
   @media screen and (max-width: 768px) {
     .faq__column_items {
-      // display: flex !important;
       flex-direction: column;
-      // align-items: center;
       grid-template-columns: none !important;
       display: flex !important;
       align-content: center;

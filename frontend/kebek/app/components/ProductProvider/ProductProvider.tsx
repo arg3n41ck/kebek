@@ -43,7 +43,6 @@ const ProductProvider: React.FC = () => {
         <h2 className={classes.about__provider}><b>{t("about.title1")}</b></h2>
         <div className={classes.provider__logoNone}>
           {providerById.logo &&
-            // <Image src={providerById.logo} width={279} height={69} alt="Logo" />
             <img src={providerById.logo} width={238} alt="logo" style={{ objectFit: "contain" }} />
           }
         </div>
@@ -64,28 +63,11 @@ const ProductProvider: React.FC = () => {
           </div>
           <div className={`col-4 ${classes.provider__logo}`}>
             {providerById.logo &&
-              // <Image src={providerById.logo} width={279} height={69} alt="Logo" />
               <img src={providerById.logo} alt="logo" style={{ objectFit: "contain" }} />
             }
           </div>
         </div>
       </section>
-      {/* <div className={`container ${classes.products}`}>
-        <div className="row">
-          <h2 className={classes.products__title}>{t("about.title1")}</h2>
-          <ProviderProductItem data={providerById.railway_station} />
-        </div>
-      </div >
-      <section className={classes.certification}>
-        <h2 className={classes.certification__title}>{t("about.title2")}</h2>
-        <p className={classes.certification__text}>
-          Производственный процесс построен согласно <br />
-          системе менеджмента безопасности пищевой продукции
-        </p>
-        {providerById.bin && (
-          <div className={classes.certification__number}>ISO {providerById.bin}</div>
-        )}
-      </section> */}
       {(!!providerById.address_ru || !!providerById.email || !!providerById.website) && (
         <section className={classes.contact} >
           <h2 className={classes.contact__title}>{t("header.contacts")}</h2>

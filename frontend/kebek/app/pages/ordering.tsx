@@ -4,12 +4,9 @@ import Image from "next/image";
 import { Container } from "react-bootstrap";
 import classNames from "classnames";
 
-//? Material
 import Typography from "@mui/material/Typography";
 import TabsUnstyled from "@mui/base/TabsUnstyled";
 
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import PaymentCard from "../components/OrderingCard/PaymentCard";
 import CartInfoCard from "../components/OrderingCard/CartInfoCard";
 import RecipientDataAccordion from "../components/OrderingAccordions/RecipientDataAccordion";
@@ -29,15 +26,13 @@ import { cartSelectors, changeCheckedItemAll } from "../redux/products/cart.slic
 import { Card, Checkbox } from "@mui/material";
 import DeleteProductsModal from "../components/DeleteProductModal/DeleteProductsModal";
 import { useTranslation } from "react-i18next"
-import Router, { useRouter } from "next/router";
-import { fetchCities, fetchStation } from "../redux/products/products.slice";
-import { fetchAddresses, fetchPayment, fetchRequisites, getUser, fetchDelivery, createOrder } from "../redux/products/auth.slice";
-import { DriveEtaOutlined } from "@mui/icons-material";
+import  { useRouter } from "next/router";
+import {  fetchStation } from "../redux/products/products.slice";
+import { fetchAddresses,  fetchRequisites, getUser, fetchDelivery } from "../redux/products/auth.slice";
 
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import Loader from "../components/Loader/Loader";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import $api from "../utils/axios";
 
@@ -70,7 +65,7 @@ function Ordering() {
 
     const { t } = useTranslation();
     const user = useAppSelector(state => state.auth.user)
-    
+
     const initialValues = {
         fullName: !!user?.first_name ? user.first_name : "",
         phoneNumber: !!user?.phone_number ? user.phone_number : "",
@@ -230,7 +225,7 @@ function Ordering() {
                                                         :
                                                         (
                                                             <div style={{ textAlign: "center", padding: 20 }}>
-                                                                <Typography>Ваша корзина пуста</Typography>
+                                                                <Typography>{router.locale === "ru" ? "Ваша корзина пуста" : "Себетіңіз бос"}</Typography>
                                                             </div>
                                                         )}
                                                 </Card>

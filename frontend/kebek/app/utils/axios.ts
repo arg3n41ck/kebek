@@ -17,7 +17,6 @@ $api.interceptors.request.use((config:any)=>{
     }
     return config;
 }, function (error:any) {
-    // Do something with request error
     return Promise.reject(error);
 })
 

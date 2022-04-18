@@ -85,7 +85,6 @@ function ChangedCities({ open, handleClose }) {
                 </div>
             </Box>
         </Modal>
-        // <div>siu</div>
     )
 }
 

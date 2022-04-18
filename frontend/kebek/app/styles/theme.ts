@@ -1,5 +1,4 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
-// import { green, orange } from '@mui/material/colors';
 
 const primary = '#219653';
 const secondary = '#FECB25';
@@ -39,9 +38,6 @@ export const theme = createTheme(defaultTheme, {
           boxShadow: '0',
           cursor: 'pointer',
         },
-        outlined: {
-          // color: primary,
-        }
       }
     },
 
@@ -76,11 +72,6 @@ export const theme = createTheme(defaultTheme, {
 
     MuiPaginationItem: {
       styleOverrides: {
-        root: {
-          [defaultTheme.breakpoints.down('sm')]: {
-            // backgroundColor: 'red'
-          }
-        },
         previousNext: {
           color: primary,
         },

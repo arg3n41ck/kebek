@@ -3,11 +3,6 @@ import { AxiosError } from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import $api from '../../utils/axios';
 
-type Data = {
-  username: string;
-  password: string;
-}
-
 export default async function login(
   req: NextApiRequest,
   res: NextApiResponse<any>

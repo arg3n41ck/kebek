@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import $api from "../../utils/axios";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import { toast } from "react-toastify";
 
 const initialState: any = {
@@ -123,7 +123,6 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
     const { data } = await $api.get("/users/profile/general/");
     return data;
   } catch (e) {
-    // toast.error("Возникла непредвиденная ошибка!");
   }
 });
 
@@ -147,7 +146,6 @@ export const getNotifications = createAsyncThunk(
       const { data } = await $api.get("/notifications/unread/");
       return data.unread;
     } catch (e: any) {
-      //   toast.error("Возникла непредвиденная ошибка!");
     }
   }
 );
@@ -203,7 +201,6 @@ export const fetchAddresses = createAsyncThunk(
       const { data } = await $api.get("/users/profile/addresses/");
       return data.results;
     } catch (e) {
-      //   toast.error("Возникла непредвиденная ошибка!");
     }
   }
 );
@@ -264,7 +261,6 @@ export const fetchRequisites = createAsyncThunk(
       const { data } = await $api.get("/users/profile/requisites/");
       return data.results;
     } catch (e) {
-      //   toast.error("Возникла непредвиденная ошибка!");
     }
   }
 );
@@ -274,7 +270,6 @@ export const fetchPayment = createAsyncThunk("user/fetchPayment", async () => {
     const { data } = await $api.get("/payments/types/");
     return data.results;
   } catch (e) {
-    //   toast.error("Возникла непредвиденная ошибка!");
   }
 });
 
@@ -285,7 +280,6 @@ export const fetchDelivery = createAsyncThunk(
       const { data } = await $api.get("/elevators/no-auth/");
       return data.results;
     } catch (e) {
-      //   toast.error("Возникла непредвиденная ошибка!");
     }
   }
 );

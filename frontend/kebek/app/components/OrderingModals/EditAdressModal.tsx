@@ -74,7 +74,6 @@ const EditAdressModalContent: React.FC = () => {
         }
 
         await dispatch(updateAddresses(data)).then(() => {
-            // dispatch(fetchAddresses())
             fetchAddresses()
             setOpenEdit(false)
         })

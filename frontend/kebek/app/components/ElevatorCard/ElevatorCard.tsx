@@ -8,30 +8,6 @@ export default function ElevatorCard() {
 
     return (
         <>
-            {/* <div className={classes.container}>
-                <div className={classes.title}>
-                    <h3>«Ново-Альджанский Мелькомбинат»</h3>
-                    <p>предприятие с 25-летней историей. Мелькомбинат одним из первых включился в проект по фортификации муки, разработанный...</p>
-                </div>
-
-                <div className={classes.name}>
-                    <div className={classes.name1}>
-
-                    </div>
-
-                    <div className={classes.name2}>
-
-                    </div>
-                </div>
-
-                <div className={classes.contacts}>
-
-                </div>
-
-                <div className={classes.adress}>
-
-                </div>
-            </div> */}
             <Container style={{
                 maxWidth: "580px", height: "550px", border: "1px solid #E0E0E0", color: "rgba(9, 47, 51, 1)", padding: "20px", marginTop: "100px"
             }}>

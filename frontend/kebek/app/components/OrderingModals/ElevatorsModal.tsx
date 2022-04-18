@@ -85,9 +85,6 @@ const AddressesModal: React.FC = ({ children }) => {
     >
       <Box className={classes.box_modal}>
         <div className={classes.modal_container}>
-          {/* <div className={classes.icon}>
-            <CloseIcon style={{ width: "30px", height: "30px" }} onClick={() => setIsOpen(false)} />
-          </div> */}
           {children}
         </div>
       </Box>
@@ -97,19 +94,3 @@ const AddressesModal: React.FC = ({ children }) => {
 
 export default AddressesModal;
 
-// export const A = ()=>{
-//     const [isOpen, setIsOpen] = React.useState();
-//     return (
-//         <>
-//             <Button onClick={()=>setIsOpen(true)}>{anchor}</Button>
-//             <SwipeableDrawer
-//                 anchor="bottom"
-//                 open={isOpen}
-//                 onClose={setIsOpen(false)}
-//                 onOpen={setIsOpen(true)}
-//             >
-//                 <h1>Hello world</h1>
-//             </SwipeableDrawer>
-//         </>
-//     )
-// }

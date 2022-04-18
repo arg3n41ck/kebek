@@ -27,10 +27,6 @@ export interface DeleteSelected {
 }
 
 export interface CartItem extends IProductV2 {
-  // map(arg0: (item: any) => void);
-  // forEach(arg0: (item: any) => void);
-  // length: ReactNode;
-  // reduce(arg0: (acc: any, curr: any) => any, arg1: number): any;
   count: number;
 }
 

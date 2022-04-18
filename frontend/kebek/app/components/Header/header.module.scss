@@ -602,7 +602,6 @@ $header-height: 95px;
 
 @media screen and (max-width: 780px) {
   .header__items__text {
-    // flex-direction: row-reverse !important;
 
     .headerLogo {
       font-size: 28px !important;
@@ -678,7 +677,6 @@ $header-height: 95px;
   }
 }
 
-// }
 
 @media screen and (max-width: 420px) {
   .headerContainer {

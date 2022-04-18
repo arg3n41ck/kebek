@@ -1,6 +1,4 @@
 import React from 'react'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
 import Loader from '../components/Loader/Loader'
 import Policy from '../components/Policy/Policy'
 

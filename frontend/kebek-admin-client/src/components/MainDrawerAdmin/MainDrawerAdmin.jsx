@@ -44,9 +44,6 @@ export const style = {
 };
 
 export default function PersistentDrawerLeft({ open, setOpen }) {
-  const [open9, setOpen9] = React.useState(false);
-  const handleOpen9 = () => setOpen9(true);
-  const handleClose9 = () => setOpen9(false);
   const isMedium = useMediaQuery("(max-width: 1100px)");
   const [count, setCount] = useState(null);
   const [sendAppealModal, setSendAppealModal] = useState(false);
@@ -211,60 +208,6 @@ export default function PersistentDrawerLeft({ open, setOpen }) {
                       <StyledBadge style={{ marginTop: 13, marginLeft: 10 }} badgeContent={notificationsUnRead} />
                     }
                   </NavLink>
-                </li>
-
-                <li className={cl.MainDrawer__navigationList__linkWrapper}>
-                  {/* <Button
-                    onClick={handleOpen9}
-                    sx={{
-                      fontSize: 18,
-                      fontWeight: 600,
-                      color: "#092F33",
-                      textTransform: "none",
-                      padding: 0,
-                    }}
-                    className={cl.link}
-                  >
-                    <span className={cl.link__title}>Выйти</span>
-                  </Button> */}
-                  <Modal
-                    open={open9}
-                    onClose={handleClose9}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={style}>
-                      <CloseIcon
-                        onClick={handleClose9}
-                        fontSize="large"
-                        style={{
-                          position: "absolute",
-                          top: "33",
-                          right: "40",
-                          cursor: "pointer",
-                        }}
-                      />
-                      <div className={"text-center"}>
-                        <h2>
-                          Вы действительно <br /> хотите выйти?
-                        </h2>
-                      </div>
-                      <div className={cl.modal}>
-                        <a
-                          onClick={() => {
-                            localStorage.removeItem("token");
-                          }}
-                          href="https://kebek.kz/"
-                          className={cl.exit}
-                        >
-                          Выйти
-                        </a>
-                        <button onClick={handleClose9} className={cl.cancel}>
-                          Отмена
-                        </button>
-                      </div>
-                    </Box>
-                  </Modal>
                 </li>
               </ul>
 

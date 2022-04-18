@@ -61,20 +61,37 @@ function OrderCard({ checkedProducts }: any) {
                         >
                             {t("cart.orderCard.title1")}
                         </Typography>
-                    ) : (
-                        <Typography
-                            className={classNames(
-                                classes.ordering_items__paymentCard__text,
-                                "mt-1 mb-2"
-                            )}
-                            sx={{ fontSize: 13 }}
-                            color="text.secondary"
-                        >
-                            Чтобы оформить заказ нужно{" "}
-                            <Link href="/register">зарегестрироваться</Link> или{" "}
-                            <Link href="/login">войти</Link> в существующий аккаунт
-                        </Typography>
-                    )}
+                    ) :
+                        router.locale === "ru" ? (
+                            <Typography
+                                className={classNames(
+                                    classes.ordering_items__paymentCard__text,
+                                    "mt-1 mb-2"
+                                )}
+                                sx={{ fontSize: 13 }}
+                                color="text.secondary"
+                            >
+                                Чтобы оформить заказ нужно{" "}
+                                <Link href="/register">зарегестрироваться</Link> или{" "}
+                                <Link href="/login">войти</Link> в существующий аккаунт
+                            </Typography>
+
+                        ) : (
+                            <Typography
+                                className={classNames(
+                                    classes.ordering_items__paymentCard__text,
+                                    "mt-1 mb-2"
+                                )}
+                                sx={{ fontSize: 13 }}
+                                color="text.secondary"
+                            >
+                                Тапсырыс беру үшін сізге
+                                <Link href="/register"> тіркелу </Link>
+                                немесе бар есептік жазбаға <Link href="/login">кіру</Link> қажет.
+                            </Typography>
+                        )
+
+                    }
                 </CardActions>
             </div>
 

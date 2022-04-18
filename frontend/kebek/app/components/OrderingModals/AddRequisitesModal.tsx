@@ -50,7 +50,7 @@ const Schema = yup.object({
 
 
 const RequisitesAddModalContent: React.FC = () => {
-    const { setOpen, data } = React.useContext(requisitesAddModalCtx);
+    const { setOpen } = React.useContext(requisitesAddModalCtx);
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
@@ -121,11 +121,9 @@ const RequisitesAddModalContent: React.FC = () => {
                                             onBlur={handleBlur}
                                             name="checking_account"
                                         />
-                                        {/* <div className="col-12 text-center"> */}
                                         <button className={classes.button__delete}>
                                             <b>{t("ordering.accordions.accordion3.modals.addAdress.title6")}</b>
                                         </button>
-                                        {/* </div> */}
                                     </div>
                                 </Form>
                             );

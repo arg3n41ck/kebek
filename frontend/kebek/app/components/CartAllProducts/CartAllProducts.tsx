@@ -7,14 +7,10 @@ import { useAppSelector } from "../../redux/hooks";
 import { cartSelectors } from "../../redux/products/cart.slice";
 import CartItemProduct from "./CartItemProduct";
 import Button from "@mui/material/Button";
-// import { DeleteProductModalProvider } from '../DeleteProductModal/DeleteProductModal';
 import { CartItem } from "../../types/products";
 import { useTranslation } from "react-i18next";
 import Loader from "../Loader/Loader";
 
-type Props = {
-    data: CartItem;
-};
 
 function CartAllProducts() {
     const cart = useAppSelector((state) => cartSelectors.selectAll(state));

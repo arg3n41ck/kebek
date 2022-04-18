@@ -64,6 +64,8 @@ function Home() {
   const { markAsRead } = useContext(notificationsContext);
   const [notifications, setNotifications] = useState(null);
 
+  
+
   useEffect(() => {
     getUser();
     $api
@@ -79,6 +81,7 @@ function Home() {
   const handleClick = (id) => {
     navigate(`/info-about-application/${id}`);
   };
+  
 
   const markReadHandler = () => {
     const ids = [];

@@ -1,8 +1,5 @@
 .mainWrapper {
-  // display: none;
-  // display: grid;
   grid-template: 93px minmax(calc(100vh - 93px), auto) / 16.8% 1fr;
-  //   grid-template: 0fr;
   background: #fafafa;
   overflow-x: hidden;
   grid-template-areas:
@@ -19,20 +16,11 @@
 
   &__children {
     grid-area: children;
-    //@media screen and (max-height: 800px) {
-    //  transform: scale(0.9);
-    //  margin-top: -50px;
-    //}
-    //@media screen and (max-height: 600px) {
-    //  transform: scale(0.8);
-    //  margin-top: -140px;
-    //}
   }
   &__footer {
     margin: 0 50px;
     @media screen and (max-width: 768px) {
       margin-top: 300px;
     }
-    //max-width: 1200px;
   }
 }

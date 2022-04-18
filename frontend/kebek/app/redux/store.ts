@@ -16,7 +16,6 @@ const store = configureStore({
       },
       productReducer
     ),
-    // cart: cartReducer
     cart: persistReducer(
       {
         key: "cart",
@@ -35,7 +34,6 @@ const store = configureStore({
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {
-      // ignoredPaths:["register"]
       ignoredActions: ["persist/PERSIST"],
     },
   }),

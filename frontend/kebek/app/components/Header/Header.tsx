@@ -42,11 +42,6 @@ function Header() {
     }
   }, [router.pathname])
 
-  // const [cityRes, setCityRes] = useState<any>({
-  //   title_r: "Актобе",
-  //   title_k: "Ақтөбе"
-  // })
-
   React.useEffect(() => {
     dispatch(fetchCities())
     if (!!window.localStorage.getItem("token")) {

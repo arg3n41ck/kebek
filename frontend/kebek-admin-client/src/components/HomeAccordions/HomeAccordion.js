@@ -79,11 +79,11 @@ function HomeAccordion({ data }) {
                   {data.number}
                 </Link>
               </Typography>
-              <Typography className={" mt-2"} sx={{ fontSize: 18 }}>
-                {/*{data.product.type.titleRu}*/}
-              </Typography>
+              <Typography
+                className={" mt-2"}
+                sx={{ fontSize: 18 }}
+              ></Typography>
             </div>
-            {/*{data?.payment.status === "AC" ? solved : paymentHandling}*/}
             <StatusAccordionWrapper
               style={{
                 marginRight: "10%",
@@ -136,15 +136,22 @@ function HomeAccordion({ data }) {
               <div>
                 <div className={classNames(classes.bullit)}>
                   <Typography sx={{ color: "#092F33", fontSize: 18 }}>
-                    Передано в доставку
+                    {locale === "ru"
+                      ? "Передано в доставку"
+                      : "Жеткізу үшін тапсырылды"}
                   </Typography>
                   <Typography sx={{ color: "#4F4F4F", fontSize: 14 }}>
-                    Происходит транспортировка товаров до указаного адреса
+                    {locale === "ru"
+                      ? "Происходит транспортировка товаров до указаного адреса"
+                      : "Тауарлар көрсетілген мекенжайға тасымалданады"}
                   </Typography>
                 </div>
                 <div className={classNames(classes.bullit, "mt-3")}>
                   <Typography sx={{ color: "#092F33", fontSize: 18 }}>
-                    Ожидает самовывоз в {data.elevator?.titleRu}
+                    {locale === "ru"
+                      ? "Ожидает самовывоз в"
+                      : "Алып кетуді күтуде"}{" "}
+                    {data.elevator?.titleRu}
                   </Typography>
                 </div>
               </div>
@@ -154,7 +161,11 @@ function HomeAccordion({ data }) {
           {data.pickup && (
             <>
               <hr />
-              <QrCode qrValue={qrValue} />
+              <img
+                style={{ maxWidth: 78, width: "100%", objectFit: "cover" }}
+                src={qrCode}
+                alt="qr code"
+              />
             </>
           )}
         </AccordionDetails>
@@ -184,9 +195,6 @@ const StatusAccordionWrapper = styled.div`
     font-weight: 400;
     padding-top: -5px;
   }
-`;
-const ExpandMoreIconS = styled(ExpandMoreIcon)`
-  margin-top: 28px !important;
 `;
 
 export default HomeAccordion;

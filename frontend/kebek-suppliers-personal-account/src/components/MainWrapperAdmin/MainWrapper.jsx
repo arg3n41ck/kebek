@@ -9,6 +9,13 @@ import Box from "@mui/material/Box";
 import styled from "styled-components";
 import { userContext } from "../../providers/UserProvider";
 
+export function navigate(link) {
+  let a = document.createElement("a");
+  a.href = link;
+  a.click();
+}
+
+
 const MainWrapperAdmin = ({ children }) => {
   const [open, setOpen] = React.useState(true);
   const { getUser } = React.useContext(userContext);

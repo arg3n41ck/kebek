@@ -57,9 +57,6 @@ function Login() {
 
 
 
-
-  // rememberUser && dispatch(signInUser(rememberUser))
-
   return (
     <Suspense fallback={<Loader />} >
       <Container>
@@ -98,7 +95,6 @@ function Login() {
                 touched,
                 handleChange,
                 handleBlur,
-                // handleSubmit,
                 isSubmitting,
               }) => {
                 return (
@@ -107,7 +103,6 @@ function Login() {
                       <ReactInputMask
                         style={errors.username && touched.username ? { border: "1px solid red" } : undefined}
                         mask="+7(999)9999999"
-                        // mask="+999999999999"
                         type="text"
                         placeholder={router.locale === "ru" ? "Введите номер телефона" : "Телефон нөмірін енгізіңіз"}
                         onChange={handleChange}
@@ -116,7 +111,6 @@ function Login() {
                         name="username"
                       />
                       <div
-                        // style={errors.password ? { borderColor: "red" } : undefined}
                         className={classNames("mt-3", classes.password)}>
                         <input
                           style={errors.password && touched.password ? { borderColor: "red" } : undefined}

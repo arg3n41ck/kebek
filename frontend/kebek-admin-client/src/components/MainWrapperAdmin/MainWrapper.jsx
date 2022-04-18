@@ -3,18 +3,24 @@ import MainDrawerAdmin from "../MainDrawerAdmin/MainDrawerAdmin";
 import Header from "../Header/Header";
 import cl from "./MainWrapper.module.scss";
 import Toasty from "../Toastify/Toasty";
-import { localeContext } from "../../providers/LocaleProvider";
 import Footer from "../Footer/Footer";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
 
+export function navigate(link) {
+  let a = document.createElement("a");
+  a.href = link;
+  a.click();
+}
+
 const MainWrapperAdmin = ({ children }) => {
   const [open, setOpen] = React.useState(true);
-
+  const token = localStorage.getItem("token")
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+  
 
   return (
     <div
