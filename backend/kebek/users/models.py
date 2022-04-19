@@ -157,9 +157,8 @@ class SMSVerification(models.Model):
 
     def save(self, *args, **kwargs):
         if self._state.adding is True:
-            # faker = FakerFactory.create()
-            # self.code = faker.numerify(text='######')
-            self.code = 123456
+            faker = FakerFactory.create()
+            self.code = faker.numerify(text='######')
 
         super().save(*args, **kwargs)
 
