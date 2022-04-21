@@ -98,7 +98,7 @@ function PaymentMethodAccordion({ radioFace, setRadioPayment, radioPayment, setR
 
     React.useEffect(() => {
         radioFace === "entity" ? setRadioPayment(!!paymentNotVisible?.length && paymentNotVisible[paymentNotVisible.length - 1].id) : setRadioPayment(!!paymentVisible?.length && paymentVisible.map((payment: any) => {
-            return payment.map((item: any) => {
+            return !!payment?.length && payment.map((item: any) => {
                 return (item.type.title_ru === "Наличными в кассу" || item.type.title_kk === "Кассаға қолма-қол") && item
             })[0]
         })[0].id)

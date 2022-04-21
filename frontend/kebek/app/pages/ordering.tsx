@@ -26,9 +26,9 @@ import { cartSelectors, changeCheckedItemAll } from "../redux/products/cart.slic
 import { Card, Checkbox } from "@mui/material";
 import DeleteProductsModal from "../components/DeleteProductModal/DeleteProductsModal";
 import { useTranslation } from "react-i18next"
-import  { useRouter } from "next/router";
-import {  fetchStation } from "../redux/products/products.slice";
-import { fetchAddresses,  fetchRequisites, getUser, fetchDelivery } from "../redux/products/auth.slice";
+import { useRouter } from "next/router";
+import { fetchStation } from "../redux/products/products.slice";
+import { fetchAddresses, fetchRequisites, getUser, fetchDelivery } from "../redux/products/auth.slice";
 
 import { Formik, Form } from "formik";
 import * as yup from "yup";
@@ -58,6 +58,7 @@ function Ordering() {
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
+
     const [open, setOpen] = React.useState(false);
     const [orders, setOrders] = React.useState(null)
     const handleOpen = () => setOpen(true);
@@ -72,12 +73,14 @@ function Ordering() {
         email: !!user?.email ? user.email : ""
     };
 
+    console.log(radioPayment)
+
     React.useEffect(() => {
         const newObj: any = {
-            client: !!user?.id && user.id,
+            client: !!user?.id ? user.id : window.localStorage.getItem("client"),
             elevator: !!cart?.length && cart.filter(({ checked }: any) => checked)[0]?.elevator?.id || "",
-            payment: radioPayment || 1,
-            delivery: deliveryTab,
+            payment: !!radioPayment ? radioPayment : 1,
+            delivery: !!deliveryTab ? deliveryTab : 1,
             products: !!cart?.length && cart.filter(({ checked }: any) => checked).map((item) => ({
                 product: item?.id,
                 amount: item?.count * 1000,
