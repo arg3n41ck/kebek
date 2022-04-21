@@ -752,8 +752,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             notification = create_notification(user, instance, instance.status, title, content)
 
-            # if instance.user.notification_sms:
-            #     send_sms(instance.user.username, content)
+            if instance.user.notification_sms:
+                send_sms(instance.user.username, content)
             if instance.user.notifications_email and instance.user.email:
                 send_email(instance.user.email, title, content)
 
@@ -885,8 +885,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.client, instance, instance.status, title, content)
 
-            # if instance.client.notification_sms:
-            #     send_sms(instance.client.username, content)
+            if instance.client.notification_sms:
+                send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
 
@@ -898,8 +898,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.client, instance, instance.status, title, content)
 
-            # if instance.client.notification_sms:
-            #     send_sms(instance.client.username, content)
+            if instance.client.notification_sms:
+                send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
 
@@ -912,24 +912,24 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.elevator.owner, instance, instance.status, title, content)
 
-            # if instance.elevator.owner.notification_sms:
-            #     send_sms(instance.elevator.owner.username, content)
+            if instance.elevator.owner.notification_sms:
+                send_sms(instance.elevator.owner.username, content)
             if instance.elevator.owner.notifications_email and instance.elevator.owner.email:
                 send_email(instance.elevator.owner.email, title, content)
 
             for administrator in administrators:
                 create_notification(administrator.administrator, instance, instance.status, title, content)
 
-                # if administrator.administrator.notification_sms:
-                #     send_sms(administrator.administrator.username, content)
+                if administrator.administrator.notification_sms:
+                    send_sms(administrator.administrator.username, content)
                 if administrator.administrator.notifications_email and administrator.administrator.email:
                     send_email(administrator.administrator.email, title, content)
 
             for accountant in accountants:
                 create_notification(accountant.accountant, instance, instance.status, title, content)
 
-                # if accountant.accountant.notification_sms:
-                #     send_sms(accountant.accountant.username, content)
+                if accountant.accountant.notification_sms:
+                    send_sms(accountant.accountant.username, content)
                 if accountant.accountant.notifications_email and accountant.accountant.email:
                     send_email(accountant.accountant.email, title, content)
 
@@ -948,8 +948,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.client, instance, instance.status, title, content)
 
-            # if instance.client.notification_sms:
-            #     send_sms(instance.client.username, content)
+            if instance.client.notification_sms:
+                send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
 
@@ -959,8 +959,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             notification = create_notification(instance.client, instance, instance.status, title, content)
 
-            # if instance.client.notification_sms:
-            #     send_sms(instance.client.username, content)
+            if instance.client.notification_sms:
+                send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
 
