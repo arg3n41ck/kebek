@@ -568,7 +568,6 @@ class Order(models.Model):
                     self.number = last_order.number
                 else:
                     self.number = self.elevator.number + '-' + f'{(int(last_order.number.split("-")[1]) + 1):06d}'
-
             except model.DoesNotExist:
                 self.number = self.elevator.number + '-000001'
 

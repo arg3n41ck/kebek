@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def revoke_task(obj, task_type):
     tasks = app.control.inspect().scheduled()
 
-    for task in tasks['celery@kebek_worker']:
+    for task in tasks['celery@c94463fa4fd7']:
         if task['request']['name'] == task_type and task['request']['kwargs']['order_pk'] == obj.id:
             app.control.revoke(task['request']['id'], terminate=True)
 

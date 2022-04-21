@@ -747,20 +747,21 @@ class OrderViewSet(viewsets.ModelViewSet):
 
         if user.user_role == CLIENT:
             instance = serializer.save(client=user)
-            content = f'Заказ №{instance.number} создан и принят в обработку'
-            title = 'Создан'
-
-            notification = create_notification(user, instance, instance.status, title, content)
-
-            if instance.user.notification_sms:
-                send_sms(instance.user.username, content)
-            if instance.user.notifications_email and instance.user.email:
-                send_email(instance.user.email, title, content)
 
         elif user.user_role == ADMINISTRATOR:
             instance = serializer.save(elevator=elevator)
         else:
             instance = serializer.save()
+
+        content = f'Заказ №{instance.number} создан и принят в обработку'
+        title = 'Создан'
+
+        create_notification(user, instance, instance.status, title, content)
+
+        if instance.client.notifications_sms:
+            send_sms(instance.client.username, content)
+        if instance.client.notifications_email and instance.client.email:
+            send_email(instance.client.email, title, content)
 
         for item in items:
             product = Product.objects.get(pk=item['product'])
@@ -885,7 +886,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.client, instance, instance.status, title, content)
 
-            if instance.client.notification_sms:
+            if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
@@ -898,7 +899,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.client, instance, instance.status, title, content)
 
-            if instance.client.notification_sms:
+            if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
@@ -912,7 +913,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.elevator.owner, instance, instance.status, title, content)
 
-            if instance.elevator.owner.notification_sms:
+            if instance.elevator.owner.notifications_sms:
                 send_sms(instance.elevator.owner.username, content)
             if instance.elevator.owner.notifications_email and instance.elevator.owner.email:
                 send_email(instance.elevator.owner.email, title, content)
@@ -920,7 +921,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             for administrator in administrators:
                 create_notification(administrator.administrator, instance, instance.status, title, content)
 
-                if administrator.administrator.notification_sms:
+                if administrator.administrator.notifications_sms:
                     send_sms(administrator.administrator.username, content)
                 if administrator.administrator.notifications_email and administrator.administrator.email:
                     send_email(administrator.administrator.email, title, content)
@@ -928,7 +929,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             for accountant in accountants:
                 create_notification(accountant.accountant, instance, instance.status, title, content)
 
-                if accountant.accountant.notification_sms:
+                if accountant.accountant.notifications_sms:
                     send_sms(accountant.accountant.username, content)
                 if accountant.accountant.notifications_email and accountant.accountant.email:
                     send_email(accountant.accountant.email, title, content)
@@ -948,7 +949,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
             create_notification(instance.client, instance, instance.status, title, content)
 
-            if instance.client.notification_sms:
+            if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
@@ -957,9 +958,9 @@ class OrderViewSet(viewsets.ModelViewSet):
             content = f'Заказ №{instance.number} отменен из-за отсутствия оплаты'
             title = 'Отменен'
 
-            notification = create_notification(instance.client, instance, instance.status, title, content)
+            create_notification(instance.client, instance, instance.status, title, content)
 
-            if instance.client.notification_sms:
+            if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
@@ -1293,7 +1294,7 @@ class DashboardGeneralViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         return Response({
             'orders': orders,
             'orders_FD': orders_FD,
-            'profit': profit
+            'profit': profit or 0
         }, status=status.HTTP_200_OK)
 
 
@@ -1362,7 +1363,7 @@ class DashboardProfitViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
                 profit = profits.filter(created_at=date).aggregate(Sum('profit'))['profit__sum']
                 profit_data = {
                     'created_at': date,
-                    'profit': profit
+                    'profit': profit or 0
                 }
                 profits_data.append(profit_data)
 
