@@ -252,12 +252,12 @@ SPECTACULAR_SETTINGS = {
     ],
     'SCHEMA_PATH_PREFIX': r'/api/v[0-9]',
     'SWAGGER_UI_SETTINGS': {
-        'url': 'https://kebek.kz/static/openapi.yaml',
+        'url': 'https://kebek.kz/staticfiles/assets/openapi.yaml',
     },
 }
 
 
-# CELERY SETTIGS
+# CELERY SETTINGS
 CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379'
 
