@@ -73,7 +73,6 @@ function Ordering() {
         email: !!user?.email ? user.email : ""
     };
 
-    console.log(radioPayment)
 
     React.useEffect(() => {
         const newObj: any = {
