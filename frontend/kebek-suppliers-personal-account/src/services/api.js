@@ -2,6 +2,7 @@ import { camelizeKeys, decamelizeKeys } from "humps";
 import axios from "axios";
 import { BASE_URL } from "../utils/consts";
 import { toast } from "react-toastify";
+import { navigate } from "../components/MainWrapperAdmin/MainWrapper";
 
 export const $api = axios.create({
   baseURL: BASE_URL,
@@ -12,6 +13,9 @@ $api.interceptors.request.use(
     const token = window.localStorage.getItem("token");
     if (token && token !== "") {
       config.headers.Authorization = `Token ${token}`;
+    } else {
+      localStorage.removeItem("token");
+      navigate("https://kebek.kz/");
     }
     if (config.data && config.headers["content-type"] === "application/json") {
       config.data = decamelizeKeys(config.data);

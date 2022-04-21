@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import $api from "../../utils/axios";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import { toast } from "react-toastify";
 
 const initialState: any = {
@@ -62,6 +62,7 @@ export const signInUser = createAsyncThunk(
         .then(({ data }) => {
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_type);
+          window.localStorage.setItem("client", data.user.id);
           !!state.auth.lastPage?.length && state.auth.lastPage !== "/about/[id]"
             ? Router.push(
                 !!state.auth.lastPage.length ? state.auth.lastPage : "/"
@@ -122,9 +123,7 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
   try {
     const { data } = await $api.get("/users/profile/general/");
     return data;
-  } catch (e) {
-    // toast.error("Возникла непредвиденная ошибка!");
-  }
+  } catch (e) {}
 });
 
 export const changeNewPassword = createAsyncThunk(
@@ -146,9 +145,7 @@ export const getNotifications = createAsyncThunk(
     try {
       const { data } = await $api.get("/notifications/unread/");
       return data.unread;
-    } catch (e: any) {
-      //   toast.error("Возникла непредвиденная ошибка!");
-    }
+    } catch (e: any) {}
   }
 );
 
@@ -182,6 +179,7 @@ export const signUpUserConfirmationCode = createAsyncThunk(
         .then(({ data }) => {
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_role);
+          window.localStorage.setItem("client", data.user.id);
           !!state.auth.lastPage?.length && state.auth.lastPage !== "/about/[id]"
             ? Router.push(
                 !!state.auth.lastPage.length ? state.auth.lastPage : "/"
@@ -202,9 +200,7 @@ export const fetchAddresses = createAsyncThunk(
     try {
       const { data } = await $api.get("/users/profile/addresses/");
       return data.results;
-    } catch (e) {
-      //   toast.error("Возникла непредвиденная ошибка!");
-    }
+    } catch (e) {}
   }
 );
 
@@ -263,9 +259,7 @@ export const fetchRequisites = createAsyncThunk(
     try {
       const { data } = await $api.get("/users/profile/requisites/");
       return data.results;
-    } catch (e) {
-      //   toast.error("Возникла непредвиденная ошибка!");
-    }
+    } catch (e) {}
   }
 );
 
@@ -273,9 +267,7 @@ export const fetchPayment = createAsyncThunk("user/fetchPayment", async () => {
   try {
     const { data } = await $api.get("/payments/types/");
     return data.results;
-  } catch (e) {
-    //   toast.error("Возникла непредвиденная ошибка!");
-  }
+  } catch (e) {}
 });
 
 export const fetchDelivery = createAsyncThunk(
@@ -284,9 +276,7 @@ export const fetchDelivery = createAsyncThunk(
     try {
       const { data } = await $api.get("/elevators/no-auth/");
       return data.results;
-    } catch (e) {
-      //   toast.error("Возникла непредвиденная ошибка!");
-    }
+    } catch (e) {}
   }
 );
 

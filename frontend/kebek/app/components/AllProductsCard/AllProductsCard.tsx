@@ -68,7 +68,6 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }) => {
                 pathname: `/about/[id]`,
                 query: { id: data.id }
               }} passHref>
-                {/* <Link href={`/about/${data.id}`} passHref> */}
                 <p
                   style={{
                     color: "#219653",
@@ -97,9 +96,6 @@ const AllProductsCard: React.FC<Props> = ({ data }) => {
   const isInCart = useAppSelector(
     (state) => !!cartSelectors.selectById(state, data.id)
   );
-  // const dataCountInCart = dataInCart.forEach((item) => {
-  //   return item
-  // })
   const cart = useAppSelector((state) => cartSelectors.selectAll(state));
   const { t } = useTranslation()
   const router = useRouter()
@@ -125,7 +121,6 @@ const AllProductsCard: React.FC<Props> = ({ data }) => {
   };
 
   const handleChangeQuantity = (e: any, value: number | number[]): void => {
-    // dispatch(updateProductQuantity({ ...data, quantity: value }));
     const val: number = Array.isArray(value) ? value[0] : value;
     setQuantity(val);
 

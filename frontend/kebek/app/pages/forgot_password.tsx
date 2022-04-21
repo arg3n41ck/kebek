@@ -93,17 +93,14 @@ function Forgot_password() {
                 touched,
                 handleChange,
                 handleBlur,
-                // handleSubmit
               }) => {
                 return (
                   <Form className={classes.auth_items__form__form}>
                     <ReactInputMask
                       className={"mb-3"}
                       mask="+7(999)9999999"
-                      // mask="+999999999999"
                       style={errors.username && touched.username ? { borderColor: "red" } : { marginBottom: 40 }}
                       type="text"
-                      // placeholder={t("resetPassword.placeholder")}
                       onChange={handleChange}
                       value={values.username}
                       onBlur={handleBlur}

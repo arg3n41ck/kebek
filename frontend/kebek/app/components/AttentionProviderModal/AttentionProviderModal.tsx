@@ -65,27 +65,3 @@ export default function AttentionProviderModal() {
     );
 }
 
-// const DeleteProductModal = () => {
-//     return (
-//         <div className={classNames("container-fluid d-flex align-items-center justify-content-center vh-100", classes.main__container)}>
-//             <div className={classNames("row d-flex align-items-center justify-content-center flex-column", classes.modal__container)}>
-//                 <div className="col-1 offset-10 pt-0 my-0">
-//                     <CloseIcon />
-//                 </div>
-//                 <div className="col-12 text-center">
-//                     <p className={classes.first__text}>Удаление товара</p>
-//                 </div>
-//                 <div className="col-12 text-center" style={{ width: "80%" }}>
-//                     <p className={classes.second__text}>Вы действительно хотите удалить выбранные товары? Отменить действие будет невозможно</p>
-//                 </div>
-//                 <div className="col-12 text-center">
-//                     <button className={classes.button__delete}>
-//                         Удалить
-//                     </button>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default DeleteProductModal

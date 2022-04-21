@@ -18,7 +18,6 @@ export const deleteRequisitesModalCtx = React.createContext({
 });
 
 export const DeleteRequisitesModalProvider: React.FC = ({ children }) => {
-    // const [openDelete, setOpenDelete] = React.useState(true);
     const [openDeletRequisiteModal, setOpenDeletRequisiteModal] = React.useState(false)
     const [id, setId] = React.useState<any>()
 

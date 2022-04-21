@@ -98,7 +98,7 @@ function PaymentMethodAccordion({ radioFace, setRadioPayment, radioPayment, setR
 
     React.useEffect(() => {
         radioFace === "entity" ? setRadioPayment(!!paymentNotVisible?.length && paymentNotVisible[paymentNotVisible.length - 1].id) : setRadioPayment(!!paymentVisible?.length && paymentVisible.map((payment: any) => {
-            return payment.map((item: any) => {
+            return !!payment?.length && payment.map((item: any) => {
                 return (item.type.title_ru === "Наличными в кассу" || item.type.title_kk === "Кассаға қолма-қол") && item
             })[0]
         })[0].id)
@@ -130,19 +130,6 @@ function PaymentMethodAccordion({ radioFace, setRadioPayment, radioPayment, setR
                             onChange={handleChangeRadioPayment}
                         >
                             <div>
-                                {/* <FormControlLabel defaultChecked className={classes.formControl__text} value="cash" control={<Radio />}
-                                    label={<Typography
-                                        color={radioPayment === "cash" ? "primary" : "black"}>
-                                        {t("ordering.accordions.accordion2.title3")}
-                                    </Typography>}
-                                />
-                                <FormControlLabel disabled className={classes.formControl__text} value="onlinePayment" control={<Radio />}
-                                    label={<Typography
-                                        color={radioPayment === "onlinePayment" ? "primary" : "gray"}>
-                                        {t("ordering.accordions.accordion2.title1")}
-                                    </Typography>}
-                                /> */}
-
                                 {!!paymentVisible?.length && paymentVisible.map((payment: any) => {
                                     return !!payment?.length && payment.map((item: any) => (
                                         <FormControlLabel key={item.id} className={classes.formControl__text} value={item.id} control={<Radio />}

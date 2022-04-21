@@ -18,7 +18,6 @@ from ..users.models import User, Address, Requisites
 from .tasks import payment_expired
 from .utils import compress
 
-
 ACTIVE = 'AC'
 ARCHIVED = 'AR'
 
@@ -26,7 +25,6 @@ STATUS_CHOICES = [
     (ACTIVE, _('Active')),
     (ARCHIVED, _('Archived'))
 ]
-
 
 ACCEPTED = 'AD'
 WAITING_FOR_PREPAYMENT = 'WP'
@@ -53,7 +51,6 @@ ORDER_STATUS_CHOICES = [
     (CANCELLED, _('Cancelled')),
     (FINISHED, _('Finished')),
 ]
-
 
 PASS = 'PS'
 WAYBILL = 'WB'
@@ -571,7 +568,6 @@ class Order(models.Model):
                     self.number = last_order.number
                 else:
                     self.number = self.elevator.number + '-' + f'{(int(last_order.number.split("-")[1]) + 1):06d}'
-            
             except model.DoesNotExist:
                 self.number = self.elevator.number + '-000001'
 

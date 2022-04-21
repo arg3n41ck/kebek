@@ -16,12 +16,6 @@ export default function PaginationAllProducts({ setPage, page, count }: Props) {
     const isVerySm = useMediaQuery('(max-width:430px)');
     const { t } = useTranslation()
 
-
-    // const handleChage = (_, _page) => {
-    //     setPage(_page)
-    //     router.push(`?page=${_page}`)
-    // }
-
     return (
         <Stack
             spacing={2}
@@ -37,7 +31,6 @@ export default function PaginationAllProducts({ setPage, page, count }: Props) {
                 color="primary"
                 style={{ width: "100%" }}
                 onChange={(_, _page) => setPage(_page)}
-                // onChange={handleChage}
                 renderItem={(item) => (
                     <PaginationItem
                         components={{

@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
     fetchProducts,
-    productSelectors,
 } from "../../redux/products/products.slice";
 import { clearFilters } from "../../redux/products/filter.slice";
 import { useTranslation } from "react-i18next";
@@ -17,9 +16,7 @@ import { ChangeProviderModalProvider } from "../ChangeProviderModal/ChangeProvid
 
 const OurProducts = () => {
     const dispatch = useAppDispatch()
-    // const productsAll = useAppSelector((state) => productSelectors.selectAll(state));
     const productDetail = useAppSelector((state) => state.product.landingProducts)
-    // const productDetail = useMemo(() => productsAll?.slice(0, productsAll.length / 2), [productsAll]);
     const { t } = useTranslation()
 
     useEffect(() => {
@@ -35,7 +32,6 @@ const OurProducts = () => {
                 <div
                     className={classNames("col-2 align-items-start", classes.wheatMan)}
                 >
-                    {/* //TODO: Refactor this styling with className */}
                     <Image src={firstWheat} alt="seeds" />
                 </div>
 

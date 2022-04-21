@@ -67,7 +67,6 @@ const ModalAdressAddContent: React.FC = () => {
 
     const openElevatorModal = () => {
         setAdressAddModalOpen(false);
-        // setElevatorModalOpen(true);
     };
 
     function stylesMyText(text: any) {
@@ -85,7 +84,6 @@ const ModalAdressAddContent: React.FC = () => {
             dispatch(fetchAddresses())
             setOpenAdd(false)
         })
-        // handleClose()
     }
 
     return (

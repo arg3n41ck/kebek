@@ -1,6 +1,4 @@
 import React, { FC, Suspense, useEffect } from "react";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
 import Link from "next/link";
 import classNames from "classnames";
 import classes from "../styles/AllProductsCart.module.scss";

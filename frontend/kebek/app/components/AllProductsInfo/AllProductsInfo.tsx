@@ -65,7 +65,6 @@ const AllProductsInfo: React.FC<Props> = ({ data }) => {
                                 className={classes.products__image}
                                 width={130}
                                 height={130}
-                                // TODO: Add placeholder image
                                 src={data.image || "/images/no-image.png"}
                                 alt={data.title}
                             />

@@ -135,7 +135,7 @@ function BurgerMenu({ setBurgerMenu, city, setCity }: Props) {
                     <div className={classes.our_location}>
                         <p style={{ marginBottom: "7px" }}>{t("header.address")}</p>
                         <p style={{ fontWeight: "300", fontSize: "14px" }}>
-                            г.Актобе, 41 разъезд, дом 9В
+                            {router.locale === "ru" ? "г.Актобе, 41 разъезд, дом 9В" : "Ақтөбе қ., 41 айрық, 9Б корпус"}
                         </p>
                     </div>
                     <div className={classes.icons}>

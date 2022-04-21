@@ -98,7 +98,6 @@ function New_password() {
                 touched,
                 handleChange,
                 handleBlur,
-                // handleSubmit,
               }) => {
                 return (
                   <Form className={classes.auth_items__form__form}>
@@ -109,7 +108,6 @@ function New_password() {
                         type={passwordShown ? "text" : "password"}
                         onBlur={handleBlur}
                         name="new_password"
-                        // placeholder={t("newPassword.placeholder")}
                         className={"mb-3"}
                       />
                       <i onClick={togglePasswordVisiblity} className={passwordShown ? classes.passwordControl2 : classes.passwordControl} />

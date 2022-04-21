@@ -24,7 +24,6 @@ export interface IProductProvider {
     site: string;
     address: string;
     phoneNumber: string;
-    //Todo city: 
 }
 
 export interface IProductImage {

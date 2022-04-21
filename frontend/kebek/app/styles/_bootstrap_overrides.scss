@@ -34,7 +34,6 @@ $font-family-sans-serif: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto,
   "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
-// scss-docs-start grid-breakpoints
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -43,13 +42,7 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px,
 );
-// scss-docs-end grid-breakpoints
 
-// Grid containers
-//
-// Define the maximum width of `.container` for different screen sizes.
-
-// scss-docs-start container-max-widths
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -57,4 +50,3 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px,
 );
-// scss-docs-end container-max-widths

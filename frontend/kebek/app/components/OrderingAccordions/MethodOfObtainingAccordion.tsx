@@ -1,7 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-
-//? Material
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Radio from "@mui/material/Radio";
@@ -203,10 +201,6 @@ function MethodOfObtainingAccordion({ radioDelivery, setRadioDelivery, deliveryT
                         </Typography>
                       }
                     />
-                    {/*<FormControl className="d-block w-100">*/}
-                    {/*  <input type="text" className="w-100"*/}
-                    {/*         placeholder={t("ordering.accordions.accordion3.delivery.title11")}/>*/}
-                    {/*</FormControl>*/}
                     <Autocomplete
                       className={classNames(classes.autoComplete, "mt-2")}
                       disablePortal

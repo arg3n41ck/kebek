@@ -76,11 +76,9 @@ const CartItemProduct: FC<Props> = ({ data }) => {
 					</button>
 				</div>
 				<div className="col-md-6 col-6 d-flex justify-content-end">
-					{/* <button className={classes.deleteButton}>Удалить</button> */}
 					<DeleteProductModal data={data} />
 				</div>
 			</div>
-			{/* <hr className={classes.hr} /> */}
 		</div>
 	);
 };

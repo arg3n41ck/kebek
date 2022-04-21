@@ -96,7 +96,6 @@
   }
 
   .imgInfo__text_mobile {
-    // background: black;
     font-size: 14px !important;
     font-family: "Rubik", sans-serif;
     margin-left: 0 !important;
@@ -104,7 +103,6 @@
   }
 
   .priceInfo__text_mobile {
-    // background: black;
     font-size: 15.5px !important;
     margin-right: 10px;
   }
@@ -316,9 +314,6 @@
 
     .FormControl {
       max-width: 700px;
-      // display: flex;
-      // flex-direction: column;
-      // max-width: 700px;
       width: 100%;
       .autoComplete {
         padding: 0;
@@ -371,21 +366,6 @@
     margin-top: -20px;
   }
 }
-
-// @media screen and (max-width: 1200px) {
-//   .ordering_items__paymentCard {
-//     .ordering_items__paymentCard_card {
-//       .ordering_items__paymentCard__text {
-//         // display: flex;
-//         // font-size: 13px;
-//         // font-style: normal;
-//         // font-weight: 300;
-//         // font-size: 14px;
-//         // line-height: 140%;
-//       }
-//     }
-//   }
-// }
 
 @media screen and (max-width: 993px) {
   .cartProductInfo {
@@ -519,13 +499,6 @@
 }
 
 @media screen and (max-width: 392px) {
-  // .cart_text {
-  //   ul {
-  //     li {
-  //       font-size: 11px;
-  //     }
-  //   }
-  // }
 
   .melkombinat__text {
     font-size: 12px !important;

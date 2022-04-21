@@ -747,22 +747,21 @@ class OrderViewSet(viewsets.ModelViewSet):
 
         if user.user_role == CLIENT:
             instance = serializer.save(client=user)
-            content = f'Заказ №{instance.number} создан и принят в обработку'
-            title = 'Создан'
-
-            notification = create_notification(user, instance, instance.status, title, content)
-
-            print(dir(instance.client))
-
-            if instance.client.notifications_sms:
-                send_sms(instance.client.username, content)
-            if instance.client.notifications_email and instance.client.email:
-                send_email(instance.client.email, title, content)
 
         elif user.user_role == ADMINISTRATOR:
             instance = serializer.save(elevator=elevator)
         else:
             instance = serializer.save()
+
+        content = f'Заказ №{instance.number} создан и принят в обработку'
+        title = 'Создан'
+
+        create_notification(user, instance, instance.status, title, content)
+
+        if instance.client.notifications_sms:
+            send_sms(instance.client.username, content)
+        if instance.client.notifications_email and instance.client.email:
+            send_email(instance.client.email, title, content)
 
         for item in items:
             product = Product.objects.get(pk=item['product'])
@@ -959,7 +958,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             content = f'Заказ №{instance.number} отменен из-за отсутствия оплаты'
             title = 'Отменен'
 
-            notification = create_notification(instance.client, instance, instance.status, title, content)
+            create_notification(instance.client, instance, instance.status, title, content)
 
             if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
@@ -1295,7 +1294,7 @@ class DashboardGeneralViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         return Response({
             'orders': orders,
             'orders_FD': orders_FD,
-            'profit': profit
+            'profit': profit or 0
         }, status=status.HTTP_200_OK)
 
 
@@ -1364,7 +1363,7 @@ class DashboardProfitViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
                 profit = profits.filter(created_at=date).aggregate(Sum('profit'))['profit__sum']
                 profit_data = {
                     'created_at': date,
-                    'profit': profit
+                    'profit': profit or 0
                 }
                 profits_data.append(profit_data)
 

@@ -3,10 +3,8 @@ import classes from "./howToOrder.module.scss"
 import vector from "../../images/Vec.svg"
 import BoxMarket from "../../images/Vector.svg"
 import Image from "next/image"
-import group40 from "../../images/Group 40.svg"
 import classNames from 'classnames'
 import group402 from "../../images/Group 402.svg"
-import group126 from "../../images/Group 126.svg"
 import { Container } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next';
 

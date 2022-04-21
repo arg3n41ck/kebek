@@ -95,12 +95,6 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
           className={classNames("d-flex align-items-center", classes.imgInfo)}
         >
           {data.image && (
-            // <Image
-            //   src={data.image}
-            //   width={80}
-            //   height={68}
-            //   alt="product image"
-            // />
             <img src={data.image} alt="sad" width={80} height={80} style={{ objectFit: 'contain' }} />
           )}
           <Typography
@@ -164,13 +158,6 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
           />
           <div>
             {data.image && (
-              // <Image
-              //   src={data.image}
-              //   width={80}
-              //   height={68}
-              //   alt="product image"
-              // />
-
               <img src={data.image} alt="sad" width={89} height={89} style={{ objectFit: 'contain' }} />
             )}
           </div>

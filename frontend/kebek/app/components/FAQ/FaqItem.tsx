@@ -41,14 +41,12 @@ const FaqItem: React.FC<Props> = ({ data }) => {
             flexDirection: "row-reverse",
             justifyContent: "space-between",
           }}
-        // className={}
         >
           <Typography style={{ marginLeft: 24, color: 'darkgreen' }} component="h2" className={classes.faq__generalInfo}>
             {data.question}
           </Typography>
         </AccordionSummary>
         <AccordionDetails className={classes.faq__content}>
-          {/* <div dangerouslySetInnerHTML={{ __html: data.content }} /> */}
           <div dangerouslySetInnerHTML={
             { __html: formatMyText(data.answer) }
           } ></div>

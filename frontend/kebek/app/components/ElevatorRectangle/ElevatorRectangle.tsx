@@ -1,11 +1,6 @@
 import classes from './ElevatorRectangle.module.scss'
-import checkBoxTrue from '../../assets/icons/checkboxTrue.svg'
-import checkBox from '../../assets/icons/checkbox.svg'
-import Image from 'next/image'
 import { useState } from 'react'
-import $api from '../../utils/axios'
 import React from 'react'
-import Backdrop from '@mui/base/BackdropUnstyled';
 import Truncate from 'react-truncate';
 
 export default function ElevatorModal() {

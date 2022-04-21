@@ -73,7 +73,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     ports:
-      - 8000:80
+      - 80:80
     volumes:
       - ./docker/nginx/dev:/etc/nginx/conf.d
       - static_volume:/app/backend/staticfiles
@@ -83,6 +83,51 @@ services:
     depends_on:
       - db
       - backend
+
+  nextjs-ui:
+    build:
+      context: ./frontend/kebek/app
+    ports:
+      - "3000:3000"
+    container_name: nextjs-ui
+    stdin_open: true
+    volumes:
+      - ./frontend/kebek/app:/usr/src/app/kebek
+      - /usr/src/app/kebek/node_modules
+    env_file:
+      - ./frontend/kebek/app/.env
+    networks:
+      - my-network
+
+  adminjs-ui:
+    build:
+      context: ./frontend/kebek-admin-client
+    ports:
+      - "3001:3001"
+    container_name: adminjs-ui
+    stdin_open: true
+    volumes:
+      - ./frontend/kebek-admin-client:/usr/src/app/kebek-admin-client
+      - /usr/src/app/kebek-admin-client/node_modules
+    env_file:
+      - ./frontend/kebek-admin-client/.env
+    networks:
+      - my-network
+
+  kebek-suppliers-ui:
+    build:
+      context: ./frontend/kebek-suppliers-personal-account
+    ports:
+      - "3002:3002"
+    container_name: kebek-suppliers-ui
+    stdin_open: true
+    volumes:
+      - ./frontend/kebek-suppliers-personal-account:/usr/src/app/kebek-suppliers-personal-account
+      - /usr/src/app/kebek-suppliers-personal-account/node_modules
+    env_file:
+      - ./frontend/kebek-suppliers-personal-account/.env
+    networks:
+      - my-network
 
 volumes:
   static_volume:

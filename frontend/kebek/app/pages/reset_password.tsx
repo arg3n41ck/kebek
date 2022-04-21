@@ -132,28 +132,6 @@ function Reset_password() {
                       <p className={"text-danger"}>{errors.code}</p>
                     )}
 
-                    {/* <div className={"d-flex justify-content-between"}>
-                      <div
-                        className={classNames(
-                          "d-flex align-items-center",
-                          classes.checkbox
-                        )}
-                      >
-                        <Checkbox
-                          checked={checkbox}
-                          color="primary"
-                          className={"d-block"}
-                          onClick={() => seconds === 0 && checkInput(values)}
-                        />
-                        <p style={{ fontSize: 14, padding: 0 }} className={"mt-3"}>
-                          {t("resetPassword.getNewCode")}
-                        </p>
-                        <Typography style={{ padding: 0 }} sx={{ marginLeft: 1 }}>
-                          00:{seconds}
-                        </Typography>
-                      </div>
-                    </div> */}
-
                     {!errors.code ?
                       <button className={classes.btnForm}>
                         {t("resetPassword.reseting")}
@@ -174,12 +152,7 @@ function Reset_password() {
                         )}
                       >
                         {seconds !== 0 ? (
-
-                          //  <Checkbox
-                          //   onChange={() => seconds === 0 && checkInput(values)}
-                          //   checked={checkbox}
-                          //   color="primary"
-                          // /> 
+                         
                           <div className={"w-100 d-flex align-items-center justify-content-center"}>
                             <Typography sx={{ fontSize: 14, padding: 0 }}>
                               {t("resetPassword.getNewCode")}:

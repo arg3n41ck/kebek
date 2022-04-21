@@ -1,9 +1,7 @@
 import "../styles/globals.css";
-// import "bootstrap/dist/css/bootstrap.css";
 import '../styles/bootstrap.scss'
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import type { AppProps } from "next/app";
-// import "bootstrap/dist/css/bootstrap.css";
 import Head from "next/head";
 import { Provider } from "react-redux"
 import store from "../redux/store";

@@ -1,6 +1,6 @@
 import React from "react";
 import BadgeUnstyled from "@mui/base/BadgeUnstyled";
-import { styled, Box } from "@mui/system";
+import { styled } from "@mui/system";
 
 export const StyledBadge = styled(BadgeUnstyled)`
   box-sizing: border-box;

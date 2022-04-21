@@ -1,6 +1,4 @@
 import React, { Suspense } from "react";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import { Container } from "react-bootstrap";
 import classNames from "classnames";
 import classes from "../styles/Cart.module.scss";
@@ -8,16 +6,18 @@ import Link from "next/link";
 import BasketInfoCard from "../components/BasketCard/BasketInfoCard";
 import OrderCard from "../components/BasketCard/OrderCard";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { cartSelectors, changeCheckedItem, changeCheckedItemAll } from "../redux/products/cart.slice";
+import { cartSelectors, changeCheckedItemAll } from "../redux/products/cart.slice";
 import { Card, Checkbox, Typography } from "@mui/material";
 import DeleteProductsModal from "../components/DeleteProductModal/DeleteProductsModal";
 import { useTranslation } from "react-i18next";
 import Loader from "../components/Loader/Loader";
+import { useRouter } from "next/router";
 
 function Cart() {
     const cart = useAppSelector((state) => cartSelectors.selectAll(state));
     const [checkboxAll, setCheckboxAll] = React.useState(true);
     const dispatch = useAppDispatch();
+    const router = useRouter();
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
@@ -105,7 +105,7 @@ function Cart() {
                                     )
                                         :
                                         <div style={{ textAlign: "center", padding: 20 }}>
-                                            <Typography>Ваша корзина пуста</Typography>
+                                            <Typography>{router.locale === "ru" ? "Ваша корзина пуста" : "Себетіңіз бос"}</Typography>
                                         </div>
                                     }
                                 </Card>

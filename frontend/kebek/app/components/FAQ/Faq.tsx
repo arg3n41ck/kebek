@@ -18,15 +18,12 @@ const getFaq = async ({ language }: { language: string }) => {
 const Faq: React.FC = () => {
   const router: NextRouter = useRouter()
   const language: string = router.locale === "kz" ? "kk" : "ru";
-  // const faqInfo: any = useAppSelector((state) => state.product.faq);
   const [col1, setCol1] = useState<[] | null>(null);
-  // const [col2, setCol2] = useState<[] | null>(null);
   const { t } = useTranslation();
 
   useEffect(() => {
     getFaq({ language }).then(data => {
       setCol1(data?.qa?.slice(0, data?.qa?.length) || []);
-      // setCol2(data?.qa?.slice(2, 4, data?.qa?.length / 2) || []);
     })
   }, [language]);
 
@@ -52,13 +49,6 @@ const Faq: React.FC = () => {
                   </>
                 ))}
               </div>
-              {/* <div className={`col-6 ${classes.faq__column_items}`}>
-                {!!col2 && col2.filter((item: any) => {
-                  return !!item
-                }).map((item: any) => (
-                  <FaqItem data={item} key={item.id} />
-                ))}
-              </div> */}
             </div>
           </div>
         </div>

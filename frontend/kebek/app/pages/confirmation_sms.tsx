@@ -6,12 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import leftArrow from "../assets/icons/leftArrow.svg";
 import ReactInputMask from "react-input-mask";
-import Checkbox from "@mui/material/Checkbox";
 import * as yup from "yup";
 import loginImg from "../assets/images/loginImg.png";
 import { Form, Formik } from "formik";
 import {
-  ForgotPasswordSendCodeDto,
   forgotPasswordUserSendCode,
   signUpUserConfirmationCode,
   SignUpUserConfirmationSmsDto,
@@ -37,7 +35,6 @@ function Confirmation_sms() {
     code: "",
   };
 
-  const [checkbox, setCheckbox] = useState(false);
   const dispatch = useAppDispatch();
   const [seconds, setSeconds] = useState(59);
 
@@ -49,7 +46,6 @@ function Confirmation_sms() {
 
   const handleSubmit = async (values: SignUpUserConfirmationSmsDto, helpers: any) => {
     await dispatch(signUpUserConfirmationCode({ username, code: values.code }))
-    setCheckbox(false);
     helpers.reset();
   };
 
@@ -116,8 +112,6 @@ function Confirmation_sms() {
                 touched,
                 handleChange,
                 handleBlur,
-                // handleSubmit,
-                isSubmitting,
               }) => {
                 return (
                   <Form className={classes.auth_items__form__form}>
@@ -152,12 +146,6 @@ function Confirmation_sms() {
                         )}
                       >
                         {seconds !== 0 ? (
-
-                          //  <Checkbox
-                          //   onChange={() => seconds === 0 && checkInput(values)}
-                          //   checked={checkbox}
-                          //   color="primary"
-                          // /> 
                           <div className={"w-100 d-flex align-items-center justify-content-center"}>
                             <Typography sx={{ fontSize: 14, padding: 0 }}>
                               {t("resetPassword.getNewCode")}:
@@ -174,17 +162,6 @@ function Confirmation_sms() {
                         )}
                       </div>
                     </div>
-
-
-
-                    {/* <button
-                      className={
-                        isSubmitting ? classes.btnDisabled : classes.btnForm
-                      }
-                      disabled={isSubmitting}
-                    >
-                      {t("login.createAcc")}
-                    </button> */}
                   </Form>
                 );
               }}

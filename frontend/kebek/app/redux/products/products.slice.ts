@@ -14,20 +14,13 @@ const initialState = {
   loading: false,
   error: null as null | string | undefined,
   countPage: 0,
-  // faq: null,
   regions: [] as ICity[],
   providers: [] as IProductProviderV2[],
-  // providerById: [] as IProductProviderV2[],
   providerById: "" as any,
   stations: [],
   landingProducts: null as null | [],
   productTypes: [],
 };
-
-// interface FetchElevatorsByIdDto {
-//     id: string | string[]
-
-// }
 
 export const productAdapter = createEntityAdapter<IProductV2>({});
 export const productSelectors = productAdapter.getSelectors(
@@ -79,14 +72,6 @@ export const fetchPagination = createAsyncThunk(
     return data;
   }
 );
-
-// export const fetchFaq = createAsyncThunk(
-//     'info/fetchFaq',
-//     async (language:string) => {
-//         const { data } = await $api.get(`/support/faq/?language=${language}`)
-//         return data;
-//     }
-// )
 
 export const fetchElevators = createAsyncThunk(
   "products/fetchElevators",
@@ -181,13 +166,10 @@ export const productSlice = createSlice({
     builder.addCase(fetchPagination.fulfilled, (state, action) => {
       productAdapter.setAll(state, action.payload.results);
       state.countPage = action.payload.page_count;
-    }),
-      // builder.addCase(fetchFaq.fulfilled, (state, action) => {
-      //     state.faq = action.payload.results;
-      // }),
-      builder.addCase(fetchElevators.fulfilled, (state, action) => {
-        state.providers = action.payload.results;
-      });
+    });
+    builder.addCase(fetchElevators.fulfilled, (state, action) => {
+      state.providers = action.payload.results;
+    });
 
     builder.addCase(fetchCities.fulfilled, (state, action) => {
       state.regions = action.payload;

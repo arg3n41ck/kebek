@@ -31,7 +31,6 @@ const BasketInfoCard = ({
   const { t } = useTranslation();
 
   const countIncrement = () => {
-    // data.count + 1 <= data.residue / 1000 && data.count + 1 <= data.max_limit / 1000
     if (count * 1000 <= data.max_limit) {
       const newCount = count + 1;
       setCount(newCount);
@@ -106,12 +105,6 @@ const BasketInfoCard = ({
           className={classNames("d-flex align-items-center", classes.imgInfo)}
         >
           {data.image && (
-            // <Image
-            //   src={data.image}
-            //   width={80}
-            //   height={68}
-            //   alt="product image"
-            // />
             <img
               src={data.image}
               alt="sad"
@@ -183,13 +176,6 @@ const BasketInfoCard = ({
           />
           <div>
             {data.image && (
-              // <Image
-              //   src={data.image}
-              //   width={80}
-              //   height={68}
-              //   alt="product image"
-              // />
-
               <img
                 src={data.image}
                 alt="sad"

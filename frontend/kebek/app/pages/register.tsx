@@ -25,8 +25,15 @@ export const initialValues: SignUpUserDto = {
 
 const Schema = yup.object({
   username: yup.string().required("Пожалуйста, заполните указанные поля"),
-  password: yup.string().required("Пожалуйста, заполните указанные поля"),
-  first_name: yup.string().required("Пожалуйста, заполните указанные поля"),
+  password: yup.string().matches(
+    /(?=.*[0-9])(?=.*[A-Z]){8,}/gi,
+    "Пароль должен состоять из [A-z] [0-9] и не быть слишком простым..."
+  ).required("Пожалуйста, заполните указанные поля"),
+  first_name: yup.string().test(
+    "first_name",
+    "Заполните поле",
+    (value) => !!(value || " ").replace(/\s/g, "")
+  ).required("Пожалуйста, заполните указанные поля"),
 });
 
 function SignUp() {
@@ -100,8 +107,6 @@ function SignUp() {
                 touched,
                 handleChange,
                 handleBlur,
-                // handleSubmit,
-                isSubmitting,
               }) => {
                 return (
                   <Form className={classes.auth_items__form__form}>
@@ -109,7 +114,6 @@ function SignUp() {
                       style={{ position: "relative", marginBottom: 40 }}
                     >
                       <input style={errors.first_name ? { borderColor: "red" } : undefined}
-                        // mask="+999999999999"
                         placeholder={router.locale === "ru" ? "Введите ваше имя" : "Атыңызды енгізіңіз"}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -119,7 +123,6 @@ function SignUp() {
 
                       <ReactInputMask
                         style={errors.username ? { border: "1px solid red" } : undefined}
-                        // mask="+999999999999"
                         mask="+7(999)9999999"
                         placeholder={router.locale === "ru" ? "Введите номер телефона" : "Телефон нөмірін енгізіңіз"}
                         onChange={handleChange}
@@ -129,7 +132,6 @@ function SignUp() {
                         className="mt-3"
                       />
 
-                      {/* <input onChange={(e) => setLogin(e.target.value)} value={login} type="text" placeholder="Логин" /> */}
 
                       <div
                         style={errors.password ? { borderColor: "red" } : undefined}
