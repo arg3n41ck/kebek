@@ -5,6 +5,7 @@ import mod from "./Modals.module.scss";
 import first from "../../assets/icons/ModalIcons/1.svg";
 import Image from "next/image"
 import Link from "next/link"
+import { useAppSelector } from "../../redux/hooks";
 
 export const style = {
     position: "absolute",
@@ -23,6 +24,10 @@ export const style = {
 };
 
 function Treatment({ open, handleClose, data }) {
+    const { user } = useAppSelector((state) => state.auth)
+    const client = window.localStorage.getItem("client")
+    const role = !!user?.user_role && user.user_role === "OW" ? "OW" : "CL";
+
     return (
         <div>
             <Modal
@@ -35,7 +40,7 @@ function Treatment({ open, handleClose, data }) {
                     <h1>Спасибо за заказ!</h1>
                     <div className={mod.box_inner}>
                         <p>
-                            Ваш заказ № <Link href={`/CL/application`} passHref><span style={{ cursor: "pointer" }}> {!!data?.number && data.number}</span></Link> <br /> принят в
+                            Ваш заказ № <Link href={`/${role}/auth/${client}/`} passHref><span style={{ cursor: "pointer" }}> {!!data?.number && data.number}</span></Link> <br /> принят в
                             обработку{" "}
                         </p>
                         <Link href={"/"} passHref>
