@@ -18,7 +18,7 @@ const NotificationList = ({ notificationList }) => {
   const [notifications, setNotifications] = useState(null);
   const [checkedAll, setCheckedAll] = useState(false);
   const [checkedIds, setCheckedIds] = useState([]);
-  const { t } = React.useContext(localeContext);
+  const { t, locale } = React.useContext(localeContext);
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false)
   const handleOpen = () => setOpen(true)
@@ -153,10 +153,11 @@ const NotificationList = ({ notificationList }) => {
                 }}
                 className={pr.modal_box}
               >
-                {t.profile.requisites.modal2.deleteModal.title1}
+                {/* {t.profile.requisites.modal2.deleteModal.title1} */}
+                {locale === "ru" ? "Удаление уведомления" : "Хабарландыруды жою"}
               </Typography>
               <div className={classNames(pr.modal, pr.modal_inner)}>
-                <p>{t.profile.requisites.modal2.deleteModal.title2} </p>
+                <p>{locale === "ru" ? "Вы действительно хотите выбранные уведомления?" : "Таңдалған хабарландыруларды шынымен алғыңыз келе ме?"} </p>
                 <p>{t.profile.requisites.modal2.deleteModal.title3}</p>
                 <button
                   onClick={() => {
