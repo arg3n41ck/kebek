@@ -48,7 +48,7 @@ services:
       context: .
       dockerfile: ./docker/backend/Dockerfile
     container_name: celery_worker
-    command: bash -c "cd /app/backend/ && celery -A src worker -l INFO"
+    command: bash -c "cd /app/backend/ && celery -A src worker -Q kebek_celerybeat,kebek_elevators -c 4 -n kebek_worker -l INFO"
     networks:
       - my-network
     depends_on:

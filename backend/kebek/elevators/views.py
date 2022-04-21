@@ -747,16 +747,6 @@ class OrderViewSet(viewsets.ModelViewSet):
 
         if user.user_role == CLIENT:
             instance = serializer.save(client=user)
-            content = f'Заказ №{instance.number} создан и принят в обработку'
-            title = 'Создан'
-
-            create_notification(user, instance, instance.status, title, content)
-
-            if instance.client.notifications_sms:
-                send_sms(instance.client.username, content)
-            if instance.client.notifications_email and instance.client.email:
-                send_email(instance.client.email, title, content)
-
         elif user.user_role == ADMINISTRATOR:
             instance = serializer.save(elevator=elevator)
         else:
