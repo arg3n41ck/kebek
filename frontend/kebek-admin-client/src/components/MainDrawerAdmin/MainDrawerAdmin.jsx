@@ -168,7 +168,6 @@ export default function PersistentDrawerLeft({ open, setOpen }) {
           <div className={cl.MainDrawer}>
             <div className={cl.MainDrawer__main_border}>
               <a
-                target={"_blank"}
                 href="https://kebek.kz/"
                 className={cl.MainDrawer__logo}
               >
