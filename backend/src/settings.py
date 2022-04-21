@@ -252,7 +252,7 @@ SPECTACULAR_SETTINGS = {
     ],
     'SCHEMA_PATH_PREFIX': r'/api/v[0-9]',
     'SWAGGER_UI_SETTINGS': {
-        'url': 'http://127.0.0.1:8000/static/openapi.yaml',
+        'url': 'https://kebek.kz/static/openapi.yaml',
     },
 }
 
