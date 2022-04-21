@@ -159,7 +159,7 @@ LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 STATIC_URL = '/staticfiles/'
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
@@ -252,7 +252,7 @@ SPECTACULAR_SETTINGS = {
     ],
     'SCHEMA_PATH_PREFIX': r'/api/v[0-9]',
     'SWAGGER_UI_SETTINGS': {
-        'url': 'http://127.0.0.1:8000/static/openapi.yaml',
+        'url': 'https://kebek.kz/static/openapi.yaml',
     },
 }
 
