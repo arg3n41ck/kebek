@@ -74,7 +74,7 @@ export const MoreInfo = ({ className = "", data }: Props) => {
     );
 };
 
-function PaymentMethodAccordion({ radioFace, setRadioPayment, radioPayment, setRequisite, requisite }: any) {
+function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radioPayment, setRequisite, requisite }: any) {
     const { requisites, delivery, payment } = useAppSelector((state) => state.auth);
     const router = useRouter()
     const { t } = useTranslation()
@@ -91,6 +91,7 @@ function PaymentMethodAccordion({ radioFace, setRadioPayment, radioPayment, setR
 
     const paymentNotVisible = !!delivery?.length && delivery.map(({ payments }: any) => {
         return !!payments?.length && payments.map((item: any) => {
+            setPaymentPC(item);
             return item.type.title_ru === "Перечисление на расчетный счет" && item
         }).filter((item: any) => item && item.status === "AC" && item)
     })[0]
@@ -141,8 +142,8 @@ function PaymentMethodAccordion({ radioFace, setRadioPayment, radioPayment, setR
                                     ))
                                 })}
                                 {!!paymentNotVisible?.length && paymentNotVisible.map((item: any) => (
-                                    <TabPanelUnstyled key={item.id} className={classes.PCenumeration} value={1} >
-                                        <FormControlLabel className={classes.formControl__text} value={item.type.id} control={<Radio />}
+                                    <TabPanelUnstyled className={classes.PCenumeration} value={1} >
+                                        <FormControlLabel key={item.id} className={classes.formControl__text} value={item.id} control={<Radio />}
                                             label={<Typography
                                                 color={radioPayment == item.id ? "primary" : "black"}>
                                                 {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}

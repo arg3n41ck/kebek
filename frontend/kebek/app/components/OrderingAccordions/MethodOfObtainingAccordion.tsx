@@ -140,24 +140,24 @@ function MethodOfObtainingAccordion({ radioDelivery, setRadioDelivery, deliveryT
           <Typography sx={{ fontSize: 21 }}>{t("ordering.accordions.accordion3.heading3")}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TabsUnstyled defaultValue={0}>
+          <TabsUnstyled defaultValue={2}>
             <TabsListUnstyled className={"d-flex"}>
               {!!delivery?.length && delivery.map((item: any) => (
                 <>
                   {!!item.deliveries &&
                     item.deliveries.filter(({ status }: any) => status === "AC").map((elem: any) => {
-                      const id = (elem.type.title_ru === "Доставка" || elem.type.title_kk === "Жеткізу") && elem.type.id
-                      
+                      const id = (elem.type.title_ru === "Доставка" || elem.type.title_kk === "Жеткізу") && elem.id
                       return <TabUnstyled
-                        key={elem.type.id}
-                        disabled={elem.type.id === id}
+                        key={elem.id}
+                        disabled={elem.id === id}
+                        value={elem.id}
                         type="button"
                         style={
-                          deliveryTab === elem.type.id
+                          deliveryTab === elem.id
                             ? { color: "#219653", borderColor: "#219653" }
                             : { color: "#092F33", borderColor: "#EEEEEE" }
                         }
-                        onClick={() => styleChangeDostavka(elem.type.id)}
+                        onClick={() => styleChangeDostavka(elem.id)}
                         className={classes.tabUnstyled}
                       >
                         {elem &&
@@ -170,7 +170,7 @@ function MethodOfObtainingAccordion({ radioDelivery, setRadioDelivery, deliveryT
                 </>
               ))}
             </TabsListUnstyled>
-            <TabPanelUnstyled value={0}>
+            <TabPanelUnstyled value={2}>
               <Typography
                 className={"mt-4"}
                 sx={{ fontSize: 16 }}

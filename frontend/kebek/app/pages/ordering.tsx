@@ -44,20 +44,24 @@ const Schema = yup.object({
 
 function Ordering() {
     const cart = useAppSelector((state) => cartSelectors.selectAll(state));
+    const { delivery } = useAppSelector((state) => state.auth);
     const [radioDelivery, setRadioDelivery] = React.useState("");
     const [deliveryTab, setDeliveryTab] = React.useState(1);
     const [checkboxAll, setCheckboxAll] = React.useState(true);
     const [radioFace, setRadioFace] = React.useState('individual');
     const [radioPayment, setRadioPayment] = React.useState(1);
     const [address, setAddress] = React.useState(null);
-    const [requisite, setRequisite] = React.useState(null);
+    const [requisite, setRequisite] = React.useState<any>(null);
     const [deliveryPaymnent, setDeliveryPaymnent] = React.useState(null);
-    const [postOrders, setPostOrders] = useState<any>(null)
+    const [postOrders, setPostOrders] = useState<any>(null);
+    const [paymentPC, setPaymentPC] = useState<any>(null);
     const dispatch = useAppDispatch();
     const router = useRouter();
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
+
+
 
     const [open, setOpen] = React.useState(false);
     const [orders, setOrders] = React.useState(null)
@@ -74,29 +78,34 @@ function Ordering() {
     };
 
 
+
     React.useEffect(() => {
         const newObj: any = {
             client: !!user?.id ? user.id : window.localStorage.getItem("client"),
             elevator: !!cart?.length && cart.filter(({ checked }: any) => checked)[0]?.elevator?.id || "",
-            payment: !!radioPayment ? radioPayment : 1,
-            delivery: !!deliveryTab ? deliveryTab : 1,
+            payment: radioPayment,
+            delivery: deliveryTab,
             products: !!cart?.length && cart.filter(({ checked }: any) => checked).map((item) => ({
                 product: item?.id,
                 amount: item?.count * 1000,
                 product_payment: item?.price,
             })),
-            requisites: !!requisite && radioPayment === 2 ? requisite : "",
+            bin: !!requisite && radioPayment === paymentPC?.id ? requisite.bin : "",
+            bik: !!requisite && radioPayment === paymentPC?.id ? requisite.bik : "",
+            checking_account: !!requisite && radioPayment === paymentPC?.id ? requisite.checking_account : "",
+            title: !!requisite && radioPayment === paymentPC?.id ? requisite.title : "",
             address: !!address ? address : "",
             delivery_payment: !!deliveryPaymnent ? deliveryPaymnent : 1
         }
-        if (address && requisite) {
-            setPostOrders(newObj)
-        } else {
-            delete newObj.address
-            delete newObj.requisites
+        for (let key in newObj) {
+            if (!newObj[key]) {
+                delete newObj[key]
+                setPostOrders(newObj)
+            }
             setPostOrders(newObj)
         }
-    }, [address, requisite])
+
+    }, [address, requisite, radioPayment, deliveryTab])
 
     const orderPost = async (postOrders: any) => {
         try {
@@ -137,6 +146,11 @@ function Ordering() {
             dispatch(fetchAddresses())
             dispatch(fetchRequisites())
         }
+
+        !!delivery?.length && delivery.map((item: any) =>
+            !!item.deliveries &&
+            item.deliveries.filter((item: any) => item.status === "AC" && item.type.title_ru === "Самовывоз" && setDeliveryTab(item.id))
+        )
     }, []);
 
     return (
@@ -234,7 +248,7 @@ function Ordering() {
                                                 <TabsUnstyled defaultValue={0}>
                                                     <RecipientDataAccordion values={values} handleChange={handleChange} handleBlur={handleBlur} radioFace={radioFace} errors={errors} touched={touched} setRadioFace={setRadioFace} />
                                                     <RequisitesAddModalProvider>
-                                                        <PaymentMethodAccordion requisite={requisite} setRequisite={setRequisite} setRadioPayment={setRadioPayment} radioPayment={radioPayment} radioFace={radioFace} />
+                                                        <PaymentMethodAccordion setPaymentPC={setPaymentPC} requisite={requisite} setRequisite={setRequisite} setRadioPayment={setRadioPayment} radioPayment={radioPayment} radioFace={radioFace} />
                                                     </RequisitesAddModalProvider>
                                                     <DeleteAdressModalProvider>
                                                         <EditAdressModalProvider>
