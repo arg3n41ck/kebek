@@ -14,7 +14,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { style } from "../../components/MainDrawerAdmin/MainDrawerAdmin";
 
-const NotificationList = ({ notificationList }) => {
+const NotificationList = ({ notificationList, getNotReadNotifications }) => {
   const [notifications, setNotifications] = useState(null);
   const [checkedAll, setCheckedAll] = useState(false);
   const [checkedIds, setCheckedIds] = useState([]);
@@ -84,7 +84,7 @@ const NotificationList = ({ notificationList }) => {
     handleClose()
   };
 
-  const unreadHandler = () => {
+  const unreadHandler = async () => {
     const newArr = notifications.map((item) => {
       const check = !checkedIds.includes(item.id);
       if (!check) {
@@ -93,7 +93,9 @@ const NotificationList = ({ notificationList }) => {
       return item;
     });
     setNotifications(newArr);
-    $api.post("/notifications/read/", { ids: checkedIds });
+    await $api.post("/notifications/read/", { ids: checkedIds })
+    getNotReadNotifications()
+    setNotifications(null)
   };
 
   if (!notifications) {
@@ -157,7 +159,7 @@ const NotificationList = ({ notificationList }) => {
                 {locale === "ru" ? "Удаление уведомления" : "Хабарландыруды жою"}
               </Typography>
               <div className={classNames(pr.modal, pr.modal_inner)}>
-                <p>{locale === "ru" ? "Вы действительно хотите выбранные уведомления?" : "Таңдалған хабарландыруларды шынымен алғыңыз келе ме?"} </p>
+                <p>{locale === "ru" ? "Вы действительно хотите удалить выбранные уведомления?" : "Таңдалған хабарландыруларды шынымен жойғыңыз келе ме?"} </p>
                 <p>{t.profile.requisites.modal2.deleteModal.title3}</p>
                 <button
                   onClick={() => {

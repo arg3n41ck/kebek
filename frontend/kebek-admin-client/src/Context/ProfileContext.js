@@ -85,7 +85,7 @@ export default function ProfileProvider({ children }) {
 
   const changeProfileInfo = async (data) => {
     try {
-      await $api.patch("/users/profile/", data, {
+      await $api.patch("/users/profile/general/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -103,7 +103,7 @@ export default function ProfileProvider({ children }) {
 
   const changeProfileNotification = async (data) => {
     try {
-      await $api.patch("/users/profile//notifications/", data);
+      await $api.patch("/users/profile/notifications/", data);
       // toast.success("Вы успешно поменяли статус уве о себе!");
       //   setTimeout(() => {
       //     navigate("/profile");

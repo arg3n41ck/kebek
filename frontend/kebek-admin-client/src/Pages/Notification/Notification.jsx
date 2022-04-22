@@ -48,7 +48,7 @@ function Notification() {
 
   const isMedium = useMediaQuery("(max-width: 992px)");
 
-  const { getNotifications, notifications, getAllNotifications, allNotifications } = useContext(notificationsContext);
+  const { getNotReadNotifications,  getAllNotifications, allNotifications } = useContext(notificationsContext);
 
 
   const { t } = useContext(localeContext);
@@ -164,16 +164,13 @@ function Notification() {
                   "& .MuiListItemText-root": { padding: "0 15px" },
                 }}
               >
-                {/* <Checkbox
-                      checked={statusFilterCurrent === item.encryptedName}
-                    /> */}
                 <ListItemText sx={{ margin: 0 }} primary={item.pluralName} />
               </MenuItem>
             ))}
           </Select>
         </FormControl>
       </div>
-      <NotificationList notificationList={notification.results} />
+      <NotificationList notificationList={notification.results} getNotReadNotifications={getNotReadNotifications} />
       <div
         className={
           isMedium

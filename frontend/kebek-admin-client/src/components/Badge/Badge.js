@@ -19,20 +19,20 @@ export const StyledBadge = styled(BadgeUnstyled)`
   line-height: 1;
 
   & .MuiBadge-badge {
-    z-index: auto;
-    min-width: 20px;
-    height: 20px;
-    margin-top: -8px;
-    padding: 0 4px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
-    white-space: nowrap;
-    text-align: center;
-    background: #ff4d4f;
-    border-radius: 10px;
-    box-shadow: 0 0 0 1px #fff;
+    z-index: auto !important;
+    min-width: 20px !important;
+    height: 20px !important;
+    margin-top: -8px !important;
+    padding: 0 4px !important;
+    color: #fff !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    background: #ff4d4f !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 0 1px #fff !important;
   }
 
   & .MuiBadge-customBadge {
@@ -52,15 +52,15 @@ export const StyledBadge = styled(BadgeUnstyled)`
   }
 
   & .MuiBadge-dot {
-    padding: 0;
-    z-index: auto;
-    min-width: 8px;
-    width: 11px;
-    height: 11px;
-    background: #ff4d4f;
-    margin-top: 11px;
-    border-radius: 100%;
-    box-shadow: 0 0 0 1px #fff;
+    padding: 0 !important;
+    z-index: auto !important;
+    min-width: 8px !important;
+    width: 11px !important;
+    height: 11px !important;
+    background: #ff4d4f !important;
+    margin-top: 11px !important;
+    border-radius: 100% !important;
+    box-shadow: 0 0 0 1px #fff !important;
   }
 
   & .MuiBadge-anchorOriginTopRight {
