@@ -38,16 +38,6 @@ const position = [
         id: 2,
         title: "Бухгалтер",
         value: "AC"
-    },
-    {
-        id: 3,
-        title: "Поставщик",
-        value: "OW"
-    },
-    {
-        id: 4,
-        title: "Клиент",
-        value: "CL"
     }
 ]
 
@@ -62,6 +52,7 @@ function EditStaff() {
     const { user } = React.useContext(userContext)
     const { id } = useParams()
     const formRef = React.useRef(null)
+
 
     const initialValues = {
         first_name: !!staffById?.firstName ? staffById.firstName : '',
@@ -89,7 +80,7 @@ function EditStaff() {
     React.useEffect(() => {
         formRef.current.setValues({
             first_name: !!staffById?.firstName ? staffById.firstName : '',
-            elevators: !!staffById?.elevators ? staffById.elevators[0] : 'default',
+            elevator: !!staffById?.elevators ? staffById.elevators[0] : 'default',
             user_role: !!staffById?.userRole ? staffById.userRole : 'default',
             phone_number: !!staffById?.phoneNumber ? staffById.phoneNumber : '',
             email: !!staffById?.email ? staffById.email : '',
@@ -180,7 +171,6 @@ function EditStaff() {
                                                         : { border: '1px solid #eeeeee', width: '49%' }
                                                 }
                                                 value={values.elevator}
-                                                defaultValue='jack'
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 name='elevator'

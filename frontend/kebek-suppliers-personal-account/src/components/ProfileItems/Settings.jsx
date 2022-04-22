@@ -7,6 +7,7 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { profileContext } from '../../Context/ProfileContext';
 import { localeContext } from '../../providers/LocaleProvider';
+import { userContext } from '../../providers/UserProvider';
 
 const initialValues = {
   new_password: '',
@@ -71,12 +72,30 @@ const IOSSwitch = styled((props) => (
 }));
 
 function Settings() {
-  const { changePassword } = React.useContext(profileContext);
+  const { changePassword, changeProfileNotification } = React.useContext(profileContext);
   const { t } = React.useContext(localeContext);
+  const { user } = React.useContext(userContext);
+  const [notificationByEmail, setNotificationByEmail] = React.useState(user?.notificationsEmail)
+  const [notificationBySms, setNotificationBySms] = React.useState(user?.notificationsSms)
 
   const handleSubmit = async (values) => {
     await changePassword(values);
   };
+
+  const handleChangeNotificationBySms = (event) => {
+    setNotificationBySms(event.target.checked);
+  };
+
+  const handleChangeNotificationByEmail = (event) => {
+    setNotificationByEmail(event.target.checked);
+  };
+
+  React.useEffect(() => {
+    changeProfileNotification({
+      notifications_sms: notificationBySms,
+      notifications_email: notificationByEmail
+    })
+  }, [notificationBySms, notificationByEmail])
 
   return (
     <div className={pr.sett_cont}>
@@ -87,11 +106,21 @@ function Settings() {
         </div>
         <div className={pr.push_massage}>
           <h5>{t.profile.settings.title5}</h5>
-          <FormControlLabel control={<IOSSwitch defaultChecked />} label='' />
+          <FormControlLabel
+            control={<IOSSwitch defaultChecked />}
+            label=''
+            onChange={handleChangeNotificationByEmail}
+            checked={notificationByEmail}
+          />
         </div>
         <div className={pr.push_massage}>
           <h5>{t.profile.settings.title6}</h5>
-          <FormControlLabel control={<IOSSwitch defaultChecked />} label='' />
+          <FormControlLabel
+            onChange={handleChangeNotificationBySms}
+            control={<IOSSwitch defaultChecked />}
+            label=''
+            checked={notificationBySms}
+          />
         </div>
         {/* <p>{t.profile.settings.title2}</p> */}
         <div className={pr.pass_settings}>

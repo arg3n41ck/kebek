@@ -142,8 +142,8 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                                     ))
                                 })}
                                 {!!paymentNotVisible?.length && paymentNotVisible.map((item: any) => (
-                                    <TabPanelUnstyled className={classes.PCenumeration} value={1} >
-                                        <FormControlLabel key={item.id} className={classes.formControl__text} value={item.id} control={<Radio />}
+                                    <TabPanelUnstyled key={item.id} className={classes.PCenumeration} value={1} >
+                                        <FormControlLabel className={classes.formControl__text} value={item.id} control={<Radio />}
                                             label={<Typography
                                                 color={radioPayment == item.id ? "primary" : "black"}>
                                                 {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}

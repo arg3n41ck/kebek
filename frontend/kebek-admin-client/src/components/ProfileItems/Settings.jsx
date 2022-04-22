@@ -94,13 +94,11 @@ function Settings() {
     setNotificationByEmail(event.target.checked);
   };
 
-  const data = {
-    notifications_sms: notificationBySms,
-    notifications_email: notificationByEmail
-  }
-
   React.useEffect(() => {
-    changeProfileNotification(data)
+    changeProfileNotification({
+      notifications_sms: notificationBySms,
+      notifications_email: notificationByEmail
+    })
   }, [notificationBySms, notificationByEmail])
 
   return (

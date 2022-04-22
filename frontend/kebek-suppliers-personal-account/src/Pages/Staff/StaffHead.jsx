@@ -59,9 +59,10 @@ export default function EnhancedTableHead(props) {
   const handleDeleteManyStaffByIds = async (ids) => {
     try {
       await !!ids.length && ids.forEach((id) => {
-        $api.delete(`/users/staff/${id}/`)
+        $api.delete(`/users/staff/${id}/`).then(() => {
+          getStaff("default", "default", pageSize, currentPage, "")
+        })
       })
-      getStaff("default", "default", pageSize, currentPage, "")
       setAnchorEdit(false)
       setSelected([])
       setDeleteModal(false)

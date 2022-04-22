@@ -25,6 +25,14 @@ const NotificationsProvider = ({ children }) => {
     }
   };
 
+  const changeProfileNotification = async (data) => {
+    try {
+      await $api.patch("/users/profile/notifications/", data);
+    } catch ({ response }) {
+      return response
+    }
+  };
+
   const getAllNotifications = async (search) => {
     try {
       const { data } = await $api.get("/notifications/", {
@@ -65,6 +73,7 @@ const NotificationsProvider = ({ children }) => {
         allNotifications,
         getAllNotifications,
         notificationsUnRead,
+        changeProfileNotification
       }}
     >
       {children}

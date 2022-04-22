@@ -65,6 +65,14 @@ export default function ProfileProvider({ children }) {
     }
   };
 
+  const changeProfileNotification = async (data) => {
+    try {
+      await $api.patch("/users/profile/notifications/", data);
+    } catch ({ response }) {
+      return response;
+    }
+  };
+
   const getCities = async (search) => {
     try {
       const {
@@ -211,6 +219,7 @@ export default function ProfileProvider({ children }) {
         deleteRequisite,
         changedAddresses,
         changedRequisite,
+        changeProfileNotification,
       }}
     >
       {children}

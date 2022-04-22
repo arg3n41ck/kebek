@@ -21,6 +21,8 @@ function Profile() {
     getAddresses();
   }, []);
 
+ 
+
   if (!user) {
     return <Loader />
   }
