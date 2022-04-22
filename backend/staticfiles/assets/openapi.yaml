@@ -4886,7 +4886,6 @@ components:
           type: string
         image:
           type: string
-          readOnly: true
         addresses:
           type: array
           items:
@@ -5381,7 +5380,6 @@ components:
           type: string
         image:
           type: string
-          readOnly: true
         addresses:
           type: array
           items:
