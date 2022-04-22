@@ -140,7 +140,7 @@ export default function ProfileProvider({ children }) {
   const addRequisite = async (requisites) => {
     try {
       await $api.post("/users/profile/requisites/", requisites);
-      toast.success("Ваше обращение отправлено!");
+      toast.success("Вы успешно добавили реквизит!");
     } catch ({ response }) {
       response
         ? toast.error(response)
@@ -151,7 +151,7 @@ export default function ProfileProvider({ children }) {
   const deleteRequisite = async (id) => {
     try {
       await $api.delete(`/users/profile/requisites/${id}/`).then(() => {
-        toast.success("Ваше обращение отправлено!");
+        toast.success("Вы успешно удалили реквизит!");
       });
     } catch ({ response }) {
       response
