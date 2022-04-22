@@ -59,7 +59,6 @@ class UserViewSet(viewsets.GenericViewSet):
     Manages users
     """
 
-    permission_classes = [IsUserOrReadOnly]
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
@@ -173,6 +172,7 @@ class UserViewSet(viewsets.GenericViewSet):
         methods=['patch'],
         url_path='password/change',
         url_name='password/change',
+        permission_classes=[IsAuthenticated]
     )
     def password_change(self, request):
         old_password = request.data['old_password']
@@ -319,7 +319,7 @@ class UserProfileView(generics.RetrieveAPIView):
     Retrieves users
     """
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     serializer_class = UserFullSerializer
     queryset = User.objects.all()
 
