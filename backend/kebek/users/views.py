@@ -295,6 +295,11 @@ class UserLoginView(ObtainAuthToken):
         responses={200: UserResponseSerializer}
     )
     def post(self, request, *args, **kwargs):
+        try:
+            User.objects.get(username=request.data['username'].replace(' ', ''))
+        except User.DoesNotExist:
+            raise NotFound()
+
         serializer = self.serializer_class(
             data=request.data, context={'request': request}
         )
