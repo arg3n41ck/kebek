@@ -72,8 +72,7 @@ def send_email(email, title, content):
         username=config('EMAIL_HOST_USER'),
         password=config('EMAIL_HOST_PASSWORD'),
         port=587,
-        use_tls=True,
-        fail_silently=True
+        use_tls=True
     )
 
     send_mail(
@@ -81,7 +80,6 @@ def send_email(email, title, content):
         message='',
         from_email=config('EMAIL_HOST_USER'),
         recipient_list=[email],
-        fail_silently=True,
         auth_user=config('EMAIL_HOST_USER'),
         auth_password=config('EMAIL_HOST_PASSWORD'),
         connection=connection,
