@@ -20,8 +20,7 @@ class IsClient(permissions.BasePermission):
         if request.user.is_anonymous:
             return False
 
-    def has_object_permission(self, request, view, obj):
-        return obj.client == request.user
+        return request.user.user_role == CLIENT
 
 
 class IsOwner(permissions.BasePermission):
