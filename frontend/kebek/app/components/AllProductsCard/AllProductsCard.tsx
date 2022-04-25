@@ -192,7 +192,7 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
                 min={data.min_limit / 1000}
                 max={data.max_limit / 1000}
                 style={quantity > data.residue / 1000 ? { color: "red", marginTop: "25px" } : { color: "#219653", marginTop: "25px" }}
-                value={data.quantity}
+                value={Math.round(data.quantity)}
                 onChange={handleChangeQuantity}
               />
             )

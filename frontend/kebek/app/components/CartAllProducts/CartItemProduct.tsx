@@ -67,7 +67,7 @@ const CartItemProduct: FC<Props> = ({ data }) => {
 					>
 						-
 					</button>
-					<p className="mx-3">{data.count}</p>
+					<p className="mx-3">{Math.round(data.count)}</p>
 					<button
 						onClick={increaseCartNumberOfTons}
 						className={classes.plusButton}
