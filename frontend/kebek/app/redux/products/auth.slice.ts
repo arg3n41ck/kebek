@@ -73,7 +73,9 @@ export const signInUser = createAsyncThunk(
         });
     } catch (e: any) {
       e.response.data.non_field_errors
-        ? toast.error(e.response.data.non_field_errors[0])
+        ? toast.error(
+            "Пользователь с таким логином не зарегистрирован. Пожалуйста, проверьте правильность введенного логина или зарегистрируйтесь!"
+          )
         : toast.error("Возникла непредвиденная ошибка!");
     }
   }

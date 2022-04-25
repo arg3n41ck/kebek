@@ -57,20 +57,20 @@ const AddressesModal: React.FC = ({ children }) => {
   const { isOpen, setIsOpen } = React.useContext(addressesModalCtx);
   const isMobile = useMediaQuery("(max-width: 697px)");
 
-  if (isMobile)
-    return (
-      <SwipeableDrawer
-        style={{
-          borderRadius: "20px 20px 0 0",
-        }}
-        anchor="bottom"
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        onOpen={() => setIsOpen(true)}
-      >
-        {children}
-      </SwipeableDrawer>
-    );
+  // if (isMobile)
+  //   return (
+  //     <SwipeableDrawer
+  //       style={{
+  //         borderRadius: "20px 20px 0 0",
+  //       }}
+  //       anchor="bottom"
+  //       open={isOpen}
+  //       onClose={() => setIsOpen(false)}
+  //       onOpen={() => setIsOpen(true)}
+  //     >
+  //       {children}
+  //     </SwipeableDrawer>
+  //   );
 
   return (
     <Modal

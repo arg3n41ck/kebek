@@ -142,14 +142,16 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                                     ))
                                 })}
                                 {!!paymentNotVisible?.length && paymentNotVisible.map((item: any) => (
-                                    <TabPanelUnstyled key={item.id} className={classes.PCenumeration} value={1} >
-                                        <FormControlLabel className={classes.formControl__text} value={item.id} control={<Radio />}
-                                            label={<Typography
-                                                color={radioPayment == item.id ? "primary" : "black"}>
-                                                {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
-                                            </Typography>}
-                                        />
-                                    </TabPanelUnstyled>
+                                    <div key={item.id}>
+                                        <TabPanelUnstyled className={classes.PCenumeration} value={1} >
+                                            <FormControlLabel className={classes.formControl__text} value={item.id} control={<Radio />}
+                                                label={<Typography
+                                                    color={radioPayment == item.id ? "primary" : "black"}>
+                                                    {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
+                                                </Typography>}
+                                            />
+                                        </TabPanelUnstyled>
+                                    </div>
                                 ))}
                             </div>
 
@@ -159,7 +161,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                                         <div className={"d-flex align-items-center justify-content-between"}>
                                             <TabPanelUnstyled className={classes.PCenumeration} value={1}>
                                                 <Typography className={classes.saved_requisites} sx={{ fontSize: 21, fontWeight: 400 }}>{t("ordering.accordions.accordion2.saveReq.title1")}</Typography>
-                                            </TabPanelUnstyled>ㅤ
+                                            </TabPanelUnstyled>
 
                                             <div className={"d-flex justify-content-end"}>
                                                 <button type="button" className={classes.add_button} onClick={openModal}

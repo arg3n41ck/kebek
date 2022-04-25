@@ -4,9 +4,7 @@ import classNames from "classnames"
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Backdrop from '@mui/base/BackdropUnstyled';
 import { CartItem } from '../../types/products';
 import { useAppDispatch } from '../../redux/hooks';
 import { removeProductFromCart } from '../../redux/products/cart.slice';
@@ -52,55 +50,55 @@ export default function DeleteProductModal({ data }: Props) {
     }
 
 
-    if (isMobile) return (
-        <div style={{
-            backgroundColor: "white",
-            WebkitBackdropFilter: "blur(100px)",
-            boxShadow: "inset 0 0 490px white",
-        }}>
-            <Button
-                style={{
-                    background: "#ffffff",
-                    height: "24px",
-                    borderRadius: "3.01818px",
-                    border: "none",
-                    display: "flex",
-                    alignItems: "center",
-                    color: "#eb5757",
-                    fontWeight: "500",
-                    fontSize: "16px"
-                }} onClick={handleOpen}>{t("allProducts.cart.delete.button")}</Button>
-            <SwipeableDrawer
-                style={{
-                    borderRadius: "20px 20px 0 0",
-                }
-                }
-                anchor="bottom"
-                open={open}
-                onClose={() => setOpen(false)}
-                onOpen={() => setOpen(true)}
-            >
-                <div>
-                    <div className={classes.modal_adress_delete_block}>
-                        <div className={classes.text}>
-                            <div className={classes.icon}>
-                                <CloseIcon style={{ width: "35px", height: "35px" }} onClick={() => setOpen(false)} />
-                            </div>
-                            <p className={classes.title}>{t("allProducts.cart.delete.title1")}</p>
-                            <div className={classes.content_block}>
-                                <div dangerouslySetInnerHTML={stylesMyText(t("allProducts.cart.delete.title2"))} className={classes.sure}></div>
-                                <div className="col-12 text-center">
-                                    <button onClick={handleDelete} className={classes.button__delete}>
-                                        <b>{t("allProducts.cart.delete.button")}</b>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </SwipeableDrawer >
-        </div>
-    )
+    // if (isMobile) return (
+    //     <div style={{
+    //         backgroundColor: "white",
+    //         WebkitBackdropFilter: "blur(100px)",
+    //         boxShadow: "inset 0 0 490px white",
+    //     }}>
+    //         <Button
+    //             style={{
+    //                 background: "#ffffff",
+    //                 height: "24px",
+    //                 borderRadius: "3.01818px",
+    //                 border: "none",
+    //                 display: "flex",
+    //                 alignItems: "center",
+    //                 color: "#eb5757",
+    //                 fontWeight: "500",
+    //                 fontSize: "16px"
+    //             }} onClick={handleOpen}>{t("allProducts.cart.delete.button")}</Button>
+    //         <SwipeableDrawer
+    //             style={{
+    //                 borderRadius: "20px 20px 0 0",
+    //             }
+    //             }
+    //             anchor="bottom"
+    //             open={open}
+    //             onClose={() => setOpen(false)}
+    //             onOpen={() => setOpen(true)}
+    //         >
+    //             <div>
+    //                 <div className={classes.modal_adress_delete_block}>
+    //                     <div className={classes.text}>
+    //                         <div className={classes.icon}>
+    //                             <CloseIcon style={{ width: "35px", height: "35px" }} onClick={() => setOpen(false)} />
+    //                         </div>
+    //                         <p className={classes.title}>{t("allProducts.cart.delete.title1")}</p>
+    //                         <div className={classes.content_block}>
+    //                             <div dangerouslySetInnerHTML={stylesMyText(t("allProducts.cart.delete.title2"))} className={classes.sure}></div>
+    //                             <div className="col-12 text-center">
+    //                                 <button onClick={handleDelete} className={classes.button__delete}>
+    //                                     <b>{t("allProducts.cart.delete.button")}</b>
+    //                                 </button>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </SwipeableDrawer >
+    //     </div>
+    // )
     return (
         <div style={{
             backgroundColor: "white",

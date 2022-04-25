@@ -81,20 +81,20 @@ const DeleteAdressModal: React.FC = ({ children }) => {
   const { openDelete, setOpenDelete } = React.useContext(deleteAdressModalCtx);
   const isMobile = useMediaQuery("(max-width: 697px)");
 
-  if (isMobile)
-    return (
-      <SwipeableDrawer
-        style={{
-          borderRadius: "20px 20px 0 0",
-        }}
-        anchor="bottom"
-        open={openDelete}
-        onClose={() => setOpenDelete(false)}
-        onOpen={() => setOpenDelete(true)}
-      >
-        {children}
-      </SwipeableDrawer>
-    );
+  // if (isMobile)
+  //   return (
+  //     <SwipeableDrawer
+  //       style={{
+  //         borderRadius: "20px 20px 0 0",
+  //       }}
+  //       anchor="bottom"
+  //       open={openDelete}
+  //       onClose={() => setOpenDelete(false)}
+  //       onOpen={() => setOpenDelete(true)}
+  //     >
+  //       {children}
+  //     </SwipeableDrawer>
+  //   );
 
   return (
     <Modal

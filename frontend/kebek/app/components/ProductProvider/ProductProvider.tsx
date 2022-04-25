@@ -63,7 +63,7 @@ const ProductProvider: React.FC = () => {
           </div>
           <div className={`col-4 ${classes.provider__logo}`}>
             {providerById.logo &&
-              <img src={providerById.logo} alt="logo" style={{ objectFit: "contain" }} />
+              <img src={providerById.logo} alt="logo" style={{ objectFit: "contain", width: 238 }} />
             }
           </div>
         </div>

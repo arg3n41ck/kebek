@@ -202,12 +202,12 @@ const AllProductsCard: React.FC<Props> = ({ data }) => {
         <div className="row">
           <div className={`col-md-6 col-6 mb-0 ${classes.p}`}>
             <p style={{ color: "#4F4F4F", fontSize: "12px" }}>
-              Мин. {data.min_limit / 1000} тонн
+              Мин. {Math.round(data.min_limit / 1000)} тонн
             </p>
           </div>
           <div className="col-md-6 col-6 d-flex justify-content-end">
             <p style={{ color: "#4F4F4F", fontSize: "12px" }}>
-              Макс. {data.max_limit / 1000} тонн
+              Макс. {Math.round(data.max_limit / 1000)} тонн
             </p>
           </div>
         </div>

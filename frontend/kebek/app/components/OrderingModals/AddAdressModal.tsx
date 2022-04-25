@@ -178,20 +178,20 @@ const ModalAdressAdd: React.FC = ({ children }) => {
     const { openAdd, setOpenAdd } = React.useContext(modalAdressAddCtx);
     const isMobile = useMediaQuery("(max-width: 697px)");
 
-    if (isMobile)
-        return (
-            <SwipeableDrawer
-                style={{
-                    borderRadius: "20px 20px 0 0",
-                }}
-                anchor="bottom"
-                open={openAdd}
-                onClose={() => setOpenAdd(false)}
-                onOpen={() => setOpenAdd(true)}
-            >
-                {children}
-            </SwipeableDrawer>
-        );
+    // if (isMobile)
+    //     return (
+    //         <SwipeableDrawer
+    //             style={{
+    //                 borderRadius: "20px 20px 0 0",
+    //             }}
+    //             anchor="bottom"
+    //             open={openAdd}
+    //             onClose={() => setOpenAdd(false)}
+    //             onOpen={() => setOpenAdd(true)}
+    //         >
+    //             {children}
+    //         </SwipeableDrawer>
+    //     );
 
     return (
         <Modal

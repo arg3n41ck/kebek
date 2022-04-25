@@ -139,20 +139,20 @@ const RequisitesAddModal: React.FC = ({ children }) => {
     const { open, setOpen } = React.useContext(requisitesAddModalCtx);
     const isMobile = useMediaQuery('(max-width: 697px)');
 
-    if (isMobile) return (
-        <SwipeableDrawer
-            style={{
-                borderRadius: "20px 20px 0 0",
-            }
-            }
-            anchor="bottom"
-            open={open}
-            onClose={() => setOpen(false)}
-            onOpen={() => setOpen(true)}
-        >
-            {children}
-        </SwipeableDrawer >
-    )
+    // if (isMobile) return (
+    //     <SwipeableDrawer
+    //         style={{
+    //             borderRadius: "20px 20px 0 0",
+    //         }
+    //         }
+    //         anchor="bottom"
+    //         open={open}
+    //         onClose={() => setOpen(false)}
+    //         onOpen={() => setOpen(true)}
+    //     >
+    //         {children}
+    //     </SwipeableDrawer >
+    // )
 
     return (
         <Modal

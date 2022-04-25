@@ -150,20 +150,20 @@ const EditAdressModal: React.FC = ({ children }) => {
     const { openEdit, setOpenEdit } = React.useContext(editAdressModalCtx);
     const isMobile = useMediaQuery('(max-width: 697px)');
 
-    if (isMobile) return (
-        <SwipeableDrawer
-            style={{
-                borderRadius: "20px 20px 0 0",
-            }
-            }
-            anchor="bottom"
-            open={openEdit}
-            onClose={() => setOpenEdit(false)}
-            onOpen={() => setOpenEdit(true)}
-        >
-            {children}
-        </SwipeableDrawer >
-    )
+    // if (isMobile) return (
+    //     <SwipeableDrawer
+    //         style={{
+    //             borderRadius: "20px 20px 0 0",
+    //         }
+    //         }
+    //         anchor="bottom"
+    //         open={openEdit}
+    //         onClose={() => setOpenEdit(false)}
+    //         onOpen={() => setOpenEdit(true)}
+    //     >
+    //         {children}
+    //     </SwipeableDrawer >
+    // )
 
     return (
         <Modal

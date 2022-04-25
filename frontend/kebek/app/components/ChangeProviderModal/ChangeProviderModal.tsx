@@ -11,8 +11,8 @@ import {
   addProductToCart,
   clearCart
 } from "../../redux/products/cart.slice";
-import {useDispatch} from "react-redux";
-import {IProductV2} from "../../types/products";
+import { useDispatch } from "react-redux";
+import { IProductV2 } from "../../types/products";
 
 interface IOpenChange {
   product: IProductV2 | null,
@@ -21,7 +21,7 @@ interface IOpenChange {
 
 interface ModalCtxTypes {
   openChange: IOpenChange,
-  setOpenChange: ({product, status}: IOpenChange) => void
+  setOpenChange: ({ product, status }: IOpenChange) => void
 }
 
 export const changeProviderModalCtx = React.createContext<ModalCtxTypes>({
@@ -29,27 +29,27 @@ export const changeProviderModalCtx = React.createContext<ModalCtxTypes>({
     product: null,
     status: false,
   },
-  setOpenChange: ({}: IOpenChange) => {
+  setOpenChange: ({ }: IOpenChange) => {
   },
 });
 
-export const ChangeProviderModalProvider: React.FC = ({children}) => {
+export const ChangeProviderModalProvider: React.FC = ({ children }) => {
   const [openChange, setOpenChange] = React.useState<{ product: null | IProductV2, status: boolean }>({
     product: null,
     status: false
   });
   return (
-    <changeProviderModalCtx.Provider value={{openChange, setOpenChange}}>
+    <changeProviderModalCtx.Provider value={{ openChange, setOpenChange }}>
       {children}
       <ChangeProviderModal>
-        <ChangeProviderModalContent/>
+        <ChangeProviderModalContent />
       </ChangeProviderModal>
     </changeProviderModalCtx.Provider>
   );
 };
 
 const ChangeProviderModalContent: React.FC = () => {
-  const {setOpenChange, openChange} = React.useContext(
+  const { setOpenChange, openChange } = React.useContext(
     changeProviderModalCtx
   );
   const dispatch = useDispatch();
@@ -60,8 +60,8 @@ const ChangeProviderModalContent: React.FC = () => {
         <div className={classes.text}>
           <div className={classes.icon}>
             <CloseIcon
-              style={{width: "35px", height: "35px"}}
-              onClick={() => setOpenChange({product: null, status: false})}
+              style={{ width: "35px", height: "35px" }}
+              onClick={() => setOpenChange({ product: null, status: false })}
             />
           </div>
           <p className={classes.title}> Внимание! </p>
@@ -75,7 +75,7 @@ const ChangeProviderModalContent: React.FC = () => {
                 onClick={() => {
                   dispatch(clearCart());
                   !!openChange.product && dispatch(addProductToCart(openChange.product))
-                  setOpenChange({product: null, status: false})
+                  setOpenChange({ product: null, status: false })
                 }}
                 className={classes.button__delete}
               >
@@ -89,26 +89,27 @@ const ChangeProviderModalContent: React.FC = () => {
   );
 };
 
-const ChangeProviderModal: React.FC = ({children}) => {
-  const {openChange, setOpenChange} = React.useContext(
+const ChangeProviderModal: React.FC = ({ children }) => {
+  const { openChange, setOpenChange } = React.useContext(
     changeProviderModalCtx
   );
   const isMobile = useMediaQuery("(max-width: 697px)");
 
-  if (isMobile)
-    return (
-      <SwipeableDrawer
-        style={{
-          borderRadius: "20px 20px 0 0",
-        }}
-        anchor="bottom"
-        open={openChange.status}
-        onClose={() => setOpenChange({product: null, status: false})}
-        onOpen={() => setOpenChange({product: null, status: true})}
-      >
-        {children}
-      </SwipeableDrawer>
-    );
+  // if (isMobile)
+  //   return <div>
+  //     <SwipeableDrawer
+  //       style={{
+  //         borderRadius: "20px 20px 0 0",
+  //       }}
+  //       anchor="bottom"
+  //       open={openChange.status}
+  //       onClose={() => setOpenChange({ product: null, status: false })}
+  //       onOpen={() => setOpenChange({ product: null, status: true })}
+  //     >
+  //       {children}
+  //     </SwipeableDrawer>
+  //   </div>
+
 
   return (
     <Modal
