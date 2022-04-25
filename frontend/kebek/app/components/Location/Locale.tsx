@@ -50,13 +50,13 @@ const Locale = () => {
           <div className={classes.headerTooltip_locale}>
             <div className={classes.tooltipBottom_locale}>
               <Link href={path} locale="ru">
-                <div onClick={(e) => handleClick(e.currentTarget.innerText)} className={classes.ru}>
+                <div onClick={(e) => handleClick("Русский")} className={classes.ru}>
                   <Image src={ruFlag} width={28} height={28} />
                   <p>Русский</p>
                 </div>
               </Link>
               <Link href={path} locale="kz">
-                <div onClick={(e) => handleClick(e.currentTarget.innerText)} className={classes.kk}>
+                <div onClick={(e) => handleClick("Казахский")} className={classes.kk}>
                   <Image src={kkFlag} width={28} height={28} />
                   <p>Қазақша</p>
                 </div>

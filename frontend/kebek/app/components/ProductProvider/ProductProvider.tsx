@@ -16,7 +16,7 @@ import Loader from "../Loader/Loader";
 const ProductProvider: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { providerById } = useAppSelector((state) => state.product);
+  const { providerById } = useAppSelector((state: any) => state.product);
 
   const { id } = router.query ?? "";
   const { t } = useTranslation()

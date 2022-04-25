@@ -59,7 +59,7 @@ export const signInUser = createAsyncThunk(
     try {
       return await $api
         .post("/users/login/", { username, password })
-        .then(({ data }) => {
+        .then(({ data }: any) => {
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_type);
           window.localStorage.setItem("client", data.user.id);
@@ -92,9 +92,9 @@ export const forgotPasswordUserCheckCode = createAsyncThunk(
     try {
       const data: any = await $api
         .post("/users/check-code/", { username, code })
-        .then((e) => {
+        .then(({ data }: any) => {
           Router.push("/new_password");
-          return e.data.key;
+          return data.key;
         });
       return data;
     } catch (e) {
@@ -178,7 +178,7 @@ export const signUpUserConfirmationCode = createAsyncThunk(
     try {
       await $api
         .post("/users/register/activate/", { username, code })
-        .then(({ data }) => {
+        .then(({ data }: any) => {
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_role);
           window.localStorage.setItem("client", data.user.id);
@@ -233,9 +233,11 @@ export const createOrder = createAsyncThunk(
   "user/createAddresses",
   async (data: any) => {
     try {
-      const response = await $api.post("/orders/", data).then(({ data }) => {
-        return data;
-      });
+      const response = await $api
+        .post("/orders/", data)
+        .then(({ data }: any) => {
+          return data;
+        });
       return response;
     } catch (e) {
       toast.error("Возникла непредвиденная ошибка!");

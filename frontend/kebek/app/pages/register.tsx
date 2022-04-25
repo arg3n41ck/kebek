@@ -32,7 +32,7 @@ const Schema = yup.object({
   first_name: yup.string().test(
     "first_name",
     "Заполните поле",
-    (value) => !!(value || " ").replace(/\s/g, "")
+    (value: any) => !!(value || " ").replace(/\s/g, "")
   ).required("Пожалуйста, заполните указанные поля"),
 });
 
@@ -107,7 +107,7 @@ function SignUp() {
                 touched,
                 handleChange,
                 handleBlur,
-              }) => {
+              }: any) => {
                 return (
                   <Form className={classes.auth_items__form__form}>
                     <div
@@ -123,7 +123,8 @@ function SignUp() {
 
                       <ReactInputMask
                         style={errors.username ? { border: "1px solid red" } : undefined}
-                        mask="+7(999)9999999"
+                        mask="+999999999999"
+                        // mask="+7(999)9999999"
                         placeholder={router.locale === "ru" ? "Введите номер телефона" : "Телефон нөмірін енгізіңіз"}
                         onChange={handleChange}
                         onBlur={handleBlur}
