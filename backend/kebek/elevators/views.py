@@ -752,16 +752,6 @@ class OrderViewSet(viewsets.ModelViewSet):
         else:
             instance = serializer.save()
 
-        content = f'Заказ №{instance.number} создан и принят в обработку'
-        title = 'Создан'
-
-        create_notification(user, instance, instance.status, title, content)
-
-        if instance.client.notifications_sms:
-            send_sms(instance.client.username, content)
-        if instance.client.notifications_email and instance.client.email:
-            send_email(instance.client.email, title, content)
-
         for item in items:
             product = Product.objects.get(pk=item['product'])
             OrderItem.objects.create(
@@ -772,6 +762,16 @@ class OrderViewSet(viewsets.ModelViewSet):
             )
 
         instance.schedule_payment_expiration()
+
+        content = f'Заказ №{instance.number} создан и принят в обработку'
+        title = 'Создан'
+
+        create_notification(user, instance, instance.status, title, content)
+
+        if instance.client.notifications_sms:
+            send_sms(instance.client.username, content)
+        if instance.client.notifications_email and instance.client.email:
+            send_email(instance.client.email, title, content)
 
         return instance
 
