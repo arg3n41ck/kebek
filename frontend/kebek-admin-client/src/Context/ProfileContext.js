@@ -91,9 +91,6 @@ export default function ProfileProvider({ children }) {
         },
       });
       toast.success("Вы успешно поменяли информация о себе!");
-      //   setTimeout(() => {
-      //     navigate("/profile");
-      //   }, 3000);
     } catch ({ response }) {
       response
         ? toast.error(response)
@@ -104,10 +101,6 @@ export default function ProfileProvider({ children }) {
   const changeProfileNotification = async (data) => {
     try {
       await $api.patch("/users/profile/notifications/", data);
-      // toast.success("Вы успешно поменяли статус уве о себе!");
-      //   setTimeout(() => {
-      //     navigate("/profile");
-      //   }, 3000);
     } catch ({ response }) {
       response
         ? toast.error(response)

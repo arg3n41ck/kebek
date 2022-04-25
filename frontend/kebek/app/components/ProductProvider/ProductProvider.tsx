@@ -16,7 +16,7 @@ import Loader from "../Loader/Loader";
 const ProductProvider: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { providerById } = useAppSelector((state) => state.product);
+  const { providerById } = useAppSelector((state: any) => state.product);
 
   const { id } = router.query ?? "";
   const { t } = useTranslation()
@@ -63,7 +63,7 @@ const ProductProvider: React.FC = () => {
           </div>
           <div className={`col-4 ${classes.provider__logo}`}>
             {providerById.logo &&
-              <img src={providerById.logo} alt="logo" style={{ objectFit: "contain" }} />
+              <img src={providerById.logo} alt="logo" style={{ objectFit: "contain", width: 238 }} />
             }
           </div>
         </div>

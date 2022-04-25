@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from "../../styles/Ordering.module.scss"
 import { Accordion, AccordionSummary, Radio, AccordionDetails, FormControl, Typography, RadioGroup, FormControlLabel, IconButton } from "@mui/material"
 import classNames from "classnames"
@@ -75,7 +75,7 @@ export const MoreInfo = ({ className = "", data }: Props) => {
 };
 
 function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radioPayment, setRequisite, requisite }: any) {
-    const { requisites, delivery, payment } = useAppSelector((state) => state.auth);
+    const { requisites, delivery, payment } = useAppSelector((state: any) => state.auth);
     const router = useRouter()
     const { t } = useTranslation()
 
@@ -133,23 +133,27 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                             <div>
                                 {!!paymentVisible?.length && paymentVisible.map((payment: any) => {
                                     return !!payment?.length && payment.map((item: any) => (
-                                        <FormControlLabel key={item.id} className={classes.formControl__text} value={item.id} control={<Radio />}
-                                            label={<Typography
-                                                color={radioPayment == item.id ? "primary" : "black"}>
-                                                {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
-                                            </Typography>}
-                                        />
+                                        <div key={item.id}>
+                                            <FormControlLabel key={item.id} className={classes.formControl__text} value={item.id} control={<Radio />}
+                                                label={<Typography
+                                                    color={radioPayment == item.id ? "primary" : "black"}>
+                                                    {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
+                                                </Typography>}
+                                            />
+                                        </div>
                                     ))
                                 })}
                                 {!!paymentNotVisible?.length && paymentNotVisible.map((item: any) => (
-                                    <TabPanelUnstyled key={item.id} className={classes.PCenumeration} value={1} >
-                                        <FormControlLabel className={classes.formControl__text} value={item.id} control={<Radio />}
-                                            label={<Typography
-                                                color={radioPayment == item.id ? "primary" : "black"}>
-                                                {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
-                                            </Typography>}
-                                        />
-                                    </TabPanelUnstyled>
+                                    <div key={item.id}>
+                                        <TabPanelUnstyled className={classes.PCenumeration} value={1} >
+                                            <FormControlLabel className={classes.formControl__text} value={item.id} control={<Radio />}
+                                                label={<Typography
+                                                    color={radioPayment == item.id ? "primary" : "black"}>
+                                                    {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
+                                                </Typography>}
+                                            />
+                                        </TabPanelUnstyled>
+                                    </div>
                                 ))}
                             </div>
 

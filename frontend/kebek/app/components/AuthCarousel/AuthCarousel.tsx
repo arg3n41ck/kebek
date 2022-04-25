@@ -23,7 +23,7 @@ function AuthCarousel({ image }: Props) {
       className={classNames(classes.auth_items__carousel, "d-flex flex-column")}
     >
       <div className={classes.swiper}>
-        <Swiper
+        {/* <Swiper
           pagination={true}
           autoplay={{
             delay: 3500
@@ -44,7 +44,7 @@ function AuthCarousel({ image }: Props) {
               <Image src={image} alt="image group 86" />
             </SwiperSlide>
           )}
-        </Swiper>
+        </Swiper> */}
       </div>
     </div >
   );

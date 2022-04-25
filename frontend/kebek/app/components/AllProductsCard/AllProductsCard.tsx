@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, FC } from "react";
 import { Card } from "react-bootstrap";
 import infoIcon from "../../assets/images/info__products.svg";
 import classes from "./AllProductsCard.module.scss";
@@ -6,10 +6,8 @@ import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 import Image from "next/image";
 import classNames from "classnames";
-import { useState } from "react";
 import { IProductV2, IProductProviderV2 } from "../../types/products";
 import Link from "next/link";
-import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   addProductToCart,
@@ -31,7 +29,7 @@ type Props = {
   data: IProductV2;
 };
 
-export const MoreInfo: FC<PropsInfo> = ({ className = "", data }) => {
+export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
   const router = useRouter()
   return (
     <div className={classNames(classes.header__items__location, className)}>
@@ -88,19 +86,19 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }) => {
   );
 };
 
-const AllProductsCard: React.FC<Props> = ({ data }) => {
+const AllProductsCard: React.FC<Props> = ({ data }: any) => {
   const [quantity, setQuantity] = useState(1);
   const priceTon = useMemo(() => {
     return (data.price * 1000 * quantity).toLocaleString("ru-RU");
   }, [data.price, quantity]);
   const isInCart = useAppSelector(
-    (state) => !!cartSelectors.selectById(state, data.id)
+    (state: any) => !!cartSelectors.selectById(state, data.id)
   );
-  const cart = useAppSelector((state) => cartSelectors.selectAll(state));
+  const cart = useAppSelector((state: any) => cartSelectors.selectAll(state));
   const { t } = useTranslation()
   const router = useRouter()
 
-  const countInCart = cart.filter((item) => item.id === data.id && item.quantity)
+  const countInCart = cart.filter((item: any) => item.id === data.id && item.quantity)
   const dispatch = useAppDispatch();
 
   const { setOpenChange: setProviderChange } = React.useContext(
@@ -109,7 +107,7 @@ const AllProductsCard: React.FC<Props> = ({ data }) => {
 
   const handleAddToCart = () => {
     if (cart.length) {
-      const isCartContainsDifferentElevator = cart.some(({ elevator: { id } }) => id !== data?.elevator?.id);
+      const isCartContainsDifferentElevator = cart.some(({ elevator: { id } }: any) => id !== data?.elevator?.id);
 
       isCartContainsDifferentElevator ?
         setProviderChange({ status: true, product: { ...data, quantity } })
@@ -159,6 +157,7 @@ const AllProductsCard: React.FC<Props> = ({ data }) => {
                 "col-md-4 col-6 col-sm-4 d-flex",
                 classes.kilo__text
               )}
+              style={{ marginLeft: 10 }}
             >
               {t("reliableCustomers.za1kg")}
             </div>
@@ -202,12 +201,12 @@ const AllProductsCard: React.FC<Props> = ({ data }) => {
         <div className="row">
           <div className={`col-md-6 col-6 mb-0 ${classes.p}`}>
             <p style={{ color: "#4F4F4F", fontSize: "12px" }}>
-              Мин. {data.min_limit / 1000} тонн
+              Мин. {Math.round(data.min_limit / 1000)} тонн
             </p>
           </div>
           <div className="col-md-6 col-6 d-flex justify-content-end">
             <p style={{ color: "#4F4F4F", fontSize: "12px" }}>
-              Макс. {data.max_limit / 1000} тонн
+              Макс. {Math.round(data.max_limit / 1000)} тонн
             </p>
           </div>
         </div>
