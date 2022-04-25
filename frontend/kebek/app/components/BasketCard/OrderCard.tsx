@@ -72,7 +72,7 @@ function OrderCard({ checkedProducts }: any) {
                                 color="text.secondary"
                             >
                                 Чтобы оформить заказ нужно{" "}
-                                <Link href="/register">зарегестрироваться</Link> или{" "}
+                                <Link href="/register">зарегистрироваться</Link> или{" "}
                                 <Link href="/login">войти</Link> в существующий аккаунт
                             </Typography>
 
