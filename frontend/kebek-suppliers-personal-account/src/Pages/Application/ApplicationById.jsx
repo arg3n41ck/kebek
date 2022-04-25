@@ -401,7 +401,7 @@ function ApplicationById() {
 
                         </AccordionSummary>
                         <AccordionDetails sx={{ padding: 0 }}>
-                            <div style={{ maxHeight: 205, overflowY: "scroll" }}>
+                            <div>
                                 {!!data.products &&
                                     data.products.map((item) => (
                                         <ApplicationByIdProductList

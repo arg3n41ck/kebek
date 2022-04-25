@@ -50,8 +50,9 @@ const BasketInfoCard = ({
     dispatch(changeCheckedItem({ id: data.id, checked: data.checked }));
   };
 
+
   const countDecrement = () => {
-    if (count > 1) {
+    if (count * 1000 >= data.min_limit) {
       const newCount = count - 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));
@@ -132,7 +133,7 @@ const BasketInfoCard = ({
         <div className={classes.amountProduct}>
           <div className={"d-flex justify-content-between"}>
             <button onClick={countDecrement}>-</button>
-            <Typography sx={{ fontSize: 16 }}>{count}</Typography>
+            <Typography sx={{ fontSize: 16 }}>{Math.round(count)}</Typography>
             <button onClick={countIncrement}>+</button>
           </div>
           <Typography

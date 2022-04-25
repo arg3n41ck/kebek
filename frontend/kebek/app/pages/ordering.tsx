@@ -22,7 +22,7 @@ import { EditAdressModalProvider } from "../components/OrderingModals/EditAdress
 import { DeleteAdressModalProvider } from "../components/OrderingModals/DeleteAdressModal";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { cartSelectors, changeCheckedItemAll } from "../redux/products/cart.slice";
+import { cartSelectors, changeCheckedItemAll, clearCart } from "../redux/products/cart.slice";
 import { Card, Checkbox } from "@mui/material";
 import DeleteProductsModal from "../components/DeleteProductModal/DeleteProductsModal";
 import { useTranslation } from "react-i18next"
@@ -113,6 +113,7 @@ function Ordering() {
                 return setOrders(data)
             });
             handleOpen()
+            dispatch(clearCart())
         } catch (e) {
             toast.error("Возникла непредвиденная ошибка!");
         }
@@ -146,12 +147,14 @@ function Ordering() {
             dispatch(fetchAddresses())
             dispatch(fetchRequisites())
         }
-
-        !!delivery?.length && delivery.map((item: any) =>
-            !!item.deliveries &&
-            item.deliveries.filter((item: any) => item.status === "AC" && item.type.title_ru === "Самовывоз" && setDeliveryTab(item.id))
-        )
     }, []);
+
+    React.useEffect(() => {
+        !!delivery?.length && delivery.forEach((item: any) =>
+            !!item.deliveries &&
+            item.deliveries.forEach((item: any) => item.status === "AC" && item.type.title_ru === "Самовывоз" && setDeliveryTab(item.id))
+        )
+    }, [delivery])
 
     return (
         <Suspense fallback={<Loader />} >

@@ -26,7 +26,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
   const router = useRouter()
 
   const countIncrement = () => {
-    if (count * 1000 < data.max_limit) {
+    if (count * 1000 <= data.max_limit) {
       const newCount = count + 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));
@@ -47,7 +47,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
   }
 
   const countDecrement = () => {
-    if (count > 1) {
+    if (count >= data.min_limit / 1000) {
       const newCount = count - 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));
@@ -116,7 +116,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
         <div className={classes.amountProduct}>
           <div className={"d-flex justify-content-between"}>
             <button type="button" onClick={countDecrement}>-</button>
-            <Typography sx={{ fontSize: 16 }}>{count}</Typography>
+            <Typography sx={{ fontSize: 16 }}>{Math.round(count)}</Typography>
             <button type="button" onClick={countIncrement}>+</button>
           </div>
           <Typography

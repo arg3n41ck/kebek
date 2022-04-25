@@ -87,7 +87,7 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
 };
 
 const AllProductsCard: React.FC<Props> = ({ data }: any) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(data?.min_limit / 1000);
   const priceTon = useMemo(() => {
     return (data.price * 1000 * quantity).toLocaleString("ru-RU");
   }, [data.price, quantity]);
@@ -175,8 +175,8 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
                 size="small"
                 aria-label="Disabled slider"
                 valueLabelDisplay="auto"
-                min={data.min_limit / 1000}
-                max={data.max_limit / 1000}
+                min={Math.round(data.min_limit / 1000)}
+                max={Math.round(data.max_limit / 1000)}
                 value={countInCart[0]?.quantity}
                 onChange={handleChangeQuantity}
               />
@@ -189,10 +189,10 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
                 aria-label="Custom marks"
                 valueLabelDisplay="auto"
                 step={1}
-                min={data.min_limit / 1000}
-                max={data.max_limit / 1000}
+                min={Math.round(data.min_limit / 1000)}
+                max={Math.round(data.max_limit / 1000)}
                 style={quantity > data.residue / 1000 ? { color: "red", marginTop: "25px" } : { color: "#219653", marginTop: "25px" }}
-                value={Math.round(data.quantity)}
+                value={Math.round(quantity)}
                 onChange={handleChangeQuantity}
               />
             )

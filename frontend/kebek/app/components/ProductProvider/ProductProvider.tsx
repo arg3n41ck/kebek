@@ -25,7 +25,7 @@ const ProductProvider: React.FC = () => {
     if (id) {
       dispatch(fetchElevatorsById(id))
     }
-  }, [dispatch, id])
+  }, [dispatch, id, router.locale])
 
   if (!providerById) {
     return <Loader />

@@ -140,7 +140,7 @@ function MethodOfObtainingAccordion({ radioDelivery, setRadioDelivery, deliveryT
           <Typography sx={{ fontSize: 21 }}>{t("ordering.accordions.accordion3.heading3")}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TabsUnstyled defaultValue={2}>
+          <TabsUnstyled defaultValue={3}>
             <TabsListUnstyled className={"d-flex"}>
               {!!delivery?.length && delivery.map((item: any) => (
                 <>
@@ -170,7 +170,7 @@ function MethodOfObtainingAccordion({ radioDelivery, setRadioDelivery, deliveryT
                 </>
               ))}
             </TabsListUnstyled>
-            <TabPanelUnstyled value={2}>
+            <TabPanelUnstyled value={3}>
               <Typography
                 className={"mt-4"}
                 sx={{ fontSize: 16 }}

@@ -193,7 +193,7 @@ function ApplicationItem({
               </div>
             </div>
           </CardContent>
-          <div style={{ maxHeight: 205, overflowY: "scroll" }}>
+          <div>
             {!!data?.products?.length &&
               data.products.map((item) => (
                 <>
