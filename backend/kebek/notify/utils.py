@@ -69,17 +69,21 @@ def send_sms(phone_number, content):
 def send_email(email, title, content):
     connection = get_connection(
         host=config('EMAIL_HOST'),
-        port=587,
         username=config('EMAIL_HOST_USER'),
         password=config('EMAIL_HOST_PASSWORD'),
-        use_tls=True
+        port=587,
+        use_tls=True,
+        fail_silently=True
     )
 
     send_mail(
-        content,
-        '',
-        config('EMAIL_HOST_USER'),
-        [email],
+        subject=content,
+        message='',
+        from_email=config('EMAIL_HOST_USER'),
+        recipient_list=[email],
+        fail_silently=True,
+        auth_user=config('EMAIL_HOST_USER'),
+        auth_password=config('EMAIL_HOST_PASSWORD'),
         connection=connection,
         html_message=html_email(content, title)
     )
