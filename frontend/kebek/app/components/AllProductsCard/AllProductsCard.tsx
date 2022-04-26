@@ -89,7 +89,7 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
 const AllProductsCard: React.FC<Props> = ({ data }: any) => {
   const [quantity, setQuantity] = useState(0);
   const priceTon = useMemo(() => {
-    return (data.price * 1000 * quantity).toLocaleString("ru-RU");
+    return (data.price  * quantity -== 0 ? data.min_limit : quantity).toLocaleString("ru-RU");
   }, [data.price, quantity]);
   const isInCart = useAppSelector(
     (state: any) => !!cartSelectors.selectById(state, data.id)
