@@ -123,7 +123,8 @@ function SignUp() {
 
                       <ReactInputMask
                         style={errors.username ? { border: "1px solid red" } : undefined}
-                        mask="+7(999)9999999"
+                        mask="+999999999999"
+                        // mask="+7(999)9999999"
                         placeholder={router.locale === "ru" ? "Введите номер телефона" : "Телефон нөмірін енгізіңіз"}
                         onChange={handleChange}
                         onBlur={handleBlur}

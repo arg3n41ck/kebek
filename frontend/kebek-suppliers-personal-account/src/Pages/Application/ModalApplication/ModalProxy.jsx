@@ -18,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { format, parseISO } from "date-fns";
 import { $api } from '../../../services/api';
+import { kk, ru } from 'date-fns/locale';
 
 const ModalInput = styled.input`
   width: 100%;
@@ -175,7 +176,7 @@ function ModalProxy({
                                             proxyStartDate: `${format(newValue, "yyyy-MM-dd")}`,
                                         }));
                                     }}
-                                    renderInput={(params) => <TextField {...params} />}
+                                    // renderInput={(params) => [<TextField {...params} />, console.log(params)]}
                                 />
                                 <CalendarIconS />
                             </div>

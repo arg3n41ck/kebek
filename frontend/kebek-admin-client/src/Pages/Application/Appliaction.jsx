@@ -42,6 +42,7 @@ import { ReactComponent as CalendarIcon } from "../../static/icons/calendar.svg"
 import { localeContext } from "../../providers/LocaleProvider";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../providers/UserProvider"
+import { ru } from "date-fns/locale";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -316,7 +317,7 @@ function Appliaction() {
             </div>
 
             <div>
-              <Typography sx={{ fontSize: 18 }}>{pageSize} из {orders?.count}</Typography>
+              <Typography sx={{ fontSize: 18 }}>{pageSize <= orders?.count ? pageSize : orders?.count}  из {orders?.count}</Typography>
             </div>
 
             <PaginationApplication
@@ -504,9 +505,14 @@ const ModalCm = ({
             >
               <MobileDatePicker
                 className={"customDatePickerWidth"}
+
                 label="Действительно с:"
                 value={modalValues?.proxyStartDate}
                 name={"proxyStartDate"}
+                locale={ru}
+                okLabel="asdasds"
+                clearLabel="Futa"
+          cancelLabel="Hairisha"
                 onChange={(newValue) => {
                   setModalValues((prev) => ({
                     ...prev,

@@ -20,7 +20,7 @@ const ProductCard: React.FC<Props> = ({ data }) => {
   const cart = useAppSelector((state) => cartSelectors.selectAll(state));
   const [quantity, setQuantity] = useState(0)
   const dispatch = useDispatch();
-  const defaultPrice = (data.price * quantity === 0 ? data.min_limit : quantity).toLocaleString('ru-RU')
+  const defaultPrice = ((!quantity ? data.min_limit : quantity * 1000) * data.price).toLocaleString('ru-RU')
   const [priceTon, setPriceTon] = useState(defaultPrice)
   const countInCart = cart.filter((item: any) => item.id === data.id && item.quantity)
   const isInCart = useAppSelector(
@@ -144,7 +144,7 @@ const ProductCard: React.FC<Props> = ({ data }) => {
                 disabled
                 className={classes.card__button}
                 variant="outlined"
-                style={{ background: "none", color: "gray" }}
+                style={{ background: "none", color: "gray", borderColor: "gray" }}
                 color="primary"
               >
                 {quantity > data.residue / 1000 ? (

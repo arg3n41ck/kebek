@@ -18,7 +18,7 @@ const Schema = yup.object({
   title_ru: yup.string().required('Пожалуйста, заполните указанные поля!'),
   // title_kk: yup.string().required('Пожалуйста, заполните указанные поля!'),
   type: yup.string().required('Пожалуйста, заполните указанные поля!'),
-  price: yup.string().required('Пожалуйста, заполните указанные поля!'),
+  price: yup.number().typeError("Введите число!").required('Пожалуйста, заполните указанные поля!'),
 });
 
 function AddDelivery() {
@@ -80,7 +80,7 @@ function AddDelivery() {
       </h1>
       <Formik
         initialValues={{ elevator: 'default', title_ru: '', title_kk: '', price: '', type: 'default' }}
-        validationSchema={Schema}
+        // validationSchema={Schema}
         onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (

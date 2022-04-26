@@ -204,7 +204,7 @@ export default function PersistentDrawerLeft({ open, setOpen }) {
                     </span>
 
                     {!!notificationsUnRead &&
-                      <StyledBadge style={{ marginTop: 13, marginLeft: 10 }} badgeContent={notificationsUnRead} />
+                      <StyledBadge variant="badge" style={{ marginTop: 13, marginLeft: 10 }} badgeContent={notificationsUnRead} />
                     }
                   </NavLink>
                 </li>

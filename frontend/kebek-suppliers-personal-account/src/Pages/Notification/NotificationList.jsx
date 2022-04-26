@@ -193,7 +193,7 @@ const NotificationList = ({ notificationList }) => {
                 <Badge variant="dot" className={cla.dot} color="error" />
               )}
               <h3>
-                Заказ {item.id} {item.title}
+                 {item.title}
               </h3>
             </div>
             <p>{item.content}</p>

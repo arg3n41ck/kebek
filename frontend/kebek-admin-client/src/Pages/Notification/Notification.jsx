@@ -48,7 +48,7 @@ function Notification() {
 
   const isMedium = useMediaQuery("(max-width: 992px)");
 
-  const { getNotReadNotifications,  getAllNotifications, allNotifications } = useContext(notificationsContext);
+  const { getNotReadNotifications, getAllNotifications, allNotifications } = useContext(notificationsContext);
 
 
   const { t } = useContext(localeContext);
@@ -208,7 +208,7 @@ function Notification() {
         </div>
 
         <div>
-          <Typography sx={{ fontSize: 18 }}>{pageSize} из {notification?.count}</Typography>
+          <Typography sx={{ fontSize: 18 }}>{pageSize <= notification?.count ? pageSize : notification?.count} из {notification?.count}</Typography>
         </div>
 
         <PaginationNotification

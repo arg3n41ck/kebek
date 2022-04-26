@@ -5,6 +5,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import ExpandMoreIcon from "../../static/icons/down.svg";
 import classNames from "classnames";
@@ -20,6 +21,7 @@ import { Link } from "react-router-dom";
 function HomeAccordion({ data }) {
   const [qrValue] = React.useState("arg3n41ck");
   const isMobile = useMediaQuery("(max-width: 578px)");
+  const isMd = useMediaQuery("(max-width: 690px)");
   const { locale } = React.useContext(localeContext);
 
   const [qrCode, setQrCode] = React.useState(null);
@@ -88,8 +90,8 @@ function HomeAccordion({ data }) {
               style={{
                 marginRight: "10%",
                 borderRadius: "3px",
-                height: !isMobile ? "4.5vh" : "3vh",
-                width: !isMobile ? "19%" : "100%",
+                height: !isMd ? "4.5vh" : "3vh",
+                width: !isMd ? "19%" : "100%",
                 color: "#F2994A",
               }}
             >
@@ -107,32 +109,46 @@ function HomeAccordion({ data }) {
               className={classes.elevatorTitle}
               sx={{ fontSize: 21, color: "#303030" }}
             >
-              «{locale ? data?.elevator.titleRu : data?.elevator.titleKk}»
+              «
+              {locale === "ru"
+                ? data?.elevator.titleRu
+                : data?.elevator.titleKk}
+              »
             </Typography>
           </div>
           <div style={{ marginLeft: 10 }} className={"row mt-4 mb-2"}>
             <div className={"col-lg-6"}>
               <Typography sx={{ fontWeight: 600, fontSize: 18 }}>
-                {data.delivery.type.titleRu} в{" "}
-                {!!data.railwayStation && data.railwayStation.descriptionKk}
+                {locale === "ru"
+                  ? data.delivery.type.titleRu
+                  : data.delivery.type.titleKk}{" "}
+                {locale === "ru" && "из"}{" "}
+                {locale === "ru"
+                  ? data.elevator?.titleRu
+                  : data.elevator?.titleKk}
               </Typography>
-              <Typography
-                className={"mt-2"}
-                sx={{ color: "#828282", fontSize: 18 }}
-              >
-                {locale
-                  ? `${data.delivery.type.titleRu} ожидается`
-                  : `${data.delivery.type.titleKk} күтілуде`}
-              </Typography>
+              {data.status === "DD" && (
+                <Typography
+                  className={"mt-2"}
+                  sx={{ color: "#828282", fontSize: 18 }}
+                >
+                  {locale === "ru"
+                    ? `${data.delivery.type.titleRu} ожидается`
+                    : `${data.delivery.type.titleKk} күтілуде`}
+                </Typography>
+              )}
             </div>
             <div
               style={{ maxWidth: 338 }}
               className={classNames("d-flex align-items-center col-lg-6")}
             >
               <div className={classes.progressLine}>
-                <ProgressLineCircleTop active={data.status === "PD"} />
-                <ProgressLineCircleBottom active={data.status === "Оплачен"} />
+                <ProgressLineCircleTop
+                  active={data.status === "PD" || data.status === "DD"}
+                />
+                <ProgressLineCircleBottom active={data.status === "DD"} />
               </div>
+              {console.log(data)}
               <div>
                 <div className={classNames(classes.bullit)}>
                   <Typography sx={{ color: "#092F33", fontSize: 18 }}>
@@ -149,23 +165,70 @@ function HomeAccordion({ data }) {
                 <div className={classNames(classes.bullit, "mt-3")}>
                   <Typography sx={{ color: "#092F33", fontSize: 18 }}>
                     {locale === "ru"
-                      ? "Ожидает самовывоз в"
-                      : "Алып кетуді күтуде"}{" "}
-                    {data.elevator?.titleRu}
+                      ? `Ожидает${
+                          data.delivery.type.titleRu === "Доставка" ? "ся" : ""
+                        } ${data.delivery.type.titleRu} в `
+                      : `${data.delivery.type.titleKk} ${
+                          data.delivery.type.titleKk === "Жеткізу"
+                            ? "жеткізу күтілуде"
+                            : "күтуде"
+                        } `}{" "}
+                    {/* жеткізу күтілуде */}
+                    {data.delivery.type.titleRu === "Доставка"
+                      ? data?.address
+                      : locale === "ru"
+                      ? data.elevator?.titleRu
+                      : data.elevator?.titleKk}
                   </Typography>
                 </div>
               </div>
             </div>
           </div>
 
-          {data.pickup && (
+          {qrCode && (
             <>
               <hr />
-              <img
-                style={{ maxWidth: 78, width: "100%", objectFit: "cover" }}
-                src={qrCode}
-                alt="qr code"
-              />
+              <div
+                style={
+                  isMobile
+                    ? { display: "flex", flexDirection: "column" }
+                    : undefined
+                }
+                className={
+                  "w-100 d-flex justify-content-between align-items-start"
+                }
+              >
+                <div className={"d-flex align-items-center"}>
+                  <img
+                    style={{ maxWidth: 56, width: "100%", objectFit: "cover" }}
+                    src={qrCode}
+                    alt="qr code"
+                  />
+                  <div className={"ms-2"}>
+                    <Typography
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "16px",
+                        color: "#092F33",
+                      }}
+                    >
+                      {locale === "ru"
+                        ? "Ваш QR-код пропуск"
+                        : "Сіздің QR кодыңыз өту"}
+                    </Typography>
+                    <Typography>
+                      {locale === "ru"
+                        ? "Для получение товара предъявите QR-код сотруднику"
+                        : "Тауарды алу үшін қызметкерге QR кодын көрсетіңіз"}
+                    </Typography>
+                  </div>
+                </div>
+                <QrCode
+                  data={qrCode}
+                  qrcodeTitle="Поделиться QR-кодом"
+                  title="qrCode"
+                />
+              </div>
             </>
           )}
         </AccordionDetails>

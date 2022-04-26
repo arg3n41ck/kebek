@@ -52,11 +52,12 @@ function Ordering() {
     const [radioPayment, setRadioPayment] = React.useState(1);
     const [address, setAddress] = React.useState(null);
     const [requisite, setRequisite] = React.useState<any>(null);
-    const [deliveryPaymnent, setDeliveryPaymnent] = React.useState(null);
+    const [deliveryPayment, setDeliveryPayment] = React.useState(null);
     const [postOrders, setPostOrders] = useState<any>(null);
     const [paymentPC, setPaymentPC] = useState<any>(null);
     const dispatch = useAppDispatch();
     const router = useRouter();
+    const formRef = React.useRef();
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
@@ -95,7 +96,7 @@ function Ordering() {
             checking_account: !!requisite && radioPayment === paymentPC?.id ? requisite.checking_account : "",
             title: !!requisite && radioPayment === paymentPC?.id ? requisite.title : "",
             address: !!address ? address : "",
-            delivery_payment: !!deliveryPaymnent ? deliveryPaymnent : 1
+            delivery_payment: !!deliveryPayment ? deliveryPayment : 1
         }
         for (let key in newObj) {
             if (!newObj[key]) {
@@ -136,14 +137,19 @@ function Ordering() {
     }
 
 
-    React.useEffect(() => {
+    React.useEffect(async () => {
         dispatch(fetchStation());
         dispatch(fetchDelivery());
         const userToken = window.localStorage.getItem('token');
         if (!userToken) {
             router.push('/cart');
         } else {
-            dispatch(getUser())
+            const { data } = await $api.get("/users/profile/general/");
+            formRef.current.setValues({
+                fullName: !!data?.first_name ? data.first_name : "",
+                phoneNumber: !!data?.phone_number ? data.phone_number : "",
+                email: !!data?.email ? data.email : ""
+            });
             dispatch(fetchAddresses())
             dispatch(fetchRequisites())
         }
@@ -180,6 +186,7 @@ function Ordering() {
                             initialValues={initialValues}
                             validationSchema={Schema}
                             onSubmit={(values) => handleSubmit(postOrders, values)}
+                            innerRef={formRef}
                         >
                             {({
                                 values,

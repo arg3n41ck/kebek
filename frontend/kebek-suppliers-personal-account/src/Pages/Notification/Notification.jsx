@@ -225,7 +225,7 @@ function Notification() {
 
         <div>
           <Typography sx={{ fontSize: 18 }}>
-            {pageSize} из {notification?.count}
+            {pageSize <= notification?.count ? pageSize : notification?.count} из {notification?.count}
           </Typography>
         </div>
 
