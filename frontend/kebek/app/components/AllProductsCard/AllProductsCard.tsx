@@ -87,7 +87,7 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
 };
 
 const AllProductsCard: React.FC<Props> = ({ data }: any) => {
-  const [quantity, setQuantity] = useState(data?.min_limit / 1000);
+  const [quantity, setQuantity] = useState(0);
   const priceTon = useMemo(() => {
     return (data.price * 1000 * quantity).toLocaleString("ru-RU");
   }, [data.price, quantity]);
@@ -110,11 +110,11 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
       const isCartContainsDifferentElevator = cart.some(({ elevator: { id } }: any) => id !== data?.elevator?.id);
 
       isCartContainsDifferentElevator ?
-        setProviderChange({ status: true, product: { ...data, quantity } })
+        setProviderChange({ status: true, product: { ...data, quantity: quantity === 0 ? data.min_limit / 1000 : quantity } })
         :
-        dispatch(addProductToCart({ ...data, quantity }));
+        dispatch(addProductToCart({ ...data, quantity: quantity === 0 ? data.min_limit / 1000 : quantity }));
     } else {
-      dispatch(addProductToCart({ ...data, quantity }));
+      dispatch(addProductToCart({ ...data, quantity: quantity === 0 ? data.min_limit / 1000 : quantity }));
     }
   };
 
