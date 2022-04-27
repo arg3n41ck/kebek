@@ -57,7 +57,7 @@ function Ordering() {
     const [paymentPC, setPaymentPC] = useState<any>(null);
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const formRef = React.useRef();
+    const formRef = React.useRef(null);
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
@@ -137,19 +137,14 @@ function Ordering() {
     }
 
 
-    React.useEffect(async () => {
+    React.useEffect(() => {
         dispatch(fetchStation());
         dispatch(fetchDelivery());
         const userToken = window.localStorage.getItem('token');
         if (!userToken) {
             router.push('/cart');
         } else {
-            const { data } = await $api.get("/users/profile/general/");
-            formRef.current.setValues({
-                fullName: !!data?.first_name ? data.first_name : "",
-                phoneNumber: !!data?.phone_number ? data.phone_number : "",
-                email: !!data?.email ? data.email : ""
-            });
+            dispatch(getUser())
             dispatch(fetchAddresses())
             dispatch(fetchRequisites())
         }
@@ -186,7 +181,6 @@ function Ordering() {
                             initialValues={initialValues}
                             validationSchema={Schema}
                             onSubmit={(values) => handleSubmit(postOrders, values)}
-                            innerRef={formRef}
                         >
                             {({
                                 values,
