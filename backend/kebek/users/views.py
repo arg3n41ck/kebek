@@ -265,13 +265,13 @@ class UserRegisterViewSet(viewsets.GenericViewSet):
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
-            raise NotFound()
+            raise NotFound('User not found')
 
         verification = SMSVerification.objects.filter(user=user, activated=False, type=NEW_ACCOUNT).latest('created_at')
         is_activated = verification.activate_user(code)
 
         if not is_activated:
-            raise ConflictException()
+            raise NotFound('SMS not found')
 
         serializer = UserSerializer(user, context={'request': request})
 

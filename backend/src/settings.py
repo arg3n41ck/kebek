@@ -173,9 +173,9 @@ AUTH_USER_MODEL = 'users.User'
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kebek.winext@gmail.com'
-EMAIL_HOST_PASSWORD = 'ypwfmxlvbkrzfiuw'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 
 ADMINS = (('Author', 'freckled.cellofun@gmail.com'),)
