@@ -4,7 +4,6 @@ from django.http import HttpResponse
 
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
-from rest_framework.exceptions import NotFound
 from rest_framework.permissions import AllowAny
 
 from django_filters.rest_framework import DjangoFilterBackend
