@@ -75,7 +75,7 @@ function Notification() {
     const res = await $api.get("/notifications/", {
       params: {
         search,
-        order__status: statusFilterCurrent,
+        order_status: statusFilterCurrent,
         page: currentPage,
         page_size: pageSize
       },

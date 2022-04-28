@@ -25,7 +25,7 @@ export const style = {
 
 function Treatment({ open, handleClose, data }) {
     const { user } = useAppSelector((state) => state.auth)
-    const client = window.localStorage.getItem("client")
+    const token = window.localStorage.getItem("token")
     const role = !!user?.user_role && user.user_role === "OW" ? "OW" : "CL";
 
     return (
@@ -40,7 +40,7 @@ function Treatment({ open, handleClose, data }) {
                     <h1>Спасибо за заказ!</h1>
                     <div className={mod.box_inner}>
                         <p>
-                            Ваш заказ № <Link href={`/${role}/auth/${client}/`} passHref><span style={{ cursor: "pointer" }}> {!!data?.number && data.number}</span></Link> <br /> принят в
+                            Ваш заказ № <Link href={`/${role}/auth/${token}/`} passHref><span style={{ cursor: "pointer" }}> {!!data?.number && data.number}</span></Link> <br /> принят в
                             обработку{" "}
                         </p>
                         <Link href={"/"} passHref>

@@ -142,26 +142,35 @@ function HomeAccordion({ data }) {
               style={{ maxWidth: 338 }}
               className={classNames("d-flex align-items-center col-lg-6")}
             >
-              <div className={classes.progressLine}>
-                <ProgressLineCircleTop
-                  active={data.status === "PD" || data.status === "DD"}
-                />
+              <div
+                className={
+                  data.delivery.type.titleRu === "Доставка"
+                    ? classes.progressLine
+                    : classes.progressLineSm
+                }
+              >
+                {data.delivery.type.titleRu === "Доставка" && (
+                  <ProgressLineCircleTop
+                    active={data.status === "PD" || data.status === "DD"}
+                  />
+                )}
                 <ProgressLineCircleBottom active={data.status === "DD"} />
               </div>
-              {console.log(data)}
               <div>
-                <div className={classNames(classes.bullit)}>
-                  <Typography sx={{ color: "#092F33", fontSize: 18 }}>
-                    {locale === "ru"
-                      ? "Передано в доставку"
-                      : "Жеткізу үшін тапсырылды"}
-                  </Typography>
-                  <Typography sx={{ color: "#4F4F4F", fontSize: 14 }}>
-                    {locale === "ru"
-                      ? "Происходит транспортировка товаров до указаного адреса"
-                      : "Тауарлар көрсетілген мекенжайға тасымалданады"}
-                  </Typography>
-                </div>
+                {data.delivery.type.titleRu === "Доставка" && (
+                  <div className={classNames(classes.bullit)}>
+                    <Typography sx={{ color: "#092F33", fontSize: 18 }}>
+                      {locale === "ru"
+                        ? "Передано в доставку"
+                        : "Жеткізу үшін тапсырылды"}
+                    </Typography>
+                    <Typography sx={{ color: "#4F4F4F", fontSize: 14 }}>
+                      {locale === "ru"
+                        ? "Происходит транспортировка товаров до указаного адреса"
+                        : "Тауарлар көрсетілген мекенжайға тасымалданады"}
+                    </Typography>
+                  </div>
+                )}
                 <div className={classNames(classes.bullit, "mt-3")}>
                   <Typography sx={{ color: "#092F33", fontSize: 18 }}>
                     {locale === "ru"
@@ -173,9 +182,8 @@ function HomeAccordion({ data }) {
                             ? "жеткізу күтілуде"
                             : "күтуде"
                         } `}{" "}
-                    {/* жеткізу күтілуде */}
                     {data.delivery.type.titleRu === "Доставка"
-                      ? data?.address
+                      ? !!data?.address
                       : locale === "ru"
                       ? data.elevator?.titleRu
                       : data.elevator?.titleKk}

@@ -13,11 +13,11 @@ const NotificationsProvider = ({ children }) => {
     read = "",
     page = 1,
     pageSize = 3,
-    order__status = "",
+    order_status = "",
   ) => {
     try {
       const { data } = await $api.get("/notifications/", {
-        params: { read, search, page, page_size: pageSize, order__status },
+        params: { read, search, page, page_size: pageSize, order_status },
       });
       setNotifications(data);
     } catch ({ response }) {

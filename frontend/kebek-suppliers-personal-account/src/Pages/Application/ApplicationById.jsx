@@ -61,7 +61,7 @@ const style = {
 };
 
 const initialValues = {
-    type: "PS",
+    type: "WB",
     document: ""
 }
 

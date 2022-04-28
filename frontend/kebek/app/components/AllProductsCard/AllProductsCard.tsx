@@ -31,6 +31,25 @@ type Props = {
 
 export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
   const router = useRouter()
+
+  const myRedirectFunction = function () {
+    if (typeof window !== 'undefined') {
+      router.push(
+        {
+          pathname: `/about-product/[productId]`,
+          query: {
+            ...router.query,
+            productId: data.id
+          },
+        },
+        undefined,
+        {
+          shallow: true,
+        }
+      );
+    }
+  }
+
   return (
     <div className={classNames(classes.header__items__location, className)}>
       <div className={classNames(classes.header__items__location__image)} />
@@ -62,21 +81,17 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
                 </div>
                 <p className={classes.email__text}>{data.email}</p>
               </div>}
-              <Link href={{
-                pathname: `/about/[id]`,
-                query: { id: data.id }
-              }} passHref>
-                <p
-                  style={{
-                    color: "#219653",
-                    fontWeight: 500,
-                    fontSize: "16px",
-                  }}
-                  className="my-3"
-                >
-                  Узнать больше
-                </p>
-              </Link>
+              <p
+                onClick={() => myRedirectFunction()}
+                style={{
+                  color: "#219653",
+                  fontWeight: 500,
+                  fontSize: "16px",
+                }}
+                className="my-3"
+              >
+                Узнать больше
+              </p>
             </div>
             <i />
           </div>

@@ -31,7 +31,7 @@ const BasketInfoCard = ({
   const { t } = useTranslation();
 
   const countIncrement = () => {
-    if (count * 1000 <= data.max_limit) {
+    if (count * 1000 < data.max_limit) {
       const newCount = count + 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));
@@ -52,7 +52,7 @@ const BasketInfoCard = ({
 
 
   const countDecrement = () => {
-    if (count * 1000 >= data.min_limit) {
+    if (count * 1000 > data.min_limit) {
       const newCount = count - 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));

@@ -19,6 +19,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import { format, parseISO } from "date-fns";
 import { $api } from '../../../services/api';
 import { kk, ru } from 'date-fns/locale';
+import { localeContext } from '../../../providers/LocaleProvider';
 
 const ModalInput = styled.input`
   width: 100%;
@@ -80,6 +81,7 @@ function ModalProxy({
     handleClose
 }) {
     const [modalValues, setModalValues] = React.useState(proxyInfo)
+    const {locale} = React.useContext(localeContext)
 
     const inputHandler = (e) => {
         setModalValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -160,7 +162,7 @@ function ModalProxy({
                                 }))
                             }
                         />
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <LocalizationProvider locale={locale === "ru" ? ru : kk} dateAdapter={AdapterDateFns}>
                             <div
                                 className={"customDatePickerWidth"}
                                 style={{ marginBottom: 15 }}
@@ -176,7 +178,7 @@ function ModalProxy({
                                             proxyStartDate: `${format(newValue, "yyyy-MM-dd")}`,
                                         }));
                                     }}
-                                    // renderInput={(params) => [<TextField {...params} />, console.log(params)]}
+                                // renderInput={(params) => [<TextField {...params} />, console.log(params)]}
                                 />
                                 <CalendarIconS />
                             </div>

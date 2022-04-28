@@ -56,8 +56,8 @@ export const StyledBadge = styled(BadgeUnstyled)`
   }
 `;
 
-function Badge() {
-  return <StyledBadge badgeContent={""}></StyledBadge>;
+function Badge(props) {
+  return <StyledBadge badgeContent={""} {...props}></StyledBadge>;
 }
 
 export default Badge;

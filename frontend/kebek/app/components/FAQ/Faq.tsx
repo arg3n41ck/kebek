@@ -17,12 +17,11 @@ const getFaq = async ({ language }: { language: string }) => {
 
 const Faq: React.FC = () => {
   const router: NextRouter = useRouter()
-  const language: string = router.locale === "kz" ? "kk" : "ru";
+  const language: string = router.locale === "ru" ? "ru" : "kk";
   const [col1, setCol1] = useState<[] | null>(null);
   const [col2, setCol2] = useState<[] | null>(null);
   const { t } = useTranslation();
 
-  console.log(col1,col2)
 
   useEffect(() => {
     getFaq({ language }).then(data => {
@@ -45,7 +44,7 @@ const Faq: React.FC = () => {
           </div>
           <div>
             <div className={`row ${classes.faq__column}`}>
-              <div style={{ display: "grid", gridTemplateColumns: "47% 47%",gridGap: "6%" }} className={`${classes.faq__column_items}`}>
+              <div style={{ display: "grid", gridTemplateColumns: "47% 47%", gridGap: "6%" }} className={`${classes.faq__column_items}`}>
                 {!!col1 && col1.filter((item: any) => {
                   return !!item
                 }).map((item: any) => (

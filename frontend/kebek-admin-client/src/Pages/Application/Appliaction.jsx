@@ -42,7 +42,7 @@ import { ReactComponent as CalendarIcon } from "../../static/icons/calendar.svg"
 import { localeContext } from "../../providers/LocaleProvider";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../providers/UserProvider"
-import { ru } from "date-fns/locale";
+import { kk, ru } from "date-fns/locale";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -398,7 +398,7 @@ const ModalCm = ({
 }) => {
   const [modalValues, setModalValues] = useState(currentOrder);
   const [page, setPage] = useState(1);
-  const { t } = useContext(localeContext);
+  const { t, locale } = useContext(localeContext);
 
   const inputHandler = (e) => {
     setModalValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -498,7 +498,7 @@ const ModalCm = ({
               }))
             }
           />
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <LocalizationProvider locale={locale === "ru" ? ru : kk} dateAdapter={AdapterDateFns}>
             <div
               className={"customDatePickerWidth"}
               style={{ marginBottom: 15 }}
@@ -509,10 +509,6 @@ const ModalCm = ({
                 label="Действительно с:"
                 value={modalValues?.proxyStartDate}
                 name={"proxyStartDate"}
-                locale={ru}
-                okLabel="asdasds"
-                clearLabel="Futa"
-          cancelLabel="Hairisha"
                 onChange={(newValue) => {
                   setModalValues((prev) => ({
                     ...prev,

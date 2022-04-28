@@ -149,7 +149,7 @@ function MethodOfObtainingAccordion({ radioDelivery, setRadioDelivery, deliveryT
                       const id = (elem.type.title_ru === "Доставка" || elem.type.title_kk === "Жеткізу") && elem.id
                       return <TabUnstyled
                         key={elem.id}
-                        disabled={elem.id === id}
+                        disabled
                         value={elem.id}
                         type="button"
                         style={

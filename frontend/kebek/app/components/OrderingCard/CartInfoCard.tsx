@@ -26,7 +26,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
   const router = useRouter()
 
   const countIncrement = () => {
-    if (count * 1000 <= data.max_limit) {
+    if (count * 1000 < data.max_limit) {
       const newCount = count + 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));
@@ -47,7 +47,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
   }
 
   const countDecrement = () => {
-    if (count >= data.min_limit / 1000) {
+    if (count > data.min_limit / 1000) {
       const newCount = count - 1;
       setCount(newCount);
       setPrice((data.price * 1000 * newCount).toLocaleString("ru-RU"));

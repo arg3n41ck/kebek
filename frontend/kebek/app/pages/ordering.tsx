@@ -35,12 +35,19 @@ import * as yup from "yup";
 import Loader from "../components/Loader/Loader";
 import { toast } from "react-toastify";
 import $api from "../utils/axios";
+import { DeleteRequisitesModalProvider } from "../components/OrderingModals/DeleteRequisitesModals";
+import { RequisitesEditModalProvider } from "../components/OrderingModals/EditRequisitesModal";
 
 const Schema = yup.object({
     fullName: yup.string().required("Пожалуйста заполните поля:"),
     phoneNumber: yup.string().required("Пожалуйста заполните поля:"),
-    email: yup.string().required("Пожалуйста заполните поля:"),
 });
+
+export function scrollToError(id: string) {
+    let a = document.createElement("a");
+    a.href = `#${id}`;
+    a.click();
+}
 
 function Ordering() {
     const cart = useAppSelector((state) => cartSelectors.selectAll(state));
@@ -57,13 +64,10 @@ function Ordering() {
     const [paymentPC, setPaymentPC] = useState<any>(null);
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const formRef = React.useRef(null);
+    const formRef = React.useRef<any>(null);
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
-
-
-
     const [open, setOpen] = React.useState(false);
     const [orders, setOrders] = React.useState(null)
     const handleOpen = () => setOpen(true);
@@ -77,7 +81,6 @@ function Ordering() {
         phoneNumber: !!user?.phone_number ? user.phone_number : "",
         email: !!user?.email ? user.email : ""
     };
-
 
 
     React.useEffect(() => {
@@ -120,6 +123,16 @@ function Ordering() {
         }
     }
 
+    const changeProfileInfo = async (data: any) => {
+        try {
+            await $api.patch("/users/profile/general/", data).then(() => {
+                dispatch(getUser())
+            })
+        } catch (e: any) {
+            toast.error(`Произошла непредвиденная ошибка!`);
+        }
+    };
+
     const handleOnChange = () => {
         const isCheckedAllCheckbox = !checkboxAll;
         setCheckboxAll(!checkboxAll);
@@ -133,7 +146,18 @@ function Ordering() {
 
 
     const handleSubmit = async (postOrders: any, values: any) => {
-        await orderPost(postOrders)
+        const data: any = {
+            first_name: values.fullName,
+            phone_number: values.phoneNumber,
+            email: values.email
+        }
+        if (!data.email) delete data.email
+        if (!data.first_name || !data.phone_number) {
+            scrollToError("recipientDataAccordion")
+        } else {
+            await changeProfileInfo(data)
+            await orderPost(postOrders)
+        }
     }
 
 
@@ -144,7 +168,17 @@ function Ordering() {
         if (!userToken) {
             router.push('/cart');
         } else {
-            dispatch(getUser())
+            const fetchUserInfo = async () => {
+                await $api.get("/users/profile/general/").then(({ data }: any) => {
+                    formRef.current?.setValues({
+                        fullName: !!data?.first_name ? data.first_name : "",
+                        phoneNumber: !!data?.phone_number ? data.phone_number : "",
+                        email: !!data?.email ? data.email : ""
+                    })
+                })
+
+            }
+            fetchUserInfo()
             dispatch(fetchAddresses())
             dispatch(fetchRequisites())
         }
@@ -156,6 +190,11 @@ function Ordering() {
             item.deliveries.forEach((item: any) => item.status === "AC" && item.type.title_ru === "Самовывоз" && setDeliveryTab(item.id))
         )
     }, [delivery])
+
+    if (!user && !cart?.length && !delivery) {
+        return <Loader />
+    }
+
 
     return (
         <Suspense fallback={<Loader />} >
@@ -181,6 +220,7 @@ function Ordering() {
                             initialValues={initialValues}
                             validationSchema={Schema}
                             onSubmit={(values) => handleSubmit(postOrders, values)}
+                            innerRef={formRef}
                         >
                             {({
                                 values,
@@ -252,7 +292,11 @@ function Ordering() {
                                                 <TabsUnstyled defaultValue={0}>
                                                     <RecipientDataAccordion values={values} handleChange={handleChange} handleBlur={handleBlur} radioFace={radioFace} errors={errors} touched={touched} setRadioFace={setRadioFace} />
                                                     <RequisitesAddModalProvider>
-                                                        <PaymentMethodAccordion setPaymentPC={setPaymentPC} requisite={requisite} setRequisite={setRequisite} setRadioPayment={setRadioPayment} radioPayment={radioPayment} radioFace={radioFace} />
+                                                        <DeleteRequisitesModalProvider>
+                                                            <RequisitesEditModalProvider>
+                                                                <PaymentMethodAccordion setPaymentPC={setPaymentPC} requisite={requisite} setRequisite={setRequisite} setRadioPayment={setRadioPayment} radioPayment={radioPayment} radioFace={radioFace} />
+                                                            </RequisitesEditModalProvider>
+                                                        </DeleteRequisitesModalProvider>
                                                     </RequisitesAddModalProvider>
                                                     <DeleteAdressModalProvider>
                                                         <EditAdressModalProvider>

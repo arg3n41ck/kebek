@@ -12,30 +12,14 @@ import { useAppSelector } from '../../redux/hooks';
 import { editAdressModalCtx } from '../OrderingModals/EditAdressModal';
 import { deleteRequisitesModalCtx } from '../OrderingModals/DeleteRequisitesModals';
 import { useRouter } from 'next/router';
+import { requisitesEditModalCtx } from '../OrderingModals/EditRequisitesModal';
 
-interface Props {
-    className: string,
-    data: {
-        id: number,
-        address: string,
-        city: {
-            id: number
-            title_ru: string,
-            title_kk: string,
-            district: {
-                id: number,
-                title_ru: string,
-                title_kk: string
-            }
-        }
-    }
-}
 
-export const MoreInfo = ({ className = "", data }: Props) => {
-    const { setOpenEdit: setOpenEditRequisiteModal, setData } = React.useContext(editAdressModalCtx);
+export const MoreInfo = ({ className = "", data }: any) => {
+    const { setOpen: setOpenEditRequisiteModal, setData } = React.useContext(requisitesEditModalCtx);
     const { t } = useTranslation()
 
-    const openEditAdressModal = (data: any) => {
+    const openEditRequisiteModal = (data: any) => {
         setOpenEditRequisiteModal(true);
         setData(data)
     };
@@ -55,7 +39,7 @@ export const MoreInfo = ({ className = "", data }: Props) => {
                 <div className={classes.bottom}>
                     <div className={classes.buttons_bottom}>
                         <div
-                            onClick={() => openEditAdressModal(data)}
+                            onClick={() => openEditRequisiteModal(data)}
                             className={classes.update_button}
                         >
                             {t("ordering.accordions.accordion3.modals.title1")}
@@ -103,7 +87,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                 return (item.type.title_ru === "Наличными в кассу" || item.type.title_kk === "Кассаға қолма-қол") && item
             })[0]
         })[0].id)
-    }, [radioFace])
+    }, [radioFace, paymentVisible])
 
     const handleChangeRadioPayment = (event: any) => {
         setRadioPayment(Number(event.target.value));
@@ -113,6 +97,10 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
     const openModal = () => {
         setModalOpen(true);
     }
+
+    React.useEffect(() => {
+        (!requisite && !!requisites?.length) && setRequisite(requisites[0])
+    }, [requisite, requisites])
 
     return (
         <div>
@@ -192,9 +180,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                                             }
                                         </div>
                                     </TabPanelUnstyled>
-
                                 </div>
-
                             ) : null}
 
                         </RadioGroup>
