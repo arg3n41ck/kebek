@@ -51,7 +51,7 @@ function ApplicationByIdDocumentList({ item, isMobile, typeDocument, data, handl
     };
 
     const initialValues = {
-        type: !item.type ? "PS" : item.type,
+        type: !item.type ? "WB" : item.type === "PS" ? "WB" : item.type,
         document: !item.document ? "" : item.document,
     }
 
@@ -218,7 +218,7 @@ function ApplicationByIdDocumentList({ item, isMobile, typeDocument, data, handl
                         >
                             {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
                                 <Form style={{ margin: 15 }}>
-                                    <Typography sx={{ fontSize: !isMobile ? 30 : 18, fontWeight: 600, marginBottom: 5 }}>Добавление документа</Typography>
+                                    <Typography sx={{ fontSize: !isMobile ? 30 : 18, fontWeight: 600, marginBottom: 5 }}>Изменение документа</Typography>
                                     <div style={{ width: '100%' }}>
                                         <TextField
                                             fullWidth

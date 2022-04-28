@@ -1,5 +1,6 @@
 import { TableRow, TableCell, Checkbox, MenuItem, Menu } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom';
 import StatusProduct from '../../components/Status/StatusProduct';
 
 function TableRowList({ row, locale, isItemSelected, labelId, Icon, classes, handleDeleteProducts, handleClickCheckbox, activateDelivery, getDelivery }) {
@@ -111,6 +112,11 @@ function TableRowList({ row, locale, isItemSelected, labelId, Icon, classes, han
                     onClose={handleCloseRow}
                     sx={{ width: '200px' }}
                 >
+                    <Link to={`edit-delivery/${row.id}`}>
+                        <MenuItem sx={{ color: "black" }}>
+                            {locale === "ru" ? "Изменить" : "Өзгерту"}
+                        </MenuItem>
+                    </Link>
                     <MenuItem onClick={() => handleActivate(row.id)}>{locale === "ru" ? "Активировать" : "Іске қосу"}</MenuItem>
                     <MenuItem onClick={() => handleDelete(row.id)}>{locale === "ru" ? "Перенести в архив" : "Мұрағатқа жылжытыңыз"}</MenuItem>
                 </Menu>

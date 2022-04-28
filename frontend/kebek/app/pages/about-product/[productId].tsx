@@ -1,10 +1,8 @@
-import { useMediaQuery } from "@mui/material";
 import React, { Suspense } from "react";
 import Loader from "../../components/Loader/Loader";
 import ProductProvider from "../../components/ProductProvider/ProductProvider";
 
-const Provider = () => {
-  const isMedium = useMediaQuery("(max-width:768px)")
+const Id = () => {
   return (
     <Suspense fallback={<Loader />} >
       <div style={{ minHeight: "90vh", position: "relative", paddingBottom: 150 }}>
@@ -14,4 +12,4 @@ const Provider = () => {
   );
 };
 
-export default Provider;
+export default Id;

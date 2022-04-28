@@ -265,13 +265,13 @@ class UserRegisterViewSet(viewsets.GenericViewSet):
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
-            raise NotFound()
+            raise NotFound('User not found')
 
         verification = SMSVerification.objects.filter(user=user, activated=False, type=NEW_ACCOUNT).latest('created_at')
         is_activated = verification.activate_user(code)
 
         if not is_activated:
-            raise ConflictException()
+            raise NotFound('SMS not found')
 
         serializer = UserSerializer(user, context={'request': request})
 
@@ -295,6 +295,11 @@ class UserLoginView(ObtainAuthToken):
         responses={200: UserResponseSerializer}
     )
     def post(self, request, *args, **kwargs):
+        try:
+            User.objects.get(username=request.data['username'].replace(' ', ''))
+        except User.DoesNotExist:
+            raise NotFound()
+
         serializer = self.serializer_class(
             data=request.data, context={'request': request}
         )
@@ -378,7 +383,7 @@ class UserAddressesViewSet(viewsets.ModelViewSet):
         return AddressCreateSerializer
 
     def get_queryset(self):
-        return Address.objects.filter(user=self.request.user)
+        return Address.objects.filter(user=self.request.user).order_by('id')
 
     def create(self, request, *args, **kwargs):
         serializer = AddressCreateSerializer(data=request.data)
@@ -409,7 +414,7 @@ class UserRequisitesViewSet(viewsets.ModelViewSet):
     serializer_class = RequisitesSerializer
 
     def get_queryset(self):
-        return Requisites.objects.filter(user=self.request.user)
+        return Requisites.objects.filter(user=self.request.user).order_by('id')
 
     def perform_create(self, serializer):
         return serializer.save(user=self.request.user)

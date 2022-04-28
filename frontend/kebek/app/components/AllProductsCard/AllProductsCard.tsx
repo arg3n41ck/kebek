@@ -31,6 +31,25 @@ type Props = {
 
 export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
   const router = useRouter()
+
+  const myRedirectFunction = function () {
+    if (typeof window !== 'undefined') {
+      router.push(
+        {
+          pathname: `/about-product/[productId]`,
+          query: {
+            ...router.query,
+            productId: data.id
+          },
+        },
+        undefined,
+        {
+          shallow: true,
+        }
+      );
+    }
+  }
+
   return (
     <div className={classNames(classes.header__items__location, className)}>
       <div className={classNames(classes.header__items__location__image)} />
@@ -62,21 +81,17 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
                 </div>
                 <p className={classes.email__text}>{data.email}</p>
               </div>}
-              <Link href={{
-                pathname: `/about/[id]`,
-                query: { id: data.id }
-              }} passHref>
-                <p
-                  style={{
-                    color: "#219653",
-                    fontWeight: 500,
-                    fontSize: "16px",
-                  }}
-                  className="my-3"
-                >
-                  Узнать больше
-                </p>
-              </Link>
+              <p
+                onClick={() => myRedirectFunction()}
+                style={{
+                  color: "#219653",
+                  fontWeight: 500,
+                  fontSize: "16px",
+                }}
+                className="my-3"
+              >
+                Узнать больше
+              </p>
             </div>
             <i />
           </div>
@@ -87,9 +102,9 @@ export const MoreInfo: FC<PropsInfo> = ({ className = "", data }: any) => {
 };
 
 const AllProductsCard: React.FC<Props> = ({ data }: any) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const priceTon = useMemo(() => {
-    return (data.price * 1000 * quantity).toLocaleString("ru-RU");
+    return ((!quantity ? data.min_limit : quantity * 1000) * data.price).toLocaleString("ru-RU");
   }, [data.price, quantity]);
   const isInCart = useAppSelector(
     (state: any) => !!cartSelectors.selectById(state, data.id)
@@ -110,11 +125,11 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
       const isCartContainsDifferentElevator = cart.some(({ elevator: { id } }: any) => id !== data?.elevator?.id);
 
       isCartContainsDifferentElevator ?
-        setProviderChange({ status: true, product: { ...data, quantity } })
+        setProviderChange({ status: true, product: { ...data, quantity: quantity === 0 ? data.min_limit / 1000 : quantity } })
         :
-        dispatch(addProductToCart({ ...data, quantity }));
+        dispatch(addProductToCart({ ...data, quantity: quantity === 0 ? data.min_limit / 1000 : quantity }));
     } else {
-      dispatch(addProductToCart({ ...data, quantity }));
+      dispatch(addProductToCart({ ...data, quantity: quantity === 0 ? data.min_limit / 1000 : quantity }));
     }
   };
 
@@ -175,8 +190,8 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
                 size="small"
                 aria-label="Disabled slider"
                 valueLabelDisplay="auto"
-                min={data.min_limit / 1000}
-                max={data.max_limit / 1000}
+                min={Math.round(data.min_limit / 1000)}
+                max={Math.round(data.max_limit / 1000)}
                 value={countInCart[0]?.quantity}
                 onChange={handleChangeQuantity}
               />
@@ -189,10 +204,10 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
                 aria-label="Custom marks"
                 valueLabelDisplay="auto"
                 step={1}
-                min={data.min_limit / 1000}
-                max={data.max_limit / 1000}
+                min={Math.round(data.min_limit / 1000)}
+                max={Math.round(data.max_limit / 1000)}
                 style={quantity > data.residue / 1000 ? { color: "red", marginTop: "25px" } : { color: "#219653", marginTop: "25px" }}
-                value={data.quantity}
+                value={Math.round(quantity)}
                 onChange={handleChangeQuantity}
               />
             )

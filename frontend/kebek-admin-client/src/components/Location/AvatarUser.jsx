@@ -81,7 +81,7 @@ const AvatarUser = ({ className = "", data, handleClose }) => {
         <div style={{ cursor: "pointer" }} onClick={() => setYourCityConfirm(!yourCityConfirm)}>
           <Avatar src={!!data?.image ? data.image : ""} alt="Remy Sharp" />
           {!!notificationsUnRead &&
-            <StyledBadge badgeContent={notificationsUnRead} />
+            <StyledBadge variant="badge" badgeContent={notificationsUnRead} />
           }
         </div>
         {yourCityConfirm && (
@@ -107,7 +107,7 @@ const AvatarUser = ({ className = "", data, handleClose }) => {
                   <div className={"d-flex align-items-center mt-3"} style={{ fontSize: 18, color: '#092F33' }}>
                     <Typography color="#092F33" sx={{ fontSize: 18, cursor: "pointer" }}>{locale === "ru" ? "Уведомления" : "Хабарландырулар"}</Typography>
                     {!!notificationsUnRead &&
-                      <StyledBadge style={{ marginLeft: 18, marginTop: 15 }} badgeContent={notificationsUnRead} />
+                      <StyledBadge variant="badge" style={{ marginLeft: 18, marginTop: 15 }} badgeContent={notificationsUnRead} />
                     }
                   </div>
                 </Link>

@@ -158,7 +158,7 @@ function Header() {
                             {t("header.title1")}
                           </Nav.Link>
                         </Link>
-                        <Link href="/#about" passHref>
+                        <Link href="/ordering/#recipientDataAccordion" passHref>
                           <Nav.Link className={`${classes.navItem} p-0`}>
                             {t("header.title2")}
                           </Nav.Link>

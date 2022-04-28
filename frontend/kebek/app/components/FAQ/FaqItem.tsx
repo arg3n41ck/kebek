@@ -15,6 +15,8 @@ export interface IFaqItem {
 
 type Props = {
   data: IFaqItem;
+  col: string;
+  key: number
 };
 
 
@@ -28,9 +30,9 @@ function formatMyText(text: string): string {
   return result;
 }
 
-const FaqItem: React.FC<Props> = ({ data }) => {
+const FaqItem: React.FC<Props> = ({ data, key, col }) => {
   return (
-    <div>
+    <div key={key}>
       <Accordion style={{ boxShadow: "none" }}>
         <AccordionSummary
           expandIcon={<ArrowForwardIosSharpIcon />}
@@ -52,9 +54,9 @@ const FaqItem: React.FC<Props> = ({ data }) => {
           } ></div>
         </AccordionDetails>
       </Accordion>
-      {data.id == 1 && <hr className={classes.hr_mobile} />}
-      {data.id == 3 && <hr className={classes.hr_mobile1} />}
-      {data.id == 2 && <hr className={classNames("d-none", classes.hr_mobile2)} />}
+      {col === "1" && <hr className={classes.hr_mobile} />}
+      {/* {data.id == 3 && <hr className={classes.hr_mobile1} />} */}
+      {col === "1" && <hr className={classNames("d-none", classes.hr_mobile2)} />}
 
     </div >
   );

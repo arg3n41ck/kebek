@@ -16,15 +16,14 @@ const Locale = () => {
   const [pathname, setPathname] = useState(router.asPath);
 
   const handleClick = (value: string) => {
-    const ifLang = value === "Русский"
-    ifLang ? i18n.changeLanguage("ru") : i18n.changeLanguage("kz");
+    i18n.changeLanguage(value)
   }
 
-  const path: any = router.pathname
 
   useEffect(() => {
-    if (router.route === '/about/[id]') {
-      if (router.asPath === "/about/[id]") {
+    console.log(pathname)
+    if (router.route === '/about-product/[productId]') {
+      if (router.asPath === "/about-product/[productId]") {
         const aboutAsPath = window.localStorage.getItem('dynamicPageAsPath');
         if (aboutAsPath) {
           setPathname(aboutAsPath);
@@ -32,11 +31,14 @@ const Locale = () => {
         }
         router.push('/');
       } else {
-        window.localStorage.setItem('dynamicPageAsPath', pathname);
         setPathname(router.asPath);
+        window.localStorage.setItem('dynamicPageAsPath', router.asPath);
       }
+    } else {
+      setPathname(router.asPath);
+      window.localStorage.setItem('dynamicPageAsPath', router.asPath);
     }
-  }, []);
+  }, [router.route]);
 
   return (
     <div className={classNames(classes.header__items__locale)}>
@@ -49,14 +51,14 @@ const Locale = () => {
         <div className={isMobile ? classes.bottom_locale_menu : classes.bottom_locale}>
           <div className={classes.headerTooltip_locale}>
             <div className={classes.tooltipBottom_locale}>
-              <Link href={path} locale="ru">
-                <div onClick={(e) => handleClick("Русский")} className={classes.ru}>
+              <Link href={pathname} locale="ru">
+                <div onClick={(e) => handleClick("ru")} className={classes.ru}>
                   <Image src={ruFlag} width={28} height={28} />
                   <p>Русский</p>
                 </div>
               </Link>
-              <Link href={path} locale="kz">
-                <div onClick={(e) => handleClick("Казахский")} className={classes.kk}>
+              <Link href={pathname} locale="kz">
+                <div onClick={(e) => handleClick("kz")} className={classes.kk}>
                   <Image src={kkFlag} width={28} height={28} />
                   <p>Қазақша</p>
                 </div>

@@ -17,7 +17,6 @@ const ProductProvider: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { providerById } = useAppSelector((state: any) => state.product);
-
   const { id } = router.query ?? "";
   const { t } = useTranslation()
 
@@ -34,12 +33,10 @@ const ProductProvider: React.FC = () => {
   return (
     <div className={classNames("container", classes.container_provider)}>
       <section className={classes.provider}>
-        <Link className={classes.back_button_link} href="/all_products">
-          <div className={classes.back_button}>
-            <Image src={ArrowBackIcon} alt='' />
-            <b className={"ms-2"}>{t("allProducts.pagination.title1")}</b>
-          </div>
-        </Link>
+        <div onClick={() => router.back()} className={classes.back_button}>
+          <Image src={ArrowBackIcon} alt='' />
+          <b className={"ms-2"}>{t("allProducts.pagination.title1")}</b>
+        </div>
         <h2 className={classes.about__provider}><b>{t("about.title1")}</b></h2>
         <div className={classes.provider__logoNone}>
           {providerById.logo &&
@@ -77,9 +74,7 @@ const ProductProvider: React.FC = () => {
               {providerById.address_ru && providerById.address_kk && (
                 <>
                   <LocationOnIcon className={classes.contact__icon} />
-                  <Link className={classes.contact_icon_link} href={`#`}>
-                    {router.locale === "ru" ? providerById.address_ru : providerById.address_kk}
-                  </Link>
+                  {router.locale === "ru" ? providerById.address_ru : providerById.address_kk}
                 </>
               )}
             </li>
@@ -87,9 +82,7 @@ const ProductProvider: React.FC = () => {
               {providerById.email && (
                 <>
                   <LanguageSharpIcon className={classes.contact__icon} />
-                  <Link className={classes.contact_icon_link} href={`#`}>
-                    {providerById.email}
-                  </Link>
+                  {providerById.email}
                 </>
               )}
             </li>
@@ -97,7 +90,7 @@ const ProductProvider: React.FC = () => {
               {providerById.website && (
                 <>
                   <LanguageSharpIcon className={classes.contact__icon} />
-                  <Link className={classes.contact_icon_link} href={`${providerById.website}`} target="_blank">
+                  <Link className={classes.contact_icon_link} href={providerById.website} target="_blank">
                     {providerById.website}
                   </Link>
                 </>

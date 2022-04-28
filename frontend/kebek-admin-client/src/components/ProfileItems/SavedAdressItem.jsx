@@ -31,14 +31,16 @@ const Schema = yup.object({
 });
 
 function SavedAdressItem({ item, values }) {
+  const { t, locale } = React.useContext(localeContext);
   const { cities, getAddresses, deleteAddresses, changedAddresses } =
     React.useContext(profileContext);
   const citiesComplete =
-    cities?.map((item) => ({ label: item.titleRu, id: item.id })) || [];
-  const { t } = React.useContext(localeContext);
+    cities?.map((item) => ({ label: locale === "ru" ? item.titleRu : item.titleKk, id: item.id })) || [];
+
+  console.log(item)
 
   const initialValues = {
-    city: item.city.titleRu,
+    city: { label: locale === "ru" ? item.city.titleRu : item.city.titleKk, id: item.city.id },
     address: item.address,
   };
 
@@ -206,7 +208,7 @@ function SavedAdressItem({ item, values }) {
                       <div
                         style={
                           (errors.address && touched.address) ||
-                          (errors.city && touched.city)
+                            (errors.city && touched.city)
                             ? { marginBottom: 14 }
                             : { marginBottom: 14 }
                         }
@@ -216,6 +218,7 @@ function SavedAdressItem({ item, values }) {
                           options={citiesComplete}
                           sx={{ width: '100%' }}
                           value={values.city}
+                          getOptionLabel={(option) => option.label}
                           name='city'
                           onBlur={handleBlur}
                           onChange={(e, value) => setFieldValue('city', value)}
@@ -242,16 +245,16 @@ function SavedAdressItem({ item, values }) {
                         />
                         {((errors.address && touched.address) ||
                           (errors.city && touched.city)) && (
-                          <div style={{ position: 'absolute' }}>
-                            <p className={'text-danger'}>
-                              {errors.address || errors.city}
-                            </p>
-                          </div>
-                        )}
+                            <div style={{ position: 'absolute' }}>
+                              <p className={'text-danger'}>
+                                {errors.address || errors.city}
+                              </p>
+                            </div>
+                          )}
                       </div>
 
                       {(errors.address && touched.address) ||
-                      (errors.city && touched.city) ? (
+                        (errors.city && touched.city) ? (
                         <button type='submit'>
                           {t.profile.requisites.modal2.updateModal.button}
                         </button>

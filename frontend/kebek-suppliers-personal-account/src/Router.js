@@ -23,6 +23,7 @@ import ApplicationItem from "./Pages/Application/ApplicationById";
 import EditGoods from "./Pages/Goods/EditGoods";
 import EditStaff from "./Pages/Staff/EditStaff";
 import Profile from "./Pages/Profile/Profile";
+import EditDelivery from "./Pages/Delivery/EditDelivery";
 
 function Router() {
   return (
@@ -35,6 +36,7 @@ function Router() {
       <Route path="/payment" element={<Payment />} />
       <Route path="/payment/add_payment" element={<AddPayment />} />
       <Route path="/payment/edit-payment/:id" element={<EditPayment />} />
+      <Route path="/delivery/edit-delivery/:id" element={<EditDelivery />} />
       <Route path="/goods" element={<Goods />} />
       <Route path="/delivery" element={<Delivery />} />
       <Route path="/delivery/add_delivery" element={<AddDelivery />} />

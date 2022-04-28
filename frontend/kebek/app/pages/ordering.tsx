@@ -22,7 +22,7 @@ import { EditAdressModalProvider } from "../components/OrderingModals/EditAdress
 import { DeleteAdressModalProvider } from "../components/OrderingModals/DeleteAdressModal";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { cartSelectors, changeCheckedItemAll } from "../redux/products/cart.slice";
+import { cartSelectors, changeCheckedItemAll, clearCart } from "../redux/products/cart.slice";
 import { Card, Checkbox } from "@mui/material";
 import DeleteProductsModal from "../components/DeleteProductModal/DeleteProductsModal";
 import { useTranslation } from "react-i18next"
@@ -35,12 +35,19 @@ import * as yup from "yup";
 import Loader from "../components/Loader/Loader";
 import { toast } from "react-toastify";
 import $api from "../utils/axios";
+import { DeleteRequisitesModalProvider } from "../components/OrderingModals/DeleteRequisitesModals";
+import { RequisitesEditModalProvider } from "../components/OrderingModals/EditRequisitesModal";
 
 const Schema = yup.object({
     fullName: yup.string().required("Пожалуйста заполните поля:"),
     phoneNumber: yup.string().required("Пожалуйста заполните поля:"),
-    email: yup.string().required("Пожалуйста заполните поля:"),
 });
+
+export function scrollToError(id: string) {
+    let a = document.createElement("a");
+    a.href = `#${id}`;
+    a.click();
+}
 
 function Ordering() {
     const cart = useAppSelector((state) => cartSelectors.selectAll(state));
@@ -52,17 +59,15 @@ function Ordering() {
     const [radioPayment, setRadioPayment] = React.useState(1);
     const [address, setAddress] = React.useState(null);
     const [requisite, setRequisite] = React.useState<any>(null);
-    const [deliveryPaymnent, setDeliveryPaymnent] = React.useState(null);
+    const [deliveryPayment, setDeliveryPayment] = React.useState(null);
     const [postOrders, setPostOrders] = useState<any>(null);
     const [paymentPC, setPaymentPC] = useState<any>(null);
     const dispatch = useAppDispatch();
     const router = useRouter();
+    const formRef = React.useRef<any>(null);
     const [checkedState, setCheckedState] = React.useState(
         !!cart.length ? cart.map((item) => ({ ...item })) : []
     );
-
-
-
     const [open, setOpen] = React.useState(false);
     const [orders, setOrders] = React.useState(null)
     const handleOpen = () => setOpen(true);
@@ -76,7 +81,6 @@ function Ordering() {
         phoneNumber: !!user?.phone_number ? user.phone_number : "",
         email: !!user?.email ? user.email : ""
     };
-
 
 
     React.useEffect(() => {
@@ -95,7 +99,7 @@ function Ordering() {
             checking_account: !!requisite && radioPayment === paymentPC?.id ? requisite.checking_account : "",
             title: !!requisite && radioPayment === paymentPC?.id ? requisite.title : "",
             address: !!address ? address : "",
-            delivery_payment: !!deliveryPaymnent ? deliveryPaymnent : 1
+            delivery_payment: !!deliveryPayment ? deliveryPayment : 1
         }
         for (let key in newObj) {
             if (!newObj[key]) {
@@ -113,10 +117,21 @@ function Ordering() {
                 return setOrders(data)
             });
             handleOpen()
+            dispatch(clearCart())
         } catch (e) {
             toast.error("Возникла непредвиденная ошибка!");
         }
     }
+
+    const changeProfileInfo = async (data: any) => {
+        try {
+            await $api.patch("/users/profile/general/", data).then(() => {
+                dispatch(getUser())
+            })
+        } catch (e: any) {
+            toast.error(`Произошла непредвиденная ошибка!`);
+        }
+    };
 
     const handleOnChange = () => {
         const isCheckedAllCheckbox = !checkboxAll;
@@ -131,7 +146,18 @@ function Ordering() {
 
 
     const handleSubmit = async (postOrders: any, values: any) => {
-        await orderPost(postOrders)
+        const data: any = {
+            first_name: values.fullName,
+            phone_number: values.phoneNumber,
+            email: values.email
+        }
+        if (!data.email) delete data.email
+        if (!data.first_name || !data.phone_number) {
+            scrollToError("recipientDataAccordion")
+        } else {
+            await changeProfileInfo(data)
+            await orderPost(postOrders)
+        }
     }
 
 
@@ -142,16 +168,33 @@ function Ordering() {
         if (!userToken) {
             router.push('/cart');
         } else {
-            dispatch(getUser())
+            const fetchUserInfo = async () => {
+                await $api.get("/users/profile/general/").then(({ data }: any) => {
+                    formRef.current?.setValues({
+                        fullName: !!data?.first_name ? data.first_name : "",
+                        phoneNumber: !!data?.phone_number ? data.phone_number : "",
+                        email: !!data?.email ? data.email : ""
+                    })
+                })
+
+            }
+            fetchUserInfo()
             dispatch(fetchAddresses())
             dispatch(fetchRequisites())
         }
-
-        !!delivery?.length && delivery.map((item: any) =>
-            !!item.deliveries &&
-            item.deliveries.filter((item: any) => item.status === "AC" && item.type.title_ru === "Самовывоз" && setDeliveryTab(item.id))
-        )
     }, []);
+
+    React.useEffect(() => {
+        !!delivery?.length && delivery.forEach((item: any) =>
+            !!item.deliveries &&
+            item.deliveries.forEach((item: any) => item.status === "AC" && item.type.title_ru === "Самовывоз" && setDeliveryTab(item.id))
+        )
+    }, [delivery])
+
+    if (!user && !cart?.length && !delivery) {
+        return <Loader />
+    }
+
 
     return (
         <Suspense fallback={<Loader />} >
@@ -177,6 +220,7 @@ function Ordering() {
                             initialValues={initialValues}
                             validationSchema={Schema}
                             onSubmit={(values) => handleSubmit(postOrders, values)}
+                            innerRef={formRef}
                         >
                             {({
                                 values,
@@ -248,7 +292,11 @@ function Ordering() {
                                                 <TabsUnstyled defaultValue={0}>
                                                     <RecipientDataAccordion values={values} handleChange={handleChange} handleBlur={handleBlur} radioFace={radioFace} errors={errors} touched={touched} setRadioFace={setRadioFace} />
                                                     <RequisitesAddModalProvider>
-                                                        <PaymentMethodAccordion setPaymentPC={setPaymentPC} requisite={requisite} setRequisite={setRequisite} setRadioPayment={setRadioPayment} radioPayment={radioPayment} radioFace={radioFace} />
+                                                        <DeleteRequisitesModalProvider>
+                                                            <RequisitesEditModalProvider>
+                                                                <PaymentMethodAccordion setPaymentPC={setPaymentPC} requisite={requisite} setRequisite={setRequisite} setRadioPayment={setRadioPayment} radioPayment={radioPayment} radioFace={radioFace} />
+                                                            </RequisitesEditModalProvider>
+                                                        </DeleteRequisitesModalProvider>
                                                     </RequisitesAddModalProvider>
                                                     <DeleteAdressModalProvider>
                                                         <EditAdressModalProvider>

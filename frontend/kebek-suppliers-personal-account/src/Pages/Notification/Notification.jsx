@@ -61,6 +61,7 @@ function Notification() {
     notifications,
     getAllNotifications,
     allNotifications,
+    getNotReadNotifications
   } = useContext(notificationsContext);
 
   const { t, locale } = useContext(localeContext);
@@ -87,7 +88,7 @@ function Notification() {
     const res = await $api.get("/notifications/", {
       params: {
         search: value,
-        order__status: statusFilterCurrent,
+        order_status: statusFilterCurrent,
         page: currentPage,
         page_size: pageSize,
       },
@@ -186,7 +187,7 @@ function Notification() {
           </Select>
         </FormControl>
       </div>
-      <NotificationList notificationList={notification.results} />
+      <NotificationList getNotReadNotifications={getNotReadNotifications} notificationList={notification.results} />
       <div
         className={
           isMedium
@@ -225,7 +226,7 @@ function Notification() {
 
         <div>
           <Typography sx={{ fontSize: 18 }}>
-            {pageSize} из {notification?.count}
+            {pageSize <= notification?.count ? pageSize : notification?.count} из {notification?.count}
           </Typography>
         </div>
 

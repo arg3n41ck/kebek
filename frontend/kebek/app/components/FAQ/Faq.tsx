@@ -17,15 +17,19 @@ const getFaq = async ({ language }: { language: string }) => {
 
 const Faq: React.FC = () => {
   const router: NextRouter = useRouter()
-  const language: string = router.locale === "kz" ? "kk" : "ru";
+  const language: string = router.locale === "ru" ? "ru" : "kk";
   const [col1, setCol1] = useState<[] | null>(null);
+  const [col2, setCol2] = useState<[] | null>(null);
   const { t } = useTranslation();
+
 
   useEffect(() => {
     getFaq({ language }).then(data => {
-      setCol1(data?.qa?.slice(0, data?.qa?.length) || []);
+      setCol1(data?.qa?.slice(0, data?.qa?.length / 2) || []);
+      setCol2(data?.qa?.slice(data?.qa?.length / 2, data?.qa?.length) || []);
     })
   }, [language]);
+
 
   return (
     <>
@@ -40,12 +44,19 @@ const Faq: React.FC = () => {
           </div>
           <div>
             <div className={`row ${classes.faq__column}`}>
-              <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }} className={`${classes.faq__column_items}`}>
+              <div style={{ display: "grid", gridTemplateColumns: "47% 47%", gridGap: "6%" }} className={`${classes.faq__column_items}`}>
                 {!!col1 && col1.filter((item: any) => {
                   return !!item
                 }).map((item: any) => (
                   <>
-                    <FaqItem data={item} key={item.id} />
+                    <FaqItem data={item} key={item.id} col="1" />
+                  </>
+                ))}
+                {!!col2 && col2.filter((item: any) => {
+                  return !!item
+                }).map((item: any) => (
+                  <>
+                    <FaqItem data={item} key={item.id} col="2" />
                   </>
                 ))}
               </div>

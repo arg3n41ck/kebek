@@ -95,8 +95,9 @@ const NotificationList = ({ notificationList, getNotReadNotifications }) => {
     setNotifications(newArr);
     await $api.post("/notifications/read/", { ids: checkedIds })
     getNotReadNotifications()
-    setNotifications(null)
   };
+
+  console.log(checkedIds)
 
   if (!notifications) {
     return null;
@@ -122,7 +123,7 @@ const NotificationList = ({ notificationList, getNotReadNotifications }) => {
           </Typography>
         </div>
         <div className={classNames(cla.beginer_right, "d-flex align-items-center")}>
-          <Button disabled={!notifications?.length || !checkedIds.length} color="success" onClick={() => handleOpen()}>
+          <Button disabled={!notifications?.length || !checkedIds?.length} color="success" onClick={() => handleOpen()}>
             {t.notifications.cardInfo.button1}
           </Button>
 
@@ -173,7 +174,7 @@ const NotificationList = ({ notificationList, getNotReadNotifications }) => {
               </div>
             </Box>
           </Modal>
-          <Button disabled={!notifications?.length || !checkedIds.length} color="success">
+          <Button disabled={!notifications?.length || !checkedIds?.length} color="success">
             <p onClick={unreadHandler}>{t.notifications.cardInfo.button2}</p>
           </Button>
         </div>

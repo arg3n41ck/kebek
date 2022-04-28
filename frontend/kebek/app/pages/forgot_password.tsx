@@ -98,6 +98,7 @@ function Forgot_password() {
                   <Form className={classes.auth_items__form__form}>
                     <ReactInputMask
                       className={"mb-3"}
+                      // mask="+999999999999"
                       mask="+7(999)9999999"
                       style={errors.username && touched.username ? { borderColor: "red" } : { marginBottom: 40 }}
                       type="text"

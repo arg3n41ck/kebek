@@ -35,22 +35,6 @@ export const StyledBadge = styled(BadgeUnstyled)`
     box-shadow: 0 0 0 1px #fff !important;
   }
 
-  & .MuiBadge-customBadge {
-    z-index: auto;
-    min-width: 20px;
-    height: 20px;
-    padding: 0 6px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
-    white-space: nowrap;
-    text-align: center;
-    background: #ff4d4f;
-    border-radius: 10px;
-    box-shadow: 0 0 0 1px #fff;
-  }
-
   & .MuiBadge-dot {
     padding: 0 !important;
     z-index: auto !important;
@@ -72,8 +56,8 @@ export const StyledBadge = styled(BadgeUnstyled)`
   }
 `;
 
-function Badge() {
-  return <StyledBadge badgeContent={""}></StyledBadge>;
+function Badge(props) {
+  return <StyledBadge badgeContent={""} {...props}></StyledBadge>;
 }
 
 export default Badge;

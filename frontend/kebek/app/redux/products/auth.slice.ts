@@ -63,7 +63,8 @@ export const signInUser = createAsyncThunk(
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_type);
           window.localStorage.setItem("client", data.user.id);
-          !!state.auth.lastPage?.length && state.auth.lastPage !== "/about/[id]"
+          !!state.auth.lastPage?.length &&
+          state.auth.lastPage !== "/about-product/[productId]"
             ? Router.push(
                 !!state.auth.lastPage.length ? state.auth.lastPage : "/"
               )
@@ -72,11 +73,15 @@ export const signInUser = createAsyncThunk(
               );
         });
     } catch (e: any) {
-      e.response.data.non_field_errors
-        ? toast.error(
-            "Пользователь с таким логином не зарегистрирован. Пожалуйста, проверьте правильность введенного логина или зарегистрируйтесь!"
-          )
-        : toast.error("Возникла непредвиденная ошибка!");
+      if (e.response.data.status === 404) {
+        toast.error(
+          "Пользователь с таким логином не зарегистрирован. Пожалуйста, проверьте правильность введенного логина или зарегистрируйтесь!"
+        );
+      } else if (e.response.data.status === 400) {
+        toast.error("Неверный логин или пароль!");
+      } else {
+        toast.error("Возникла непредвиденная ошибка!");
+      }
     }
   }
 );
@@ -182,7 +187,8 @@ export const signUpUserConfirmationCode = createAsyncThunk(
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_role);
           window.localStorage.setItem("client", data.user.id);
-          !!state.auth.lastPage?.length && state.auth.lastPage !== "/about/[id]"
+          !!state.auth.lastPage?.length &&
+          state.auth.lastPage !== "/about-product/[payloadId]"
             ? Router.push(
                 !!state.auth.lastPage.length ? state.auth.lastPage : "/"
               )
@@ -309,7 +315,7 @@ export const createRequisites = createAsyncThunk(
 
 export const updateRequisites = createAsyncThunk(
   "user/updateRequisites",
-  async (id, data) => {
+  async ({ id, data }: any) => {
     try {
       await $api.patch(`/users/profile/requisites/${id}/`, data);
       return data;

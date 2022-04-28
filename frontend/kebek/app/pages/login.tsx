@@ -103,6 +103,7 @@ function Login() {
                       <ReactInputMask
                         style={errors.username && touched.username ? { border: "1px solid red" } : undefined}
                         mask="+7(999)9999999"
+                        // mask="+999999999999"
                         type="text"
                         placeholder={router.locale === "ru" ? "Введите номер телефона" : "Телефон нөмірін енгізіңіз"}
                         onChange={handleChange}

@@ -77,6 +77,19 @@
             }
           }
         }
+
+        .progressLineSm{
+           margin-top: 30px;
+           width: 2px;
+           background: #e0e0e0;
+           position: relative;
+           margin-right: 18px;
+           @media screen and (max-width: 992px) {
+             & {
+               margin-right: 20px;
+             }
+           }
+        }
       }
       .notifications {
         .card {

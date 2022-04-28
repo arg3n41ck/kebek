@@ -72,7 +72,7 @@ function OrderCard({ checkedProducts }: any) {
                                 color="text.secondary"
                             >
                                 Чтобы оформить заказ нужно{" "}
-                                <Link href="/register">зарегестрироваться</Link> или{" "}
+                                <Link href="/register">зарегистрироваться</Link> или{" "}
                                 <Link href="/login">войти</Link> в существующий аккаунт
                             </Typography>
 
@@ -111,7 +111,7 @@ function OrderCard({ checkedProducts }: any) {
                             <p>{t("cart.orderCard.title2")}</p>
                         </Typography>
                         <Typography sx={{ fontSize: 12 }} color="text.secondary">
-                            <p>{totalAmountTon} тонн</p>
+                            <p>{Math.round(totalAmountTon)} тонн</p>
                         </Typography>
                     </div>
 

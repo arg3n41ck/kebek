@@ -752,16 +752,6 @@ class OrderViewSet(viewsets.ModelViewSet):
         else:
             instance = serializer.save()
 
-        content = f'Заказ №{instance.number} создан и принят в обработку'
-        title = 'Создан'
-
-        create_notification(user, instance, instance.status, title, content)
-
-        if instance.client.notifications_sms:
-            send_sms(instance.client.username, content)
-        if instance.client.notifications_email and instance.client.email:
-            send_email(instance.client.email, title, content)
-
         for item in items:
             product = Product.objects.get(pk=item['product'])
             OrderItem.objects.create(
@@ -772,6 +762,16 @@ class OrderViewSet(viewsets.ModelViewSet):
             )
 
         instance.schedule_payment_expiration()
+
+        content = f'Заказ №{instance.number} создан и принят в обработку'
+        title = 'Создан'
+
+        create_notification(user, instance, ACCEPTED, title, content)
+
+        if instance.client.notifications_sms:
+            send_sms(instance.client.username, content)
+        if instance.client.notifications_email and instance.client.email:
+            send_email(instance.client.email, title, content)
 
         return instance
 
@@ -877,13 +877,18 @@ class OrderViewSet(viewsets.ModelViewSet):
                 pass
         elif order_status == PAID and instance.status not in [PAID, FINISHED, CANCELLED]:
             payment = OrderItem.objects.filter(order=instance).aggregate(Sum('product_payment'))['product_payment__sum']
-            Profit.objects.create(elevator=instance.elevator, order=instance, profit=payment)
+            try:
+                profit = Profit.objects.get(elevator=instance.elevator, order=instance)
+                profit.profit = payment
+                profit.save()
+            except Profit.DoesNotExist:
+                Profit.objects.create(elevator=instance.elevator, order=instance, profit=payment)
 
         if order_status == BILLED and instance.status != BILLED:
             content = f'Выставлен счет для оплаты заказа №{instance.number}. Скачайте его в личном кабинете kebek.kz'
             title = 'Выставлен счет'
 
-            create_notification(instance.client, instance, instance.status, title, content)
+            create_notification(instance.client, instance, BILLED, title, content)
 
             if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
@@ -896,42 +901,12 @@ class OrderViewSet(viewsets.ModelViewSet):
             content = f'Заказ №{instance.number} оплачен. Спасибо за использование системы Kebek!'
             title = 'Оплачен'
 
-            create_notification(instance.client, instance, instance.status, title, content)
+            create_notification(instance.client, instance, PAID, title, content)
 
             if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
             if instance.client.notifications_email and instance.client.email:
                 send_email(instance.client.email, title, content)
-
-        elif order_status == PROXY_ADDED and instance.status != PROXY_ADDED:
-            content = f'К заказу №{instance.number} было добавлено доверенное лицо'
-            title = 'Добавлено доверенное лицо'
-
-            accountants = Accountant.objects.filter(elevator=instance.elevator)
-            administrators = Administrator.objects.filter(elevator=instance.elevator)
-
-            create_notification(instance.elevator.owner, instance, instance.status, title, content)
-
-            if instance.elevator.owner.notifications_sms:
-                send_sms(instance.elevator.owner.username, content)
-            if instance.elevator.owner.notifications_email and instance.elevator.owner.email:
-                send_email(instance.elevator.owner.email, title, content)
-
-            for administrator in administrators:
-                create_notification(administrator.administrator, instance, instance.status, title, content)
-
-                if administrator.administrator.notifications_sms:
-                    send_sms(administrator.administrator.username, content)
-                if administrator.administrator.notifications_email and administrator.administrator.email:
-                    send_email(administrator.administrator.email, title, content)
-
-            for accountant in accountants:
-                create_notification(accountant.accountant, instance, instance.status, title, content)
-
-                if accountant.accountant.notifications_sms:
-                    send_sms(accountant.accountant.username, content)
-                if accountant.accountant.notifications_email and accountant.accountant.email:
-                    send_email(accountant.accountant.email, title, content)
 
         elif order_status == FINISHED and instance.status != FINISHED:
             items = OrderItem.objects.filter(order=instance)
@@ -946,7 +921,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             content = f'Заказ №{instance.number} получен'
             title = 'Завершен'
 
-            create_notification(instance.client, instance, instance.status, title, content)
+            create_notification(instance.client, instance, FINISHED, title, content)
 
             if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
@@ -957,7 +932,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             content = f'Заказ №{instance.number} отменен из-за отсутствия оплаты'
             title = 'Отменен'
 
-            create_notification(instance.client, instance, instance.status, title, content)
+            create_notification(instance.client, instance, CANCELLED, title, content)
 
             if instance.client.notifications_sms:
                 send_sms(instance.client.username, content)
@@ -994,6 +969,36 @@ class OrderViewSet(viewsets.ModelViewSet):
             pre_serializer = OrderProxySerializer(instance, data=request.data)
             if pre_serializer.is_valid():
                 instance = pre_serializer.save()
+
+                if instance.status != PROXY_ADDED:
+                    content = f'К заказу №{instance.number} было добавлено доверенное лицо'
+                    title = 'Добавлено доверенное лицо'
+
+                    accountants = Accountant.objects.filter(elevator=instance.elevator)
+                    administrators = Administrator.objects.filter(elevator=instance.elevator)
+
+                    create_notification(instance.elevator.owner, instance, PROXY_ADDED, title, content)
+
+                    if instance.elevator.owner.notifications_sms:
+                        send_sms(instance.elevator.owner.username, content)
+                    if instance.elevator.owner.notifications_email and instance.elevator.owner.email:
+                        send_email(instance.elevator.owner.email, title, content)
+
+                    for administrator in administrators:
+                        create_notification(administrator.administrator, instance, PROXY_ADDED, title, content)
+
+                        if administrator.administrator.notifications_sms:
+                            send_sms(administrator.administrator.username, content)
+                        if administrator.administrator.notifications_email and administrator.administrator.email:
+                            send_email(administrator.administrator.email, title, content)
+
+                    for accountant in accountants:
+                        create_notification(accountant.accountant, instance, PROXY_ADDED, title, content)
+
+                        if accountant.accountant.notifications_sms:
+                            send_sms(accountant.accountant.username, content)
+                        if accountant.accountant.notifications_email and accountant.accountant.email:
+                            send_email(accountant.accountant.email, title, content)
 
                 serializer = OrderSerializer(instance, context={'request': request})
                 return Response(serializer.data, status=status.HTTP_200_OK)

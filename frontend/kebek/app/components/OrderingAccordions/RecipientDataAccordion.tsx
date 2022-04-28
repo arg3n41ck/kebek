@@ -6,6 +6,7 @@ import classNames from "classnames"
 import ReactInputMask from "react-input-mask"
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import { useTranslation } from 'react-i18next';
+import { scrollToError } from '../../pages/ordering';
 
 
 function RecipientDataAccordion({ radioFace, setRadioFace, values, handleChange, handleBlur, errors, touched }: any) {
@@ -15,8 +16,13 @@ function RecipientDataAccordion({ radioFace, setRadioFace, values, handleChange,
         setRadioFace((event.target as HTMLInputElement).value);
     };
 
+    React.useEffect(() => {
+        (errors.fullName || errors.phoneNumber) && scrollToError("recipientDataAccordion")
+    }, [errors])
+
+
     return (
-        <div>
+        <div id="recipientDataAccordion">
             <Accordion defaultExpanded className={classNames("mt-4 mb-4", classes.accordion, classes.accardionFirst)}>
                 <AccordionSummary
                     expandIcon={<ArrowForwardIosSharpIcon />}
@@ -79,7 +85,6 @@ function RecipientDataAccordion({ radioFace, setRadioFace, values, handleChange,
                                             value={values.phoneNumber}
                                         />
                                         <input
-                                            style={errors.email && touched.email ? { borderColor: "red" } : undefined}
                                             value={values.email}
                                             type="email"
                                             onChange={handleChange}

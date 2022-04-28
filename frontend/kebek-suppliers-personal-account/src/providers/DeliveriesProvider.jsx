@@ -9,6 +9,7 @@ export default function DeliveryProvider({ children }) {
     const [delivery, setDelivery] = useState(null);
     const [deliveryType, setDeliveryType] = useState([]);
     const [count, setCount] = useState(null);
+    const [deliveryById, setDeliveryById] = useState(null);
     const navigate = useNavigate();
 
     const getDelivery = async (suplier, status, deliveryTypes, currentPage, pageSize) => {
@@ -26,6 +27,24 @@ export default function DeliveryProvider({ children }) {
             setDelivery(data.results);
             setCount(data.count)
         } catch ({ response: { status } }) {
+            await toast.error('Произошла непредвиденная ошибка!');
+        }
+    };
+
+    const changedDelivery = async (id, data) => {
+        try {
+            await $api.patch(`/deliveries/${id}/`, data);
+            toast.success('Вы успешно изменили доставку!');
+        } catch ({ response }) {
+            await toast.error('Произошла непредвиденная ошибка!');
+        }
+    };
+
+    const getDeliveryById = async (id) => {
+        try {
+            const { data } = await $api.get(`/deliveries/${id}/`);
+            setDeliveryById(data)
+        } catch ({ response }) {
             await toast.error('Произошла непредвиденная ошибка!');
         }
     };
@@ -88,12 +107,15 @@ export default function DeliveryProvider({ children }) {
                 delivery,
                 deliveryType,
                 count,
+                deliveryById,
                 getDelivery,
                 getDeliveryTypes,
                 postDelivery,
                 deleteDelivery,
                 activateDelivery,
-                activateManyDelivery
+                activateManyDelivery,
+                getDeliveryById,
+                changedDelivery
             }}
         >
             {children}

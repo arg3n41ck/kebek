@@ -53,7 +53,7 @@ const Schema = yup.object({
     .string()
     .required("Пожалуйста, заполните указанные поля!"),
   cities: yup.string().required("Пожалуйста, заполните указанные поля!"),
-  railwayStation: yup.string().required("Пожалуйста, заполните указанные поля!"),
+  // railwayStation: yup.string().required("Пожалуйста, заполните указанные поля!"),
 });
 
 function SuppliersEdit() {
@@ -97,6 +97,7 @@ function SuppliersEdit() {
 
 
     await Object.keys(data).forEach((key) => {
+      if (!data[key]) delete data[key]
       const value = data[key];
       if (key === 'logo') {
         !!value?.name && formData.append(key, value, value.name);
@@ -543,7 +544,6 @@ function SuppliersEdit() {
                   ))}
                 </TextField>
                 <TextField
-                  error={touched.railwayStation && errors.railwayStation}
                   id="outlined-select-currency"
                   select
                   name="railwayStation"
@@ -572,8 +572,7 @@ function SuppliersEdit() {
                 (errors.bin && touched.bin) ||
                 (errors.bik && touched.bik) ||
                 (errors.checkingAccount && touched.checkingAccount) ||
-                (errors.cities && touched.cities) ||
-                (errors.railwayStation && touched.railwayStation)) && (
+                (errors.cities && touched.cities)) && (
                   <div style={{ position: "relative" }}>
                     <p
                       style={{ position: "absolute", top: -25 }}
@@ -593,8 +592,7 @@ function SuppliersEdit() {
                         errors.checkingAccount ||
                         errors.bik ||
                         errors.bin ||
-                        errors.cities ||
-                        errors.railwayStation}
+                        errors.cities}
                     </p>
                   </div>
                 )}

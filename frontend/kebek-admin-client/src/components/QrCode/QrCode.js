@@ -23,6 +23,7 @@ import {
 
 import { toast } from "react-toastify";
 import { SaveClipboardInfo } from "../../Pages/Application/ApplicationItem";
+import { localeContext } from "../../providers/LocaleProvider";
 
 export const style = {
   position: "absolute",
@@ -43,7 +44,10 @@ export const style = {
 function QrCode({ data, title, handleClose1, qrcodeTitle }) {
   const isTablet = useMediaQuery("(max-width: 768px)");
   const [showInfo, setShowInfo] = React.useState(false);
-  const [link, setLink] = React.useState(!!data && data?.documents[0].document);
+  const { locale } = React.useContext(localeContext);
+  const [link, setLink] = React.useState(
+    title === "qrCode" ? data : !!data && data?.documents[0].document
+  );
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -79,7 +83,7 @@ function QrCode({ data, title, handleClose1, qrcodeTitle }) {
             }}
             onClick={handleOpen}
           >
-            Поделиться
+           {locale === "ru" ? "Поделиться" : "Бөлісу"}
           </Button>
         ) : (
           <Button
@@ -91,7 +95,7 @@ function QrCode({ data, title, handleClose1, qrcodeTitle }) {
             onClick={handleOpen}
             color="success"
           >
-            Поделиться
+           {locale === "ru" ? "Поделиться" : "Бөлісу"}
           </Button>
         )}
         <Modal
@@ -105,19 +109,12 @@ function QrCode({ data, title, handleClose1, qrcodeTitle }) {
               fontSize="large"
               style={{
                 position: "absolute",
-                top: "33",
-                right: "30",
+                top: "33px",
+                right: "30px",
                 cursor: "pointer",
               }}
             />
-            {/* <QRCode
-              id="qr-gen"
-              value={qrValue}
-              size={200}
-              level={"H"}
-              includeMargin={true}
-            /> */}
-            <h1>Поделиться</h1>
+            <h1>{locale === "ru" ? "Поделиться" : "Бөлісу"}</h1>
             <p>{!!qrcodeTitle && qrcodeTitle}</p>
             <div className={qr.copy_div}>
               <p>{!!copyText && copyText}...</p>
@@ -128,7 +125,7 @@ function QrCode({ data, title, handleClose1, qrcodeTitle }) {
                 alt="copy"
               />
             </div>
-            <h6>Поделиться</h6>
+            <h6>{locale === "ru" ? "Поделиться" : "Бөлісу"}</h6>
             <div className={qr.del}>
               <WhatsappShareButton url={!!link && link}>
                 <img src={whatsapp} size={32} style={{ borderRadius: 3 }} />

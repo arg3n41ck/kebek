@@ -60,9 +60,9 @@ const DeleteRequisitesModalContent_: React.FC = () => {
                             onClick={() => setOpenDeletRequisiteModal(false)}
                         />
                     </div>
-                    <p className={classes.title}> {t("ordering.accordions.accordion3.modals.deleteText.title1")} </p>
+                    <p className={classes.title}> {t("ordering.accordions.accordion3.modals.deleteText.title11")} </p>
                     <div className={classes.content_block}>
-                        <div dangerouslySetInnerHTML={stylesMyText(t("ordering.accordions.accordion3.modals.deleteText.title2"))} className={classes.sure} />
+                        <div dangerouslySetInnerHTML={stylesMyText(t("ordering.accordions.accordion3.modals.deleteText.title22"))} className={classes.sure} />
                         <div className="col-12 text-center">
                             <button onClick={() => handleDelete(id)} className={classes.button__delete}>
                                 <b>{t("ordering.accordions.accordion3.modals.deleteText.title3")}</b>
@@ -78,23 +78,23 @@ const DeleteRequisitesModalContent_: React.FC = () => {
 const DeleteRequisitesModalContent = memo(DeleteRequisitesModalContent_);
 
 const DeleteRequisitesModal: React.FC = ({ children }) => {
-    const { setOpenDeletRequisiteModal } = React.useContext(deleteRequisitesModalCtx);
+    const { setOpenDeletRequisiteModal, openDeletRequisiteModal } = React.useContext(deleteRequisitesModalCtx);
     const isMobile = useMediaQuery("(max-width: 697px)");
 
-    // if (isMobile)
-    //     return (
-    //         <SwipeableDrawer
-    //             style={{
-    //                 borderRadius: "20px 20px 0 0",
-    //             }}
-    //             anchor="bottom"
-    //             open={true}
-    //             onClose={() => setOpenDeletRequisiteModal(false)}
-    //             onOpen={() => setOpenDeletRequisiteModal(true)}
-    //         >
-    //             {children}
-    //         </SwipeableDrawer>
-    //     );
+    if (isMobile)
+        return (
+            <SwipeableDrawer
+                style={{
+                    borderRadius: "20px 20px 0 0",
+                }}
+                anchor="bottom"
+                open={openDeletRequisiteModal}
+                onClose={() => setOpenDeletRequisiteModal(false)}
+                onOpen={() => setOpenDeletRequisiteModal(true)}
+            >
+                {children}
+            </SwipeableDrawer>
+        );
 
     return (
         <Modal
@@ -103,7 +103,7 @@ const DeleteRequisitesModal: React.FC = ({ children }) => {
                 backgroundColor: "rgba(187, 187, 187, 0.5)",
                 WebkitBackdropFilter: "blur(20px)",
             }}
-            open={true}
+            open={openDeletRequisiteModal}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >

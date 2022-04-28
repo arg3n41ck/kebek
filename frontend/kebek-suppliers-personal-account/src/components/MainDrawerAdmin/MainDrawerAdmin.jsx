@@ -246,6 +246,7 @@ export default function PersistentDrawerLeft({ open, setOpen }) {
 
                     {!!notificationsUnRead && (
                       <StyledBadge
+                        variant="badge"
                         style={{ marginTop: 13, marginLeft: 10 }}
                         badgeContent={notificationsUnRead}
                       />

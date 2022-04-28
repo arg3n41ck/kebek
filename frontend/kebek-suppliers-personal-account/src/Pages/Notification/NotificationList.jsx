@@ -14,7 +14,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { style } from "../../components/MainDrawerAdmin/MainDrawerAdmin";
 
-const NotificationList = ({ notificationList }) => {
+const NotificationList = ({ getNotReadNotifications, notificationList }) => {
   const [notifications, setNotifications] = useState(null);
   const [checkedAll, setCheckedAll] = useState(false);
   const [checkedIds, setCheckedIds] = useState([]);
@@ -93,6 +93,8 @@ const NotificationList = ({ notificationList }) => {
     });
     setNotifications(newArr);
     $api.post("/notifications/read/", { ids: checkedIds });
+    getNotReadNotifications()
+    setCheckedIds([])
   };
 
   if (!notifications) {
@@ -119,7 +121,7 @@ const NotificationList = ({ notificationList }) => {
           </Typography>
         </div>
         <div className={classNames(cla.beginer_right, "d-flex align-items-center")}>
-          <Button disabled={!notifications?.length || !checkedIds.length} color="success" onClick={() => handleOpen()}>
+          <Button disabled={!notifications?.length || !checkedIds?.length} color="success" onClick={() => handleOpen()}>
             {t.notifications.cardInfo.button1}
           </Button>
 
@@ -169,7 +171,7 @@ const NotificationList = ({ notificationList }) => {
               </div>
             </Box>
           </Modal>
-          <Button disabled={!notifications?.length || !checkedIds.length} color="success">
+          <Button disabled={!notifications?.length || !checkedIds?.length} color="success">
             <p onClick={unreadHandler}>{t.notifications.cardInfo.button2}</p>
           </Button>
         </div>
@@ -193,7 +195,7 @@ const NotificationList = ({ notificationList }) => {
                 <Badge variant="dot" className={cla.dot} color="error" />
               )}
               <h3>
-                Заказ {item.id} {item.title}
+                {item.title}
               </h3>
             </div>
             <p>{item.content}</p>

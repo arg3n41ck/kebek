@@ -89,8 +89,8 @@ const Details = () => {
           Информация о{" "}
           {data?.delivery.type.titleRu === "Самовывоз" ? "заявке" : "доставке"}
         </h1>
-        <div style={!!data?.documents.length ? !isMedium && { display: "grid", gridTemplateColumns: "1fr 1fr" } : !isMedium && { display: "grid", gridTemplateColumns: "1fr" }} className={det.container_inner}>
-          <div style={!!data?.documents.length ? !isMedium && { width: "95%" } : { width: "100%" }} className={det.container_inner_left}>
+        <div style={!!data?.documents.length ? (!isMedium ? { display: "grid", gridTemplateColumns: "1fr 1fr" } : null) : (!isMedium ? { display: "grid", gridTemplateColumns: "1fr" } : null)} className={det.container_inner}>
+          <div style={!!data?.documents.length ? (!isMedium ? { width: "95%" } : null) : { width: "100%" }} className={det.container_inner_left}>
             <div style={isSmall ? { display: "flex", flexDirection: "column", alignItems: "start" } : null} className={det.container_inner_left_top}>
               <h5>
                 {" "}

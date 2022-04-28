@@ -107,7 +107,8 @@ function ApplicationItem({
 
 
   const totalProductPayment = React.useMemo(() => {
-    return !!data?.products?.length && data.products.reduce((acc, curr) => acc + curr.productPayment, 0)
+    console.log(data.products)
+    return !!data?.products?.length && data.products.reduce((acc, curr) => acc + curr.amount * curr.productPayment, 0)
   }, [data])
 
   const totalProductCountTon = React.useMemo(() => {
@@ -151,7 +152,7 @@ function ApplicationItem({
                     {!!data?.number && data.number}
                   </Link>
                 </Typography>
-                <Typography sx={{ color: "#092F33", fontSize: "18px", fontWeight: 600 }} >{!!data?.products?.length && data.products.length} товара, {totalProductCountTon} тонн</Typography>
+                <Typography sx={{ color: "#092F33", fontSize: "18px", fontWeight: 600 }} >{!!data?.products?.length && data.products.length} товара, {totalProductCountTon} кг</Typography>
               </div>
               <div
                 className={classNames(
@@ -193,7 +194,7 @@ function ApplicationItem({
               </div>
             </div>
           </CardContent>
-          <div style={{ maxHeight: 205, overflowY: "scroll" }}>
+          <div>
             {!!data?.products?.length &&
               data.products.map((item) => (
                 <>
@@ -246,7 +247,6 @@ function ApplicationItem({
                           Кол-во
                         </Typography>
                         <Typography sx={{ color: '#092F33', fontSize: 21 }}>
-                          {console.log(item)}
                           {!!item?.amount && item.amount}
                         </Typography>
                       </div>
@@ -313,18 +313,19 @@ function ApplicationItem({
                         : { color: '#092F33', fontSize: 21 }
                     }
                   >
-                    Самовывоз в {!!data?.city && locale === "ru" ? data.city?.titleRu : data.city?.titleKk}
-                    {console.log(!!data?.city && data)}
+                    {!!data?.city ? (locale === "ru" ? `Самовывоз в ${data.city?.titleRu}` : `${data.city?.titleKk} алып кету`) : (
+                      <Typography
+                        sx={
+                          isMobile
+                            ? { color: '#828282', fontSize: 12, padding: 0 }
+                            : { color: '#828282', fontSize: 18, padding: 0 }
+                        }
+                      >
+                        Ожидается самовывоз
+                      </Typography>
+                    )}
                   </Typography>
-                  <Typography
-                    sx={
-                      isMobile
-                        ? { color: '#828282', fontSize: 12, padding: 0 }
-                        : { color: '#828282', fontSize: 18, padding: 0 }
-                    }
-                  >
-                    Ожидается доставка
-                  </Typography>
+
                 </div>
               </CardContent>
 
@@ -361,8 +362,8 @@ function ApplicationItem({
                   <MenuItem>
                     <QrCode
                       handleClose1={setAnchorEl}
-                      data={data}
-                      title='applicationItem'
+                      data={qrCode}
+                      title='qrCode'
                       qrcodeTitle='Поделиться QR-кодом'
                     />
                   </MenuItem>
@@ -490,6 +491,7 @@ function ApplicationItem({
                   </div>
                 ))}
             </AccordionDetails>
+          </Accordion>
             {!!data?.proxyFullname && data.proxyFullname ? (
               <>
                 <div style={{ position: "relative" }} className={"d-flex justify-content-between align-items-center"}>
@@ -752,7 +754,6 @@ function ApplicationItem({
                 </Button>
               </CardContent>
             )}
-          </Accordion>
           < hr className={'m-0'} />
 
         </div>
