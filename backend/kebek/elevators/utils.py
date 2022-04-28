@@ -1,4 +1,5 @@
 import io
+import os
 import qrcode
 import requests
 
@@ -8,7 +9,6 @@ from django.core.files.images import ImageFile
 
 from rest_framework.exceptions import NotFound, PermissionDenied
 
-from decouple import config
 from PIL import Image
 
 from src.celery import app
@@ -47,7 +47,7 @@ def get_wialon_locations():
     url = 'https://hst-api.wialon.com/wialon/ajax.html'
     token_payload = {
         'svc': 'token/login',
-        'params': f'{{"token":{config("WIALON_TOKEN")}}}'
+        'params': f'{{"token":{os.environ.get("WIALON_TOKEN")}}}'
     }
 
     try:

@@ -27,7 +27,7 @@ class FAQViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
     permission_classes = [AllowAny]
     serializer_class = FAQSerializer
-    queryset = FAQ.objects.all()
+    queryset = FAQ.objects.all().order_by('id')
 
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['language']
