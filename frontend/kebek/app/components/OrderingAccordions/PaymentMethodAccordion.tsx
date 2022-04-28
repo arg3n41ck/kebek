@@ -1,29 +1,46 @@
 import React from 'react'
 import classes from "../../styles/Ordering.module.scss"
-import { Accordion, AccordionSummary, Radio, AccordionDetails, FormControl, Typography, RadioGroup, FormControlLabel, IconButton } from "@mui/material"
+import { Accordion, AccordionSummary, Radio, AccordionDetails, FormControl, Typography, RadioGroup, FormControlLabel, IconButton, Modal, Box } from "@mui/material"
 import classNames from "classnames"
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import { TabPanelUnstyled } from '@mui/base';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CloseIcon from "@mui/icons-material/Close";
 
 import { requisitesAddModalCtx } from '../OrderingModals/AddRequisitesModal'
 import { useTranslation } from 'react-i18next'
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { editAdressModalCtx } from '../OrderingModals/EditAdressModal';
 import { deleteRequisitesModalCtx } from '../OrderingModals/DeleteRequisitesModals';
 import { useRouter } from 'next/router';
 import { requisitesEditModalCtx } from '../OrderingModals/EditRequisitesModal';
+import { deleteRequisites, fetchRequisites } from '../../redux/products/auth.slice';
+import cl from "../OrderingModals/DeleteAdressModal.module.scss"
 
+function stylesMyText(text: any) {
+    return {
+        __html: text
+    }
+}
 
-export const MoreInfo = ({ className = "", data }: any) => {
+export const MoreInfo = ({ setRequisite, className = "", data }: any) => {
     const { setOpen: setOpenEditRequisiteModal, setData } = React.useContext(requisitesEditModalCtx);
+    const [open, setOpen] = React.useState(false)
     const { t } = useTranslation()
+    const dispatch = useAppDispatch()
 
     const openEditRequisiteModal = (data: any) => {
         setOpenEditRequisiteModal(true);
         setData(data)
     };
 
+    const handleDelete = async (id: any) => {
+        await dispatch(deleteRequisites(id)).then(() => {
+            setRequisite(null)
+            dispatch(fetchRequisites())
+            setOpen(false)
+        })
+    }
     const { setOpenDeletRequisiteModal, openDeletRequisiteModal, setId } = React.useContext(deleteRequisitesModalCtx)
 
     const openRequisitesModal = (id: number) => {
@@ -45,7 +62,7 @@ export const MoreInfo = ({ className = "", data }: any) => {
                             {t("ordering.accordions.accordion3.modals.title1")}
                         </div>
                         <div
-                            onClick={() => openRequisitesModal(data?.id)}
+                            onClick={() => setOpen(true)}
                             className={classes.delete_button}
                         >
                             {t("ordering.accordions.accordion3.modals.title2")}
@@ -54,6 +71,40 @@ export const MoreInfo = ({ className = "", data }: any) => {
                     </div>
                 </div>
             </div>
+            <Modal
+                className={cl.modal_block}
+                style={{
+                    backgroundColor: "rgba(187, 187, 187, 0.5)",
+                    WebkitBackdropFilter: "blur(20px)",
+                }}
+                open={open}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box className={cl.box_modal}>
+                    <div className={cl.modal_container}>
+                        <div className={cl.modal_adress_delete_block}>
+                            <div className={cl.text}>
+                                <div className={cl.icon}>
+                                    <CloseIcon
+                                        style={{ width: "35px", height: "35px" }}
+                                        onClick={() => setOpen(false)}
+                                    />
+                                </div>
+                                <p className={cl.title}>{t("ordering.accordions.accordion3.modals.deleteText.title11")} </p>
+                                <div className={cl.content_block}>
+                                    <div dangerouslySetInnerHTML={stylesMyText(t("ordering.accordions.accordion3.modals.deleteText.title22"))} className={cl.sure} />
+                                    <div className="col-12 text-center">
+                                        <button onClick={() => handleDelete(data?.id)} className={cl.button__delete}>
+                                            <b>{t("ordering.accordions.accordion3.modals.deleteText.title3")}</b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Box>
+            </Modal>
         </div>
     );
 };
@@ -173,7 +224,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                                                             <span style={{ color: 'gray', fontSize: 14 }}>РС {item.checking_account};</span>
                                                         </div>
                                                         <IconButton color="success">
-                                                            <MoreInfo data={item} className="d-sm-flex" />
+                                                            <MoreInfo setRequisite={setRequisite} data={item} className="d-sm-flex" />
                                                         </IconButton>
                                                     </div>
                                                 ))

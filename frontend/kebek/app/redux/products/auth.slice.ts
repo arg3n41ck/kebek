@@ -102,8 +102,11 @@ export const forgotPasswordUserCheckCode = createAsyncThunk(
           return data.key;
         });
       return data;
-    } catch (e) {
-      toast.error("Возникла непредвиденная ошибка!");
+    } catch (e:any) {
+      console.log(e.response.status === 409 && "Неверный")
+      e.response.status === 409
+        ? toast.error("Вы ввели неверный код!")
+        : toast.error("Возникла непредвиденная ошибка!");
     }
   }
 );

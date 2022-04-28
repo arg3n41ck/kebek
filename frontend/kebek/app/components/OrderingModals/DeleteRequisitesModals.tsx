@@ -47,7 +47,6 @@ const DeleteRequisitesModalContent_: React.FC = () => {
             dispatch(fetchRequisites())
             setOpenDeletRequisiteModal(false)
         })
-
     }
 
     return (
