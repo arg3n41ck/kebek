@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 import '../styles/bootstrap.scss'
 import React, { useState } from "react";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux"
 import store from "../redux/store";
@@ -16,8 +15,8 @@ import Footer from "../components/Footer/Footer";
 import { useRouter } from "next/router";
 
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [notAuth, setNotAuth] = useState<boolean>()
+function MyApp({ Component, pageProps }) {
+  const [notAuth, setNotAuth] = useState()
   const router = useRouter()
   const pathNames = ["/login", "/register", "/new_password", "/reset_password", "/forgot_password", "/confirmation_sms", "/change_new_password"]
 

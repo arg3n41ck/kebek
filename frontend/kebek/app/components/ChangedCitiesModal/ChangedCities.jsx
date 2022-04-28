@@ -7,7 +7,6 @@ import classNames from "classnames"
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Backdrop from '@mui/base/BackdropUnstyled';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useRouter } from 'next/router';
 import { fetchCities } from '../../redux/products/products.slice';

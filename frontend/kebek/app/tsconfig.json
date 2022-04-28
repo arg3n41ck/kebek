@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "utils/i18next.js", "components/locales/Ru.js", "components/locales/Kk.js"  ],
+, "utils/i18next.js", "components/locales/Ru.js", "components/locales/Kk.js", "pages/_app.jsx"  ],
   "exclude": [
     "node_modules"
   ]

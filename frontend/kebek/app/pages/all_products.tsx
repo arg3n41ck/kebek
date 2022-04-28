@@ -33,7 +33,7 @@ const All_products: FC = () => {
   useEffect(() => {
     dispatch(fetchTypesProducts());
     dispatch(fetchElevators());
-    dispatch(fetchCities());
+    dispatch(fetchCities(""));
   }, [dispatch]);
 
   useEffect(() => {
