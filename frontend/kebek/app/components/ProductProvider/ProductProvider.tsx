@@ -17,7 +17,7 @@ const ProductProvider: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { providerById } = useAppSelector((state: any) => state.product);
-  const { id } = router.query ?? "";
+  const { id } = router.query ?? "" as any;
   const { t } = useTranslation()
 
   useEffect(() => {

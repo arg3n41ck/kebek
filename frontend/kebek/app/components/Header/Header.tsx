@@ -43,7 +43,7 @@ function Header() {
   }, [router.pathname])
 
   React.useEffect(() => {
-    dispatch(fetchCities())
+    dispatch(fetchCities(""))
     if (!!window.localStorage.getItem("token")) {
       setToken(window.localStorage.getItem("token"))
       dispatch(getUser())

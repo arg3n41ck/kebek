@@ -17,9 +17,9 @@ const initialState = {
   regions: [] as ICity[],
   providers: [] as IProductProviderV2[],
   providerById: "" as any,
-  stations: [],
+  stations: [] as any,
   landingProducts: null as null | [],
-  productTypes: [],
+  productTypes: [] as any,
 };
 
 export const productAdapter = createEntityAdapter<IProductV2>({});
