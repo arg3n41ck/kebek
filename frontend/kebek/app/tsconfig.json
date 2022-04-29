@@ -18,13 +18,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "utils/i18next.js", "components/locales/Ru.js", "components/locales/Kk.js", "pages/_app.jsx"  ],
+, "utils/i18next.js", "components/locales/Ru.js", "components/locales/Kk.js", "pages/_app.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -14,9 +14,10 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { useRouter } from "next/router";
 
+// @ts-ignore
 
 function MyApp({ Component, pageProps }) {
-  const [notAuth, setNotAuth] = useState()
+  const [notAuth, setNotAuth] = useState<boolean>()
   const router = useRouter()
   const pathNames = ["/login", "/register", "/new_password", "/reset_password", "/forgot_password", "/confirmation_sms", "/change_new_password"]
 
