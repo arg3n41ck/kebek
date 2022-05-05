@@ -608,6 +608,35 @@ class OrderItem(models.Model):
         verbose_name_plural = _('Order items')
 
 
+class History(models.Model):
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='historical_orders',
+        verbose_name=_('Order')
+    )
+    title = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Title')
+    )
+    content = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name=_('Content')
+    )
+    created_at = models.DateField(
+        auto_now_add=True,
+        verbose_name=_('Created at')
+    )
+
+    class Meta:
+        ordering = ['-id']
+
+
 class Document(models.Model):
     order = models.ForeignKey(
         Order,

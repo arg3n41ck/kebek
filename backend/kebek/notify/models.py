@@ -45,10 +45,6 @@ class Notification(models.Model):
         auto_now_add=True,
         verbose_name=_('Created at')
     )
-    in_history = models.BooleanField(
-        default=True,
-        verbose_name=_('Show in history')
-    )
 
     def mark_as_read(self):
         self.read = True
