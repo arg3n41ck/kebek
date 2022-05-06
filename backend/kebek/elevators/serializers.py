@@ -22,11 +22,11 @@ from .models import (
     Vehicle,
     Order,
     OrderItem,
+    History,
     ACTIVE,
     ACCEPTED,
     BILLED,
     PAID,
-    FINISHED,
 )
 
 
@@ -475,6 +475,16 @@ class OrderSerializer(OrderCreateSerializer):
         return data
 
 
+class HistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = History
+        fields = (
+            'title',
+            'content',
+            'created_at',
+        )
+
+
 class OrderSingleSerializer(OrderSerializer):
     history = serializers.SerializerMethodField()
 
@@ -484,8 +494,8 @@ class OrderSingleSerializer(OrderSerializer):
         )
 
     def get_history(self, obj):
-        notifications = Notification.objects.filter(order=obj).order_by('-id')
-        data = NotificationSerializer(notifications, many=True).data
+        notifications = History.objects.filter(order=obj)
+        data = HistorySerializer(notifications, many=True).data
 
         return data
 

@@ -218,7 +218,7 @@ class OrderAdmin(admin.ModelAdmin):
             instance = self.model.objects.get(id=obj.id)
 
             if obj.status == BILLED and instance.status != BILLED:
-                content = f'Выставлен счет для оплаты заказа №{obj.id}. Скачайте его в личном кабинете kebek.kz'
+                content = f'Выставлен счет для оплаты заказа №{obj.number}. Скачайте его в личном кабинете kebek.kz'
                 title = 'Выставлен счет'
 
                 create_notification(obj.client, obj, BILLED, title, content)
@@ -226,16 +226,16 @@ class OrderAdmin(admin.ModelAdmin):
             elif obj.status == PAID and instance.status != PAID:
                 create_qr(obj)
 
-                content = f'Заказ №{obj.id} оплачен. Спасибо за использование системы Kebek!'
+                content = f'Заказ №{obj.number} оплачен. Спасибо за использование системы Kebek!'
                 title = 'Оплачен'
 
                 create_notification(obj.client, obj, PAID, title, content)
 
-                payment = OrderItem.objects.filter(order=instance).aggregate(Sum('product_payment'))['product_payment__sum']
-                Profit.objects.create(elevator=instance.elevator, profit=payment)
+                payment = OrderItem.objects.filter(order=obj).aggregate(Sum('product_payment'))['product_payment__sum']
+                Profit.objects.create(elevator=obj.elevator, order=obj, profit=payment)
 
             elif obj.status == PROXY_ADDED and instance.status != PROXY_ADDED:
-                content = f'К заказу №{obj.id} было добавлено доверенное лицо'
+                content = f'К заказу №{obj.number} было добавлено доверенное лицо'
                 title = 'Добавлено доверенное лицо'
 
                 create_notification(obj.elevator.owner, obj, PROXY_ADDED, title, content)
@@ -254,13 +254,13 @@ class OrderAdmin(admin.ModelAdmin):
                             product.residue -= item.amount
                             product.save()
 
-                content = f'Заказ №{obj.id} получен'
+                content = f'Заказ №{obj.number} получен'
                 title = 'Получен'
 
                 create_notification(obj.client, obj, FINISHED, title, content)
 
             elif obj.status == CANCELLED and instance.status != CANCELLED:
-                content = f'Заказ №{obj.id} отменен из-за отсутствия оплаты'
+                content = f'Заказ №{obj.number} отменен из-за отсутствия оплаты'
                 title = 'Отменен'
 
                 create_notification(obj.client, obj, CANCELLED, title, content)

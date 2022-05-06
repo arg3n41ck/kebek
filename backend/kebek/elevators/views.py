@@ -4,7 +4,7 @@ import pytz
 import time
 
 from io import BytesIO
-from datetime import datetime
+from datetime import datetime, date
 from docx import Document as docx_doc
 from weasyprint import HTML
 
@@ -1291,13 +1291,15 @@ class DashboardGeneralViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         else:
             elevators = Elevator.objects.filter(owner=user)
 
-        orders = Order.objects.filter(elevator__in=elevators).count()
-        orders_FD = Order.objects.filter(elevator__in=elevators, status=FINISHED).count()
-        profit = Profit.objects.filter(elevator__in=elevators).aggregate(Sum('profit'))['profit__sum']
+        today = date.today()
+
+        orders = Order.objects.filter(elevator__in=elevators, created_at__contains=today).count()
+        orders_FD = Order.objects.filter(elevator__in=elevators, status=FINISHED, updated_at__contains=today).count()
+        profit = Profit.objects.filter(elevator__in=elevators, created_at__contains=today).aggregate(Sum('profit'))['profit__sum']
 
         return Response({
-            'orders': orders,
-            'orders_FD': orders_FD,
+            'orders': orders or 0,
+            'orders_FD': orders_FD or 0,
             'profit': profit or 0
         }, status=status.HTTP_200_OK)
 

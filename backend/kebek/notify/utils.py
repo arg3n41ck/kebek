@@ -26,12 +26,18 @@ def html_email(title, content):
 
 
 def create_notification(user, order, status, title, content):
+    from ..elevators.models import History
     from .models import Notification
 
     notification = Notification.objects.create(
         receiver=user,
         order=order,
         order_status=status,
+        title=title,
+        content=content
+    )
+    History.objects.create(
+        order=order,
         title=title,
         content=content
     )
