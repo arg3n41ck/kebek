@@ -31,7 +31,11 @@ const AvatarUser = ({ className = "", data, handleClose }) => {
   }, [])
 
   const logOut = () => {
-    localStorage.removeItem("token");
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("username");
+    window.localStorage.removeItem("user_role");
+    window.localStorage.removeItem("user_type");
+    window.localStorage.removeItem("client");
     navigate("https://kebek.kz/")
   }
 

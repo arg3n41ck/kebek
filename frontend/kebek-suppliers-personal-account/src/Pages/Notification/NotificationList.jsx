@@ -72,18 +72,19 @@ const NotificationList = ({ getNotReadNotifications, notificationList }) => {
     setNotifications([...newArrStart, newObj, ...newArrEnd]);
   };
 
-  const deleteNotification = () => {
-    checkedIds.forEach((id) => {
+  const deleteNotification = async () => {
+    await checkedIds.forEach((id) => {
       $api.delete(`/notifications/${id}/`);
     });
     const newArr = notifications.filter(
       (item) => !checkedIds.includes(item.id)
     );
     setNotifications(newArr);
+    getNotReadNotifications()
     handleClose()
   };
 
-  const unreadHandler = () => {
+  const unreadHandler = async () => {
     const newArr = notifications.map((item) => {
       const check = !checkedIds.includes(item.id);
       if (!check) {
@@ -92,7 +93,7 @@ const NotificationList = ({ getNotReadNotifications, notificationList }) => {
       return item;
     });
     setNotifications(newArr);
-    $api.post("/notifications/read/", { ids: checkedIds });
+    await $api.post("/notifications/read/", { ids: checkedIds });
     getNotReadNotifications()
     setCheckedIds([])
   };

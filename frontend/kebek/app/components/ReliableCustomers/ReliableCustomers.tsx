@@ -24,7 +24,7 @@ function ReliableCustomers() {
                 <Image src={pngwing2} alt="a bag of seeds 1" className={classNames("text-center")} />
               </div>
               <div className={`col-12 text-center mt-2 mb-2`} >
-                <h5 style={{ color: "darkgreen", fontWeight: 500, fontSize: 25 }}>
+                <h5 style={{ color: "#219653", fontWeight: 500, fontSize: 25 }}>
                   {t("hero.kebek.title1")}
                 </h5>
                 <p>
@@ -40,7 +40,7 @@ function ReliableCustomers() {
               </div>
               <div className={`col-12 text-center mt-2 mb-2`}>
                 <b>
-                  <h5 style={{ fontSize: 25, fontWeight: 500, color: "darkgreen" }}>
+                  <h5 style={{ fontSize: 25, fontWeight: 500, color: "#219653" }}>
                     {t("hero.kebek.title2")}
                   </h5>
                 </b>

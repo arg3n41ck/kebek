@@ -29,14 +29,14 @@ function TableRowList({ row, isItemSelected, labelId, handleClick, locale, class
             selected={isItemSelected}
         >
             <TableCell sx={{ width: '5%' }} padding='checkbox'>
-                <Checkbox
+                {/* <Checkbox
                     onClick={(event) => handleClick(event, row.id)}
                     color='primary'
                     checked={isItemSelected}
                     inputProps={{
                         'aria-labelledby': labelId,
                     }}
-                />
+                /> */}
             </TableCell>
             <TableCell
                 sx={{ width: '30%' }}

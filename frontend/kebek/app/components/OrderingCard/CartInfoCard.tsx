@@ -116,7 +116,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
         <div className={classes.amountProduct}>
           <div className={"d-flex justify-content-between"}>
             <button type="button" onClick={countDecrement}>-</button>
-            <Typography sx={{ fontSize: 16 }}>{Math.round(count)}</Typography>
+            <Typography sx={{ fontSize: 16 }}>{count.toFixed(1)}</Typography>
             <button type="button" onClick={countIncrement}>+</button>
           </div>
           <Typography
@@ -208,7 +208,7 @@ function CartInfoCard({ data, checkedState, setCheckboxAll, setCheckedState }: P
               )}
             >
               <button onClick={countDecrement}>-</button>
-              <Typography sx={{ fontSize: 16 }}>{count}</Typography>
+              <Typography sx={{ fontSize: 16 }}>{count.toFixed(1)}</Typography>
               <button onClick={countIncrement}>+</button>
             </div>
             <Typography

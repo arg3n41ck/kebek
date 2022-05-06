@@ -49,6 +49,11 @@ export function scrollToError(id: string) {
     a.click();
 }
 
+const CountToMnoj = (count: number) => {
+    let res = count * 1000
+    return res.toFixed(1)
+}
+
 function Ordering() {
     const cart = useAppSelector((state) => cartSelectors.selectAll(state));
     const { delivery } = useAppSelector((state) => state.auth);
@@ -87,13 +92,14 @@ function Ordering() {
         const newObj: any = {
             client: !!user?.id ? user.id : window.localStorage.getItem("client"),
             elevator: !!cart?.length && cart.filter(({ checked }: any) => checked)[0]?.elevator?.id || "",
-            payment: radioPayment,
+            payment: !!radioPayment ? radioPayment : 1,
             delivery: deliveryTab,
-            products: !!cart?.length && cart.filter(({ checked }: any) => checked).map((item) => ({
-                product: item?.id,
-                amount: item?.count * 1000,
-                product_payment: item?.price,
-            })),
+            products: !!cart?.length && cart.filter(({ checked }: any) => checked).map((item) => (
+                {
+                    product: item?.id,
+                    amount: +CountToMnoj(item.count),
+                    product_payment: +CountToMnoj(item.count) * item.price
+                })),
             bin: !!requisite && radioPayment === paymentPC?.id ? requisite.bin : "",
             bik: !!requisite && radioPayment === paymentPC?.id ? requisite.bik : "",
             checking_account: !!requisite && radioPayment === paymentPC?.id ? requisite.checking_account : "",
@@ -165,7 +171,8 @@ function Ordering() {
         dispatch(fetchStation());
         dispatch(fetchDelivery());
         const userToken = window.localStorage.getItem('token');
-        if (!userToken) {
+        const userType = window.localStorage.getItem('user_type');
+        if (!userToken || userType === "AN") {
             router.push('/cart');
         } else {
             const fetchUserInfo = async () => {

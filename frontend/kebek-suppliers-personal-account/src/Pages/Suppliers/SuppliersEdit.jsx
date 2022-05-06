@@ -42,7 +42,6 @@ const Schema = yup.object({
   descriptionKk: yup.string().required("Пожалуйста, заполните указанные поля!"),
   addressKk: yup.string().required("Пожалуйста, заполните указанные поля!"),
   phoneNumber: yup.string().required("Пожалуйста, заполните указанные поля!"),
-  email: yup.string().email().required("Пожалуйста, заполните указанные поля!"),
   website: yup.string().url().required("Пожалуйста, заполните указанные поля!"),
   bin: yup.string().required("Пожалуйста, заполните указанные поля!"),
   bik: yup
@@ -95,16 +94,25 @@ function SuppliersEdit() {
       railway_station: newValue?.railwayStation
     }
 
+    for (let key in data) {
+      if (!data[key] || typeof data[key] === "undefined") delete data[key]
 
-    await Object.keys(data).forEach((key) => {
-      if (!data[key]) delete data[key]
+    }
+
+    for (let key in data) {
       const value = data[key];
       if (key === 'logo') {
         !!value?.name && formData.append(key, value, value.name);
       } else {
         formData.append(key, value);
       }
-    });
+    }
+
+
+    // await Object.keys(data).forEach((key) => {
+    //   const value = data[key];
+
+    // });
 
     try {
       await $api.patch(`/elevators/${id}/`, formData, {
@@ -276,12 +284,6 @@ function SuppliersEdit() {
                     placeholder={"Введите номер телефона *"}
                   />
                   <input
-                    style={
-                      errors.email &&
-                      touched.email && {
-                        border: "1px solid red",
-                      }
-                    }
                     name="email"
                     value={values.email}
                     onChange={handleChange}
@@ -379,12 +381,6 @@ function SuppliersEdit() {
                     placeholder={"Введите номер телефона *"}
                   />
                   <input
-                    style={
-                      errors.email &&
-                      touched.email && {
-                        border: "1px solid red",
-                      }
-                    }
                     name="email"
                     value={values.email}
                     onChange={handleChange}
@@ -559,16 +555,13 @@ function SuppliersEdit() {
               </div>
               {((errors.addressKk && touched.addressKk) ||
                 (touched.addressRu && errors.addressRu) ||
-                (touched.email && errors.email) ||
                 (errors.titleRu && touched.titleRu) ||
                 (errors.descriptionRu && touched.descriptionRu) ||
                 (errors.phoneNumber && touched.phoneNumber) ||
-                (errors.email && touched.email) ||
                 (errors.website && touched.website) ||
                 (errors.titleKk && touched.titleKk) ||
                 (errors.descriptionKk && touched.descriptionKk) ||
                 (errors.phoneNumber && touched.phoneNumber) ||
-                (errors.email && touched.email) ||
                 (errors.bin && touched.bin) ||
                 (errors.bik && touched.bik) ||
                 (errors.checkingAccount && touched.checkingAccount) ||
@@ -580,12 +573,10 @@ function SuppliersEdit() {
                     >
                       {errors.addressKk ||
                         errors.addressRu ||
-                        errors.email ||
                         errors.titleRu ||
                         errors.titleKk ||
                         errors.descriptionRu ||
                         errors.phoneNumber ||
-                        errors.email ||
                         errors.website ||
                         errors.descriptionKk ||
                         errors.phoneNumber ||

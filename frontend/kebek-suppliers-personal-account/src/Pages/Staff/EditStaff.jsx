@@ -25,7 +25,6 @@ const Schema = yup.object({
     elevator: yup.string().required('Пожалуйста, заполните указанные поля!'),
     user_role: yup.string().required('Пожалуйста, заполните указанные поля!'),
     phone_number: yup.string().required('Пожалуйста, заполните указанные поля!'),
-    email: yup.string().required('Пожалуйста, заполните указанные поля!'),
 });
 
 const position = [
@@ -71,6 +70,11 @@ function EditStaff() {
             email: values.email,
             username: values.phone_number
         }
+
+        for (let key in data) {
+            if (!data[key]) delete data[key]
+        }
+
         await patchStaff(id, data).then(() => {
             resetForm();
             navigate(-1)
@@ -298,8 +302,8 @@ function EditStaff() {
                                             onBlur={handleBlur}
                                             name='email'
                                         />
-                                        {((errors.phone_number && touched.phone_number) ||
-                                            (touched.email && errors.email)) && (
+                                        {((errors.phone_number && touched.phone_number)
+                                        ) && (
                                                 <div
                                                     style={{
                                                         position: 'absolute',

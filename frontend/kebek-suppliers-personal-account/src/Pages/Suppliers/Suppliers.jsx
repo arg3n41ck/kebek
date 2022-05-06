@@ -6,6 +6,7 @@ import {
   FormControl,
   Select,
   MenuItem,
+  Typography
 } from "@mui/material";
 import SuppliersTable from "./SuppliersTable";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -43,7 +44,7 @@ function Suppliers() {
       phone,
     };
   }
-  const { elevators, getElevators } = React.useContext(goodsContext);
+  const { elevators, getElevators, elevatorsCount } = React.useContext(goodsContext);
   const [suplier, setSuplier] = React.useState("");
   const [status, setStatus] = React.useState("");
   const [deliveryType, setDeliveryType] = React.useState("");
@@ -145,7 +146,7 @@ function Suppliers() {
               className={cl.selectInp}
               IconComponent={KeyboardArrowDownIcon}
               MenuProps={MenuProps}
-              // MenuProps={{ classes: { paper: pr.dropdownStyle } }}
+            // MenuProps={{ classes: { paper: pr.dropdownStyle } }}
             >
               {pageListRef.current.map((pageS) => (
                 <MenuItem value={pageS}>
@@ -154,6 +155,12 @@ function Suppliers() {
               ))}
             </Select>
           </FormControl>
+        </div>
+
+        <div>
+          <Typography sx={{ fontSize: 18 }}>
+            {pageSize <= elevatorsCount ? pageSize : elevatorsCount} из {elevatorsCount}
+          </Typography>
         </div>
 
         <PaginationSuppliers

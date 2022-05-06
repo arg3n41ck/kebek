@@ -114,6 +114,7 @@ export default function ApplicationProvider({ children }) {
     const deleteProductsOrderById = async (res, id, elevator, client, delivery, payment, delivery_payment) => {
         try {
             await $api.patch(`/orders/${id}/`, { products: res, elevator, client, delivery, payment, delivery_payment });
+            toast.success('Вы успешно удалили продукт!')
         } catch ({ response }) {
             await toast.error('Произошла непредвиденная ошибка!');
         }

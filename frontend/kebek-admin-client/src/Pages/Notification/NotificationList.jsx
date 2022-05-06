@@ -73,14 +73,15 @@ const NotificationList = ({ notificationList, getNotReadNotifications }) => {
     setNotifications([...newArrStart, newObj, ...newArrEnd]);
   };
 
-  const deleteNotification = () => {
-    checkedIds.forEach((id) => {
+  const deleteNotification = async () => {
+    await checkedIds.forEach((id) => {
       $api.delete(`/notifications/${id}/`);
     });
     const newArr = notifications.filter(
       (item) => !checkedIds.includes(item.id)
     );
     setNotifications(newArr);
+    getNotReadNotifications()
     handleClose()
   };
 

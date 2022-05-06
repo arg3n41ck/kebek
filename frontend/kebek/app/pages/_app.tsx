@@ -13,6 +13,7 @@ import Loader from "../components/Loader/Loader";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { useRouter } from "next/router";
+import favicon from "../public/favicon.ico"
 
 // @ts-ignore
 
@@ -33,6 +34,8 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Портал закупок отрубей</title>
+        <link rel="icon" sizes="120x120" href="/kebekIcon.ico" />
       </Head>
       <Provider store={store} >
         <ThemeProvider theme={theme}>

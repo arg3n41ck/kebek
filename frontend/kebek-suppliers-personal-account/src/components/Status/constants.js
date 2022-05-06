@@ -17,7 +17,7 @@ export const statusList = [
   },
   {
     name: "Оплачено",
-    pluralName:  "Оплачен",
+    pluralName: "Оплачен",
     pluralNameKk: "Төленді",
     encryptedName: "PD",
     bg: "#D6EFE6",
@@ -33,7 +33,7 @@ export const statusList = [
   },
   {
     name: "Завершен",
-    pluralName:  "Завершен" ,
+    pluralName: "Завершен",
     encryptedName: "FD",
     pluralNameKk: "Аяқталды",
     bg: "#F2F2F2",
@@ -41,9 +41,17 @@ export const statusList = [
   },
   {
     name: "Доставлен",
-    pluralName:  "Доставлен",
+    pluralName: "Доставлен",
     encryptedName: "DD",
     pluralNameKk: "Жеткізілді",
+    bg: "#F2F2F2",
+    color: "#4F4F4F",
+  },
+  {
+    name: "Добавлено доверенное лицо",
+    pluralName: "Добавлено доверенное лицо",
+    encryptedName: "PA",
+    pluralNameKk: "Сенімді адам қосылды",
     bg: "#F2F2F2",
     color: "#4F4F4F",
   },
@@ -60,7 +68,7 @@ export const statusProductList = [
   },
   {
     name: "В архиве",
-    pluralName: "В архиве" ,
+    pluralName: "В архиве",
     pluralNameKk: "Мұрағатта",
     encryptedName: "AR",
     color: "#828282",

@@ -56,7 +56,9 @@ function ApplicationItem({
   const [anchorEl, setAnchorEl] = React.useState(null);
   const opens = Boolean(anchorEl);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
   const opens2 = Boolean(anchorEl2);
+  const opens3 = Boolean(anchorEl3);
   const [qrCode, setQrCode] = useState(null);
   const { t, locale } = React.useContext(localeContext);
   const { deleteProxy } = React.useContext(ordersContext);
@@ -69,12 +71,20 @@ function ApplicationItem({
     setAnchorEl(event.currentTarget);
   };
 
+  const handleClick3 = (event) => {
+    setAnchorEl3(event.currentTarget);
+  };
+
   const handleClose1 = (e) => {
     e.target.innerText === '' && setAnchorEl2(null);
   };
 
   const handleClose2 = (e) => {
     e.target.innerText === '' && setAnchorEl(null);
+  };
+
+  const handleClose3 = (e) => {
+    e.target.innerText === '' && setAnchorEl3(null);
   };
 
   const [showInfo, setShowInfo] = React.useState(false);
@@ -332,13 +342,13 @@ function ApplicationItem({
               <div>
                 <MoreVertSharpIcon
                   style={{ color: '#219653', cursor: 'pointer' }}
-                  onClick={handleClick2}
+                  onClick={handleClick3}
                 />
                 <Menu
-                  id='long-menu'
-                  anchorEl={anchorEl}
-                  open={opens}
-                  onClose={handleClose2}
+                  id=''
+                  anchorEl={anchorEl3}
+                  open={opens3}
+                  onClose={handleClose3}
                   anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'bottom',
@@ -347,7 +357,7 @@ function ApplicationItem({
                     vertical: 'top',
                     horizontal: 'bottom',
                   }}
-                  onClick={handleClose2}
+                  onClick={handleClose3}
                 >
                   <MenuItem>
                     <a
@@ -361,7 +371,7 @@ function ApplicationItem({
                   </MenuItem>
                   <MenuItem>
                     <QrCode
-                      handleClose1={setAnchorEl}
+                      handleClose1={setAnchorEl3}
                       data={qrCode}
                       title='qrCode'
                       qrcodeTitle='Поделиться QR-кодом'
@@ -492,268 +502,268 @@ function ApplicationItem({
                 ))}
             </AccordionDetails>
           </Accordion>
-            {!!data?.proxyFullname && data.proxyFullname ? (
-              <>
-                <div style={{ position: "relative" }} className={"d-flex justify-content-between align-items-center"}>
-                  <Accordion style={{ margin: 0, border: 'none', padding: 0, width: "95%" }}>
-                    <AccordionSummary
-                      expandIcon={<img className={cl.expand} src={ExpandMoreIcon} />}
-                      aria-controls='panel1a-content'
-                      id='panel1a-header'
+          {!!data?.proxyFullname && data.proxyFullname ? (
+            <>
+              <div style={{ position: "relative" }} className={"d-flex justify-content-between align-items-center"}>
+                <Accordion style={{ margin: 0, border: 'none', padding: 0, width: "95%" }}>
+                  <AccordionSummary
+                    expandIcon={<img className={cl.expand} src={ExpandMoreIcon} />}
+                    aria-controls='panel1a-content'
+                    id='panel1a-header'
+                  >
+
+                    <div
+                      className={
+                        'd-flex w-100 justify-content-between align-items-center'
+                      }
                     >
-
-                      <div
-                        className={
-                          'd-flex w-100 justify-content-between align-items-center'
-                        }
+                      <Typography
+                        sx={{
+                          fontWeight: 600,
+                          fontSize: 21,
+                          padding: '10px',
+                        }}
                       >
-                        <Typography
-                          sx={{
-                            fontWeight: 600,
-                            fontSize: 21,
-                            padding: '10px',
-                          }}
-                        >
-                          Доверенное лицо
-                        </Typography>
+                        Доверенное лицо
+                      </Typography>
 
-                      </div>
-                    </AccordionSummary>
-                    <AccordionDetails style={{ padding: 0 }}>
+                    </div>
+                  </AccordionSummary>
+                  <AccordionDetails style={{ padding: 0 }}>
+                    <div
+                      style={{ padding: 20, margin: 0 }}
+                      className={classNames(
+                        classes.confidantInfo,
+                        'w-100 d-flex justify-content-between align-items-center d-sm-flex d-none'
+                      )}
+                    >
                       <div
-                        style={{ padding: 20, margin: 0 }}
                         className={classNames(
-                          classes.confidantInfo,
-                          'w-100 d-flex justify-content-between align-items-center d-sm-flex d-none'
+                          classes.confidantItem,
+                          'd-flex justify-content-between w-50 align-items-center'
                         )}
                       >
                         <div
-                          className={classNames(
-                            classes.confidantItem,
-                            'd-flex justify-content-between w-50 align-items-center'
-                          )}
+                          className={classes.confidantItem_item}
+                          style={{ maxWidth: 400, width: '100%' }}
                         >
-                          <div
-                            className={classes.confidantItem_item}
-                            style={{ maxWidth: 400, width: '100%' }}
+                          <Typography
+                            className={classes.fullNameConfidantText}
+                            sx={{
+                              color: '#828282',
+                              fontSize: 18,
+                              padding: 0,
+                            }}
                           >
-                            <Typography
-                              className={classes.fullNameConfidantText}
-                              sx={{
-                                color: '#828282',
-                                fontSize: 18,
-                                padding: 0,
-                              }}
-                            >
-                              ФИО довереного лица
-                            </Typography>
-                            <Typography sx={{ color: '#092F33', fontSize: 21 }}>
-                              {!!data?.proxyFullname && data.proxyFullname}
-                            </Typography>
-                          </div>
-                          <div
-                            className={classes.confidantItem_item}
-                            style={{ maxWidth: 250, width: '100%' }}
-                          >
-                            <Typography
-                              sx={{
-                                color: '#828282',
-                                fontSize: 18,
-                                padding: 0,
-                              }}
-                            >
-                              № доверенности
-                            </Typography>
-                            <Typography sx={{ color: '#092F33', fontSize: 21 }}>
-                              №{!!data?.proxyNumber && data.proxyNumber}
-                            </Typography>
-                          </div>
+                            ФИО довереного лица
+                          </Typography>
+                          <Typography sx={{ color: '#092F33', fontSize: 21 }}>
+                            {!!data?.proxyFullname && data.proxyFullname}
+                          </Typography>
                         </div>
                         <div
-                          className={classNames(
-                            classes.confidantItem,
-                            'd-flex justify-content-between w-50 align-items-center'
-                          )}
+                          className={classes.confidantItem_item}
+                          style={{ maxWidth: 250, width: '100%' }}
                         >
-                          <div
-                            className={classes.confidantItem_item}
-                            style={{ maxWidth: 250, width: '100%' }}
+                          <Typography
+                            sx={{
+                              color: '#828282',
+                              fontSize: 18,
+                              padding: 0,
+                            }}
                           >
-                            <Typography
-                              sx={{
-                                color: '#828282',
-                                fontSize: 18,
-                                padding: 0,
-                              }}
-                            >
-                              От ЧЧ / ММ / ГГГ
-                            </Typography>
-                            <Typography sx={{ color: '#092F33', fontSize: 21 }}>
-                              {format(
-                                parseISO(!!data?.proxyStartDate && data.proxyStartDate),
-                                'dd.MM.yyyy'
-                              )}
-                            </Typography>
-                          </div>
-                          <div
-                            className={classes.confidantItem_item}
-                            style={{ maxWidth: 400, width: '100%' }}
-                          >
-                            <Typography
-                              sx={{
-                                color: '#828282',
-                                fontSize: 18,
-                                padding: 0,
-                              }}
-                            >
-                              По ЧЧ / ММ / ГГГ
-                            </Typography>
-                            <Typography sx={{ color: '#092F33', fontSize: 21 }}>
-                              {format(
-                                parseISO(!!data?.proxyEndDate && data.proxyEndDate),
-                                'dd.MM.yyyy'
-                              )}
-                            </Typography>
-                          </div>
+                            № доверенности
+                          </Typography>
+                          <Typography sx={{ color: '#092F33', fontSize: 21 }}>
+                            №{!!data?.proxyNumber && data.proxyNumber}
+                          </Typography>
                         </div>
                       </div>
                       <div
                         className={classNames(
-                          'd-sm-none d-block',
-                          classes.confidationInfo_mobile
+                          classes.confidantItem,
+                          'd-flex justify-content-between w-50 align-items-center'
                         )}
                       >
-                        <Typography sx={{ color: '#092F33', fontSize: 18 }}>
-                          {!!data?.proxyFullname && data.proxyFullname}
-                        </Typography>
-                        <Typography sx={{ color: '#828282', fontSize: 16 }}>
-                          Доверенность №{!!data?.proxyNumber && data.proxyNumber} от{' '}
-                          {format(parseISO(!!data?.proxyStartDate && data.proxyStartDate), 'dd.MM.yyyy')}{' '}
-                          по {format(parseISO(!!data?.proxyEndDate && data.proxyEndDate), 'dd.MM.yyyy')}
-                        </Typography>
-                      </div>
-
-                      <div
-                        style={{ marginLeft: 25, marginBottom: 25 }}
-                        className={'d-sm-none d-block mt-4'}
-                      >
-                        <Button
-                          sx={{
-                            padding: 0,
-                            color: '#219653',
-                            textTransform: 'none',
-                            fontSize: 18,
-                            fontWeight: 600,
-                          }}
-                          onClick={() => {
-                            onStatusModal('change');
-                            onCurrentOrder(data);
-                            onModal();
-                          }}
+                        <div
+                          className={classes.confidantItem_item}
+                          style={{ maxWidth: 250, width: '100%' }}
                         >
-                          Изменить
-                        </Button>
-                        <Button
-                          sx={{
-                            padding: 0,
-                            color: '#219653',
-                            textTransform: 'none',
-                            fontSize: 18,
-                            fontWeight: 600,
-                          }}
-                          onClick={() => {
-                            handleOpenModal();
-                            handleDeleteProxyModal(data);
-                          }}
+                          <Typography
+                            sx={{
+                              color: '#828282',
+                              fontSize: 18,
+                              padding: 0,
+                            }}
+                          >
+                            От ЧЧ / ММ / ГГГ
+                          </Typography>
+                          <Typography sx={{ color: '#092F33', fontSize: 21 }}>
+                            {format(
+                              parseISO(!!data?.proxyStartDate && data.proxyStartDate),
+                              'dd.MM.yyyy'
+                            )}
+                          </Typography>
+                        </div>
+                        <div
+                          className={classes.confidantItem_item}
+                          style={{ maxWidth: 400, width: '100%' }}
                         >
-                          Удалить
-                        </Button>
+                          <Typography
+                            sx={{
+                              color: '#828282',
+                              fontSize: 18,
+                              padding: 0,
+                            }}
+                          >
+                            По ЧЧ / ММ / ГГГ
+                          </Typography>
+                          <Typography sx={{ color: '#092F33', fontSize: 21 }}>
+                            {format(
+                              parseISO(!!data?.proxyEndDate && data.proxyEndDate),
+                              'dd.MM.yyyy'
+                            )}
+                          </Typography>
+                        </div>
                       </div>
-                    </AccordionDetails>
-                  </Accordion>
-                  <div style={{ position: "absolute", right: "15px", top: "25px" }}>
-                    <MoreVertSharpIcon
-                      style={{ color: '#219653', cursor: 'pointer' }}
-                      onClick={handleClick2}
-                    />
-                    <Menu
-                      id='long-menu'
-                      anchorEl={anchorEl}
-                      open={opens}
-                      onClose={handleClose2}
-                      anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'bottom',
-                      }}
-                      transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'bottom',
-                      }}
-                      onClick={handleClose2}
+                    </div>
+                    <div
+                      className={classNames(
+                        'd-sm-none d-block',
+                        classes.confidationInfo_mobile
+                      )}
                     >
-                      <MenuItem>
-                        <Button
-                          sx={{
-                            padding: 0,
-                            textTransform: 'none',
-                            fontSize: 16,
-                            fontWeight: 600,
-                            color: "rgb(9, 47, 51)",
-                            marginRight: 5,
-                          }}
-                          onClick={() => {
-                            onStatusModal('change');
-                            onCurrentOrder(data, handleClose2);
-                            onModal(setAnchorEl);
-                          }}
-                        >
-                          Изменить
-                        </Button>
-                      </MenuItem>
-                      <MenuItem>
-                        <Button
-                          sx={{
-                            padding: 0,
-                            textTransform: 'none',
-                            color: "rgb(9, 47, 51)",
-                            fontSize: 16,
-                            fontWeight: 600,
-                            marginRight: 5,
-                          }}
-                          onClick={() => {
-                            handleOpenModal(setAnchorEl);
-                            handleDeleteProxyModal(data, handleClose2);
-                          }}
-                        >
-                          Удалить
-                        </Button>
-                      </MenuItem>
-                    </Menu>
-                  </div>
+                      <Typography sx={{ color: '#092F33', fontSize: 18 }}>
+                        {!!data?.proxyFullname && data.proxyFullname}
+                      </Typography>
+                      <Typography sx={{ color: '#828282', fontSize: 16 }}>
+                        Доверенность №{!!data?.proxyNumber && data.proxyNumber} от{' '}
+                        {format(parseISO(!!data?.proxyStartDate && data.proxyStartDate), 'dd.MM.yyyy')}{' '}
+                        по {format(parseISO(!!data?.proxyEndDate && data.proxyEndDate), 'dd.MM.yyyy')}
+                      </Typography>
+                    </div>
+
+                    <div
+                      style={{ marginLeft: 25, marginBottom: 25 }}
+                      className={'d-sm-none d-block mt-4'}
+                    >
+                      <Button
+                        sx={{
+                          padding: 0,
+                          color: '#219653',
+                          textTransform: 'none',
+                          fontSize: 18,
+                          fontWeight: 600,
+                        }}
+                        onClick={() => {
+                          onStatusModal('change');
+                          onCurrentOrder(data);
+                          onModal();
+                        }}
+                      >
+                        Изменить
+                      </Button>
+                      <Button
+                        sx={{
+                          padding: 0,
+                          color: '#219653',
+                          textTransform: 'none',
+                          fontSize: 18,
+                          fontWeight: 600,
+                        }}
+                        onClick={() => {
+                          handleOpenModal();
+                          handleDeleteProxyModal(data);
+                        }}
+                      >
+                        Удалить
+                      </Button>
+                    </div>
+                  </AccordionDetails>
+                </Accordion>
+                <div style={{ position: "absolute", right: "15px", top: "25px" }}>
+                  <MoreVertSharpIcon
+                    style={{ color: '#219653', cursor: 'pointer' }}
+                    onClick={handleClick2}
+                  />
+                  <Menu
+                    id='long-menu'
+                    anchorEl={anchorEl}
+                    open={opens}
+                    onClose={handleClose2}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'bottom',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'bottom',
+                    }}
+                    onClick={handleClose2}
+                  >
+                    <MenuItem>
+                      <Button
+                        sx={{
+                          padding: 0,
+                          textTransform: 'none',
+                          fontSize: 16,
+                          fontWeight: 600,
+                          color: "rgb(9, 47, 51)",
+                          marginRight: 5,
+                        }}
+                        onClick={() => {
+                          onStatusModal('change');
+                          onCurrentOrder(data, handleClose2);
+                          onModal(setAnchorEl);
+                        }}
+                      >
+                        Изменить
+                      </Button>
+                    </MenuItem>
+                    <MenuItem>
+                      <Button
+                        sx={{
+                          padding: 0,
+                          textTransform: 'none',
+                          color: "rgb(9, 47, 51)",
+                          fontSize: 16,
+                          fontWeight: 600,
+                          marginRight: 5,
+                        }}
+                        onClick={() => {
+                          handleOpenModal(setAnchorEl);
+                          handleDeleteProxyModal(data, handleClose2);
+                        }}
+                      >
+                        Удалить
+                      </Button>
+                    </MenuItem>
+                  </Menu>
                 </div>
-              </>
-            ) : (
-              <CardContent>
-                <Button
-                  sx={{
-                    padding: 0,
-                    color: '#219653',
-                    textTransform: 'none',
-                    fontSize: 16,
-                    fontWeight: 600,
-                    paddingLeft: 0,
-                    margin: 0,
-                  }}
-                  onClick={() => {
-                    onStatusModal('new');
-                    onCurrentOrder(data);
-                    onModal();
-                  }}
-                >
-                  + Добавить доверенное лицо
-                </Button>
-              </CardContent>
-            )}
+              </div>
+            </>
+          ) : (
+            <CardContent>
+              <Button
+                sx={{
+                  padding: 0,
+                  color: '#219653',
+                  textTransform: 'none',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  paddingLeft: 0,
+                  margin: 0,
+                }}
+                onClick={() => {
+                  onStatusModal('new');
+                  onCurrentOrder(data);
+                  onModal();
+                }}
+              >
+                + Добавить доверенное лицо
+              </Button>
+            </CardContent>
+          )}
           < hr className={'m-0'} />
 
         </div>

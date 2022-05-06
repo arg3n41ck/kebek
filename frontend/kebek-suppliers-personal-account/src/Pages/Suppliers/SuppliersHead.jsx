@@ -40,7 +40,7 @@ export default function EnhancedTableHead(props) {
     <TableHead>
       <TableRow>
         <TableCell padding='checkbox'>
-          <Checkbox
+          {/* <Checkbox
             color='primary'
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
@@ -48,7 +48,7 @@ export default function EnhancedTableHead(props) {
             inputProps={{
               'aria-label': 'select all desserts',
             }}
-          />
+          /> */}
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell

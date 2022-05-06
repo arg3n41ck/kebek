@@ -167,7 +167,7 @@ function AddGoods() {
                                                     onBlur={handleBlur}
                                                     name="type"
                                                 >
-                                                    <MenuItem className={"w-100"} value="default">Выберите должность *</MenuItem >
+                                                    <MenuItem className={"w-100"} value="default">Выберите тип товара *</MenuItem >
                                                     {!!productTypes?.length && productTypes.map((item) => {
                                                         return <MenuItem key={item.id} value={item.id} className={"w-100"}>{locale === "ru" ? item.titleRu : item.titleKk}</MenuItem >
                                                     })}

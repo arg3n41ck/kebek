@@ -10,6 +10,7 @@ export const goodsContext = createContext(null);
 export default function GoodsProvider({ children }) {
     const [products, setProducts] = useState(null);
     const [elevators, setElevators] = useState(null);
+    const [elevatorsCount, setElevatorsCount] = useState(null);
     const [productTypes, setProductTypes] = useState([]);
     const [count, setCount] = useState(null);
     const [productById, setProductById] = useState(null);
@@ -23,6 +24,7 @@ export default function GoodsProvider({ children }) {
                 params: { search }
             });
             setElevators(data.results)
+            setElevatorsCount(data.count)
         } catch ({ response }) {
             await toast.error('Произошла непредвиденная ошибка!');
         }
@@ -98,7 +100,7 @@ export default function GoodsProvider({ children }) {
             await axios.post(`${BASE_URL}/products/`, data, {
                 headers: {
                     Authorization: `Token ${localStorage.getItem("token")}`,
-                    "Content-Type": "multipart/form-data", 
+                    "Content-Type": "multipart/form-data",
                 },
             });
             toast.success("Вы успешно добавили товар!");
@@ -176,6 +178,7 @@ export default function GoodsProvider({ children }) {
                 elevators,
                 productTypes,
                 products,
+                elevatorsCount,
                 count,
                 productById,
                 cities,

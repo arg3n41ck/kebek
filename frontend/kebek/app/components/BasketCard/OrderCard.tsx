@@ -21,7 +21,7 @@ function OrderCard({ checkedProducts }: any) {
     const [isUser, setIsUser] = React.useState(false)
     const router = useRouter()
     const isToken = !!window.localStorage.getItem("token")
-
+    const userType = window.localStorage.getItem('user_type');
     const checkedProduct = cart.filter((item: any) => item.checked)
 
     React.useEffect(() => {
@@ -45,7 +45,7 @@ function OrderCard({ checkedProducts }: any) {
             <div>
                 <hr className={classNames(classes.hr_mobile2, "d-none")} />
                 <CardActions className={"mt-2 d-flex flex-column"}>
-                    <Button onClick={() => router.push("/ordering")} disabled={!checkedProduct.length || !isUser} variant="contained" color="success">
+                    <Button onClick={() => router.push("/ordering")} disabled={!checkedProduct.length || !isUser || userType === "AN"} variant="contained" color="success">
                         <Typography style={{ width: "100%", height: "auto" }}>
                             {t("cart.buttons.ordering")}
                         </Typography>
@@ -111,7 +111,7 @@ function OrderCard({ checkedProducts }: any) {
                             <p>{t("cart.orderCard.title2")}</p>
                         </Typography>
                         <Typography sx={{ fontSize: 12 }} color="text.secondary">
-                            <p>{Math.round(totalAmountTon)} тонн</p>
+                            <p>{(totalAmountTon).toFixed(1)} тонн</p>
                         </Typography>
                     </div>
 

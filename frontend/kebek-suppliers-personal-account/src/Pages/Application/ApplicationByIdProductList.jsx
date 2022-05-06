@@ -108,7 +108,7 @@ function ApplicationByIdProductList({ item, locale, deleteProductFromOrderById, 
                             Стоимость
                         </Typography>
                         <Typography sx={{ color: '#092F33', fontSize: 18 }}>
-                            {item.productPayment * 1000} ₸
+                            {item.productPayment} ₸
                         </Typography>
                     </div>
                     <div
@@ -178,8 +178,6 @@ function ApplicationByIdProductList({ item, locale, deleteProductFromOrderById, 
                     onClick={handleClick}
                 />
                 <Menu
-                    id='demo-positioned-menu'
-                    aria-labelledby='demo-positioned-button'
                     anchorEl={anchorEl}
                     open={opens}
                     onClick={(e) => handleClick(e)}

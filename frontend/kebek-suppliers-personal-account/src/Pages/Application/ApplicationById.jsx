@@ -233,9 +233,8 @@ function ApplicationById() {
         const payment = data?.payment.id;
         const delivery_payment = data?.deliveryPayment;
 
-        await deleteProductsOrderById(res, applicationId, elevator, client, delivery, payment, delivery_payment).then(() => {
-            getApplicationsById(applicationId)
-        })
+        await deleteProductsOrderById(res, applicationId, elevator, client, delivery, payment, delivery_payment)
+        getApplicationsById(applicationId)
         handleClose3()
     }
 
@@ -542,7 +541,7 @@ function ApplicationById() {
                             </div>
                         </AccordionSummary>
                         <AccordionDetails sx={{ padding: 0 }}>
-                            {!!data?.documents && data?.documents
+                            {!!data?.documents && data?.documents.filter(({ type }) => type !== "PS")
                                 .map((item) => <ApplicationByIdDocumentList
                                     item={item}
                                     isMobile={isMobile}
@@ -681,7 +680,7 @@ function ApplicationById() {
                                             </div>
                                         </div>
 
-                                        <div>
+                                        {/* <div>
                                             <MoreVertSharpIcon
                                                 style={{ color: '#219653', cursor: 'pointer' }}
                                                 onClick={handleClick2}
@@ -732,7 +731,7 @@ function ApplicationById() {
                                                     </Button>
                                                 </MenuItem>
                                             </Menu>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div
                                         className={classNames(

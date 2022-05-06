@@ -80,7 +80,7 @@ function PaymentCard({ checkedProducts, open, handleClose, orders }: any) {
                   {t("cart.orderCard.title2")}:
                 </Typography>
                 <Typography sx={{ fontSize: 12 }} color="text.secondary">
-                  {Math.round(totalAmountTon)} тонн
+                  {(totalAmountTon).toFixed(1)} тонн
                 </Typography>
               </div>
               <div

@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { requisitesEditModalCtx } from '../OrderingModals/EditRequisitesModal';
 import { deleteRequisites, fetchRequisites } from '../../redux/products/auth.slice';
 import cl from "../OrderingModals/DeleteAdressModal.module.scss"
+import Loader from '../Loader/Loader';
 
 function stylesMyText(text: any) {
     return {
@@ -118,6 +119,9 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
         setRequisite(item)
     }
 
+
+    console.log(radioFace)
+
     const paymentVisible = !!delivery?.length && delivery.map(({ payments }: any) => {
         return !!payments?.length && payments.map((item: any) => {
             return item.type.title_ru !== "Перечисление на расчетный счет" && item
@@ -138,9 +142,10 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                 return (item.type.title_ru === "Наличными в кассу" || item.type.title_kk === "Кассаға қолма-қол") && item
             })[0]
         })[0].id)
-    }, [radioFace, paymentVisible])
+    }, [radioFace])
 
     const handleChangeRadioPayment = (event: any) => {
+        console.log(event.target.value)
         setRadioPayment(Number(event.target.value));
     };
 
@@ -152,6 +157,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
     React.useEffect(() => {
         (!requisite && !!requisites?.length) && setRequisite(requisites[0])
     }, [requisite, requisites])
+
 
     return (
         <div>
@@ -166,7 +172,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                 <AccordionDetails>
                     <FormControl sx={{ width: '100%' }}>
                         <RadioGroup
-                            value={radioPayment}
+                            value={!!radioPayment ? radioPayment : 1}
                             onChange={handleChangeRadioPayment}
                         >
                             <div>
@@ -175,7 +181,7 @@ function PaymentMethodAccordion({ setPaymentPC, radioFace, setRadioPayment, radi
                                         <div key={item.id}>
                                             <FormControlLabel key={item.id} className={classes.formControl__text} value={item.id} control={<Radio />}
                                                 label={<Typography
-                                                    color={radioPayment == item.id ? "primary" : "black"}>
+                                                    color={!!radioPayment ? radioPayment : 1 == item.id ? "primary" : "black"}>
                                                     {router.locale === "ru" ? item.type.title_ru : item.type.title_kk}
                                                 </Typography>}
                                             />

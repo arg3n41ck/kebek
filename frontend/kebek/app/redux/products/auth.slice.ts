@@ -61,7 +61,8 @@ export const signInUser = createAsyncThunk(
         .post("/users/login/", { username, password })
         .then(({ data }: any) => {
           window.localStorage.setItem("token", data.token);
-          window.localStorage.setItem("user_role", data.user.user_type);
+          window.localStorage.setItem("user_role", data.user.user_role);
+          window.localStorage.setItem("user_type", data.user.user_type);
           window.localStorage.setItem("client", data.user.id);
           !!state.auth.lastPage?.length &&
           state.auth.lastPage !== "/about-product/[productId]"
@@ -73,11 +74,11 @@ export const signInUser = createAsyncThunk(
               );
         });
     } catch (e: any) {
-      if (e.response.data.status === 404) {
+      if (e.response.status === 404) {
         toast.error(
           "Пользователь с таким логином не зарегистрирован. Пожалуйста, проверьте правильность введенного логина или зарегистрируйтесь!"
         );
-      } else if (e.response.data.status === 400) {
+      } else if (e.response.status === 400) {
         toast.error("Неверный логин или пароль!");
       } else {
         toast.error("Возникла непредвиденная ошибка!");
@@ -89,6 +90,9 @@ export const signInUser = createAsyncThunk(
 export const logOutUser = () => {
   window.localStorage.removeItem("token");
   window.localStorage.removeItem("username");
+  window.localStorage.removeItem("user_role");
+  window.localStorage.removeItem("user_type");
+  window.localStorage.removeItem("client");
 };
 
 export const forgotPasswordUserCheckCode = createAsyncThunk(
@@ -102,8 +106,7 @@ export const forgotPasswordUserCheckCode = createAsyncThunk(
           return data.key;
         });
       return data;
-    } catch (e:any) {
-      console.log(e.response.status === 409 && "Неверный")
+    } catch (e: any) {
       e.response.status === 409
         ? toast.error("Вы ввели неверный код!")
         : toast.error("Возникла непредвиденная ошибка!");
@@ -190,6 +193,7 @@ export const signUpUserConfirmationCode = createAsyncThunk(
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("user_role", data.user.user_role);
           window.localStorage.setItem("client", data.user.id);
+          window.localStorage.setItem("user_type", data.user.user_type);
           !!state.auth.lastPage?.length &&
           state.auth.lastPage !== "/about-product/[payloadId]"
             ? Router.push(

@@ -57,7 +57,7 @@ export default function Cookie() {
         </div>
 
         <div className={classes.buttons}>
-          <button className={classes.button1} onClick={() => hideBlock("disagree")}>
+          <button className={classes.button1} onClick={() => hideBlock("")}>
             {router.locale === "ru" ? "Отклонить" : "Қабылдамау"}
           </button>
 

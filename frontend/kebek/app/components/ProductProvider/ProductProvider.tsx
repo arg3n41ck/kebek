@@ -17,14 +17,14 @@ const ProductProvider: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { providerById } = useAppSelector((state: any) => state.product);
-  const { id } = router.query ?? "" as any;
+  const { productId } = router.query ?? "" as any;
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (id) {
-      dispatch(fetchElevatorsById(id))
+    if (productId) {
+      dispatch(fetchElevatorsById(productId))
     }
-  }, [dispatch, id])
+  }, [dispatch, productId])
 
   if (!providerById) {
     return <Loader />

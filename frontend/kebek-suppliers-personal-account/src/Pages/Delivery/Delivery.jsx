@@ -187,6 +187,12 @@ function Delivery() {
           </FormControl>
         </div>
 
+        <div>
+          <Typography sx={{ fontSize: 18 }}>
+            {pageSize <= count ? pageSize : count} из {count}
+          </Typography>
+        </div>
+
         <PaginationDelivery
           count={Math.ceil(!!count && count / pageSize)}
           page={currentPage}

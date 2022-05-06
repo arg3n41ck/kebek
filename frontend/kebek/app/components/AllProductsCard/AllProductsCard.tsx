@@ -109,6 +109,7 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
   const isInCart = useAppSelector(
     (state: any) => !!cartSelectors.selectById(state, data.id)
   );
+  const userType = window.localStorage.getItem("user_type")
   const cart = useAppSelector((state: any) => cartSelectors.selectAll(state));
   const { t } = useTranslation()
   const router = useRouter()
@@ -204,10 +205,10 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
                 aria-label="Custom marks"
                 valueLabelDisplay="auto"
                 step={1}
-                min={Math.round(data.min_limit / 1000)}
-                max={Math.round(data.max_limit / 1000)}
+                min={data.min_limit / 1000}
+                max={data.max_limit / 1000}
                 style={quantity > data.residue / 1000 ? { color: "red", marginTop: "25px" } : { color: "#219653", marginTop: "25px" }}
-                value={Math.round(quantity)}
+                value={quantity}
                 onChange={handleChangeQuantity}
               />
             )
@@ -216,12 +217,12 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
         <div className="row">
           <div className={`col-md-6 col-6 mb-0 ${classes.p}`}>
             <p style={{ color: "#4F4F4F", fontSize: "12px" }}>
-              Мин. {Math.round(data.min_limit / 1000)} тонн
+              Мин. {(data.min_limit % 1000 === 0) ? data.min_limit / 1000 : (data.min_limit / 1000).toFixed(1)} тонн
             </p>
           </div>
           <div className="col-md-6 col-6 d-flex justify-content-end">
             <p style={{ color: "#4F4F4F", fontSize: "12px" }}>
-              Макс. {Math.round(data.max_limit / 1000)} тонн
+              Макс. {(data.max_limit % 1000 === 0) ? data.max_limit / 1000 : (data.max_limit / 1000).toFixed(1)} тонн
             </p>
           </div>
         </div>
@@ -263,6 +264,7 @@ const AllProductsCard: React.FC<Props> = ({ data }: any) => {
               </Button>
             ) : (
               <Button
+                disabled={userType === "AN"}
                 onClick={handleAddToCart}
                 className={classes.card__button}
                 variant="contained"

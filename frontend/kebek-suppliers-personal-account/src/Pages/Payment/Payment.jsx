@@ -177,6 +177,12 @@ function Payment() {
           </FormControl>
         </div>
 
+        <div>
+          <Typography sx={{ fontSize: 18 }}>
+            {pageSize <= count ? pageSize : count} из {count}
+          </Typography>
+        </div>
+
         <PaginationPayment
           count={Math.ceil(!!count && count / pageSize)}
           page={currentPage}

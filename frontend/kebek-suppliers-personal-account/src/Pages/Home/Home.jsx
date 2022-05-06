@@ -33,22 +33,24 @@ const formatToHuman = (number) => {
   }
 
   if (number < 1000000) {
-    number = Math.floor(number / 1000);
-    return `${number} тыс`
+    number = (number / 1000);
+    return `${number.toFixed(1)} тыс`
   }
 
   if (number >= 1000000 && number < 1000000000) {
-    number = Math.floor(number / 1000000);
+    number = (number / 1000000).toFixed(2);
     return `${number} млн`
   }
 
   if (number >= 1000000000 && number < 1000000000000) {
-    number = Math.floor(number / 1000000000);
+    number = (number / 1000000000);
     return `${number} млрд`
   }
 
-  return `${Math.floor(number / 1000000000000)} T+`;
+  return `${(number / 1000000000000).toFixed(1)} T+`;
 }
+
+console.log(formatToHuman(4300015))
 
 
 export const month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
@@ -63,7 +65,7 @@ function Home() {
   const date = new Date();
   const isSmall = useMediaQuery("(max-width: 578px)")
   const { getDashboardOrders, dashboardOrders, dashboardProfit, getDashboardProfit, dashboardInfo, getDashboardInfo } = useContext(applicationContext)
-  const [selectYearOrMonth, setSelectYearOrMonth] = useState("yyyy")
+  const [selectYearOrMonth, setSelectYearOrMonth] = useState("MM")
   const [selectYears, setSelectYears] = useState(date.getFullYear())
   const [selectMonth, setSelectMonth] = useState(month[0])
   const day = date.getDate();
@@ -71,7 +73,7 @@ function Home() {
 
 
   function onChange(value) {
-    selectYearOrMonth === "yyyy" ? setSelectYears(value) : setSelectMonth(value)
+    selectYearOrMonth === "MM" ? setSelectYears(value) : setSelectMonth(value)
   }
 
   function onSearch(val) {
@@ -108,7 +110,7 @@ function Home() {
       },
       {
         id: 3,
-        count: !!dashboardInfo?.profit ? formatToHuman(dashboardInfo.profit) : 0,
+        count: !!dashboardInfo?.profit ? dashboardInfo.profit : 0,
         title: locale === "ru" ? "Продажи, ₸" : "Сатылым, ₸"
       }
     ]
@@ -125,6 +127,7 @@ function Home() {
   }, [selectYears, selectMonth, day])
 
 
+  console.log(selectYears, selectMonth)
 
 
   if (!dashboardOrders && !dashboardProfit && !dashboardInfo) {
@@ -332,8 +335,8 @@ function Home() {
                     className={"w-100 d-flex align-items-center"}
                     onChange={handleChangeYearOrMonth}
                   >
-                    <Radio.Button style={{ padding: "0 20px" }} value="yyyy">{t.home.applications.buttons.title}</Radio.Button>
-                    <Radio.Button style={{ padding: "0 20px" }} value="MM">{t.home.applications.buttons.title2}</Radio.Button>
+                    <Radio.Button style={{ padding: "0 20px" }} value="MM">{t.home.applications.buttons.title}</Radio.Button>
+                    <Radio.Button style={{ padding: "0 20px" }} value="dd">{t.home.applications.buttons.title2}</Radio.Button>
                     {/* <Radio.Button style={{ padding: "0 20px" }} value="d">{t.home.applications.buttons.title3}</Radio.Button> */}
                   </Radio.Group>
                 </div>
@@ -354,7 +357,7 @@ function Home() {
                   // placeholder="Select a person"
                   optionFilterProp="children"
                   onChange={onChange}
-                  value={selectYearOrMonth === "yyyy" ? selectYears : selectMonth}
+                  value={selectYearOrMonth === "MM" ? selectYears : selectMonth}
                   style={{ minWidth: "100px" }}
                   className={"ms-4"}
                   onSearch={onSearch}
@@ -362,7 +365,7 @@ function Home() {
                     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                   }
                 >
-                  {selectYearOrMonth === "MM" ?
+                  {selectYearOrMonth === "dd" ?
                     month.map((item, index) => {
                       return <Option key={index} value={item}>{item}</Option>
                     })

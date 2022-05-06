@@ -133,7 +133,7 @@ const BasketInfoCard = ({
         <div className={classes.amountProduct}>
           <div className={"d-flex justify-content-between"}>
             <button onClick={countDecrement}>-</button>
-            <Typography sx={{ fontSize: 16 }}>{Math.round(count)}</Typography>
+            <Typography sx={{ fontSize: 16 }}>{(count).toFixed(1)}</Typography>
             <button onClick={countIncrement}>+</button>
           </div>
           <Typography

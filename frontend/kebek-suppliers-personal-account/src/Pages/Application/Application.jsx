@@ -204,18 +204,24 @@ function Application() {
     await !!selectOrders?.length && selectOrders.map(async (item) => {
       const { data } = await $api.get(`/orders/report/`, {
         params: {
-          client: item.client,
-          delivery: item.delivery,
-          elevator: item.elevator,
-          payment: item.payment,
-          status: item.status,
+          client,
+          delivery: deliveryTypeFilter,
+          elevator: elevatorFilter,
+          payment: paymentTypeFilter,
+          status: statusFilter,
           report_type
         },
         responseType: "blob"
       })
+      //       elevatorFilter
+      // productTypeFilter
+      // statusFilter
+      // paymentTypeFilter
+      // client
 
       downloadAsFile(data, report_type, item.title)
     })
+
     handleCloseRow()
   }
 
@@ -449,6 +455,12 @@ function Application() {
               ))}
             </Select>
           </FormControl>
+        </div>
+
+        <div>
+          <Typography sx={{ fontSize: 18 }}>
+            {pageSize <= count ? pageSize : count} из {count}
+          </Typography>
         </div>
 
         <PaginationApplication

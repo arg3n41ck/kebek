@@ -16,7 +16,6 @@ import { localeContext } from '../../providers/LocaleProvider';
 const Schema = yup.object({
   first_name: yup.string().required('Пожалуйста, заполните указанные поля'),
   phone_number: yup.string().required('Пожалуйста, заполните указанные поля'),
-  email: yup.string().required('Пожалуйста, заполните указанные поля!'),
 });
 
 function Personalnformation() {
@@ -162,8 +161,8 @@ function Personalnformation() {
                 </FormControl>
                 <div
                   style={
-                    (errors.email && touched.email) ||
-                      (errors.phone_number && touched.phone_number) ||
+
+                    (errors.phone_number && touched.phone_number) ||
                       (errors.first_name && touched.first_name)
                       ? { marginBottom: 28 }
                       : { marginBottom: 28 }
@@ -198,16 +197,14 @@ function Personalnformation() {
                     type='text'
                     placeholder={(user && user.email) || 'Email'}
                     style={
-                      errors.email && touched.email
-                        ? { border: '1px solid red', marginBottom: 28 }
-                        : { marginBottom: 28 }
+                      { marginBottom: 28 }
                     }
                     value={values.email}
                     name='email'
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  {((errors.email && touched.email) ||
+                  {(
                     (errors.first_name && errors.first_name) ||
                     (errors.phone_number && touched.phone_number)) && (
                       <div
@@ -219,7 +216,7 @@ function Personalnformation() {
                           style={{ position: 'absolute', bottom: -15 }}
                           className={'text-danger'}
                         >
-                          {errors.email ||
+                          {
                             errors.first_name ||
                             errors.phone_number}
                         </p>
