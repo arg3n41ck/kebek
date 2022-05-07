@@ -518,7 +518,7 @@ class StaffViewSet(viewsets.ModelViewSet):
             phone_number = request.data['phone_number']
             first_name = request.data['first_name']
             user_role = request.data['user_role']
-            email = request.data['email']
+            email = request.data['email'] if 'email' in request.data else None
 
             faker = FakerFactory.create()
             password = faker.password()
