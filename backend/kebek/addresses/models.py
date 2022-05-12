@@ -77,7 +77,10 @@ class City(models.Model):
     )
 
     def __str__(self):
-        return self.district.title_ru + ': ' + self.title_ru
+        if self.district:
+            return self.district.title_ru + ': ' + self.title_ru
+        else:
+            return self.title_ru
 
     class Meta:
         ordering = ['district', 'title_ru']
