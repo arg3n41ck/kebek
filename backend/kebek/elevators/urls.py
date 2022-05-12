@@ -38,5 +38,5 @@ router.register('dashboard/orders', DashboardOrdersViewSet, basename='DashboardO
 router.register('dashboard/profit', DashboardProfitViewSet, basename='DashboardProfit')
 
 urlpatterns = [
-    path('pass/<int:pk>/', PassDetailView.as_view(), name='Pass'),
+    path('pass/<int:pk>', PassDetailView.as_view(), name='Pass'),
 ]
