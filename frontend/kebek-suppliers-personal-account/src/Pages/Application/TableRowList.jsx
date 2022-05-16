@@ -54,7 +54,7 @@ function TableRowList({
 
     const totalSum = React.useMemo(() => {
         return row.products.reduce(
-            (acc, curr) => acc + curr.productPayment * curr.amount,
+            (acc, curr) => acc + curr.productPayment,
             0
         );
     }, [row.products]);

@@ -118,7 +118,7 @@ function ApplicationItem({
 
   const totalProductPayment = React.useMemo(() => {
     console.log(data.products)
-    return !!data?.products?.length && data.products.reduce((acc, curr) => acc + curr.amount * curr.productPayment, 0)
+    return !!data?.products?.length && data.products.reduce((acc, curr) => acc + curr.productPayment, 0)
   }, [data])
 
   const totalProductCountTon = React.useMemo(() => {
