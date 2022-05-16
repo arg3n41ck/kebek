@@ -124,7 +124,7 @@ def create_qr(instance):
 
     file_name = str(instance.id) + '_' + instance.elevator.title_ru + '_' + instance.created_at.strftime("%d-%m-%Y %H:%M:%S") + '.png'
 
-    image = qrcode.make(f'https://kebek.kz/pass/{instance.id}/')
+    image = qrcode.make(f'https://kebek.kz/pass/{instance.id}')
     blob = io.BytesIO()
     image.save(blob)
     image_bytes = blob.getvalue()
