@@ -50,7 +50,7 @@ export default function StaffProvider({ children }) {
 
     const patchStaff = async (id, data) => {
         try {
-            await $api.patch(`/users/staff/${id}`, data);
+            await $api.patch(`/users/staff/${id}/`, data);
         } catch ({ response: { status } }) {
             status === 40 ? toast.error("Такой сотрудник уже существует") :
                 toast.error("Произошла непредвиденная ошибка!")
